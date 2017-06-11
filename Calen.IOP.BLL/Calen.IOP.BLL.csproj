@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{772AFCCC-93FE-4EBC-8387-51EF45021E4B}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Calen.IOP.DataAccess</RootNamespace>
-    <AssemblyName>Calen.IOP.DataAccess</AssemblyName>
+    <ProjectGuid>{777483AB-BC84-42CA-A565-8E6A5B67F5E3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Calen.IOP.BLL</RootNamespace>
+    <AssemblyName>Calen.IOP.BLL</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,9 +39,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,23 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Department.cs" />
-    <Compile Include="Entities\Employee.cs" />
-    <Compile Include="Entities\JobPosition.cs" />
-    <Compile Include="Entities\ServingRecord.cs" />
-    <Compile Include="IOPContext.cs" />
-    <Compile Include="Mapping\DepartmentMap.cs" />
-    <Compile Include="Mapping\EmployeeMap.cs" />
-    <Compile Include="Mapping\JobPositionMap.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="DepartmentManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Calen.IOP.DataAccess\Calen.IOP.DataAccess.csproj">
+      <Project>{772AFCCC-93FE-4EBC-8387-51EF45021E4B}</Project>
+      <Name>Calen.IOP.DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="App.config" />
-    <None Include="Graph1.dgml" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

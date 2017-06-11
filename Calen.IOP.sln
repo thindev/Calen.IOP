@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calen.IOP.WebService", "Calen.IOP.WebService\Calen.IOP.WebService.csproj", "{409D1079-0F87-46E4-B80B-C9B1F7A3EDA4}"
 EndProject
@@ -13,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calen.IOP.DataAccess", "Calen.IOP.DataAccess\Calen.IOP.DataAccess.csproj", "{772AFCCC-93FE-4EBC-8387-51EF45021E4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calen.IOP.BLL", "Calen.IOP.BLL\Calen.IOP.BLL.csproj", "{777483AB-BC84-42CA-A565-8E6A5B67F5E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calen.IOP.DTO", "Calen.IOP.DTO\Calen.IOP.DTO.csproj", "{67C247A6-DE7B-4483-B286-702FDEEF94B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +36,14 @@ Global
 		{772AFCCC-93FE-4EBC-8387-51EF45021E4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{772AFCCC-93FE-4EBC-8387-51EF45021E4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{772AFCCC-93FE-4EBC-8387-51EF45021E4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{777483AB-BC84-42CA-A565-8E6A5B67F5E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{777483AB-BC84-42CA-A565-8E6A5B67F5E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{777483AB-BC84-42CA-A565-8E6A5B67F5E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{777483AB-BC84-42CA-A565-8E6A5B67F5E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67C247A6-DE7B-4483-B286-702FDEEF94B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67C247A6-DE7B-4483-B286-702FDEEF94B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67C247A6-DE7B-4483-B286-702FDEEF94B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67C247A6-DE7B-4483-B286-702FDEEF94B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

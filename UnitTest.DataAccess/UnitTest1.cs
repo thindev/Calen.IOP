@@ -18,5 +18,19 @@ namespace UnitTest.DataAccess
                 context.SaveChanges();
             }
         }
+
+        [TestMethod]
+        public void AddDepartment()
+        {
+            using (IOPContext context = new IOPContext())
+            {
+                Department d = new Department();
+                d.Description = "键身房门店";
+                d.Id = Guid.NewGuid().ToString();
+                d.Name = "金奥健身房";
+                context.Departments.Add(d);
+                context.SaveChanges();
+            }
+        }
     }
 }

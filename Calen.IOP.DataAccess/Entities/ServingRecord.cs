@@ -11,8 +11,18 @@ namespace Calen.IOP.DataAccess.Entities
     /// </summary>
     public class ServingRecord
     {
+        public string Id { get; set; }
         public DateTime? BeginTime { get; set; }
         public DateTime? EndTime { get; set; }
-        public virtual Employee Employee {get;set;}
+        /// <summary>
+        /// 是否兼任
+        /// </summary>
+        public bool IsConcurrent { get; set; }
+        /// <summary>
+        /// 是否当前有效
+        /// </summary>
+        public bool IsCurrent { get; set; }
+        public virtual Employee Employee { get; set; }
+        public virtual JobPosition JobPosition{get;set;}  
     }
 }

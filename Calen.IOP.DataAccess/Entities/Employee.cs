@@ -15,6 +15,7 @@ namespace Calen.IOP.DataAccess.Entities
         public string Name { get; set; }
         public SexTypes Sex { get; set; }
         public string MobileNumber { get; set; }
+        public string Email { get; set; }
         public string Address { get; set; }
         public DateTime? BirthDay { get; set; }
         public byte[] Image { get; set; }
@@ -22,6 +23,7 @@ namespace Calen.IOP.DataAccess.Entities
 
 
         public virtual Department Department { get; set; }
+        public ICollection<ServingRecord> ServingRecords { get; set; }
     }
 
     public enum SexTypes

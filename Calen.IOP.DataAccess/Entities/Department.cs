@@ -10,8 +10,11 @@ namespace Calen.IOP.DataAccess.Entities
     {
         public string Id { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
+        public virtual Employee Leader { get; set; }
         public virtual Department ParentDepartment { get; set; }
         public virtual ICollection<Department> SubDepartments { get; set; }
         public virtual ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<JobPosition> JobPositions { get; set; }
     }
 }

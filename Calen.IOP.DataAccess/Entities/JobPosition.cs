@@ -14,5 +14,6 @@ namespace Calen.IOP.DataAccess.Entities
         public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public virtual Department Department { get; set; }
     }
 }
