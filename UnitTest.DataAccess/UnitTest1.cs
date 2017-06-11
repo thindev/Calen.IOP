@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Calen.IOP.DataAccess;
+using Calen.IOP.DataAccess.Entities;
 
 namespace UnitTest.DataAccess
 {
@@ -12,7 +13,8 @@ namespace UnitTest.DataAccess
         {
             using (IOPContext context = new IOPContext())
             {
-                context.Employees.Add(new Employee {Id=Guid.NewGuid().ToString(),Name="张三"});
+
+                context.Employees.Add(new Employee {Id=Guid.NewGuid().ToString(),Name="张三",Department=null});
                 context.SaveChanges();
             }
         }

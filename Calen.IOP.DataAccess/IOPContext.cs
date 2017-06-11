@@ -1,5 +1,7 @@
 ﻿namespace Calen.IOP.DataAccess
 {
+    using Calen.IOP.DataAccess.Entities;
+    using Calen.IOP.DataAccess.Mapping;
     using System;
     using System.Data.Entity;
     using System.Linq;
@@ -22,16 +24,16 @@
         {
 
         }
-
+        protected override void OnModelCreating(DbModelBuilder mb)
+        {
+            mb.Configurations.Add(new EmployeeMap());
+            mb.Configurations.Add(new DepartmentMap());
+        }
         //为您要在模型中包含的每种实体类型都添加 DbSet。有关配置和使用 Code First  模型
         //的详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=390109。
 
-         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
     }
 
-    public class Employee
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-    }
+   
 }
