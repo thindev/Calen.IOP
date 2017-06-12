@@ -1,0 +1,27 @@
+﻿<mahapps:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:Calen.IOP.Client.Desktop"
+        xmlns:View="clr-namespace:Calen.IOP.Client.Desktop.View"
+        x:Class="Calen.IOP.Client.Desktop.MainWindow"
+          BorderThickness="1" 
+    TitlebarHeight="32"
+    NonActiveWindowTitleBrush="{DynamicResource AccentColorBrush}"
+    NonActiveBorderBrush="DarkGray"
+    NonActiveGlowBrush="DarkGray"
+    BorderBrush="{DynamicResource AccentColorBrush}"
+    GlowBrush="{DynamicResource AccentColorBrush}" 
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <View:LeftSideNavigationPanel HorizontalAlignment="Left" ExpandedWidth="240"/>
+    </Grid>
+</mahapps:MetroWindow>

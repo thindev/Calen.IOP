@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    >
+    <!--程序框架颜色-->
+    <SolidColorBrush x:Key="FullColorKey" Color="#FFA8A8AA"/>
+    <SolidColorBrush x:Key="PrimaryDarkColorKey" Color="#FFD2D2D4"/>
+    <SolidColorBrush x:Key="PrimaryMedianColorKey" Color="#FFE4E4E6"/>
+    <SolidColorBrush x:Key="PrimaryColorKey" Color="#FFECECEE"/>
+    <SolidColorBrush x:Key="PrimaryLightColorKey" Color="#FFF4F4F6"/>
+    <SolidColorBrush x:Key="BlankColorKey" Color="White"/>
+    <SolidColorBrush x:Key="Foreground_NormalKey" Color="#FF323232"/>
+    <SolidColorBrush x:Key="Foreground_LightKey" Color="#FF7C7C7C"/>
+    <SolidColorBrush x:Key="Foreground_TitleKey" Color="#FF545454"/>
+    <SolidColorBrush x:Key="HighlightForegroundKey" Color="Black"/>
+    <SolidColorBrush x:Key="DisableColorKey" Color="Gray"/>
+</ResourceDictionary>

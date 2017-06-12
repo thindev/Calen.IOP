@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calen.IOP.WebService", "Calen.IOP.WebService\Calen.IOP.WebService.csproj", "{409D1079-0F87-46E4-B80B-C9B1F7A3EDA4}"
 EndProject
@@ -16,7 +16,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calen.IOP.DataAccess", "Cal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calen.IOP.BLL", "Calen.IOP.BLL\Calen.IOP.BLL.csproj", "{777483AB-BC84-42CA-A565-8E6A5B67F5E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calen.IOP.DTO", "Calen.IOP.DTO\Calen.IOP.DTO.csproj", "{67C247A6-DE7B-4483-B286-702FDEEF94B7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{2128C012-3DD9-43D7-9764-498EBD8B2B87}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desktop", "Desktop", "{A1964E22-29F4-4208-A527-9A0A3721DD8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientTest", "ClientTest\ClientTest.csproj", "{0940140C-DEFF-4E3A-A143-0551E138FB5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calen.IOP.Client.Desktop", "Calen.IOP.Client.Desktop\Calen.IOP.Client.Desktop.csproj", "{7E9BA8AA-411F-46CE-BD40-D7BF5039C685}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calen.IOP.DTO", "Calen.IOP.DTO\Calen.IOP.DTO.csproj", "{15A419AD-C069-4FF1-B172-1A3E3D7759A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calen.IOP.DataPortal", "Calen.IOP.DataPortal\Calen.IOP.DataPortal.csproj", "{C2EF32D5-069E-4EB1-8475-EB823A9491BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,12 +50,29 @@ Global
 		{777483AB-BC84-42CA-A565-8E6A5B67F5E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{777483AB-BC84-42CA-A565-8E6A5B67F5E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{777483AB-BC84-42CA-A565-8E6A5B67F5E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{67C247A6-DE7B-4483-B286-702FDEEF94B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{67C247A6-DE7B-4483-B286-702FDEEF94B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{67C247A6-DE7B-4483-B286-702FDEEF94B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{67C247A6-DE7B-4483-B286-702FDEEF94B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0940140C-DEFF-4E3A-A143-0551E138FB5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0940140C-DEFF-4E3A-A143-0551E138FB5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0940140C-DEFF-4E3A-A143-0551E138FB5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0940140C-DEFF-4E3A-A143-0551E138FB5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E9BA8AA-411F-46CE-BD40-D7BF5039C685}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E9BA8AA-411F-46CE-BD40-D7BF5039C685}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E9BA8AA-411F-46CE-BD40-D7BF5039C685}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E9BA8AA-411F-46CE-BD40-D7BF5039C685}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15A419AD-C069-4FF1-B172-1A3E3D7759A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15A419AD-C069-4FF1-B172-1A3E3D7759A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15A419AD-C069-4FF1-B172-1A3E3D7759A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15A419AD-C069-4FF1-B172-1A3E3D7759A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2EF32D5-069E-4EB1-8475-EB823A9491BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2EF32D5-069E-4EB1-8475-EB823A9491BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2EF32D5-069E-4EB1-8475-EB823A9491BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2EF32D5-069E-4EB1-8475-EB823A9491BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A1964E22-29F4-4208-A527-9A0A3721DD8F} = {2128C012-3DD9-43D7-9764-498EBD8B2B87}
+		{0940140C-DEFF-4E3A-A143-0551E138FB5D} = {A1964E22-29F4-4208-A527-9A0A3721DD8F}
+		{7E9BA8AA-411F-46CE-BD40-D7BF5039C685} = {A1964E22-29F4-4208-A527-9A0A3721DD8F}
 	EndGlobalSection
 EndGlobal
