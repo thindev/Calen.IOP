@@ -9,6 +9,7 @@
         x:Class="Calen.IOP.Client.Desktop.MainWindow"
           BorderThickness="1" 
     TitlebarHeight="32"
+    
     NonActiveWindowTitleBrush="{DynamicResource AccentColorBrush}"
     NonActiveBorderBrush="DarkGray"
     NonActiveGlowBrush="DarkGray"
@@ -21,7 +22,7 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
         <View:LeftSideNavigationPanel HorizontalAlignment="Left" ExpandedWidth="240"/>
+        <View:ContentContainerPanel Grid.Column="1"/>
     </Grid>
 </mahapps:MetroWindow>

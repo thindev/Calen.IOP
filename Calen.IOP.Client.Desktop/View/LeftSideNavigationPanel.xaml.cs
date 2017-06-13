@@ -61,5 +61,19 @@ namespace Calen.IOP.Client.Desktop.View
             if (this.navTglb1 != null)
                 this.navTglb1.Visibility = Visibility.Visible;
         }
+
+        private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            
+            TreeViewItem item = (TreeViewItem)treeView.SelectedItem;
+            if (item != null && item.HasItems)
+            {
+                TreeViewItem old = e.OldValue as TreeViewItem;
+                if (old != null && !old.HasItems)
+                {
+                    old.IsSelected = true;
+                }
+            }
+        }
     }
 }
