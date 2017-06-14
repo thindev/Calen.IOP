@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Calen.IOP.Client.Desktop.Controls
+namespace Calen.IOP.Client.Desktop.Pages
 {
     /// <summary>
-    /// NavMenuItem.xaml 的交互逻辑
+    /// DepartmentManage.xaml 的交互逻辑
     /// </summary>
-    public partial class NavMenuItem : UserControl
+    public partial class DepartmentManage : Page
     {
-        public NavMenuItem()
+        public DepartmentManage()
         {
             InitializeComponent();
         }

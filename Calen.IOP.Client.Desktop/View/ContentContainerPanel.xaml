@@ -11,8 +11,10 @@
             <RowDefinition Height="36"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border Background="{DynamicResource PrimaryLightColorKey}"></Border>
-        <Frame Name="frame" Grid.Row="1">
+        <Border Background="{DynamicResource PrimaryLightColorKey}">
+            <TextBlock Name="tb_Title" FontSize="{DynamicResource FontSize_Large}" Foreground="{DynamicResource Foreground_TitleKey}" Text="主要功能" VerticalAlignment="Center" Margin="6,0,0,0"/>
+        </Border>
+        <Frame Name="frame" Grid.Row="1" NavigationUIVisibility="Hidden">
             
         </Frame>
     </Grid>

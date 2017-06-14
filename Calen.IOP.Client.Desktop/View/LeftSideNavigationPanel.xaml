@@ -39,7 +39,7 @@
                         </StackPanel>
                     </TreeViewItem.Header>
 
-                    <TreeViewItem local:FunctionMgr.FunctionName="组织架构管理">
+                    <TreeViewItem local:FunctionMgr.FunctionName="组织架构管理" local:FunctionMgr.FunctionPageUri="Pages/DepartmentManage.xaml">
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <Path Data="{DynamicResource Geo_NavMenu_OrganizationManage}"/>

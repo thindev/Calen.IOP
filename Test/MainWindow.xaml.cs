@@ -1,4 +1,5 @@
-﻿using Calen.IOP.Client.Desktop.View;
+﻿using Calen.IOP.Client.Desktop;
+using Calen.IOP.Client.Desktop.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,30 +15,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Calen.IOP.Client.Desktop
+namespace Test
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
         }
 
-       
-
-        private void leftPanel_SelectedNewItem(object sender, RoutedPropertyChangedEventArgs<TreeViewItem> e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            TreeViewItem tv = e.NewValue;
-            if(tv!=null)
-            {
-                Uri uri = FunctionMgr.GetFunctionPageUri(tv);
-                string name = FunctionMgr.GetFunctionName(tv);
-                this.contentContainer.SetTitle(name);
-                this.contentContainer.GoToPage(uri);
-            }
+            DepartmentManager dm = new DepartmentManager();
+            dm.RefreshDepartmentsCommand.Execute(null);
+          await  AppCxt.Current.RestDataPortal.GetDepartmentTreeAsync();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+# Blend for Visual Studio 15
+VisualStudioVersion = 15.0.26228.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calen.IOP.WebService", "Calen.IOP.WebService\Calen.IOP.WebService.csproj", "{409D1079-0F87-46E4-B80B-C9B1F7A3EDA4}"
 EndProject
@@ -27,6 +27,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calen.IOP.DTO", "Calen.IOP.DTO\Calen.IOP.DTO.csproj", "{15A419AD-C069-4FF1-B172-1A3E3D7759A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calen.IOP.DataPortal", "Calen.IOP.DataPortal\Calen.IOP.DataPortal.csproj", "{C2EF32D5-069E-4EB1-8475-EB823A9491BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{07D72C40-3D6B-48C5-A003-37198DF31E25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,6 +68,10 @@ Global
 		{C2EF32D5-069E-4EB1-8475-EB823A9491BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2EF32D5-069E-4EB1-8475-EB823A9491BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2EF32D5-069E-4EB1-8475-EB823A9491BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D72C40-3D6B-48C5-A003-37198DF31E25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D72C40-3D6B-48C5-A003-37198DF31E25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D72C40-3D6B-48C5-A003-37198DF31E25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D72C40-3D6B-48C5-A003-37198DF31E25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,5 +80,6 @@ Global
 		{A1964E22-29F4-4208-A527-9A0A3721DD8F} = {2128C012-3DD9-43D7-9764-498EBD8B2B87}
 		{0940140C-DEFF-4E3A-A143-0551E138FB5D} = {A1964E22-29F4-4208-A527-9A0A3721DD8F}
 		{7E9BA8AA-411F-46CE-BD40-D7BF5039C685} = {A1964E22-29F4-4208-A527-9A0A3721DD8F}
+		{07D72C40-3D6B-48C5-A003-37198DF31E25} = {A1964E22-29F4-4208-A527-9A0A3721DD8F}
 	EndGlobalSection
 EndGlobal

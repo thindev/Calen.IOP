@@ -22,7 +22,7 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <View:LeftSideNavigationPanel HorizontalAlignment="Left" ExpandedWidth="240"/>
-        <View:ContentContainerPanel Grid.Column="1"/>
+        <View:LeftSideNavigationPanel x:Name="leftPanel" HorizontalAlignment="Left" ExpandedWidth="240" SelectedNewItem='leftPanel_SelectedNewItem'/>
+        <View:ContentContainerPanel Grid.Column="1" x:Name="contentContainer"/>
     </Grid>
 </mahapps:MetroWindow>

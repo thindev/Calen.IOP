@@ -22,6 +22,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Calen.IOP.BLL\Calen.IOP.BLL.csproj" />
+    <ProjectReference Include="..\Calen.IOP.DTO\Calen.IOP.DTO.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">

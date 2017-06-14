@@ -20,7 +20,15 @@ namespace Calen.IOP.Client.Desktop.View
     /// </summary>
     public partial class LeftSideNavigationPanel:UserControl
     {
+        public static readonly RoutedEvent SelectedNewItemEvent = EventManager.RegisterRoutedEvent("SelectedNewItem", RoutingStrategy.Bubble, typeof(RoutedPropertyChangedEventHandler<TreeViewItem>), typeof(LeftSideNavigationPanel));
         double _expandedWidth = 160;
+        TreeViewItem _currentItem;
+
+        public event RoutedPropertyChangedEventHandler<TreeViewItem> SelectedNewItem
+        {
+            add { AddHandler(SelectedNewItemEvent, value); }
+            remove { RemoveHandler(SelectedNewItemEvent, value); }
+        }
         public double ExpandedWidth
         {
             get { return _expandedWidth; }
@@ -64,7 +72,6 @@ namespace Calen.IOP.Client.Desktop.View
 
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            
             TreeViewItem item = (TreeViewItem)treeView.SelectedItem;
             if (item != null && item.HasItems)
             {
@@ -74,6 +81,17 @@ namespace Calen.IOP.Client.Desktop.View
                     old.IsSelected = true;
                 }
             }
+            else if(item!=null&&item!=_currentItem)
+            {
+                this.SelecteNewItem(_currentItem,item);
+                _currentItem = item;
+            }
+        }
+
+        private void SelecteNewItem(TreeViewItem oldItem,TreeViewItem newItem)
+        {
+            RoutedPropertyChangedEventArgs<TreeViewItem> args = new RoutedPropertyChangedEventArgs<TreeViewItem>(oldItem, newItem,SelectedNewItemEvent);
+            this.RaiseEvent(args);
         }
     }
 }

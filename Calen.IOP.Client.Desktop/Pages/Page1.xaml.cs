@@ -13,25 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Calen.IOP.Client.Desktop.View
+namespace Calen.IOP.Client.Desktop.Pages
 {
     /// <summary>
-    /// ContentContainerPanel.xaml 的交互逻辑
+    /// Page1.xaml 的交互逻辑
     /// </summary>
-    public partial class ContentContainerPanel : UserControl
+    public partial class Page1 : Page
     {
-        public ContentContainerPanel()
+        public Page1()
         {
             InitializeComponent();
         }
-        public void SetTitle(string tile)
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.tb_Title.Text = tile;
+
         }
-        public void GoToPage(Uri uri)
-        {
-            this.frame.Navigate(uri);
-        }
-       
     }
 }

@@ -5,6 +5,8 @@ using RestSharp;
 using Calen.IOP.DTO.Json;
 using System.Threading.Tasks;
 using RestSharp.Portable.HttpClient;
+using RestSharp.Portable;
+using Newtonsoft.Json;
 
 namespace Calen.IOP.DataPortal
 {
@@ -16,13 +18,14 @@ namespace Calen.IOP.DataPortal
             _restClient = new RestClient(baseUrl);
         }
 
-        public async Task<ICollection<department>> GetDepartmentTree()
+        public async Task<ICollection<department>> GetDepartmentTreeAsync()
         {
-           return await Task.Run<ICollection<department>>(new Func<ICollection<department>> (()=>
-            {
-                return null;
-            }
-            ));
+            var request = new RestRequest("departments", Method.GET);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+           var result= JsonConvert.DeserializeObject<department[]>(content);
+            return result;
         }
     }
 }
