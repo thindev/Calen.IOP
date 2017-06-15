@@ -24,13 +24,10 @@ namespace Calen.IOP.Client.Desktop.View
         {
             InitializeComponent();
         }
-        public void SetTitle(string tile)
+        
+        public void GoToPage(Uri uri,string funName)
         {
-            this.tb_Title.Text = tile;
-        }
-        public void GoToPage(Uri uri)
-        {
-            this.frame.Navigate(uri);
+            this.frame.Navigate(uri,funName);
         }
        
     }

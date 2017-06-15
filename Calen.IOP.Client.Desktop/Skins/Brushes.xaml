@@ -15,4 +15,10 @@
     <SolidColorBrush x:Key="Foreground_TitleKey" Color="#FF424242"/>
     <SolidColorBrush x:Key="HighlightForegroundKey" Color="Black"/>
     <SolidColorBrush x:Key="DisableColorKey" Color="Gray"/>
+    <!--list Item-->
+    <SolidColorBrush x:Key="ListItemSelectedBackgroud" Color="#FFF4F8Fa"/>
+    <SolidColorBrush x:Key="ListItemMouseOverBackgroud" Color="#FFF4F4F6"/>
+    <SolidColorBrush x:Key="ListItemMouseOverBorderBrush" Color="#FFe5e5e5"/>
+    <SolidColorBrush x:Key="ListItemSelectedForeground" Color="#FF0A95F5"/>
+    <SolidColorBrush x:Key="ListItemSelectedBorderBrush" Color="#330A95F5"/>
 </ResourceDictionary>

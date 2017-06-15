@@ -25,6 +25,11 @@ namespace Calen.IOP.Client.Desktop.Pages
             InitializeComponent();
         }
 
-       
+        public void SetTitle(string tile)
+        {
+            this.tb_Title.Text = tile;
+        }
+        
+        
     }
 }

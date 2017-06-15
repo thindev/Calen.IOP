@@ -8,7 +8,7 @@
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" x:Class="Calen.IOP.Client.Desktop.Pages.DepartmentManage"
       mc:Ignorable="d" 
       d:DesignHeight="337.021" d:DesignWidth="612.766"
-      Title="DepartmentManage">
+      Title="DepartmentManage" >
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding RefreshDepartmentsCommand}"/>
@@ -24,15 +24,24 @@
             </Grid>
         </HierarchicalDataTemplate>
     </Page.Resources>
-
-    <Grid >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <TreeView ItemsSource="{Binding RootDepartments}" ItemContainerStyle="{DynamicResource TreeViewItemModern}" ItemTemplate="{DynamicResource DepartmentDataTemplate}">
-        </TreeView>
-        <GridSplitter Width="4" Background="{DynamicResource PrimaryLightColorKey}"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="38"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border Background="{DynamicResource EdgeBarColorLevel1}">
+            <TextBlock Name="tb_Title" FontSize="{DynamicResource FontSize_Large}" Foreground="{DynamicResource Foreground_TitleKey}" Text="组织架构管理" VerticalAlignment="Center" Margin="6,0,0,0"/>
+        </Border>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TreeView ItemsSource="{Binding RootDepartments}" ItemContainerStyle="{DynamicResource TreeViewItemModern}" ItemTemplate="{DynamicResource DepartmentDataTemplate}">
+            </TreeView>
+            <GridSplitter Width="8" Background="{DynamicResource PrimaryLightColorKey}"/>
+        </Grid>
     </Grid>
+    
 </Page>

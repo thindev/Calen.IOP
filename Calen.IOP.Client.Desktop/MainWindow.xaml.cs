@@ -35,8 +35,7 @@ namespace Calen.IOP.Client.Desktop
             {
                 Uri uri = FunctionMgr.GetFunctionPageUri(tv);
                 string name = FunctionMgr.GetFunctionName(tv);
-                this.contentContainer.SetTitle(name);
-                this.contentContainer.GoToPage(uri);
+                this.contentContainer.GoToPage(uri,name);
             }
         }
     }

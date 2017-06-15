@@ -647,7 +647,7 @@
     </Style>
     <Style x:Key="FuncSubMenuTreeViewItemStyle" TargetType="{x:Type TreeViewItem}">
         <Setter Property="Foreground" Value="{DynamicResource Foreground_TitleKey}"/>
-        <Setter Property="FontSize" Value="{DynamicResource FontSize_Large}"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSize_Normal}"/>
         <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
@@ -658,7 +658,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TreeViewItem}">
-                    <Grid Margin="1" >
+                    <Grid Margin="0,1" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition MinWidth="52" Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
@@ -675,13 +675,13 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Fill" TargetName="bg" Value="{DynamicResource PrimaryLightColorKey}"/>
-                            <Setter Property="Stroke" TargetName="bg" Value="{DynamicResource EdgeBarBorderColorLevel1}"/>
+                            <Setter Property="Fill" TargetName="bg" Value="{DynamicResource ListItemMouseOverBackgroud}"/>
+                            <Setter Property="Stroke" TargetName="bg" Value="{DynamicResource ListItemMouseOverBorderBrush}"/>
                         </Trigger>
                         <Trigger Property="IsSelected" Value="true">
-                            <Setter Property="Foreground"  Value="{DynamicResource HighlightBrush}"/>
-                            <Setter Property="Fill" TargetName="bg" Value="{DynamicResource PrimaryLightColorKey}"/>
-                            <Setter Property="Stroke" TargetName="bg" Value="{DynamicResource EdgeBarBorderColorLevel1}"/>
+                            <Setter Property="Foreground"  Value="{DynamicResource ListItemSelectedForeground}"/>
+                            <Setter Property="Fill" TargetName="bg" Value="{DynamicResource ListItemSelectedBackgroud}"/>
+                            <Setter Property="Stroke" TargetName="bg" Value="{DynamicResource ListItemSelectedBorderBrush}"/>
                         </Trigger>
                        
                         <Trigger Property="IsEnabled" Value="false">
@@ -711,13 +711,13 @@
         <Setter Property="ItemContainerStyle" Value="{StaticResource FuncSubMenuTreeViewItemStyle}"/>
         <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
         <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-        <Setter Property="Padding" Value="4,0,0,0"/>
+        <Setter Property="Padding" Value="2,0,0,0"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource TreeViewItemFocusVisual}"/>
         <Setter Property="IsExpanded" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TreeViewItem}">
-                    <Grid Margin="0.5">
+                    <Grid Margin="0,0.5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition MinWidth="24" Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
