@@ -9,21 +9,30 @@
       mc:Ignorable="d" 
       d:DesignHeight="337.021" d:DesignWidth="612.766"
       Title="DepartmentManage">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding RefreshDepartmentsCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Page.DataContext>
+        <vm:DepartmentManager />
+    </Page.DataContext>
     <Page.Resources>
-        <vm:DepartmentManager x:Key="DepartmentManager"/>
+        <HierarchicalDataTemplate x:Key="DepartmentDataTemplate" DataType="{x:Type vm:DepartmentViewModel}" ItemsSource="{Binding SubDepartments}">
+            <Grid>
+                <TextBlock Text="{Binding Name}" Margin="2,6" FontSize="{DynamicResource FontSize_Normal}"/>
+            </Grid>
+        </HierarchicalDataTemplate>
     </Page.Resources>
 
-    <Grid DataContext="{StaticResource DepartmentManager}">
+    <Grid >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="177*"/>
-            <ColumnDefinition Width="436*"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
-        <i:Interaction.Triggers>
-            <i:EventTrigger EventName="Loaded">
-                <i:InvokeCommandAction Command="{Binding RefreshDepartmentsCommand}"/>
-            </i:EventTrigger>
-        </i:Interaction.Triggers>
-
+        <TreeView ItemsSource="{Binding RootDepartments}" ItemContainerStyle="{DynamicResource TreeViewItemModern}" ItemTemplate="{DynamicResource DepartmentDataTemplate}">
+        </TreeView>
+        <GridSplitter Width="4" Background="{DynamicResource PrimaryLightColorKey}"/>
     </Grid>
 </Page>

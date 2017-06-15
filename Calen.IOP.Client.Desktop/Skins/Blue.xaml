@@ -4,7 +4,7 @@
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     mc:Ignorable="options">
 
-    <Color x:Key="HighlightColor">#FF135995</Color>
+    <Color x:Key="HighlightColor">#FF0A95F5</Color>
 
     <Color x:Key="AccentColor">#ff1979CA</Color>
     <!--60%-->

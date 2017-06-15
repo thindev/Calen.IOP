@@ -8,9 +8,9 @@
         xmlns:View="clr-namespace:Calen.IOP.Client.Desktop.View"
         x:Class="Calen.IOP.Client.Desktop.MainWindow"
           BorderThickness="1" 
-    TitlebarHeight="32"
-    
-    NonActiveWindowTitleBrush="{DynamicResource AccentColorBrush}"
+    TitlebarHeight="42"
+    WindowTitleBrush="Black"
+    NonActiveWindowTitleBrush="Black"
     NonActiveBorderBrush="DarkGray"
     NonActiveGlowBrush="DarkGray"
     BorderBrush="{DynamicResource AccentColorBrush}"

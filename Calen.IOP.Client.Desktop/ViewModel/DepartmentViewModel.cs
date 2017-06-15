@@ -19,7 +19,7 @@ namespace Calen.IOP.Client.Desktop.ViewModel
         ObservableCollection<JobPositionViewModel> _jobPositions=new ObservableCollection<JobPositionViewModel>();
 
         public string Id { get => _id; set => _id = value; }
-        public string Name { get => _name; set { Set(() => Id, ref _id, value); } }
+        public string Name { get => _name; set { Set(() => Id, ref _name, value); } }
         public string Description {get => _description; set { Set(() => Description ,ref _description,value); } }
         public DepartmentViewModel ParentDepartment { get => _parentDepartment; set { Set(() => ParentDepartment, ref _parentDepartment, value); } }
         public ObservableCollection<DepartmentViewModel> SubDepartments { get => _subDepartments; }

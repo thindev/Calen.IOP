@@ -85,6 +85,7 @@
     <Compile Include="Controls\BusyIndicator.xaml.cs">
       <DependentUpon>BusyIndicator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\TreeViewItemIndentConverter.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Converters\InverseBoolToVisibilityConverter.cs" />
     <Compile Include="ConvertUtil\DepartmentConverter.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Pages\Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UtilMethods.cs" />
     <Compile Include="ViewModel\DepartmentManager.cs" />
     <Compile Include="ViewModel\DepartmentViewModel.cs" />
     <Compile Include="ViewModel\EmployeeViewModel.cs" />

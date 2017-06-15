@@ -32,16 +32,16 @@ namespace Calen.IOP.WebService.Controllers
             using (IOPContext context = new IOPContext())
             {
                 Department d = new Department();
-                d.Description = "键身房门店";
+                d.Description = "。。。。。";
                 d.Id = Guid.NewGuid().ToString();
-                d.Name = "金奥健身房";
+                d.Name = "主干组织架构";
                 context.Departments.Add(d);
 
                 Department sub = new Department();
-                sub.Description = "键身房门店";
+                sub.Description = "。。。";
                 sub.Id = Guid.NewGuid().ToString();
                 sub.ParentDepartment = d;
-                sub.Name = "教练部";
+                sub.Name = "一级组织架构";
                 context.Departments.Add(sub);
                 context.SaveChanges();
             }
