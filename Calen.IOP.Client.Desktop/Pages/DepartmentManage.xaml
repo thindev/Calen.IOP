@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:vm="clr-namespace:Calen.IOP.Client.Desktop.ViewModel"
+    xmlns:ctrl="clr-namespace:Calen.IOP.Client.Desktop.Controls"
       xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" x:Class="Calen.IOP.Client.Desktop.Pages.DepartmentManage"
       mc:Ignorable="d" 
@@ -19,9 +20,10 @@
     </Page.DataContext>
     <Page.Resources>
         <HierarchicalDataTemplate x:Key="DepartmentDataTemplate" DataType="{x:Type vm:DepartmentViewModel}" ItemsSource="{Binding SubDepartments}">
-            <Grid>
-                <TextBlock Text="{Binding Name}" Margin="2,6" FontSize="{DynamicResource FontSize_Normal}"/>
-            </Grid>
+            <StackPanel Margin="4,6,0,6" Orientation="Horizontal">
+                <Path Stretch="Uniform" Height="{DynamicResource FontSize_Normal}" Width="{DynamicResource FontSize_Normal}" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TreeViewItem},Path=Foreground}" Data="{DynamicResource Geo_Department}" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Name}" Margin="8,0,0,0"  FontSize="{DynamicResource FontSize_Normal}" VerticalAlignment="Center"/>
+            </StackPanel>
         </HierarchicalDataTemplate>
     </Page.Resources>
     <Grid>
@@ -34,14 +36,14 @@
         </Border>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="240"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TreeView ItemsSource="{Binding RootDepartments}" ItemContainerStyle="{DynamicResource TreeViewItemModern}" ItemTemplate="{DynamicResource DepartmentDataTemplate}">
+            <TreeView ItemsSource="{Binding RootDepartments}" ItemContainerStyle="{DynamicResource TreeViewItemModern}" ItemTemplate="{DynamicResource DepartmentDataTemplate}" Margin="0,0,8,0" BorderThickness="1" BorderBrush="{DynamicResource EdgeBarBorderColorLevel1}">
             </TreeView>
-            <GridSplitter Width="8" Background="{DynamicResource PrimaryLightColorKey}"/>
+            <GridSplitter Width="8"  Background="{DynamicResource PrimaryLightColorKey}"/>
         </Grid>
+        <ctrl:BusyIndicator IsBusy="{Binding IsBusy}" Foreground="{DynamicResource HighlightBrush}" Grid.RowSpan="5"  Background="#11000000" />
     </Grid>
     
 </Page>

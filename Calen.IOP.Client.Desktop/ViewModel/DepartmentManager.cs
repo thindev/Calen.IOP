@@ -38,17 +38,19 @@ namespace Calen.IOP.Client.Desktop.ViewModel
 
         private void RefreshDepartmentsExcute()
         {
-            this.IsBusy = true;
+            
             this.RefreshDepartmentsAsync();
-            this.IsBusy = false;
+
         }
         #endregion
 
         private async void RefreshDepartmentsAsync()
         {
             _rootDepartments.Clear();
+            this.IsBusy = true;
             ICollection<department> ds=await AppCxt.Current.RestDataPortal.GetDepartmentTreeAsync();
-            if(ds!=null)
+            this.IsBusy = false;
+            if (ds!=null)
             {
                 foreach (department d in ds)
                 {
@@ -56,6 +58,7 @@ namespace Calen.IOP.Client.Desktop.ViewModel
                     _rootDepartments.Add(vm);
                 }
             }
+           
         }
     }
 }

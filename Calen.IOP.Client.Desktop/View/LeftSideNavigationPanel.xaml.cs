@@ -21,23 +21,25 @@ namespace Calen.IOP.Client.Desktop.View
     public partial class LeftSideNavigationPanel:UserControl
     {
         public static readonly RoutedEvent SelectedNewItemEvent = EventManager.RegisterRoutedEvent("SelectedNewItem", RoutingStrategy.Bubble, typeof(RoutedPropertyChangedEventHandler<TreeViewItem>), typeof(LeftSideNavigationPanel));
-        double _expandedWidth = 160;
+        public static readonly RoutedEvent ExpandedEvent = Expander.ExpandedEvent.AddOwner(typeof(LeftSideNavigationPanel));
+        public static readonly RoutedEvent CollapsedEvent = Expander.CollapsedEvent.AddOwner(typeof(LeftSideNavigationPanel));
         TreeViewItem _currentItem;
-
         public event RoutedPropertyChangedEventHandler<TreeViewItem> SelectedNewItem
         {
             add { AddHandler(SelectedNewItemEvent, value); }
             remove { RemoveHandler(SelectedNewItemEvent, value); }
         }
-        public double ExpandedWidth
+        public event RoutedEventHandler Expanded
         {
-            get { return _expandedWidth; }
-            set
-            {
-                _expandedWidth = value;
-                this.ExpandMenuPanel();
-            }
+            add { AddHandler(ExpandedEvent, value); }
+            remove { RemoveHandler(ExpandedEvent,value); }
         }
+        public event RoutedEventHandler Collapsed
+        {
+            add { AddHandler(CollapsedEvent, value); }
+            remove { RemoveHandler(CollapsedEvent, value); }
+        }
+
         public LeftSideNavigationPanel()
         {
             InitializeComponent();
@@ -53,9 +55,14 @@ namespace Calen.IOP.Client.Desktop.View
             this.CollapseMenuPanel();
         }
 
+        public double CollapsedWidth
+        {
+            get { return this.navTglb1.Width; }
+        }
         void ExpandMenuPanel()
         {
-            this.rightColumn.Width = new GridLength(_expandedWidth);
+            this.RaiseEvent(new RoutedEventArgs(ExpandedEvent, this));
+            this.rightColumn.Width = new GridLength(1,GridUnitType.Star);
             if(this.container!=null)
             this.container.Visibility = Visibility.Visible;
             if (this.navTglb1 != null)
@@ -68,24 +75,31 @@ namespace Calen.IOP.Client.Desktop.View
                 this.container.Visibility = Visibility.Collapsed;
             if (this.navTglb1 != null)
                 this.navTglb1.Visibility = Visibility.Visible;
+            this.RaiseEvent(new RoutedEventArgs(CollapsedEvent, this));
         }
-
+        
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            TreeViewItem item = (TreeViewItem)treeView.SelectedItem;
+            TreeViewItem item = (TreeViewItem)e.NewValue;
             if (item != null && item.HasItems)
             {
                 TreeViewItem old = e.OldValue as TreeViewItem;
                 if (old != null && !old.HasItems)
                 {
-                    old.IsSelected = true;
+                    this.Dispatcher.BeginInvoke(new Action(SelectBack));
+                    return;
                 }
             }
-            else if(item!=null&&item!=_currentItem)
+            else if (item != null && item != _currentItem)
             {
-                this.SelecteNewItem(_currentItem,item);
+                this.SelecteNewItem(_currentItem, item);
                 _currentItem = item;
             }
+        }
+
+        private void SelectBack()
+        {
+            _currentItem.IsSelected = true;
         }
 
         private void SelecteNewItem(TreeViewItem oldItem,TreeViewItem newItem)

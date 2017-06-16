@@ -38,5 +38,23 @@ namespace Calen.IOP.Client.Desktop
                 this.contentContainer.GoToPage(uri,name);
             }
         }
+
+        private void leftPanel_Expanded(object sender, RoutedEventArgs e)
+        {
+            this.leftColumn.Width = new GridLength(_lastLeftWidth);
+            this.gridSplitter.Visibility = Visibility.Visible;
+            this.leftPanel.Margin = new Thickness(0,0,10,0);
+        }
+
+        double _lastLeftWidth;
+        private void leftPanel_Collapsed(object sender, RoutedEventArgs e)
+        {
+            _lastLeftWidth = this.leftColumn.ActualWidth;
+            if (_lastLeftWidth < 40)
+                _lastLeftWidth = 40;
+            this.leftColumn.Width = new GridLength(this.leftPanel.CollapsedWidth);
+            this.gridSplitter.Visibility = Visibility.Collapsed;
+            this.leftPanel.Margin = new Thickness(0);
+        }
     }
 }
