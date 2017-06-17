@@ -13,20 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Calen.IOP.Client.Desktop.Pages
+namespace WpfApp1
 {
     /// <summary>
-    /// DepartmentManage.xaml 的交互逻辑
+    /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class DepartmentManage : Page
+    public partial class MainWindow : Window
     {
-        public DepartmentManage()
+        public MainWindow()
         {
             InitializeComponent();
         }
-
-        
-        
-        
     }
 }

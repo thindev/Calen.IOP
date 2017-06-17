@@ -34,12 +34,12 @@
                 <TreeViewItem local:FunctionMgr.FunctionName="经营管理" IsExpanded="True">
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Path Data="{DynamicResource Geo_NavMenu_ShopManage}" Height="{DynamicResource FontSize_Large}" Fill="#FF05B82E" />
+                            <Path Data="{DynamicResource Geo_NavMenu_ShopManage}" Height="{DynamicResource FontSize_Title_Large}" Fill="#FF05B82E" />
                             <TextBlock Margin="8,0,0,0"/>
                         </StackPanel>
                     </TreeViewItem.Header>
                     <TreeViewItem.Items>
-                        <TreeViewItem local:FunctionMgr.FunctionName="组织架构管理" local:FunctionMgr.FunctionPageUri="Pages/DepartmentManage.xaml">
+                        <TreeViewItem local:FunctionMgr.FunctionName="组织架构信息" local:FunctionMgr.FunctionPageUri="Pages/DepartmentManage.xaml">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Path Data="{DynamicResource Geo_NavMenu_OrganizationManage}"/>
@@ -47,7 +47,7 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem local:FunctionMgr.FunctionName="员工管理">
+                        <TreeViewItem local:FunctionMgr.FunctionName="员工信息">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Path Data="{DynamicResource Geo_NavMenu_EmployeesManage}"/>
@@ -55,27 +55,11 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem local:FunctionMgr.FunctionName="操房管理">
+                        <TreeViewItem local:FunctionMgr.FunctionName="基础设施管理">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Path Data="{DynamicResource Geo_NavMenu_RoomsManage}"/>
                                     <TextBlock />
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                        <TreeViewItem local:FunctionMgr.FunctionName="健身器材管理">
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Path Data="{DynamicResource Geo_NavMenu_EquipmentsManage}"/>
-                                    <TextBlock/>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                        <TreeViewItem local:FunctionMgr.FunctionName="储物柜管理">
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Path Data="{DynamicResource Geo_NavMenu_LockersManage}"/>
-                                    <TextBlock/>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
@@ -92,7 +76,7 @@
                 <TreeViewItem local:FunctionMgr.FunctionName="会员管理" >
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Path Data="{DynamicResource Geo_NavMenu_VipManage}" Height="{DynamicResource FontSize_Large}" Fill="#FFF19918" />
+                            <Path Data="{DynamicResource Geo_NavMenu_VipManage}" Height="{DynamicResource FontSize_Title_Large}" Fill="#FFF19918" />
                             <TextBlock Margin="8,0,0,0"/>
                         </StackPanel>
                     </TreeViewItem.Header>
@@ -100,7 +84,7 @@
                 <TreeViewItem local:FunctionMgr.FunctionName="客户资源开发" >
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Path Data="{DynamicResource Geo_NavMenu_CustomerDevelop}" Height="{DynamicResource FontSize_Large}" Fill="#FF07B970" />
+                            <Path Data="{DynamicResource Geo_NavMenu_CustomerDevelop}" Height="{DynamicResource FontSize_Title_Large}" Fill="#FF07B970" />
                             <TextBlock Margin="8,0,0,0"/>
                         </StackPanel>
                     </TreeViewItem.Header>
@@ -108,7 +92,7 @@
                 <TreeViewItem local:FunctionMgr.FunctionName="绩效管理" >
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Path Data="{DynamicResource Geo_NavMenu_PerformanceManage}" Height="{DynamicResource FontSize_Large}" Fill="#FF2990F7" />
+                            <Path Data="{DynamicResource Geo_NavMenu_PerformanceManage}" Height="{DynamicResource FontSize_Title_Large}" Fill="#FF2990F7" />
                             <TextBlock Margin="8,0,0,0"/>
                         </StackPanel>
                     </TreeViewItem.Header>
@@ -116,7 +100,7 @@
                 <TreeViewItem local:FunctionMgr.FunctionName="商品管理" >
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Path Data="{DynamicResource Geo_NavMenu_GoodsManage}" Height="{DynamicResource FontSize_Large}" Fill="#ff3455" />
+                            <Path Data="{DynamicResource Geo_NavMenu_GoodsManage}" Height="{DynamicResource FontSize_Title_Large}" Fill="#ff3455" />
                             <TextBlock Margin="8,0,0,0"/>
                         </StackPanel>
                     </TreeViewItem.Header>
@@ -124,7 +108,7 @@
                 <TreeViewItem local:FunctionMgr.FunctionName="信息管理" >
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Path Data="{DynamicResource Geo_NavMenu_InformationManage}" Height="{DynamicResource FontSize_Large}" Fill="#FF04BAF0" />
+                            <Path Data="{DynamicResource Geo_NavMenu_InformationManage}" Height="{DynamicResource FontSize_Title_Large}" Fill="#FF04BAF0" />
                             <TextBlock Margin="8,0,0,0"/>
                         </StackPanel>
                     </TreeViewItem.Header>
@@ -132,7 +116,7 @@
                 <TreeViewItem local:FunctionMgr.FunctionName="前台服务" >
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Path Data="{DynamicResource Geo_NavMenu_FrontDeskService}" Height="{DynamicResource FontSize_Large}" Fill="#FFF58806" />
+                            <Path Data="{DynamicResource Geo_NavMenu_FrontDeskService}" Height="{DynamicResource FontSize_Title_Large}" Fill="#FFF58806" />
                             <TextBlock Margin="8,0,0,0"/>
                         </StackPanel>
                     </TreeViewItem.Header>

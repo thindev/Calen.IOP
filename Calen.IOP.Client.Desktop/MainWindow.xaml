@@ -38,7 +38,7 @@
         </Grid.ColumnDefinitions>
         <View:LeftSideNavigationPanel x:Name="leftPanel" HorizontalAlignment="Stretch"  SelectedNewItem='leftPanel_SelectedNewItem'    Margin="0,0,10,0" Expanded="leftPanel_Expanded" Collapsed="leftPanel_Collapsed"/>
         <GridSplitter Name="gridSplitter"  Background="{DynamicResource EdgeBarColorLevel1}" Width="10" />
-        <View:ContentContainerPanel Grid.Column="2" x:Name="contentContainer"  Grid.RowSpan="2"/>
+        <View:ContentContainerPanel Grid.Column="2" x:Name="contentContainer" />
 
         <Border Grid.Row="1" Height="30" Grid.ColumnSpan="3" Background="{DynamicResource EdgeBarColorLevel1}" >
 

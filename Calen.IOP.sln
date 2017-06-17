@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calen.IOP.WebService", "Calen.IOP.WebService\Calen.IOP.WebService.csproj", "{409D1079-0F87-46E4-B80B-C9B1F7A3EDA4}"
 EndProject
@@ -29,6 +29,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calen.IOP.DataPortal", "Calen.IOP.DataPortal\Calen.IOP.DataPortal.csproj", "{C2EF32D5-069E-4EB1-8475-EB823A9491BA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{07D72C40-3D6B-48C5-A003-37198DF31E25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{F3A2DDAF-C57E-44EB-9EE4-7961D8BC5569}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +74,10 @@ Global
 		{07D72C40-3D6B-48C5-A003-37198DF31E25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07D72C40-3D6B-48C5-A003-37198DF31E25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07D72C40-3D6B-48C5-A003-37198DF31E25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3A2DDAF-C57E-44EB-9EE4-7961D8BC5569}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3A2DDAF-C57E-44EB-9EE4-7961D8BC5569}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3A2DDAF-C57E-44EB-9EE4-7961D8BC5569}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3A2DDAF-C57E-44EB-9EE4-7961D8BC5569}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,5 +87,6 @@ Global
 		{0940140C-DEFF-4E3A-A143-0551E138FB5D} = {A1964E22-29F4-4208-A527-9A0A3721DD8F}
 		{7E9BA8AA-411F-46CE-BD40-D7BF5039C685} = {A1964E22-29F4-4208-A527-9A0A3721DD8F}
 		{07D72C40-3D6B-48C5-A003-37198DF31E25} = {A1964E22-29F4-4208-A527-9A0A3721DD8F}
+		{F3A2DDAF-C57E-44EB-9EE4-7961D8BC5569} = {A1964E22-29F4-4208-A527-9A0A3721DD8F}
 	EndGlobalSection
 EndGlobal

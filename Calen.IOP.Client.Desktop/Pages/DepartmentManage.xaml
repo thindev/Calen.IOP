@@ -10,40 +10,12 @@
       mc:Ignorable="d" 
       d:DesignHeight="337.021" d:DesignWidth="612.766"
       Title="DepartmentManage" >
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding RefreshDepartmentsCommand}"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
-    <Page.DataContext>
-        <vm:DepartmentManager />
-    </Page.DataContext>
-    <Page.Resources>
-        <HierarchicalDataTemplate x:Key="DepartmentDataTemplate" DataType="{x:Type vm:DepartmentViewModel}" ItemsSource="{Binding SubDepartments}">
-            <StackPanel Margin="4,6,0,6" Orientation="Horizontal">
-                <Path Stretch="Uniform" Height="{DynamicResource FontSize_Normal}" Width="{DynamicResource FontSize_Normal}" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TreeViewItem},Path=Foreground}" Data="{DynamicResource Geo_Department}" VerticalAlignment="Center"/>
-                <TextBlock Text="{Binding Name}" Margin="8,0,0,0"  FontSize="{DynamicResource FontSize_Normal}" VerticalAlignment="Center"/>
-            </StackPanel>
-        </HierarchicalDataTemplate>
-    </Page.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="38"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Border Background="{DynamicResource EdgeBarColorLevel1}">
-            <TextBlock Name="tb_Title" FontSize="{DynamicResource FontSize_Large}" Foreground="{DynamicResource Foreground_TitleKey}" Text="组织架构管理" VerticalAlignment="Center" Margin="6,0,0,0"/>
-        </Border>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="240"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TreeView ItemsSource="{Binding RootDepartments}" ItemContainerStyle="{DynamicResource TreeViewItemModern}" ItemTemplate="{DynamicResource DepartmentDataTemplate}" Margin="0,0,8,0" BorderThickness="1" BorderBrush="{DynamicResource EdgeBarBorderColorLevel1}">
-            </TreeView>
-            <GridSplitter Width="8"  Background="{DynamicResource PrimaryLightColorKey}"/>
-        </Grid>
-        <ctrl:BusyIndicator IsBusy="{Binding IsBusy}" Foreground="{DynamicResource HighlightBrush}" Grid.RowSpan="5"  Background="#11000000" />
-    </Grid>
-    
+    <TabControl Style="{DynamicResource PageTabControlStyle}">
+        <TabItem Header="组织架构信息" Style="{DynamicResource PageTabItemStyle}">
+            <local:DepartmentManagePanel/>
+        </TabItem>
+        <TabItem Header="组织架构信息" Style="{DynamicResource PageTabItemStyle}">
+            <Grid></Grid>
+        </TabItem>
+    </TabControl>
 </Page>

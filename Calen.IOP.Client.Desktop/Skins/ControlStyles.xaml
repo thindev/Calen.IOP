@@ -99,7 +99,7 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{DynamicResource Foreground_NormalKey}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryMedianColorKey}"/>
-        <Setter Property="FontSize" Value="{DynamicResource FontSize_Normal}"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSize_Title_Middle}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -124,7 +124,7 @@
     <Style x:Key="ButtonStyle_AccentedSquare" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="{DynamicResource AccentColorBrush}"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="FontSize" Value="{DynamicResource FontSize_Normal}"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSize_Title_Middle}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryMedianColorKey}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -155,7 +155,7 @@
         <Setter Property="Foreground" Value="{DynamicResource Foreground_NormalKey}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryMedianColorKey}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="FontSize" Value="{DynamicResource FontSize_Normal}"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSize_Title_Middle}"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Template">
@@ -212,7 +212,7 @@
         <Setter Property="mahapps:TextBoxHelper.IsMonitoring" Value="True"/>
         <Setter Property="mahapps:TextBoxHelper.ButtonTemplate" Value="{StaticResource ButtonTemplate_TextBoxClearButton}"/>
         <Setter Property="FontFamily" Value="{DynamicResource ContentFontFamily}"/>
-        <Setter Property="FontSize" Value="{DynamicResource FontSize_Normal}"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSize_Title_Middle}"/>
         <Setter Property="MinHeight" Value="26"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -440,7 +440,7 @@
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="Margin" Value="0,14,0,0"/>
         <Setter Property="Padding" Value="8,4"/>
-        <Setter Property="FontSize" Value="{DynamicResource FontSize_Small}"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSize_Content_Small}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -499,7 +499,7 @@
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="Margin" Value="0,0,0,0"/>
         <Setter Property="Padding" Value="0"/>
-        <Setter Property="FontSize" Value="{DynamicResource FontSize_Normal}"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSize_Title_Middle}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -647,7 +647,7 @@
     </Style>
     <Style x:Key="FuncSubMenuTreeViewItemStyle" TargetType="{x:Type TreeViewItem}">
         <Setter Property="Foreground" Value="{DynamicResource Foreground_TitleKey}"/>
-        <Setter Property="FontSize" Value="{DynamicResource FontSize_Normal}"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSize_Title_Middle}"/>
         <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
@@ -705,7 +705,7 @@
     </Style>
     <Style x:Key="FuncMenuTreeViewItemStyle" TargetType="{x:Type TreeViewItem}">
         <Setter Property="Foreground" Value="{DynamicResource Foreground_TitleKey}"/>
-        <Setter Property="FontSize" Value="{DynamicResource FontSize_Large}"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSize_Title_Large}"/>
         <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="ItemContainerStyle" Value="{StaticResource FuncSubMenuTreeViewItemStyle}"/>
@@ -804,6 +804,7 @@
         <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
         <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
         <Setter Property="Padding" Value="1,0,0,0"/>
+        <Setter Property="BorderThickness" Value="0.5"/>
         <Setter Property="Foreground" Value="{DynamicResource Foreground_NormalKey}"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource TreeViewItemFocusVisual}"/>
         <Setter Property="IsExpanded" Value="True"/>
@@ -815,18 +816,20 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <Border>
+                        <Border Margin="1">
                             <Border.Style>
                                 <Style TargetType="Border" >
                                     <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" Value="0.5"/>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="true">
-                                            <Setter Property="Background" Value="{DynamicResource PrimaryLightColorKey}"/>
+                                            <Setter Property="Background" Value="{DynamicResource ListItemMouseOverBackgroud}"/>
+                                            <Setter Property="BorderBrush" Value="{DynamicResource ListItemMouseOverBorderBrush}"/>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
                             </Border.Style>
-                            <Border Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                            <Border Name="Bd" Margin="-0.5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
                             BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
                             
                             <Grid Margin="{Binding  Converter={StaticResource TreeViewItemIndentConverter},RelativeSource={RelativeSource TemplatedParent}}">
@@ -866,7 +869,8 @@
                         </MultiTrigger>
                         
                         <Trigger Property="IsSelected" Value="true">
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource PrimaryMedianColorKey}"/>
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource ListItemSelectedBackgroud}"/>
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource ListItemSelectedBorderBrush}"/>
                             <Setter Property="Foreground" Value="{DynamicResource AccentColorBrush}"/>
                         </Trigger>
                         <MultiTrigger>
@@ -874,7 +878,8 @@
                                 <Condition Property="IsSelected" Value="true"/>
                                 <Condition Property="IsSelectionActive" Value="false"/>
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource PrimaryMedianColorKey}"/>
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource ListItemSelectedBackgroud}"/>
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource ListItemSelectedBorderBrush}"/>
                             <Setter Property="Foreground" Value="{DynamicResource AccentColorBrush}"/>
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="false">
@@ -885,4 +890,8 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ButtonStyles.xaml"/>
+        <ResourceDictionary Source="PageTabControlStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

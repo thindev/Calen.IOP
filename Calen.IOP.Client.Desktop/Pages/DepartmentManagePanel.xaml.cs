@@ -16,17 +16,21 @@ using System.Windows.Shapes;
 namespace Calen.IOP.Client.Desktop.Pages
 {
     /// <summary>
-    /// DepartmentManage.xaml 的交互逻辑
+    /// DepartmentManagePanel.xaml 的交互逻辑
     /// </summary>
-    public partial class DepartmentManage : Page
+    public partial class DepartmentManagePanel : UserControl
     {
-        public DepartmentManage()
+        public DepartmentManagePanel()
         {
             InitializeComponent();
+            this.DataContext= _departmentManager = new ViewModel.DepartmentManager();
+            _departmentManager.RefreshDepartmentsCommand.Execute(null);
         }
-
-        
-        
-        
+        public ViewModel.DepartmentManager _departmentManager;
+        public void SetTitle(string tile)
+        {
+            this.tb_Title.Text = tile;
+        }
     }
+    
 }

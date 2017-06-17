@@ -19,7 +19,9 @@
         <!--DataTemplates-->
         <ResourceDictionary Source="DataTemplates.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    <sys:Double x:Key="FontSize_Large">16.0</sys:Double>
-    <sys:Double x:Key="FontSize_Normal">15.0</sys:Double>
-    <sys:Double x:Key="FontSize_Small">12.0</sys:Double>
+    <sys:Double x:Key="FontSize_Title_Large">16.0</sys:Double>
+    <sys:Double x:Key="FontSize_Title_Middle">15.0</sys:Double>
+    <sys:Double x:Key="FontSize_Title_Small">14.5</sys:Double>
+    <sys:Double x:Key="FontSize_Content_Normal">14</sys:Double>
+    <sys:Double x:Key="FontSize_Content_Small">12.5</sys:Double>
 </ResourceDictionary>

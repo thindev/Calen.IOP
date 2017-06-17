@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Frame Name="frame" Grid.Row="1" NavigationUIVisibility="Hidden">
+        <Frame Name="frame" Grid.Row="1" NavigationUIVisibility="Hidden" Navigated="frame_Navigated">
             
         </Frame>
     </Grid>
