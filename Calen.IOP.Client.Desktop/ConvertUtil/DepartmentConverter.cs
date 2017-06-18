@@ -13,6 +13,7 @@ namespace Calen.IOP.Client.Desktop.ConvertUtil
         public static DepartmentViewModel FromDto(DepartmentViewModel pd, department d)
         {
             DepartmentViewModel vm = new DepartmentViewModel();
+            vm.Id = d.code;
             vm.Id = d.id;
             vm.Description = d.description;
             if (d.jobPositions != null)

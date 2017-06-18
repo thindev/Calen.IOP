@@ -14,6 +14,7 @@ namespace Calen.IOP.WebService.Converters
             department d = new department();
             d.description = value.Description;
             d.id = value.Id;
+            d.code = value.Code;
             d.name = value.Name;
             if (value.JobPositions != null)
             {

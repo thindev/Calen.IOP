@@ -11,11 +11,10 @@
       d:DesignHeight="337.021" d:DesignWidth="612.766"
       Title="DepartmentManage" >
     <TabControl Style="{DynamicResource PageTabControlStyle}">
-        <TabItem Header="组织架构信息" Style="{DynamicResource PageTabItemStyle}">
+        <TabItem Header="组织架构树" Style="{DynamicResource PageTabItemStyle}">
             <local:DepartmentManagePanel/>
         </TabItem>
-        <TabItem Header="组织架构信息" Style="{DynamicResource PageTabItemStyle}">
-            <Grid></Grid>
+        <TabItem Header="岗位设置" Style="{DynamicResource PageTabItemStyle}">
         </TabItem>
     </TabControl>
 </Page>

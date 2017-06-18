@@ -22,6 +22,7 @@
     <sys:Double x:Key="FontSize_Title_Large">16.0</sys:Double>
     <sys:Double x:Key="FontSize_Title_Middle">15.0</sys:Double>
     <sys:Double x:Key="FontSize_Title_Small">14.5</sys:Double>
-    <sys:Double x:Key="FontSize_Content_Normal">14</sys:Double>
+    <sys:Double x:Key="FontSize_Content_Large">14</sys:Double>
+    <sys:Double x:Key="FontSize_Content_Middle">13</sys:Double>
     <sys:Double x:Key="FontSize_Content_Small">12.5</sys:Double>
 </ResourceDictionary>

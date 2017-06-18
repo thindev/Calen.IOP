@@ -93,6 +93,9 @@
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Converters\InverseBoolToVisibilityConverter.cs" />
     <Compile Include="ConvertUtil\DepartmentConverter.cs" />
+    <Compile Include="Pages\DepartmentDetailPanel.xaml.cs">
+      <DependentUpon>DepartmentDetailPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\DepartmentManage.xaml.cs">
       <DependentUpon>DepartmentManage.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\DepartmentDetailPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\DepartmentManage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

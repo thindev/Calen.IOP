@@ -46,6 +46,7 @@ namespace Calen.IOP.Client.Desktop.ViewModel
 
         private async void RefreshDepartmentsAsync()
         {
+            if (IsInDesignMode) return;
             _rootDepartments.Clear();
             this.IsBusy = true;
             ICollection<department> ds=await AppCxt.Current.RestDataPortal.GetDepartmentTreeAsync();

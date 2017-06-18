@@ -11,6 +11,7 @@ namespace Calen.IOP.Client.Desktop.ViewModel
     public class DepartmentViewModel:ViewModelBase
     {
         string _id;
+        string _code;
         string _name;
         string _description;
         EmployeeViewModel _leader;
@@ -25,5 +26,6 @@ namespace Calen.IOP.Client.Desktop.ViewModel
         public ObservableCollection<DepartmentViewModel> SubDepartments { get => _subDepartments; }
         public EmployeeViewModel Leader { get => _leader; set => _leader = value; }
         public ObservableCollection<JobPositionViewModel> JobPositions { get => _jobPositions;  }
+        public string Code { get => _code; set { Set(() => Code, ref _code, value); } }
     }
 }

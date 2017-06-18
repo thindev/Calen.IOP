@@ -412,7 +412,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    
     <Style x:Key="ExpanderDownHeaderStyle" TargetType="{x:Type ToggleButton}">
         <Setter Property="Background" Value="{DynamicResource PrimaryColorKey}"/>
         <Setter Property="Template">
@@ -883,8 +883,16 @@
                             <Setter Property="Foreground" Value="{DynamicResource AccentColorBrush}"/>
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            <Setter Property="Foreground" Value="Gray"/>
                         </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="true"/>
+                                <Condition Property="IsEnabled" Value="false"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource ListItemMouseOverBackgroud}"/>
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource ListItemMouseOverBackgroud}"/>
+                        </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

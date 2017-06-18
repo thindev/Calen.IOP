@@ -35,12 +35,14 @@ namespace Calen.IOP.WebService.Controllers
                 d.Description = "。。。。。";
                 d.Id = Guid.NewGuid().ToString();
                 d.Name = "主干组织架构";
+                d.Code = "00";
                 context.Departments.Add(d);
 
                 Department sub = new Department();
                 sub.Description = "。。。";
                 sub.Id = Guid.NewGuid().ToString();
                 sub.ParentDepartment = d;
+                sub.Code = "0001";
                 sub.Name = "一级组织架构";
                 context.Departments.Add(sub);
                 context.SaveChanges();

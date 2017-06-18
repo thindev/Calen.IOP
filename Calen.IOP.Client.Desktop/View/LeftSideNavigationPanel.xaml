@@ -39,7 +39,7 @@
                         </StackPanel>
                     </TreeViewItem.Header>
                     <TreeViewItem.Items>
-                        <TreeViewItem local:FunctionMgr.FunctionName="组织架构信息" local:FunctionMgr.FunctionPageUri="Pages/DepartmentManage.xaml">
+                        <TreeViewItem local:FunctionMgr.FunctionName="组织架构" local:FunctionMgr.FunctionPageUri="Pages/DepartmentManage.xaml">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Path Data="{DynamicResource Geo_NavMenu_OrganizationManage}"/>
@@ -55,7 +55,7 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem local:FunctionMgr.FunctionName="基础设施管理">
+                        <TreeViewItem local:FunctionMgr.FunctionName="固定资产">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Path Data="{DynamicResource Geo_NavMenu_RoomsManage}"/>

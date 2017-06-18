@@ -12,7 +12,7 @@
     <UserControl.Resources>
         <HierarchicalDataTemplate x:Key="DepartmentDataTemplate" DataType="{x:Type vm:DepartmentViewModel}" ItemsSource="{Binding SubDepartments}">
             <StackPanel Margin="4,6,0,6" Orientation="Horizontal">
-                <Path Stretch="Uniform" Height="{DynamicResource FontSize_Content_Normal}" Width="{DynamicResource FontSize_Content_Normal}" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TreeViewItem},Path=Foreground}" Data="{DynamicResource Geo_Department}" VerticalAlignment="Center"/>
+                <Path Stretch="Uniform" Height="{DynamicResource FontSize_Content_Large}" Width="{DynamicResource FontSize_Content_Large}" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TreeViewItem},Path=Foreground}" Data="{DynamicResource Geo_Department}" VerticalAlignment="Center"/>
                 <TextBlock Text="{Binding Name}" Margin="8,0,0,0"  FontSize="{DynamicResource FontSize_Title_Small}" VerticalAlignment="Center" />
             </StackPanel>
         </HierarchicalDataTemplate>
@@ -38,7 +38,7 @@
                         
                     </Grid>
                 </Border>
-                <TreeView Grid.Row="1" ItemsSource="{Binding RootDepartments}" ItemContainerStyle="{DynamicResource TreeViewItemModern}" ItemTemplate="{DynamicResource DepartmentDataTemplate}"  Background="White">
+                <TreeView Grid.Row="1" ItemsSource="{Binding RootDepartments}" ItemContainerStyle="{DynamicResource TreeViewItemModern}" ItemTemplate="{DynamicResource DepartmentDataTemplate}"  Background="White" >
                 </TreeView>
             </Grid>
         </Border>
@@ -50,7 +50,8 @@
                     <RowDefinition Height="38"/>
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Border Background="{DynamicResource EdgeBarColorLevel2}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource EdgeBarBorderColorLevel2}">
+               
+<Border Background="{DynamicResource EdgeBarColorLevel2}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource EdgeBarBorderColorLevel2}">
                     <Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
@@ -77,7 +78,9 @@
                         </StackPanel>
                     </Grid>
                 </Border>
-               
+                <Grid Grid.Row="1">
+                    <local:DepartmentDetailPanel />
+                </Grid>
             </Grid>
         </Border>
         <ctrl:BusyIndicator IsBusy="{Binding IsBusy}" Foreground="{DynamicResource HighlightBrush}" Grid.ColumnSpan="5"  Background="#11000000" />
