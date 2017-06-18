@@ -32,7 +32,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{F3A2DDAF-C57E-44EB-9EE4-7961D8BC5569}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Calen.IOP.Client.ViewModel", "Calen.IOP.Client.ViewModel\Calen.IOP.Client.ViewModel.shproj", "{8B7D5D4D-53D3-4B1A-9693-D390C0B2AE56}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Calen.IOP.Client.ViewModel\Calen.IOP.Client.ViewModel.projitems*{7e9ba8aa-411f-46ce-bd40-d7bf5039c685}*SharedItemsImports = 4
+		Calen.IOP.Client.ViewModel\Calen.IOP.Client.ViewModel.projitems*{8b7d5d4d-53d3-4b1a-9693-d390c0b2ae56}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -88,5 +94,6 @@ Global
 		{7E9BA8AA-411F-46CE-BD40-D7BF5039C685} = {A1964E22-29F4-4208-A527-9A0A3721DD8F}
 		{07D72C40-3D6B-48C5-A003-37198DF31E25} = {A1964E22-29F4-4208-A527-9A0A3721DD8F}
 		{F3A2DDAF-C57E-44EB-9EE4-7961D8BC5569} = {A1964E22-29F4-4208-A527-9A0A3721DD8F}
+		{8B7D5D4D-53D3-4B1A-9693-D390C0B2AE56} = {2128C012-3DD9-43D7-9764-498EBD8B2B87}
 	EndGlobalSection
 EndGlobal

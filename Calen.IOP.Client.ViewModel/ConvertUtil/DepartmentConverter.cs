@@ -1,4 +1,4 @@
-﻿using Calen.IOP.Client.Desktop.ViewModel;
+﻿using Calen.IOP.Client.ViewModel;
 using Calen.IOP.DTO.Json;
 using System;
 using System.Collections.Generic;

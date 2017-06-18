@@ -9,22 +9,23 @@
         x:Class="Calen.IOP.Client.Desktop.MainWindow"
           BorderThickness="1" 
     TitlebarHeight="48"
-    NonActiveWindowTitleBrush="#222222"
+    NonActiveWindowTitleBrush="#FF293438"
     NonActiveBorderBrush="DarkGray"
     NonActiveGlowBrush="DarkGray"
     BorderBrush="{DynamicResource AccentColorBrush}"
     GlowBrush="{DynamicResource AccentColorBrush}" 
         mc:Ignorable="d"
-        Title="新 业 务 管 理 系 统" Height="720" Width="1200" WindowStartupLocation="CenterScreen">
+        Title="新 业 务 管 理 系 统" Height="600" Width="1100" WindowStartupLocation="CenterScreen">
     <mahapps:MetroWindow.WindowTitleBrush>
         <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
-            <GradientStop Color="#FF111111" Offset="1"/>
-            <GradientStop Color="#FF282828" Offset="0"/>
+            <GradientStop Color="#FF24292E" Offset="1"/>
+            <GradientStop Color="#FF24292E" Offset="0"/>
+            <GradientStop Color="#FF24292E" Offset="0.507"/>
         </LinearGradientBrush>
     </mahapps:MetroWindow.WindowTitleBrush>
     <mahapps:MetroWindow.TitleTemplate>
         <DataTemplate >
-            <TextBlock Text="{Binding}" Margin="14,0,0,0" FontSize="18" FontWeight="Bold" Foreground="#aaf0f0f0" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding}" Margin="14,0,0,0" FontSize="16" FontWeight="Bold" Foreground="#FFdedede" VerticalAlignment="Center"/>
         </DataTemplate>
     </mahapps:MetroWindow.TitleTemplate>
     <Grid>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>8b7d5d4d-53d3-4b1a-9693-d390c0b2ae56</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Calen.IOP.Client.ViewModel</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AppCxt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\DepartmentConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DepartmentManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DepartmentViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EmployeeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JobPositionViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MainViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModelLocator.cs" />
+  </ItemGroup>
+</Project>

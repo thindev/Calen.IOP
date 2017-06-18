@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:vm="clr-namespace:Calen.IOP.Client.Desktop.ViewModel"
+             xmlns:vm="clr-namespace:Calen.IOP.Client.ViewModel"
     xmlns:ctrl="clr-namespace:Calen.IOP.Client.Desktop.Controls"
       xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
@@ -58,7 +58,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Name="tb_Title" FontSize="{DynamicResource FontSize_Title_Small}" Foreground="{DynamicResource Foreground_TitleKey}" Text="组织架构管理" VerticalAlignment="Center" Margin="10,0"/>
-                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0,5">
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0,4">
 
                             <Button  Margin="4,0" Padding="12,0" Style="{DynamicResource ButtonStyle_Green}">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">

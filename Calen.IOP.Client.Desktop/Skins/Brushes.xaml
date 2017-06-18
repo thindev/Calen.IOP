@@ -6,10 +6,10 @@
     <SolidColorBrush x:Key="PrimaryDarkColorKey" Color="#FFD2D2D4"/>
     <SolidColorBrush x:Key="PrimaryMedianColorKey" Color="#FFE4E4E6"/>
     <SolidColorBrush x:Key="PrimaryColorKey" Color="#FFECECEE"/>
-    <SolidColorBrush x:Key="EdgeBarColorLevel1" Color="#FFF0F0f4"/>
-    <SolidColorBrush x:Key="EdgeBarBorderColorLevel1" Color="#FFe5e5e5"/>
-    <SolidColorBrush x:Key="EdgeBarColorLevel2" Color="#FFFaFafb"/>
-    <SolidColorBrush x:Key="EdgeBarBorderColorLevel2" Color="#FFeeeeee"/>
+    <SolidColorBrush x:Key="EdgeBarColorLevel1" Color="#FFe8e8ea"/>
+    <SolidColorBrush x:Key="EdgeBarBorderColorLevel1" Color="#FFd8d8da"/>
+    <SolidColorBrush x:Key="EdgeBarColorLevel2" Color="#FFf4f4f6"/>
+    <SolidColorBrush x:Key="EdgeBarBorderColorLevel2" Color="#FFededef"/>
     <SolidColorBrush x:Key="PrimaryLightColorKey" Color="#FFF4F4F6"/>
     <SolidColorBrush x:Key="BlankColorKey" Color="White"/>
     <SolidColorBrush x:Key="Foreground_NormalKey" Color="#FF464646"/>

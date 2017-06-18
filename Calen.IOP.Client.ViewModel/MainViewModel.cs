@@ -1,6 +1,6 @@
 using GalaSoft.MvvmLight;
 
-namespace Calen.IOP.Client.Desktop.ViewModel
+namespace Calen.IOP.Client.ViewModel
 {
     /// <summary>
     /// This class contains properties that the main View can data bind to.

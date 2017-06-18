@@ -1,7 +1,7 @@
 <Application x:Class="Calen.IOP.Client.Desktop.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-             xmlns:vm="clr-namespace:Calen.IOP.Client.Desktop.ViewModel"
+             xmlns:vm="clr-namespace:Calen.IOP.Client.ViewModel"
               xmlns:converters="clr-namespace:Calen.IOP.Client.Desktop.Converters"
              xmlns:local="clr-namespace:Calen.IOP.Client.Desktop" 
              StartupUri="MainWindow.xaml" 

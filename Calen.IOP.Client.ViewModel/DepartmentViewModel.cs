@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Calen.IOP.Client.Desktop.ViewModel
+namespace Calen.IOP.Client.ViewModel
 {
     public class DepartmentViewModel:ViewModelBase
     {

@@ -3,12 +3,13 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:vm="clr-namespace:Calen.IOP.Client.Desktop.ViewModel"
+      xmlns:vm="clr-namespace:Calen.IOP.Client.ViewModel"
     xmlns:ctrl="clr-namespace:Calen.IOP.Client.Desktop.Controls"
       xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages"
-      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" x:Class="Calen.IOP.Client.Desktop.Pages.DepartmentManage"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+    x:Class="Calen.IOP.Client.Desktop.Pages.DepartmentManage"
       mc:Ignorable="d" 
-      d:DesignHeight="337.021" d:DesignWidth="612.766"
+      d:DesignHeight="450.354" d:DesignWidth="629.433"
       Title="DepartmentManage" >
     <TabControl Style="{DynamicResource PageTabControlStyle}">
         <TabItem Header="组织架构树" Style="{DynamicResource PageTabItemStyle}">

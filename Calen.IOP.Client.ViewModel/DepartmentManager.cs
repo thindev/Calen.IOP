@@ -1,7 +1,6 @@
 ﻿using Calen.IOP.Client.Desktop.ConvertUtil;
 using Calen.IOP.DTO.Json;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,8 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
-namespace Calen.IOP.Client.Desktop.ViewModel
+#if WINDOWS_WPF
+using RelayCommand = GalaSoft.MvvmLight.CommandWpf.RelayCommand;
+#else
+using RelayCommand = GalaSoft.MvvmLight.Command.RelayCommand;
+#endif
+namespace Calen.IOP.Client.ViewModel
 {
     public class DepartmentManager:ViewModelBase
     {
@@ -22,7 +25,7 @@ namespace Calen.IOP.Client.Desktop.ViewModel
        
 
         bool _isBusy;
-        #region Commands
+#region Commands
         ICommand _refreshDepartmentsCommand;
         public ICommand RefreshDepartmentsCommand
         {
@@ -42,7 +45,7 @@ namespace Calen.IOP.Client.Desktop.ViewModel
             this.RefreshDepartmentsAsync();
 
         }
-        #endregion
+#endregion
 
         private async void RefreshDepartmentsAsync()
         {

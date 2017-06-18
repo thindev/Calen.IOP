@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Calen.IOP.Client.ViewModel;
 
 namespace Calen.IOP.Client.Desktop.Pages
 {
@@ -23,10 +24,10 @@ namespace Calen.IOP.Client.Desktop.Pages
         public DepartmentManagePanel()
         {
             InitializeComponent();
-            this.DataContext= _departmentManager = new ViewModel.DepartmentManager();
+            this.DataContext= _departmentManager = new DepartmentManager();
             _departmentManager.RefreshDepartmentsCommand.Execute(null);
         }
-        public ViewModel.DepartmentManager _departmentManager;
+        public DepartmentManager _departmentManager;
         public void SetTitle(string tile)
         {
             this.tb_Title.Text = tile;
