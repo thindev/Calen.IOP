@@ -91,6 +91,7 @@
     <Compile Include="Converters\TreeViewItemIndentConverter.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Converters\InverseBoolToVisibilityConverter.cs" />
+    <Compile Include="Helpers\TreeviewHelper.cs" />
     <Compile Include="Pages\DepartmentDetailPanel.xaml.cs">
       <DependentUpon>DepartmentDetailPanel.xaml</DependentUpon>
     </Compile>
@@ -100,6 +101,10 @@
     <Compile Include="Pages\DepartmentManagePanel.xaml.cs">
       <DependentUpon>DepartmentManagePanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Widgets\DepartmentSelector.xaml.cs">
+      <DependentUpon>DepartmentSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Widgets\ParentDepartmentSelector.cs" />
     <Compile Include="UtilMethods.cs" />
     <Compile Include="View\ContentContainerPanel.xaml.cs">
       <DependentUpon>ContentContainerPanel.xaml</DependentUpon>
@@ -133,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\DepartmentManagePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Widgets\DepartmentSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

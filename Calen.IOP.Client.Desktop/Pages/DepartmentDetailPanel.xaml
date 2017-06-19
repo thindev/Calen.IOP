@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages"
+             xmlns:widgets="clr-namespace:Calen.IOP.Client.Desktop.Pages.Widgets"
              mc:Ignorable="d" 
              d:DesignHeight="336.469" d:DesignWidth="502.315" Background="White">
     <UserControl.Resources>
@@ -38,11 +39,11 @@
         <StackPanel Margin="12,12,20,0"  >
             <DockPanel>
                 <TextBlock Text="上级部门：" VerticalAlignment="Center" />
-                <ComboBox VerticalAlignment="Center"/>
+                <widgets:ParentDepartmentSelector VerticalAlignment="Center" SelectedDepartment="{Binding ParentDepartment}" ChildDepartment="{Binding}"/>
             </DockPanel>
             <DockPanel>
                 <TextBlock Text="部门编号：" VerticalAlignment="Center" />
-                <TextBox VerticalAlignment="Center"/>
+                <TextBox VerticalAlignment="Center" Text="{Binding Code}"/>
             </DockPanel>
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="20,12,12,0"  >
@@ -52,15 +53,15 @@
             </DockPanel>
             <DockPanel>
                 <TextBlock Text="部门名称：" VerticalAlignment="Center" />
-                <TextBox VerticalAlignment="Center"/>
+                <TextBox VerticalAlignment="Center" Text="{Binding Name}"/>
             </DockPanel>
         </StackPanel>
         <DockPanel Grid.Row="1" Margin="12,8" Grid.ColumnSpan="2">
             <TextBlock Text="描      述：" VerticalAlignment="Center" />
-            <TextBox VerticalAlignment="Center"/>
+            <TextBox VerticalAlignment="Center" Text="{Binding Description}"/>
         </DockPanel>
         <TextBlock Grid.Row="2" Text="部门岗位：" Margin="12,22,10,10" HorizontalAlignment="Left" FontSize="{DynamicResource FontSize_Title_Small}" Foreground="{DynamicResource Foreground_TitleKey}"/>
-        <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Margin="12,0,12,12" >
+        <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Margin="12,0,12,12" ItemsSource="{Binding JobPositions}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="岗位名称" MinWidth="140"/>
                 <DataGridTextColumn Header="岗位级别" Width="120"/>

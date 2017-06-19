@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Calen.IOP.Client.Desktop.Pages.Widgets.DepartmentSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages.Widgets"
+             xmlns:controls="clr-namespace:Calen.IOP.Client.Desktop.Controls"
+             mc:Ignorable="d" 
+             d:DesignWidth="300" Name="uc">
+    <UserControl.Resources>
+        <Style TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonStyle_GeometryContent}">
+            <Setter Property="Background" Value="{DynamicResource EdgeBarColorLevel2}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource EdgeBarBorderColorLevel2}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <TextBox Name="txb" Text="" Padding="0,0,24,0" IsReadOnly="True" ></TextBox>
+        <ToggleButton Name="tgb" HorizontalAlignment="Right"  Height="21" Margin="2,1" Content="{DynamicResource Geo_Department}" Padding="4" HorizontalContentAlignment="Center" IsEnabled="{Binding ElementName=uc,Path=IsReadOnly,Converter={StaticResource InverseBooleanConverter}}" >
+        </ToggleButton>
+        <Popup Name="popup" Placement="Bottom" IsOpen="{Binding ElementName=tgb,Path=IsChecked,Mode=TwoWay}" PlacementTarget="{Binding ElementName=uc}" VerticalOffset="1" AllowsTransparency="True" Opened="Popup_Opened" PopupAnimation="Slide" Width="{Binding ElementName=uc,Path=ActualWidth}" StaysOpen="False" MinWidth="200">
+            <Popup.Resources>
+                <Style x:Key="TreeViewItemModern1" TargetType="TreeViewItem" BasedOn="{StaticResource TreeViewItemModern}">
+                    <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
+                </Style>
+                <HierarchicalDataTemplate x:Key="DepartmentDataTemplate"  ItemsSource="{Binding SubDepartments}">
+                    <StackPanel Margin="4,4,0,4" Orientation="Horizontal">
+                        <Path Stretch="Uniform" Height="{DynamicResource FontSize_Content_Large}" Width="{DynamicResource FontSize_Content_Large}" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TreeViewItem},Path=Foreground}" Data="{DynamicResource Geo_Department}" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Name}" Margin="6,0,0,0"  FontSize="{DynamicResource FontSize_Content_Middle}" VerticalAlignment="Center" />
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </Popup.Resources>
+            <Border Height="260" Width="{Binding ElementName=uc,Path=ActualWidth}" Background="{DynamicResource EdgeBarColorLevel2}" BorderBrush="{DynamicResource EdgeBarBorderColorLevel1}" Padding="2" BorderThickness="1" MinWidth="200">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="0" BlurRadius="8"/>
+                </Border.Effect>
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TreeView ItemContainerStyle="{DynamicResource TreeViewItemModern1}" Name="treeView" BorderThickness="1" ItemTemplate="{StaticResource DepartmentDataTemplate}" BorderBrush="{DynamicResource EdgeBarBorderColorLevel2}" Margin="2">
+
+                    </TreeView>
+                    <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Margin="2">
+                        <Button Name="btn_ok" Content="确定" Style="{DynamicResource ButtonStyle_AccentedSquare}" FontSize="{DynamicResource FontSize_Content_Small}" Padding="12,4" Margin="8,0" Click="btn_ok_Click"/>
+                        <Button Name="btn_cancel" Content="取消" Style="{DynamicResource ButtonStyle_AccentedSquare}" FontSize="{DynamicResource FontSize_Content_Small}" Padding="12,4" Margin="8,0,0,0" Click="btn_cancel_Click" />
+                    </StackPanel>
+                    <Button Name="btn_refresh" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource ButtonStyle_GeometryContent}" Content="{DynamicResource Geo_Refresh}" Height="20" Width="20" Padding="2" Margin="4,2" Click="btn_refresh_Click"></Button>
+                    <controls:BusyIndicator x:Name="busyCtrl" Grid.RowSpan="2"/>
+                </Grid>
+            </Border>
+            
+        </Popup>
+    </Grid>
+</UserControl>

@@ -15,18 +15,12 @@ using RelayCommand = GalaSoft.MvvmLight.Command.RelayCommand;
 #endif
 namespace Calen.IOP.Client.ViewModel
 {
-    public class DepartmentManager:ViewModelBase
+    public class DepartmentManager:ManagerBase<DepartmentViewModel>
     {
         ObservableCollection<DepartmentViewModel> _rootDepartments = new ObservableCollection<DepartmentViewModel>();
 
         public ObservableCollection<DepartmentViewModel> RootDepartments { get => _rootDepartments;  }
-        public bool IsBusy { get => _isBusy; set { Set(() => IsBusy, ref _isBusy, value); } }
-
        
-
-        bool _isBusy;
-#region Commands
-        ICommand _refreshDepartmentsCommand;
         public ICommand RefreshDepartmentsCommand
         {
             get
@@ -39,11 +33,14 @@ namespace Calen.IOP.Client.ViewModel
             }
         }
 
+       
+#region Commands
+        ICommand _refreshDepartmentsCommand;
+       
+
         private void RefreshDepartmentsExcute()
         {
-            
             this.RefreshDepartmentsAsync();
-
         }
 #endregion
 
@@ -62,7 +59,46 @@ namespace Calen.IOP.Client.ViewModel
                     _rootDepartments.Add(vm);
                 }
             }
-           
+            if(this.SelectedItem!=null)
+            {
+                foreach(var root in _rootDepartments)
+                {
+                    this.FindSelectedItem(root);
+                }
+            }
+
+
+        }
+
+        void FindSelectedItem(DepartmentViewModel vm)
+        {
+            if(vm.Id==SelectedItem.Id)
+            {
+                vm.IsSelected = true;
+                return;
+            }
+            else
+            {
+                if(vm.SubDepartments!=null)
+                {
+                    this.FindSelectedItem(vm);
+                }
+            }
+        }
+
+        public async static Task<ICollection<DepartmentViewModel>> GetDepartmentTreeAsync()
+        {
+            List<DepartmentViewModel> treeRoots = new List<DepartmentViewModel>();
+            ICollection<department> ds = await AppCxt.Current.RestDataPortal.GetDepartmentTreeAsync();
+            if (ds != null)
+            {
+                foreach (department d in ds)
+                {
+                    DepartmentViewModel vm = DepartmentConverter.FromDto(null, d);
+                    treeRoots.Add(vm);
+                }
+            }
+            return treeRoots;
         }
     }
 }

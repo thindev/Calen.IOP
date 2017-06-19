@@ -27,5 +27,15 @@ namespace Calen.IOP.Client.ViewModel
         public EmployeeViewModel Leader { get => _leader; set => _leader = value; }
         public ObservableCollection<JobPositionViewModel> JobPositions { get => _jobPositions;  }
         public string Code { get => _code; set { Set(() => Code, ref _code, value); } }
+
+
+        #region For view control
+        bool _isSelected;
+        
+        public bool IsSelected { get => _isSelected; set { Set(()=>IsSelected,ref _isSelected,value); } }
+       
+
+        
+        #endregion
     }
 }

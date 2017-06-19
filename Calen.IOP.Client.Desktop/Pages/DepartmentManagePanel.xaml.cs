@@ -32,6 +32,11 @@ namespace Calen.IOP.Client.Desktop.Pages
         {
             this.tb_Title.Text = tile;
         }
+
+        private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            _departmentManager.SelectedItem = e.NewValue as DepartmentViewModel;
+        }
     }
     
 }
