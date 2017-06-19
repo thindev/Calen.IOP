@@ -20,9 +20,9 @@ namespace Calen.IOP.Client.ViewModel
         private T _presentItem;
         private ICommand _addCommand;
         private ICommand _deleteCommand;
-        private ICommand _startEditCommand;
-        private ICommand _saveEditingCommad;
-        private ICommand _cancelEditingCommand;
+        private ICommand _editCommand;
+        private ICommand _saveCommand;
+        private ICommand _cancelCommand;
 
         public bool IsBusy { get => _isBusy; set { Set(() => IsBusy, ref _isBusy, value); } }
         /// <summary>
@@ -49,7 +49,10 @@ namespace Calen.IOP.Client.ViewModel
             get => _currentEditingItem;
             set
             {
-                this.PresentItem = value;
+                if(value!=null)
+                {
+                    this.PresentItem = value;
+                }
                 Set(() => CurrentEditingItem, ref _currentEditingItem, value);
             }
         }
@@ -61,14 +64,13 @@ namespace Calen.IOP.Client.ViewModel
 
         public ICommand AddCommand
         {
-            get => _addCommand;
-
-            set
+            get
             {
                 if (_addCommand == null)
                 {
                     _addCommand = new RelayCommand(AddExcute, AddPredicate);
                 }
+                return _addCommand;
             }
         }
 
@@ -84,27 +86,68 @@ namespace Calen.IOP.Client.ViewModel
 
         public ICommand DeleteCommand
         {
-            get => _deleteCommand;
-            set {
+        
+            get {
                 if(_deleteCommand==null)
                 {
                     _deleteCommand = new RelayCommand(DeleteExcute, DeletePredicate);
                 }
+                return _deleteCommand;
             }
         }
 
-        private bool DeletePredicate()
+        protected virtual bool DeletePredicate()
         {
             return this.PresentItem != null;
         }
 
-        private void DeleteExcute()
+        protected virtual void DeleteExcute()
         {
             
         }
 
-        public ICommand StartEditCommand { get => _startEditCommand; set => _startEditCommand = value; }
-        public ICommand SaveEditingCommad { get => _saveEditingCommad; set => _saveEditingCommad = value; }
-        public ICommand CancelEditingCommand { get => _cancelEditingCommand; set => _cancelEditingCommand = value; }
+        public ICommand EditCommand { 
+            get {
+                if(_editCommand==null)
+                {
+                    _editCommand = new RelayCommand(EditExcute, EditPredicate);
+                }
+                return _editCommand;
+            } }
+
+        protected virtual bool EditPredicate()
+        {
+            return true;
+        }
+
+        protected virtual void EditExcute()
+        {
+            ;
+        }
+
+        public ICommand SaveCommand { 
+            get
+            {
+                if(_saveCommand==null)
+                {
+                    _saveCommand = new RelayCommand(SaveExcute,SavePredicate);
+                }
+                return _saveCommand;
+            }
+                }
+
+        protected virtual bool SavePredicate()
+        {
+            return true;
+        }
+
+        protected virtual void SaveExcute()
+        {
+            ;
+        }
+
+        public ICommand CancelCommand { get => _cancelCommand; set => _cancelCommand = value; }
+       
+      
     }
 }

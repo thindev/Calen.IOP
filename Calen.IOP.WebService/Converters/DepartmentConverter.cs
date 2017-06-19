@@ -33,6 +33,35 @@ namespace Calen.IOP.WebService.Converters
             }
             return d;
         }
+
+        public Department ConvertBack(department d)
+        {
+            Department dp = new Department();
+            dp.Code = d.code;
+            dp.Description = d.description;
+            dp.Id = d.id;
+            //dp.Leader;
+            dp.Name = d.name;
+            if(!string.IsNullOrEmpty(d.parentDepartmentId))
+            {
+                dp.ParentDepartment = new Department() { Id = d.parentDepartmentId };
+            }
+            if(d.jobPositions!=null)
+            {
+                dp.JobPositions = new List<JobPosition>();
+                foreach(var jp in d.jobPositions)
+                {
+                    JobPosition jobP = new JobPosition ();
+                    jobP.Department = dp;
+                    jobP.Description = jp.description ;
+                    jobP.Id = jp.id;
+                    jobP.Name = jp.name;
+                    dp.JobPositions.Add(jobP);
+                }
+            }
+            return dp;
+        }
+
         public ICollection<department> ConvertToTree(ICollection<Department> values)
         {
             List<department> departments = new List<department>();

@@ -18,6 +18,7 @@ namespace Calen.IOP.Client.ViewModel
     public class DepartmentManager:ManagerBase<DepartmentViewModel>
     {
         ObservableCollection<DepartmentViewModel> _rootDepartments = new ObservableCollection<DepartmentViewModel>();
+        bool _isEditingNewItem;
 
         public ObservableCollection<DepartmentViewModel> RootDepartments { get => _rootDepartments;  }
        
@@ -42,7 +43,24 @@ namespace Calen.IOP.Client.ViewModel
         {
             this.RefreshDepartmentsAsync();
         }
-#endregion
+        #endregion
+
+        
+        protected override void AddExcute()
+        {
+            DepartmentViewModel vm = new DepartmentViewModel() { Id = Guid.NewGuid().ToString() };
+            vm.ParentDepartment = this.SelectedItem;
+            this.IsEditing = true;
+            this.CurrentEditingItem = vm;
+            _isEditingNewItem = true;
+        }
+        protected override void SaveExcute()
+        {
+            if(_isEditingNewItem)
+            {
+                this.AddDepartmentAsync();
+            }
+        }
 
         private async void RefreshDepartmentsAsync()
         {
@@ -69,6 +87,18 @@ namespace Calen.IOP.Client.ViewModel
 
 
         }
+        private async void AddDepartmentAsync()
+        {
+            if (IsInDesignMode) return;
+            this.IsBusy = true;
+             await AppCxt.Current.RestDataPortal.AddDepartment(DepartmentConverter.ToDto(this.CurrentEditingItem));
+            this.IsBusy = false;
+            this.IsEditing = false;
+            this.CurrentEditingItem = null;
+            this._isEditingNewItem = false;
+            this.RefreshDepartmentsAsync();
+        }
+
 
         void FindSelectedItem(DepartmentViewModel vm)
         {
@@ -86,6 +116,8 @@ namespace Calen.IOP.Client.ViewModel
             }
         }
 
+
+
         public async static Task<ICollection<DepartmentViewModel>> GetDepartmentTreeAsync()
         {
             List<DepartmentViewModel> treeRoots = new List<DepartmentViewModel>();
@@ -100,5 +132,6 @@ namespace Calen.IOP.Client.ViewModel
             }
             return treeRoots;
         }
+        
     }
 }

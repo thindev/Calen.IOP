@@ -26,7 +26,12 @@ namespace Calen.IOP.BLL
         {
             using (IOPContext cxt = new IOPContext())
             {
-                cxt.Departments.AddRange(departments);
+                foreach(var d in departments)
+                {
+                    if (d.ParentDepartment != null)
+                        d.ParentDepartment = cxt.Departments.FirstOrDefault(x => x.Id == d.ParentDepartment.Id);
+                    cxt.Departments.Add(d);
+                }
                 return cxt.SaveChanges();
             }
         }

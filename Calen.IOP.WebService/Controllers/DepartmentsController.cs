@@ -14,39 +14,52 @@ namespace Calen.IOP.WebService.Controllers
     [Route("api/[controller]")]
     public  class DepartmentsController:Controller
     {
+        DepartmentConverter _depConverter = new DepartmentConverter();
         //GET api/departments
         [HttpGet]
         public IEnumerable<department> Get()
         {
             DepartmentManager dmgr = new DepartmentManager();
             List<Department> departments= dmgr.GetAllDepartments();
-            DepartmentConverter converter = new DepartmentConverter();
-            return converter.ConvertToTree(departments);
+            return _depConverter.ConvertToTree(departments);
 
         }
 
         // POST api/departments
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]department[] dArray)
         {
-            using (IOPContext context = new IOPContext())
+            if(dArray==null)
             {
-                Department d = new Department();
-                d.Description = "。。。。。";
-                d.Id = Guid.NewGuid().ToString();
-                d.Name = "主干组织架构";
-                d.Code = "00";
-                context.Departments.Add(d);
-
-                Department sub = new Department();
-                sub.Description = "。。。";
-                sub.Id = Guid.NewGuid().ToString();
-                sub.ParentDepartment = d;
-                sub.Code = "0001";
-                sub.Name = "一级组织架构";
-                context.Departments.Add(sub);
-                context.SaveChanges();
+                return;
             }
+            
+            List<Department> ds = new List<Department>();
+            foreach(var d in dArray)
+            {
+                Department dep= _depConverter.ConvertBack(d);
+                ds.Add(dep);
+            }
+            DepartmentManager dmgr = new DepartmentManager();
+            dmgr.AddDepartments(ds);
+            //using (IOPContext context = new IOPContext())
+            //{
+            //    Department d = new Department();
+            //    d.Description = "。。。。。";
+            //    d.Id = Guid.NewGuid().ToString();
+            //    d.Name = "主干组织架构";
+            //    d.Code = "00";
+            //    context.Departments.Add(d);
+
+            //    Department sub = new Department();
+            //    sub.Description = "。。。";
+            //    sub.Id = Guid.NewGuid().ToString();
+            //    sub.ParentDepartment = d;
+            //    sub.Code = "0001";
+            //    sub.Name = "一级组织架构";
+            //    context.Departments.Add(sub);
+            //    context.SaveChanges();
+            //}
         }
     }
 }

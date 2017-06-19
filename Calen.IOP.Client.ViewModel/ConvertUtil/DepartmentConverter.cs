@@ -1,4 +1,5 @@
 ﻿using Calen.IOP.Client.ViewModel;
+using Calen.IOP.Client.ViewModel.ConvertUtil;
 using Calen.IOP.DTO.Json;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,11 @@ namespace Calen.IOP.Client.Desktop.ConvertUtil
 {
     public static class DepartmentConverter
     {
-        public static DepartmentViewModel FromDto(DepartmentViewModel pd, department d)
+        public static DepartmentViewModel FromDto(DepartmentViewModel parent, department d)
         {
             DepartmentViewModel vm = new DepartmentViewModel();
-            vm.Id = d.code;
             vm.Id = d.id;
+            vm.Code = d.code;
             vm.Description = d.description;
             if (d.jobPositions != null)
             {
@@ -30,7 +31,7 @@ namespace Calen.IOP.Client.Desktop.ConvertUtil
             }
             vm.Name = d.name;
 
-            vm.ParentDepartment = pd;
+            vm.ParentDepartment = parent;
             if(d.subDepartments!=null)
             {
                 foreach(department subD in d.subDepartments)
@@ -40,6 +41,31 @@ namespace Calen.IOP.Client.Desktop.ConvertUtil
                 }
             }
             return vm;
+        }
+
+        public static department ToDto(DepartmentViewModel value)
+        {
+            department d = new department();
+            d.description = value.Description;
+            d.id = value.Id;
+            d.code = value.Code;
+            d.name = value.Name;
+            if (value.JobPositions != null)
+            {
+                d.jobPositions = new List<jobPosition>();
+                
+                foreach (var jp in value.JobPositions)
+                {
+                    d.jobPositions.Add(JobPositionConverter.ToDto(jp));
+                }
+            }
+            d.parentDepartmentId = value.ParentDepartment?.Id;
+            if (value.Leader != null)
+            {
+               // EmployeeConverter emConverter = new EmployeeConverter();
+               // d.leader = emConverter.Convert(value.Leader);
+            }
+            return d;
         }
     }
 }

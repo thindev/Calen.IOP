@@ -9,7 +9,7 @@
       xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
              mc:Ignorable="d" 
-             d:DesignHeight="390.304" d:DesignWidth="813.169" >
+             d:DesignHeight="390.304" >
     <UserControl.Resources>
         <Style x:Key="TreeViewItemModern1" TargetType="TreeViewItem" BasedOn="{StaticResource TreeViewItemModern}">
             <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
@@ -64,42 +64,47 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0" >
                             <TextBlock Name="tb_Title" FontSize="{DynamicResource FontSize_Title_Small}" Foreground="{DynamicResource Foreground_TitleKey}" Text="{Binding PresentItem.Name}" VerticalAlignment="Center"/>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="6,0" Visibility="{Binding IsEditing,Converter={StaticResource bool2VisibilityConverter}}">
-                                <TextBlock Text="（编辑中）" VerticalAlignment="Center" Foreground="Orange" FontSize="{DynamicResource FontSize_Title_Small}"/>
-                                <Button Padding="8,5" Margin="12,0,8,0"  FontSize="{DynamicResource FontSize_Content_Small}" Foreground="{DynamicResource Foreground_NormalKey}" >
+                            <TextBlock Text="（编辑中）" VerticalAlignment="Center" Foreground="Orange" FontSize="{DynamicResource FontSize_Title_Small}" Visibility="{Binding IsEditing,Converter={StaticResource bool2VisibilityConverter}}"/>
+                            
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+                            <StackPanel Orientation="Horizontal"  Margin="0,4" Visibility="{Binding IsEditing,Converter={StaticResource bool2VisibilityConverter}}">
+                                
+                                <Button Margin="4,0" Padding="12,0"  FontSize="{DynamicResource FontSize_Content_Small}" 
+                                        Command="{Binding SaveCommand}" Style="{DynamicResource ButtonStyle_Green}">
                                     <StackPanel Orientation="Horizontal">
-                                        <Path Fill="{DynamicResource Foreground_NormalKey}" Stretch="Uniform" Height="{DynamicResource FontSize_Title_Small}" Data="{DynamicResource Geo_Save}"/>
-                                        <TextBlock Text="保存" Margin="6,0,0,0" />
+                                        <Path Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Button},Path=Foreground}" Stretch="Uniform" Height="{DynamicResource FontSize_Title_Small}" Data="{DynamicResource Geo_Save}"/>
+                                        <TextBlock Text="保存" Margin="8,0,0,0" />
                                     </StackPanel>
                                 </Button>
-                                <Button Padding="8,5" Margin="0" FontSize="{DynamicResource FontSize_Content_Small}" Foreground="{DynamicResource Foreground_NormalKey}">
+                                <Button Margin="4,0" Padding="12,0" FontSize="{DynamicResource FontSize_Content_Small}" Style="{DynamicResource ButtonStyle_Red}">
                                     <StackPanel Orientation="Horizontal">
-                                        <Path Fill="{DynamicResource Foreground_NormalKey}" Stretch="Uniform" Height="{DynamicResource FontSize_Title_Small}" Data="{DynamicResource Geo_Cancel}"/>
-                                        <TextBlock Text="取消" Margin="6,0,0,0" />
+                                        <Path  Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Button},Path=Foreground}" Stretch="Uniform" Height="{DynamicResource FontSize_Title_Small}" Data="{DynamicResource Geo_Cancel}"/>
+                                        <TextBlock Text="取消" Margin="8,0,0,0" />
                                     </StackPanel>
                                 </Button>
                             </StackPanel>
-                            
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0,4" Visibility="{Binding IsEditing,Converter={StaticResource InverseBoolToVisibilityConverter}}">
+
+                                <Button  Margin="4,0" Padding="12,0" Style="{DynamicResource ButtonStyle_Green}"
+                                     Command="{Binding AddCommand}">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock Text="添加部门" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Style="{DynamicResource ButtonStyle_Blue}" Margin="4,0" Padding="12,0">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock Text="修改部门" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Style="{DynamicResource ButtonStyle_Red}" Margin="4,0" Padding="12,0" >
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock Text="删除部门" />
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
                         </StackPanel>
                         
-                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0,4" Visibility="{Binding IsEditing,Converter={StaticResource InverseBoolToVisibilityConverter}}">
-
-                            <Button  Margin="4,0" Padding="12,0" Style="{DynamicResource ButtonStyle_Green}">
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock Text="添加部门" />
-                                </StackPanel>
-                            </Button>
-                            <Button Style="{DynamicResource ButtonStyle_Blue}" Margin="4,0" Padding="12,0">
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock Text="修改部门" />
-                                </StackPanel>
-                            </Button>
-                            <Button Style="{DynamicResource ButtonStyle_Red}" Margin="4,0" Padding="12,0" >
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock Text="删除部门" />
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
                     </Grid>
                 </Border>
                 <Grid Grid.Row="1">
