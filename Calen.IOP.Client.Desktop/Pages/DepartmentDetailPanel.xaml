@@ -63,12 +63,17 @@
             <TextBox VerticalAlignment="Center" Text="{Binding Description}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
         </DockPanel>
         <TextBlock Grid.Row="2" Text="部门岗位：" Margin="12,22,10,10" HorizontalAlignment="Left" FontSize="{DynamicResource FontSize_Title_Small}" Foreground="{DynamicResource Foreground_TitleKey}"/>
-        <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Margin="12,0,12,12" ItemsSource="{Binding JobPositions}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}">
+        <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Margin="12,0,12,12" ItemsSource="{Binding JobPositions}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}" CanUserAddRows="True" CanUserDeleteRows="True" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserReorderColumns="False" CanUserResizeRows="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternatingRowBackground="{DynamicResource GrayBrush10}">
+            <DataGrid.Resources>
+                <Style x:Key="dgCell" TargetType="TextBlock">
+                    <Setter Property="TextAlignment" Value="Center" />
+                </Style>
+
+            </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="岗位名称" MinWidth="140"/>
-                <DataGridTextColumn Header="岗位级别" Width="120"/>
-                <DataGridTextColumn Header="职责描述" Width="*"/>
-                <DataGridTextColumn Header="在岗人数" Width="120"/>
+                <DataGridTextColumn Header="岗位名称" MinWidth="140" Width="180" Binding="{Binding Name}" ElementStyle="{StaticResource dgCell}"/>
+                <DataGridTextColumn Header="职责描述" Width="2*" Binding="{Binding Description}" ElementStyle="{StaticResource dgCell}"/>
+                <DataGridTextColumn Header="在岗人数" Width="*" MinWidth="120"  Binding="{Binding EmployeesCount}" ElementStyle="{StaticResource dgCell}"/>
             </DataGrid.Columns>
         </DataGrid>
 

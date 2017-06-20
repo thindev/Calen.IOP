@@ -21,7 +21,9 @@ namespace Calen.IOP.Client.Desktop.ConvertUtil
             {
                 foreach (jobPosition jp in d.jobPositions)
                 {
-
+                    JobPositionViewModel jpVm = JobPositionConverter.FromDto(jp);
+                    jpVm.Department = vm;
+                    vm.JobPositions.Add(jpVm);
                 }
             }
             if (d.leader != null)

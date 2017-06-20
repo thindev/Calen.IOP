@@ -63,13 +63,25 @@ namespace Calen.IOP.BLL.Converters
                 string[] jobPositonIds = d.jobPositions.Select(p => p.id).ToArray();
                 IEnumerable<JobPosition> toDeletes = target.JobPositions.Where(p => !jobPositonIds.Contains(p.Id));
                 DbContext.JobPositions.RemoveRange(toDeletes);
-                IEnumerable<JobPosition> toUpdates = target.JobPositions.Where(p => jobPositonIds.Contains(p.Id));
+                List<JobPosition> jpList = new List<JobPosition>();
                 foreach (var jp in d.jobPositions)
                 {
                     JobPositionConverter jpCvt = new JobPositionConverter(DbContext);
                     JobPosition jobP = jpCvt.FromDto(jp);
                     jobP.Department = target;
-                    target.JobPositions.Add(jobP);
+                    jpList.Add(jobP);
+                }
+                foreach(var item in jpList)
+                {
+                    var entity = DbContext.JobPositions.Find(item.Id);
+                    if(entity==null)
+                    {
+                        DbContext.JobPositions.Add(item);
+                    }
+                    else
+                    {
+                        DbContext.Entry(entity).CurrentValues.SetValues(item);
+                    }
                 }
             }
             return target;

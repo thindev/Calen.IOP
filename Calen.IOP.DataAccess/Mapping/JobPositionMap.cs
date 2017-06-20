@@ -13,7 +13,7 @@ namespace Calen.IOP.DataAccess.Mapping
         public JobPositionMap()
         {
             //table name
-            this.ToTable("Departments");
+            this.ToTable("JobPositions");
             //primary key
             HasKey(e => e.Id);
             //properties
