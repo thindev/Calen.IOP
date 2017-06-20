@@ -68,85 +68,110 @@ namespace Calen.IOP.Client.ViewModel
             {
                 if (_addCommand == null)
                 {
-                    _addCommand = new RelayCommand(AddExcute, AddPredicate);
+                    _addCommand = new RelayCommand(AddExecute, AddPredicate);
                 }
                 return _addCommand;
             }
         }
-
-        private bool AddPredicate()
-        {
-            return true;
-        }
-
-        protected virtual void AddExcute()
-        {
-            
-        }
-
         public ICommand DeleteCommand
         {
-        
-            get {
-                if(_deleteCommand==null)
+
+            get
+            {
+                if (_deleteCommand == null)
                 {
-                    _deleteCommand = new RelayCommand(DeleteExcute, DeletePredicate);
+                    _deleteCommand = new RelayCommand(DeleteExecute, DeletePredicate);
                 }
                 return _deleteCommand;
             }
         }
+        public ICommand CancelCommand
+        {
+            get
+            {
+                if(_cancelCommand==null)
+                {
+                    _cancelCommand = new RelayCommand(CancelExecute, CancelPredicate);
+                }
+                return _cancelCommand;
+            }
+        }
 
+
+        public ICommand EditCommand
+        {
+            get
+            {
+                if (_editCommand == null)
+                {
+                    _editCommand = new RelayCommand(EditExecute, EditPredicate);
+                }
+                return _editCommand;
+            }
+        }
+        public ICommand SaveCommand
+        {
+            get
+            {
+                if (_saveCommand == null)
+                {
+                    _saveCommand = new RelayCommand(SaveExecute, SavePredicate);
+                }
+                return _saveCommand;
+            }
+        }
+
+        protected virtual bool CancelPredicate()
+        {
+            return true;
+        }
+
+        protected virtual void CancelExecute()
+        {
+            ;
+        }
+        protected virtual bool AddPredicate()
+        {
+            return true;
+        }
+
+        protected virtual void AddExecute()
+        {
+            
+        }
+
+ 
         protected virtual bool DeletePredicate()
         {
             return this.PresentItem != null;
         }
 
-        protected virtual void DeleteExcute()
+        protected virtual void DeleteExecute()
         {
             
         }
-
-        public ICommand EditCommand { 
-            get {
-                if(_editCommand==null)
-                {
-                    _editCommand = new RelayCommand(EditExcute, EditPredicate);
-                }
-                return _editCommand;
-            } }
 
         protected virtual bool EditPredicate()
         {
             return true;
         }
 
-        protected virtual void EditExcute()
+        protected virtual void EditExecute()
         {
             ;
         }
-
-        public ICommand SaveCommand { 
-            get
-            {
-                if(_saveCommand==null)
-                {
-                    _saveCommand = new RelayCommand(SaveExcute,SavePredicate);
-                }
-                return _saveCommand;
-            }
-                }
 
         protected virtual bool SavePredicate()
         {
             return true;
         }
 
-        protected virtual void SaveExcute()
+        protected virtual void SaveExecute()
         {
             ;
         }
 
-        public ICommand CancelCommand { get => _cancelCommand; set => _cancelCommand = value; }
+        
        
       
     }

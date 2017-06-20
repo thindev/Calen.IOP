@@ -1,5 +1,5 @@
 ﻿using Calen.IOP.Client.Desktop.ConvertUtil;
-using Calen.IOP.DTO.Json;
+using Calen.IOP.DTO.Common;
 using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
@@ -19,6 +19,7 @@ namespace Calen.IOP.Client.ViewModel
     {
         ObservableCollection<DepartmentViewModel> _rootDepartments = new ObservableCollection<DepartmentViewModel>();
         bool _isEditingNewItem;
+        string _lastPresentDepartmentId;
 
         public ObservableCollection<DepartmentViewModel> RootDepartments { get => _rootDepartments;  }
        
@@ -46,20 +47,62 @@ namespace Calen.IOP.Client.ViewModel
         #endregion
 
         
-        protected override void AddExcute()
+        protected override void AddExecute()
         {
-            DepartmentViewModel vm = new DepartmentViewModel() { Id = Guid.NewGuid().ToString() };
+            DepartmentViewModel vm = new DepartmentViewModel() { Id = Guid.NewGuid().ToString(), IsEditing = true };
             vm.ParentDepartment = this.SelectedItem;
             this.IsEditing = true;
             this.CurrentEditingItem = vm;
             _isEditingNewItem = true;
         }
-        protected override void SaveExcute()
+        protected override bool EditPredicate()
+        {
+            return this.SelectedItem != null;
+        }
+        protected override void EditExecute()
+        {
+            this.CurrentEditingItem = this.SelectedItem;
+            this.IsEditing = true;
+            this._isEditingNewItem = false;
+            this.CurrentEditingItem.IsEditing = true;
+        }
+        protected override void SaveExecute()
         {
             if(_isEditingNewItem)
             {
                 this.AddDepartmentAsync();
             }
+            else
+            {
+                this.UpdateDepartmentAsync();
+            }
+        }
+
+        private async void UpdateDepartmentAsync()
+        {
+            if (IsInDesignMode) return;
+            this.IsBusy = true;
+            department[] ds = new department[] { DepartmentConverter.ToDto(this.CurrentEditingItem) };
+            await AppCxt.Current.DataPortal.UpdateDepartments(ds);
+            this.IsBusy = false;
+            this.StopEditingState();
+            this.RefreshDepartmentsAsync();
+        }
+
+        protected override void CancelExecute()
+        {
+            this.StopEditingState();
+
+        }
+
+        private void StopEditingState()
+        {
+            this.IsEditing = false;
+            this._isEditingNewItem = false;
+            _lastPresentDepartmentId = this.CurrentEditingItem.Id;
+            this.CurrentEditingItem.IsEditing = false;
+            this.CurrentEditingItem = null;
+            this.PresentItem = this.SelectedItem;
         }
 
         private async void RefreshDepartmentsAsync()
@@ -67,7 +110,7 @@ namespace Calen.IOP.Client.ViewModel
             if (IsInDesignMode) return;
             _rootDepartments.Clear();
             this.IsBusy = true;
-            ICollection<department> ds=await AppCxt.Current.RestDataPortal.GetDepartmentTreeAsync();
+            ICollection<department> ds=await AppCxt.Current.DataPortal.GetDepartmentTreeAsync();
             this.IsBusy = false;
             if (ds!=null)
             {
@@ -77,42 +120,53 @@ namespace Calen.IOP.Client.ViewModel
                     _rootDepartments.Add(vm);
                 }
             }
-            if(this.SelectedItem!=null)
-            {
+            
+
+            //刷新后，设置原来选中的项
+                bool isFound=false;
                 foreach(var root in _rootDepartments)
                 {
-                    this.FindSelectedItem(root);
+                    isFound = this.FindSelectedItem(root);
+                    if (isFound)//找上次的选中项，并将其选中
+                    {
+                        break;
+                    }
                 }
-            }
-
-
+                if (!isFound&&this._rootDepartments.Count > 0)//没有选中项，默认选中第一项
+                {
+                    this._rootDepartments[0].IsSelected = true;
+                }
+           
         }
         private async void AddDepartmentAsync()
         {
             if (IsInDesignMode) return;
             this.IsBusy = true;
-             await AppCxt.Current.RestDataPortal.AddDepartment(DepartmentConverter.ToDto(this.CurrentEditingItem));
+            department[] ds = new department[] { DepartmentConverter.ToDto(this.CurrentEditingItem) };
+             await AppCxt.Current.DataPortal.AddDepartments(ds);
             this.IsBusy = false;
-            this.IsEditing = false;
-            this.CurrentEditingItem = null;
-            this._isEditingNewItem = false;
+            this.StopEditingState();
             this.RefreshDepartmentsAsync();
         }
 
 
-        void FindSelectedItem(DepartmentViewModel vm)
+        bool FindSelectedItem(DepartmentViewModel vm)
         {
-            if(vm.Id==SelectedItem.Id)
+            if(vm.Id==_lastPresentDepartmentId)
             {
                 vm.IsSelected = true;
-                return;
+                return true;
             }
             else
             {
                 if(vm.SubDepartments!=null)
                 {
-                    this.FindSelectedItem(vm);
+                    foreach (var sVm in vm.SubDepartments)
+                    {
+                        this.FindSelectedItem(sVm);
+                    }
                 }
+                return false;
             }
         }
 
@@ -121,7 +175,7 @@ namespace Calen.IOP.Client.ViewModel
         public async static Task<ICollection<DepartmentViewModel>> GetDepartmentTreeAsync()
         {
             List<DepartmentViewModel> treeRoots = new List<DepartmentViewModel>();
-            ICollection<department> ds = await AppCxt.Current.RestDataPortal.GetDepartmentTreeAsync();
+            ICollection<department> ds = await AppCxt.Current.DataPortal.GetDepartmentTreeAsync();
             if (ds != null)
             {
                 foreach (department d in ds)

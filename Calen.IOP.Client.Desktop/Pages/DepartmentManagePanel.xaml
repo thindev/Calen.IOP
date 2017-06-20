@@ -64,7 +64,7 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0" >
                             <TextBlock Name="tb_Title" FontSize="{DynamicResource FontSize_Title_Small}" Foreground="{DynamicResource Foreground_TitleKey}" Text="{Binding PresentItem.Name}" VerticalAlignment="Center"/>
-                            <TextBlock Text="（编辑中）" VerticalAlignment="Center" Foreground="Orange" FontSize="{DynamicResource FontSize_Title_Small}" Visibility="{Binding IsEditing,Converter={StaticResource bool2VisibilityConverter}}"/>
+                            <TextBlock Text="(正在编辑...)" VerticalAlignment="Center" Foreground="{DynamicResource HighlightBrush}" FontSize="{DynamicResource FontSize_Title_Small}" Visibility="{Binding IsEditing,Converter={StaticResource bool2VisibilityConverter}}" Margin="6,0,0,0"/>
                             
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
@@ -77,7 +77,7 @@
                                         <TextBlock Text="保存" Margin="8,0,0,0" />
                                     </StackPanel>
                                 </Button>
-                                <Button Margin="4,0" Padding="12,0" FontSize="{DynamicResource FontSize_Content_Small}" Style="{DynamicResource ButtonStyle_Red}">
+                                <Button Margin="4,0" Padding="12,0" FontSize="{DynamicResource FontSize_Content_Small}" Style="{DynamicResource ButtonStyle_Red}" Command="{Binding CancelCommand}">
                                     <StackPanel Orientation="Horizontal">
                                         <Path  Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Button},Path=Foreground}" Stretch="Uniform" Height="{DynamicResource FontSize_Title_Small}" Data="{DynamicResource Geo_Cancel}"/>
                                         <TextBlock Text="取消" Margin="8,0,0,0" />
@@ -92,12 +92,12 @@
                                         <TextBlock Text="添加部门" />
                                     </StackPanel>
                                 </Button>
-                                <Button Style="{DynamicResource ButtonStyle_Blue}" Margin="4,0" Padding="12,0">
+                                <Button Style="{DynamicResource ButtonStyle_Blue}" Margin="4,0" Padding="12,0" Command="{Binding EditCommand}">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                         <TextBlock Text="修改部门" />
                                     </StackPanel>
                                 </Button>
-                                <Button Style="{DynamicResource ButtonStyle_Red}" Margin="4,0" Padding="12,0" >
+                                <Button Style="{DynamicResource ButtonStyle_Red}" Margin="4,0" Padding="12,0" Command="{Binding DeleteCommand}">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                         <TextBlock Text="删除部门" />
                                     </StackPanel>

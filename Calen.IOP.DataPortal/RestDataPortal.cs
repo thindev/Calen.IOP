@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using RestSharp;
-using Calen.IOP.DTO.Json;
+using Calen.IOP.DTO.Common;
 using System.Threading.Tasks;
 using RestSharp.Portable.HttpClient;
 using RestSharp.Portable;
@@ -10,10 +10,9 @@ using Newtonsoft.Json;
 
 namespace Calen.IOP.DataPortal
 {
-    public class RestDataPortal
+    public class RestDataPortal : IDataPortal
     {
         RestClient _restClient;
-        public static string HEADER_CONTENT_TYPE_JSON = "application/json";
         public RestDataPortal(string baseUrl)
         {
             _restClient = new RestClient(baseUrl);
@@ -29,15 +28,22 @@ namespace Calen.IOP.DataPortal
             return result;
         }
 
-        public async Task AddDepartment(department d)
+        public async Task AddDepartments(ICollection<department> ds)
         {
             var request = new RestRequest("departments", Method.POST);
-          //  request.AddHeader("Content-Type", HEADER_CONTENT_TYPE_JSON);
-            request.AddJsonBody(new department[] { d });
+            request.AddJsonBody(ds);
             // execute the request
             IRestResponse response = await _restClient.Execute(request);
             string content = response.Content;
+        }
 
+        public async Task UpdateDepartments(ICollection<department> ds)
+        {
+            var request = new RestRequest("departments", Method.PUT);
+            request.AddJsonBody(ds);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
         }
     }
 }

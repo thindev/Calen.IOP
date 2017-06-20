@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Calen.IOP.DTO.Json
+namespace Calen.IOP.DTO.Common
 {
     public class department
     {

@@ -1,6 +1,6 @@
 ﻿using Calen.IOP.Client.ViewModel;
 using Calen.IOP.Client.ViewModel.ConvertUtil;
-using Calen.IOP.DTO.Json;
+using Calen.IOP.DTO.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;

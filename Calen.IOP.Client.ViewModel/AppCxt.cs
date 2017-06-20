@@ -12,15 +12,15 @@ namespace Calen.IOP.Client.ViewModel
         static AppCxt _current = new AppCxt();
         public AppCxt()
         {
-            _restDataPortal = new RestDataPortal(@"http://localhost:6917/api/");
+            _dataPortal = new RestDataPortal(@"http://localhost:6917/api/");
         }
         public static AppCxt Current
         {
             get { return _current; }
         }
 
-        public RestDataPortal RestDataPortal { get => _restDataPortal;}
+        public IDataPortal DataPortal { get => _dataPortal;}
 
-        RestDataPortal _restDataPortal;
+        IDataPortal _dataPortal;
     }
 }

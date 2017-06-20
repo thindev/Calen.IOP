@@ -1,65 +1,41 @@
 ﻿using Calen.IOP.BLL;
-using Calen.IOP.DataAccess;
 using Calen.IOP.DataAccess.Entities;
-using Calen.IOP.DTO.Json;
+using Calen.IOP.DTO.Common;
 using Calen.IOP.WebService.Converters;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Calen.IOP.WebService.Controllers
 {
     [Route("api/[controller]")]
     public  class DepartmentsController:Controller
     {
-        DepartmentConverter _depConverter = new DepartmentConverter();
+        private DepartmentManager GetManager()
+        {
+            DepartmentManager dmgr = new DepartmentManager();
+            return dmgr;
+        }
+
         //GET api/departments
         [HttpGet]
         public IEnumerable<department> Get()
         {
-            DepartmentManager dmgr = new DepartmentManager();
-            List<Department> departments= dmgr.GetAllDepartments();
-            return _depConverter.ConvertToTree(departments);
+            return GetManager().GetDepartmentTree();
 
         }
 
         // POST api/departments
         [HttpPost]
-        public void Post([FromBody]department[] dArray)
+        public void Post([FromBody]department[] departments)
         {
-            if(dArray==null)
-            {
-                return;
-            }
-            
-            List<Department> ds = new List<Department>();
-            foreach(var d in dArray)
-            {
-                Department dep= _depConverter.ConvertBack(d);
-                ds.Add(dep);
-            }
-            DepartmentManager dmgr = new DepartmentManager();
-            dmgr.AddDepartments(ds);
-            //using (IOPContext context = new IOPContext())
-            //{
-            //    Department d = new Department();
-            //    d.Description = "。。。。。";
-            //    d.Id = Guid.NewGuid().ToString();
-            //    d.Name = "主干组织架构";
-            //    d.Code = "00";
-            //    context.Departments.Add(d);
+            this.GetManager().AddDepartments(departments);
+        }
 
-            //    Department sub = new Department();
-            //    sub.Description = "。。。";
-            //    sub.Id = Guid.NewGuid().ToString();
-            //    sub.ParentDepartment = d;
-            //    sub.Code = "0001";
-            //    sub.Name = "一级组织架构";
-            //    context.Departments.Add(sub);
-            //    context.SaveChanges();
-            //}
+        // PUT api/departments/
+        [HttpPut]
+        public void Put([FromBody]department[] departments)
+        {
+            this.GetManager().UpdateDepartments(departments);
         }
     }
 }

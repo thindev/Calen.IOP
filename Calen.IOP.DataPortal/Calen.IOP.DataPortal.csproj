@@ -40,6 +40,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDataPortal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestDataPortal.cs" />
   </ItemGroup>

@@ -1,4 +1,4 @@
-﻿using Calen.IOP.DTO.Json;
+﻿using Calen.IOP.DTO.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;

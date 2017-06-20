@@ -31,11 +31,14 @@ namespace Calen.IOP.Client.ViewModel
 
         #region For view control
         bool _isSelected;
+        bool _isEditing;
         
         public bool IsSelected { get => _isSelected; set { Set(()=>IsSelected,ref _isSelected,value); } }
-       
 
-        
+        public bool IsEditing { get => _isEditing; set { Set(() => IsEditing, ref _isEditing, value); } }
+
+
+
         #endregion
     }
 }

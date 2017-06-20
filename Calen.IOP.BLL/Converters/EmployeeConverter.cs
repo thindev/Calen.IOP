@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Calen.IOP.WebService.Converters
+namespace Calen.IOP.BLL.Converters
 {
-    public class EmployeeConverter
+     class EmployeeConverter
     {
         public employee Convert(Employee v)
         {

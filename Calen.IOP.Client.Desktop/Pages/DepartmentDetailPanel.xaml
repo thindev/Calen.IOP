@@ -38,30 +38,32 @@
         </Grid.RowDefinitions>
         <StackPanel Margin="12,12,20,0"  >
             <DockPanel>
-                <TextBlock Text="上级部门：" VerticalAlignment="Center" />
-                <widgets:ParentDepartmentSelector VerticalAlignment="Center" SelectedDepartment="{Binding ParentDepartment}" ChildDepartment="{Binding}"/>
+                <TextBlock Text="部门名称：" VerticalAlignment="Center" />
+                <TextBox VerticalAlignment="Center" Text="{Binding Name}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
             </DockPanel>
+            
             <DockPanel>
                 <TextBlock Text="部门编号：" VerticalAlignment="Center" />
-                <TextBox VerticalAlignment="Center" Text="{Binding Code}"/>
+                <TextBox VerticalAlignment="Center" Text="{Binding Code}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
             </DockPanel>
         </StackPanel>
+        <Rectangle VerticalAlignment="Stretch" Width="1" HorizontalAlignment="Left" Margin="1,28,0,16" Fill="{DynamicResource EdgeBarBorderColorLevel2}"  Grid.Column="1"/>
         <StackPanel Grid.Column="1" Margin="20,12,12,0"  >
             <DockPanel>
                 <TextBlock Text="部门经理：" VerticalAlignment="Center" />
-                <ComboBox VerticalAlignment="Center"/>
+                <ComboBox VerticalAlignment="Center" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
             </DockPanel>
             <DockPanel>
-                <TextBlock Text="部门名称：" VerticalAlignment="Center" />
-                <TextBox VerticalAlignment="Center" Text="{Binding Name}"/>
+                <TextBlock Text="上级部门：" VerticalAlignment="Center" />
+                <widgets:ParentDepartmentSelector VerticalAlignment="Center" SelectedDepartment="{Binding ParentDepartment}" ChildDepartment="{Binding}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
             </DockPanel>
         </StackPanel>
         <DockPanel Grid.Row="1" Margin="12,8" Grid.ColumnSpan="2">
             <TextBlock Text="描      述：" VerticalAlignment="Center" />
-            <TextBox VerticalAlignment="Center" Text="{Binding Description}"/>
+            <TextBox VerticalAlignment="Center" Text="{Binding Description}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
         </DockPanel>
         <TextBlock Grid.Row="2" Text="部门岗位：" Margin="12,22,10,10" HorizontalAlignment="Left" FontSize="{DynamicResource FontSize_Title_Small}" Foreground="{DynamicResource Foreground_TitleKey}"/>
-        <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Margin="12,0,12,12" ItemsSource="{Binding JobPositions}">
+        <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Margin="12,0,12,12" ItemsSource="{Binding JobPositions}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="岗位名称" MinWidth="140"/>
                 <DataGridTextColumn Header="岗位级别" Width="120"/>

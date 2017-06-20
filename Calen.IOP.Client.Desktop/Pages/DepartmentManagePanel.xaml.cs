@@ -35,6 +35,7 @@ namespace Calen.IOP.Client.Desktop.Pages
 
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
+            if (_departmentManager.IsInDesignMode) return;
             _departmentManager.SelectedItem = e.NewValue as DepartmentViewModel;
         }
     }

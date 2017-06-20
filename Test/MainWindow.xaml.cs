@@ -1,5 +1,5 @@
 ﻿using Calen.IOP.Client.Desktop;
-using Calen.IOP.Client.Desktop.ViewModel;
+using Calen.IOP.Client.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +31,7 @@ namespace Test
         {
             DepartmentManager dm = new DepartmentManager();
             dm.RefreshDepartmentsCommand.Execute(null);
-          await  AppCxt.Current.RestDataPortal.GetDepartmentTreeAsync();
+          await  AppCxt.Current.DataPortal.GetDepartmentTreeAsync();
         }
     }
 }
