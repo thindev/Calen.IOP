@@ -20,6 +20,7 @@ namespace Calen.IOP.Client.ViewModel
         ObservableCollection<DepartmentViewModel> _rootDepartments = new ObservableCollection<DepartmentViewModel>();
         bool _isEditingNewItem;
         string _lastPresentDepartmentId;
+        
 
         public ObservableCollection<DepartmentViewModel> RootDepartments { get => _rootDepartments;  }
        
@@ -59,6 +60,32 @@ namespace Calen.IOP.Client.ViewModel
         {
             return this.SelectedItem != null;
         }
+
+        protected override bool DeletePredicate()
+        {
+            return this.DeleteDepartmentDialog != null && this.SelectedItem != null;
+        }
+        protected override void DeleteExecute()
+        {
+            this.TryDeleteSelectedAsync();
+        }
+        private async void TryDeleteSelectedAsync()
+        {
+            if(this.DeleteDepartmentDialog!=null)
+            {
+                bool shouldDelete= await this.DeleteDepartmentDialog.ShowDialog(this.SelectedItem);
+                bool recursive = this.DeleteDepartmentDialog.RecursiveDelete;
+                if (shouldDelete)
+                {
+                    department dto = DepartmentConverter.ToDto(this.SelectedItem,recursive);
+                    this.IsBusy = true;
+                    await AppCxt.Current.DataPortal.DeleteDepartments(new department[] { dto }, recursive);
+                    this.IsBusy = false;
+                    this.RefreshDepartmentsAsync();
+                }
+            }
+        }
+
         protected override void EditExecute()
         {
             this.CurrentEditingItem = this.SelectedItem;
@@ -186,6 +213,20 @@ namespace Calen.IOP.Client.ViewModel
             }
             return treeRoots;
         }
+
         
+
+        public IDeleteDepartmentDialog DeleteDepartmentDialog { get; set; }
+
+
+    }
+
+    public interface IDeleteDepartmentDialog
+    {
+        Task<bool> ShowDialog(DepartmentViewModel vm);
+        /// <summary>
+        /// true:删除所有子级，false:不删子级
+        /// </summary>
+        bool RecursiveDelete { get; set; }
     }
 }

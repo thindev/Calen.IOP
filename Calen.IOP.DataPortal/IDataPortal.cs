@@ -9,5 +9,6 @@ namespace Calen.IOP.DataPortal
         Task AddDepartments(ICollection<department> ds);
         Task<ICollection<department>> GetDepartmentTreeAsync();
         Task UpdateDepartments(ICollection<department> ds);
+        Task<int> DeleteDepartments(ICollection<department> ds, bool recursive);
     }
 }

@@ -62,14 +62,47 @@ namespace Calen.IOP.BLL
             }
         }
 
-        public int DeleteDepartments(ICollection<Department> departments)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="departments"></param>
+        /// <param name="recursive">是否把所有子级的也删除</param>
+        /// <returns></returns>
+        public int DeleteDepartments(ICollection<department> departments,bool recursive)
         {
             using (IOPContext cxt = new IOPContext())
             {
-                cxt.Departments.RemoveRange(departments);
+                foreach (var item in departments)
+                {
+                    Department d = cxt.Departments.Find(item.id);
+                    if (d == null) continue;
+                    DeleteDepartment(cxt, d, recursive);
+                }
                 return cxt.SaveChanges();
             }
         }
+
+        private void DeleteDepartment(IOPContext cxt, Department d, bool recursive)
+        {
+            cxt.JobPositions.RemoveRange(d.JobPositions);
+            if (recursive)
+            {
+                if(d.SubDepartments.Count()>0)
+                {
+                    var items = d.SubDepartments.ToArray();
+                    foreach (var item in items)
+                    {
+                        DeleteDepartment(cxt, item, recursive);
+                    }
+                }
+            }
+            else
+            {
+                d.SubDepartments.Clear();
+            }
+            cxt.Entry(d).State = System.Data.Entity.EntityState.Deleted;
+        }
+        
        
     }
 }

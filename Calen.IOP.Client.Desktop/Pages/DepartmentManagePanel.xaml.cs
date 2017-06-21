@@ -13,21 +13,29 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Calen.IOP.Client.ViewModel;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace Calen.IOP.Client.Desktop.Pages
 {
     /// <summary>
     /// DepartmentManagePanel.xaml 的交互逻辑
     /// </summary>
-    public partial class DepartmentManagePanel : UserControl
+    public partial class DepartmentManagePanel : UserControl,ViewModel.IDeleteDepartmentDialog
     {
         public DepartmentManagePanel()
         {
             InitializeComponent();
             this.DataContext= _departmentManager = new DepartmentManager();
             _departmentManager.RefreshDepartmentsCommand.Execute(null);
+            _departmentManager.DeleteDepartmentDialog = this;
         }
+
         public DepartmentManager _departmentManager;
+        IDialogCoordinator _dialogCoordinator = DialogCoordinator.Instance;
+
+        bool _recursiveDelete = false;
+        public bool RecursiveDelete { get => _recursiveDelete; set => _recursiveDelete = value; }
+
         public void SetTitle(string tile)
         {
             this.tb_Title.Text = tile;
@@ -37,6 +45,22 @@ namespace Calen.IOP.Client.Desktop.Pages
         {
             if (_departmentManager.IsInDesignMode) return;
             _departmentManager.SelectedItem = e.NewValue as DepartmentViewModel;
+        }
+
+        public async Task<bool> ShowDialog(DepartmentViewModel vm)
+        {
+            CustomDialog dialog = new CustomDialog() { Title = "确定要删除("+vm.Name+")吗？"};
+            DepartmentDeleteDialog content = new DepartmentDeleteDialog();
+            dialog.Content = content;
+            content.CloseHandler = () =>
+              {
+                  _dialogCoordinator.HideMetroDialogAsync(Constants.MAIN_DIALOG, dialog);
+              };
+            await _dialogCoordinator.ShowMetroDialogAsync(Constants.MAIN_DIALOG, dialog,(new MetroDialogSettings()));
+            await dialog.WaitUntilUnloadedAsync();
+            this.RecursiveDelete = content.RecursiveDelete;
+            return !content.IsCancel;
+
         }
     }
     

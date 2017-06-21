@@ -45,5 +45,16 @@ namespace Calen.IOP.DataPortal
             IRestResponse response = await _restClient.Execute(request);
             string content = response.Content;
         }
+
+        public async Task<int> DeleteDepartments(ICollection<department> ds, bool recursive)
+        {
+            var request = new RestRequest("departments", Method.DELETE);
+            request.AddJsonBody(ds);
+            request.AddQueryParameter("recursive", recursive);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 0;
+        }
     }
 }

@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AppCxt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\DepartmentConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\JobPositionConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DepartmentManager.cs" />

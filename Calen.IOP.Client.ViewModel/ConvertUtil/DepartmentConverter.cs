@@ -45,7 +45,7 @@ namespace Calen.IOP.Client.Desktop.ConvertUtil
             return vm;
         }
 
-        public static department ToDto(DepartmentViewModel value)
+        public static department ToDto(DepartmentViewModel value,bool keepTree=false)
         {
             department d = new department();
             d.description = value.Description;
@@ -66,6 +66,14 @@ namespace Calen.IOP.Client.Desktop.ConvertUtil
             {
                // EmployeeConverter emConverter = new EmployeeConverter();
                // d.leader = emConverter.Convert(value.Leader);
+            }
+            if(keepTree&&value.SubDepartments!=null&&value.SubDepartments.Count>0)
+            {
+                d.subDepartments = new List<department>();
+                foreach(var item in value.SubDepartments)
+                {
+                    d.subDepartments.Add(ToDto(item, true));
+                }
             }
             return d;
         }

@@ -37,5 +37,12 @@ namespace Calen.IOP.WebService.Controllers
         {
             this.GetManager().UpdateDepartments(departments);
         }
+
+        // PUT api/departments/
+        [HttpDelete]
+        public void Delete([FromBody]department[] departments,bool recursive)
+        {
+            this.GetManager().DeleteDepartments(departments,recursive);
+        }
     }
 }
