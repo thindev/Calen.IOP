@@ -18,10 +18,15 @@
                 <local:DepartmentManagePanel/>
             </mahapps:MetroContentControl>
         </TabItem>
-        <!--<TabItem Header="岗位设置" Style="{DynamicResource PageTabItemStyle}">
+        <TabItem Header="职位类型管理" Style="{DynamicResource PageTabItemStyle}">
             <mahapps:MetroContentControl>
                 <Border Background="Gray"/>
             </mahapps:MetroContentControl>
-        </TabItem>-->
+        </TabItem>
+        <TabItem Header="用户角色管理" Style="{DynamicResource PageTabItemStyle}">
+            <mahapps:MetroContentControl>
+                <Border Background="LightGray"/>
+            </mahapps:MetroContentControl>
+        </TabItem>
     </TabControl>
 </Page>

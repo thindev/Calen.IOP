@@ -63,6 +63,8 @@ namespace Calen.IOP.Client.Desktop.Pages
             return !content.IsCancel;
 
         }
+
+       
     }
     
 }

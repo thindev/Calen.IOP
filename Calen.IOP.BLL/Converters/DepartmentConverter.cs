@@ -24,7 +24,8 @@ namespace Calen.IOP.BLL.Converters
             {
                 d.jobPositions = new List<jobPosition>();
                 JobPositionConverter jpConverter = new JobPositionConverter(DbContext);
-                foreach (var jp in value.JobPositions)
+                var jps = value.JobPositions.OrderBy(j => j.Index);
+                foreach (var jp in jps)
                 {
                     d.jobPositions.Add(jpConverter.ToDto(jp));
                 }
@@ -97,7 +98,7 @@ namespace Calen.IOP.BLL.Converters
             List<department> dptCopy = departments.ToList();
             foreach(var d in dptCopy)
             {
-                ICollection<department> subDs = departments.Where(x => x.parentDepartmentId == d.id).ToList();
+                ICollection<department> subDs = departments.Where(x => x.parentDepartmentId == d.id).OrderBy(p=>p.code).ToList();
                 d.subDepartments = subDs;
             }
             return departments.Where(x => string.IsNullOrEmpty(x.parentDepartmentId)).ToList();

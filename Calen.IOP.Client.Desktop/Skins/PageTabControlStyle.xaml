@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Key="PageTabControlStyle" TargetType="{x:Type TabControl}">
-        <Setter Property="Padding" Value="6"/>
+        <Setter Property="Padding" Value="4"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Background" Value="{DynamicResource EdgeBarColorLevel2}"/>
@@ -44,9 +44,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
-                    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" VerticalAlignment="{TemplateBinding VerticalAlignment}">
-                        <Border x:Name="mainBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Background="{TemplateBinding Background}" Margin="0,4,0,0">
-                            <Border x:Name="innerBorder" BorderBrush="{DynamicResource EdgeBarBorderColorLevel1}" BorderThickness="0" Background="{DynamicResource EdgeBarColorLevel2}" Margin="0,0,0,-2" Opacity="0"/>
+                    <Grid x:Name="templateRoot" VerticalAlignment="{TemplateBinding VerticalAlignment}" >
+                        <Border x:Name="mainBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Background="{TemplateBinding Background}" Margin="0,4,0,0" >
+                            <Border x:Name="innerBorder" BorderBrush="{DynamicResource EdgeBarBorderColorLevel1}" BorderThickness="0" Background="{DynamicResource EdgeBarColorLevel2}" Margin="0,0,0,-1" Opacity="0"/>
                         </Border>
                         <ContentPresenter x:Name="contentPresenter" ContentSource="Header" Focusable="False" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
                     </Grid>

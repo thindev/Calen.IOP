@@ -43,7 +43,7 @@ namespace Calen.IOP.Client.Desktop
         {
             this.leftColumn.Width = new GridLength(_lastLeftWidth);
             this.gridSplitter.Visibility = Visibility.Visible;
-            this.leftPanel.Margin = new Thickness(0,0,10,0);
+            this.leftPanel.Margin = new Thickness(0,0,gridSplitter.Width,0);
         }
 
         double _lastLeftWidth;

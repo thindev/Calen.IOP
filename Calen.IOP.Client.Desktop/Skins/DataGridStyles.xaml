@@ -89,17 +89,17 @@
     <Style x:Key="MetroDataGridColumnHeader" TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="Background" Value="{DynamicResource EdgeBarColorLevel2}" />
         <Setter Property="BorderBrush" Value="{DynamicResource EdgeBarBorderColorLevel1}" />
-        <Setter Property="BorderThickness" Value="0 0 0 1" />
+        <Setter Property="BorderThickness" Value="0 0 0 0" />
         <Setter Property="Controls:ControlsHelper.ContentCharacterCasing" Value="Upper" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="FontWeight" Value="Normal" />
-        <Setter Property="FontSize" Value="{DynamicResource FontSize_Content_Large}"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSize_Title_Small}"/>
         <Setter Property="Foreground" Value="{DynamicResource Foreground_TitleKey}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="MinHeight" Value="25" />
         <Setter Property="MinWidth" Value="0" />
-        <Setter Property="Padding" Value="10 8 4 8" />
+        <Setter Property="Padding" Value="10 10 4 10" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
@@ -233,11 +233,13 @@
 
     <!--  ____________________ Metro CellStyle ____________________  -->
     <Style x:Key="MetroDataGridCell" TargetType="{x:Type DataGridCell}">
+        <Setter Property="FontSize" Value="{DynamicResource FontSize_Content_Large}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Foreground_NormalKey}"/>
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="Controls:DataGridCellHelper.SelectionUnit" Value="{Binding Path=(Controls:DataGridRowHelper.SelectionUnit), Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="Padding" Value="2,4" />
+        <Setter Property="Padding" Value="2,8" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
@@ -360,13 +362,19 @@
     <Style x:Key="MetroDataGridRow" TargetType="{x:Type DataGridRow}">
         <Setter Property="Controls:DataGridRowHelper.SelectionUnit" Value="{Binding Path=SelectionUnit, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
         <Setter Property="Margin" Value="0 0 0 0" />
-        <Setter Property="Padding" Value="2,4"/>
-        <Setter Property="FontSize" Value="{DynamicResource FontSize_Content_Middle}"/>
+        <Setter Property="Padding" Value="2,8"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSize_Content_Large}"/>
         <Setter Property="Foreground" Value="{DynamicResource Foreground_NormalKey}"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
         <Setter Property="ValidationErrorTemplate" Value="{StaticResource DefaultRowValidationErrorTemplate}" />
         <Style.Triggers>
+            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                <Setter Property="Background" Value="White" />
+            </Trigger>
+            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                <Setter Property="Background" Value="{DynamicResource GrayBrush10}" />
+            </Trigger>
             <!--  IsMouseOver  -->
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -428,7 +436,7 @@
     <Style  TargetType="{x:Type DataGrid}">
         <Setter Property="Background" Value="White" />
         <Setter Property="BorderBrush" Value="{DynamicResource EdgeBarBorderColorLevel2}" />
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="CellStyle" Value="{StaticResource MetroDataGridCell}" />
         <Setter Property="ColumnHeaderStyle" Value="{StaticResource MetroDataGridColumnHeader}" />
         <Setter Property="DropLocationIndicatorStyle">

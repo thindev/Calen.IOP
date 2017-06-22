@@ -17,7 +17,7 @@
             <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
         </Style>
         <HierarchicalDataTemplate x:Key="DepartmentDataTemplate" DataType="{x:Type vm:DepartmentVM}" ItemsSource="{Binding SubDepartments}">
-            <StackPanel Margin="4,6,0,6" Orientation="Horizontal">
+            <StackPanel Margin="4,8,0,8" Orientation="Horizontal">
                 <Path Stretch="Uniform" Height="{DynamicResource FontSize_Content_Large}" Width="{DynamicResource FontSize_Content_Large}" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TreeViewItem},Path=Foreground}" Data="{DynamicResource Geo_Department}" VerticalAlignment="Center"/>
                 <TextBlock Text="{Binding Name}" Margin="8,0,0,0"  FontSize="{DynamicResource FontSize_Title_Small}" VerticalAlignment="Center" />
             </StackPanel>
@@ -30,20 +30,6 @@
         </Grid.ColumnDefinitions>
         <Border Grid.Column="0" Margin="0,0,6,0" BorderThickness="1" BorderBrush="{DynamicResource EdgeBarBorderColorLevel2}">
             <Grid Background="White">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0"/>
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Border Background="{DynamicResource EdgeBarColorLevel2}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource EdgeBarBorderColorLevel2}">
-                    <Grid >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock  FontSize="{DynamicResource FontSize_Title_Small}" Foreground="{DynamicResource Foreground_TitleKey}"  VerticalAlignment="Center" Margin="10,0"/>
-                        
-                    </Grid>
-                </Border>
                 <TreeView Grid.Row="1" ItemsSource="{Binding RootDepartments}" ItemContainerStyle="{StaticResource TreeViewItemModern1}" ItemTemplate="{DynamicResource DepartmentDataTemplate}" SelectedItemChanged="TreeView_SelectedItemChanged"
                           Background="White" IsEnabled="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}">
                 </TreeView>
@@ -58,7 +44,7 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                
-<Border Background="{DynamicResource EdgeBarColorLevel2}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource EdgeBarBorderColorLevel2}">
+<Border Background="{DynamicResource EdgeBarColorLevel2}" BorderThickness="0,0,0,0" BorderBrush="{DynamicResource EdgeBarBorderColorLevel2}">
                     <Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
@@ -73,10 +59,10 @@
                             <Button Style="{DynamicResource ButtonStyle_GeometryContent}" Content="{DynamicResource Geo_Refresh}" Margin="6,6,8,6" Padding="4" ToolTip="刷新树"
                                     Command="{Binding RefreshDepartmentsCommand}"
                                     Visibility="{Binding IsEditing,Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
-                            <StackPanel Orientation="Horizontal"  Margin="0,4" Visibility="{Binding IsEditing,Converter={StaticResource bool2VisibilityConverter}}">
+                            <StackPanel Orientation="Horizontal"  Margin="0,3" Visibility="{Binding IsEditing,Converter={StaticResource bool2VisibilityConverter}}">
                                 
                                 <Button Margin="4,0" Padding="12,0"  FontSize="{DynamicResource FontSize_Content_Small}" 
-                                        Command="{Binding SaveCommand}" Style="{DynamicResource ButtonStyle_Green}">
+                                        Command="{Binding SaveCommand}" Style="{DynamicResource ButtonStyle_Green}" >
                                     <StackPanel Orientation="Horizontal">
                                         <Path Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Button},Path=Foreground}" Stretch="Uniform" Height="{DynamicResource FontSize_Title_Small}" Data="{DynamicResource Geo_Save}"/>
                                         <TextBlock Text="保存" Margin="8,0,0,0" />
@@ -89,7 +75,7 @@
                                     </StackPanel>
                                 </Button>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0,4" Visibility="{Binding IsEditing,Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0,3" Visibility="{Binding IsEditing,Converter={StaticResource InverseBoolToVisibilityConverter}}">
 
                                 <Button  Margin="4,0" Padding="12,0" Style="{DynamicResource ButtonStyle_Green}"
                                      Command="{Binding AddCommand}">

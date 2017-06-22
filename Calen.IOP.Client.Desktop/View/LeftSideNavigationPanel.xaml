@@ -19,7 +19,7 @@
         <ToggleButton Name="navTglb1" IsChecked="{Binding ElementName=navTglb,Path=IsChecked,Mode=TwoWay}" Grid.Row="1" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked" Style="{DynamicResource ToggleButtonStyle_GeometryContent}"  HorizontalAlignment="Stretch" Width="38" VerticalAlignment="Stretch" 
                       />
         <Border Name="container"  Grid.ColumnSpan="2" Grid.Row="1" BorderThickness="1" BorderBrush="{DynamicResource EdgeBarBorderColorLevel1}">
-            <TreeView Name="treeView" ItemContainerStyle="{DynamicResource FuncMenuTreeViewItemStyle}" SelectedItemChanged="TreeView_SelectedItemChanged" BorderThickness="0" Padding="0.5">
+            <TreeView Name="treeView" ItemContainerStyle="{DynamicResource FuncMenuTreeViewItemStyle}" SelectedItemChanged="TreeView_SelectedItemChanged" BorderThickness="0" >
                 <TreeView.Resources>
                     <Style TargetType="Path">
                         <Setter Property="Stretch" Value="Uniform"/>
@@ -39,7 +39,7 @@
                         </StackPanel>
                     </TreeViewItem.Header>
                     <TreeViewItem.Items>
-                        <TreeViewItem local:FunctionMgr.FunctionName="组织架构" local:FunctionMgr.FunctionPageUri="Pages/DepartmentManagePage.xaml">
+                        <TreeViewItem local:FunctionMgr.FunctionName="组织配置" local:FunctionMgr.FunctionPageUri="Pages/DepartmentManagePage.xaml">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Path Data="{DynamicResource Geo_NavMenu_OrganizationManage}"/>
@@ -47,7 +47,7 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem local:FunctionMgr.FunctionName="员工信息">
+                        <TreeViewItem local:FunctionMgr.FunctionName="职员信息">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Path Data="{DynamicResource Geo_NavMenu_EmployeesManage}"/>
@@ -63,15 +63,23 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem local:FunctionMgr.FunctionName="课程管理">
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Path Data="{DynamicResource Geo_NavMenu_CoursesManage}"/>
-                                    <TextBlock/>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
                     </TreeViewItem.Items>
+                </TreeViewItem>
+                <TreeViewItem local:FunctionMgr.FunctionName="经营管理" >
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Path Data="{DynamicResource Geo_NavMenu_VipManage}" Height="{DynamicResource FontSize_Title_Large}" Fill="#FFF19918" />
+                            <TextBlock Margin="8,0,0,0"/>
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                    <TreeViewItem local:FunctionMgr.FunctionName="课程管理">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Path Data="{DynamicResource Geo_NavMenu_CoursesManage}"/>
+                                <TextBlock/>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
                 </TreeViewItem>
                 <TreeViewItem local:FunctionMgr.FunctionName="会员管理" >
                     <TreeViewItem.Header>
