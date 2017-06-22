@@ -8,20 +8,20 @@
       xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
-    x:Class="Calen.IOP.Client.Desktop.Pages.DepartmentManage"
+    x:Class="Calen.IOP.Client.Desktop.Pages.DepartmentManagePage"
       mc:Ignorable="d" 
       d:DesignHeight="450.354" d:DesignWidth="629.433"
-      Title="DepartmentManage" >
+      Title="组织架构" >
     <TabControl Style="{DynamicResource PageTabControlStyle}">
         <TabItem Header="组织架构树" Style="{DynamicResource PageTabItemStyle}">
             <mahapps:MetroContentControl>
                 <local:DepartmentManagePanel/>
             </mahapps:MetroContentControl>
         </TabItem>
-        <TabItem Header="岗位设置" Style="{DynamicResource PageTabItemStyle}">
+        <!--<TabItem Header="岗位设置" Style="{DynamicResource PageTabItemStyle}">
             <mahapps:MetroContentControl>
                 <Border Background="Gray"/>
             </mahapps:MetroContentControl>
-        </TabItem>
+        </TabItem>-->
     </TabControl>
 </Page>

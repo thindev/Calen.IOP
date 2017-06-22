@@ -23,8 +23,8 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
     /// </summary>
     public partial class DepartmentSelector : UserControl
     {
-        public static readonly DependencyProperty SelectedDepartmentProperty = DependencyProperty.Register("SelectedDepartment", typeof(DepartmentViewModel), typeof(DepartmentSelector), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, SelectedDepartmentChanged));
-        protected ObservableCollection<DepartmentViewModel> RootDepartments=new ObservableCollection<DepartmentViewModel>();
+        public static readonly DependencyProperty SelectedDepartmentProperty = DependencyProperty.Register("SelectedDepartment", typeof(DepartmentVM), typeof(DepartmentSelector), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, SelectedDepartmentChanged));
+        protected ObservableCollection<DepartmentVM> RootDepartments=new ObservableCollection<DepartmentVM>();
 
         private static void ExcludedDepartmentChanged(DependencyObject d,  DependencyPropertyChangedEventArgs e)
         {
@@ -33,7 +33,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
 
 
 
-        ObservableCollection<DepartmentViewModel> _departmentTree = new ObservableCollection<DepartmentViewModel>();
+        ObservableCollection<DepartmentVM> _departmentTree = new ObservableCollection<DepartmentVM>();
         public static readonly DependencyProperty IsReadOnlyProperty = TextBox.IsReadOnlyProperty.AddOwner(typeof(DepartmentSelector));
 
         private static void SelectedDepartmentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -49,20 +49,20 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
             get { return (bool)GetValue(IsReadOnlyProperty); }
             set { SetValue(IsReadOnlyProperty, value); }
         }
-        public DepartmentViewModel SelectedDepartment
+        public DepartmentVM SelectedDepartment
         {
-            get { return (DepartmentViewModel) GetValue(SelectedDepartmentProperty); }
+            get { return (DepartmentVM) GetValue(SelectedDepartmentProperty); }
             set { SetValue(SelectedDepartmentProperty, value); }
         }
         void SetSelectedItem()
         {
             if (this.SelectedDepartment == null) return;
-            foreach(DepartmentViewModel dv in this.DepartmentTree)
+            foreach(DepartmentVM dv in this.DepartmentTree)
             {
                 this.FindDepartment(dv);
             }
         }
-        void FindDepartment(DepartmentViewModel vm)
+        void FindDepartment(DepartmentVM vm)
         {
             if (vm.Id == this.SelectedDepartment.Id)
             {
@@ -72,7 +72,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
             else
             {
                 if (vm.SubDepartments == null) return ;
-                foreach(DepartmentViewModel dv in vm.SubDepartments)
+                foreach(DepartmentVM dv in vm.SubDepartments)
                 {
                     FindDepartment(vm);
                 }
@@ -86,7 +86,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
 
         protected bool IsDataLoaded=false;
 
-        public ObservableCollection<DepartmentViewModel> DepartmentTree { get => _departmentTree; }
+        public ObservableCollection<DepartmentVM> DepartmentTree { get => _departmentTree; }
 
         private void Popup_Opened(object sender, EventArgs e)
         {
@@ -104,7 +104,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
         {
             this.RootDepartments.Clear();
             this.busyCtrl.IsBusy = true;
-            ICollection<DepartmentViewModel> ds = await DepartmentManager.GetDepartmentTreeAsync();
+            ICollection<DepartmentVM> ds = await DepartmentManagerVM.GetDepartmentTreeAsync();
             foreach(var item in ds)
             {
                 RootDepartments.Add(item);
@@ -124,7 +124,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
         private void btn_ok_Click(object sender, RoutedEventArgs e)
         {
             this.popup.IsOpen = false;
-            DepartmentViewModel vm = (DepartmentViewModel)this.treeView.SelectedItem;
+            DepartmentVM vm = (DepartmentVM)this.treeView.SelectedItem;
             if(vm!=null)
             {
                 this.SelectedDepartment = vm;

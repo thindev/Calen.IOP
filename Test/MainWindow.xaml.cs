@@ -29,7 +29,7 @@ namespace Test
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            DepartmentManager dm = new DepartmentManager();
+            DepartmentManagerVM dm = new DepartmentManagerVM();
             dm.RefreshDepartmentsCommand.Execute(null);
           await  AppCxt.Current.DataPortal.GetDepartmentTreeAsync();
         }

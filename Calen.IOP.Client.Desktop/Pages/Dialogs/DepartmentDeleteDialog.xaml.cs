@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Calen.IOP.Client.Desktop.Pages
+namespace Calen.IOP.Client.Desktop.Pages.Dialogs
 {
     /// <summary>
     /// DepartmentDeleteDialog.xaml 的交互逻辑

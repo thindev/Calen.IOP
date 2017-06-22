@@ -20,6 +20,7 @@ namespace Calen.IOP.DataAccess.Mapping
             this.Property(e => e.Id).HasMaxLength(128);
             this.Property(e => e.Name).HasMaxLength(128);
             this.Property(e => e.Description).HasMaxLength(512);
+            this.Property(e => e.Index);
 
             this.HasOptional(e => e.Department).WithMany(e => e.JobPositions);
         }

@@ -11,7 +11,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
 {
     public class ParentDepartmentSelector:DepartmentSelector
     {
-        public static readonly DependencyProperty ChildDepartmentProperty = DependencyProperty.Register("ChildDepartment", typeof(DepartmentViewModel), typeof(ParentDepartmentSelector), new FrameworkPropertyMetadata(null, ChildDepartmentChanged));
+        public static readonly DependencyProperty ChildDepartmentProperty = DependencyProperty.Register("ChildDepartment", typeof(DepartmentVM), typeof(ParentDepartmentSelector), new FrameworkPropertyMetadata(null, ChildDepartmentChanged));
 
         private static void ChildDepartmentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -19,9 +19,9 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
             pds.IsDataLoaded = false;
         }
 
-        public DepartmentViewModel ChildDepartment
+        public DepartmentVM ChildDepartment
         {
-            get { return (DepartmentViewModel)GetValue(ChildDepartmentProperty); }
+            get { return (DepartmentVM)GetValue(ChildDepartmentProperty); }
             set { SetValue(ChildDepartmentProperty, value); }
         }
         protected override void OnRefreshFinished()
@@ -35,7 +35,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
                 }
             }
         }
-        void TryRemoveChildDepartmentFromTree(ObservableCollection<DepartmentViewModel> list, DepartmentViewModel d)
+        void TryRemoveChildDepartmentFromTree(ObservableCollection<DepartmentVM> list, DepartmentVM d)
         {
             var items = list.ToList();
             if(d.Id==this.ChildDepartment.Id)

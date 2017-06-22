@@ -15,14 +15,15 @@ using RelayCommand = GalaSoft.MvvmLight.Command.RelayCommand;
 #endif
 namespace Calen.IOP.Client.ViewModel
 {
-    public class DepartmentManager:ManagerBase<DepartmentViewModel>
+    public class DepartmentManagerVM:ManagerBase<DepartmentVM>
     {
-        ObservableCollection<DepartmentViewModel> _rootDepartments = new ObservableCollection<DepartmentViewModel>();
+        ObservableCollection<DepartmentVM> _rootDepartments = new ObservableCollection<DepartmentVM>();
         bool _isEditingNewItem;
         string _lastPresentDepartmentId;
         
+        
 
-        public ObservableCollection<DepartmentViewModel> RootDepartments { get => _rootDepartments;  }
+        public ObservableCollection<DepartmentVM> RootDepartments { get => _rootDepartments;  }
        
         public ICommand RefreshDepartmentsCommand
         {
@@ -50,7 +51,7 @@ namespace Calen.IOP.Client.ViewModel
         
         protected override void AddExecute()
         {
-            DepartmentViewModel vm = new DepartmentViewModel() { Id = Guid.NewGuid().ToString(), IsEditing = true };
+            DepartmentVM vm = new DepartmentVM() { Id = Guid.NewGuid().ToString(), IsEditing = true };
             vm.ParentDepartment = this.SelectedItem;
             this.IsEditing = true;
             this.CurrentEditingItem = vm;
@@ -77,7 +78,7 @@ namespace Calen.IOP.Client.ViewModel
                 bool recursive = this.DeleteDepartmentDialog.RecursiveDelete;
                 if (shouldDelete)
                 {
-                    department dto = DepartmentConverter.ToDto(this.SelectedItem,recursive);
+                    department dto = DepartmentConvertUtil.ToDto(this.SelectedItem,recursive);
                     this.IsBusy = true;
                     await AppCxt.Current.DataPortal.DeleteDepartments(new department[] { dto }, recursive);
                     this.IsBusy = false;
@@ -88,7 +89,7 @@ namespace Calen.IOP.Client.ViewModel
 
         protected override void EditExecute()
         {
-            this.CurrentEditingItem = this.SelectedItem;
+            this.CurrentEditingItem = this.SelectedItem.DeepClone();
             this.IsEditing = true;
             this._isEditingNewItem = false;
             this.CurrentEditingItem.IsEditing = true;
@@ -109,7 +110,7 @@ namespace Calen.IOP.Client.ViewModel
         {
             if (IsInDesignMode) return;
             this.IsBusy = true;
-            department[] ds = new department[] { DepartmentConverter.ToDto(this.CurrentEditingItem) };
+            department[] ds = new department[] { DepartmentConvertUtil.ToDto(this.CurrentEditingItem) };
             await AppCxt.Current.DataPortal.UpdateDepartments(ds);
             this.IsBusy = false;
             this.StopEditingState();
@@ -143,7 +144,7 @@ namespace Calen.IOP.Client.ViewModel
             {
                 foreach (department d in ds)
                 {
-                    DepartmentViewModel vm = DepartmentConverter.FromDto(null,d);
+                    DepartmentVM vm = DepartmentConvertUtil.FromDto(null,d);
                     _rootDepartments.Add(vm);
                 }
             }
@@ -169,7 +170,7 @@ namespace Calen.IOP.Client.ViewModel
         {
             if (IsInDesignMode) return;
             this.IsBusy = true;
-            department[] ds = new department[] { DepartmentConverter.ToDto(this.CurrentEditingItem) };
+            department[] ds = new department[] { DepartmentConvertUtil.ToDto(this.CurrentEditingItem) };
              await AppCxt.Current.DataPortal.AddDepartments(ds);
             this.IsBusy = false;
             this.StopEditingState();
@@ -177,7 +178,7 @@ namespace Calen.IOP.Client.ViewModel
         }
 
 
-        bool FindSelectedItem(DepartmentViewModel vm)
+        bool FindSelectedItem(DepartmentVM vm)
         {
             if(vm.Id==_lastPresentDepartmentId)
             {
@@ -199,15 +200,15 @@ namespace Calen.IOP.Client.ViewModel
 
 
 
-        public async static Task<ICollection<DepartmentViewModel>> GetDepartmentTreeAsync()
+        public async static Task<ICollection<DepartmentVM>> GetDepartmentTreeAsync()
         {
-            List<DepartmentViewModel> treeRoots = new List<DepartmentViewModel>();
+            List<DepartmentVM> treeRoots = new List<DepartmentVM>();
             ICollection<department> ds = await AppCxt.Current.DataPortal.GetDepartmentTreeAsync();
             if (ds != null)
             {
                 foreach (department d in ds)
                 {
-                    DepartmentViewModel vm = DepartmentConverter.FromDto(null, d);
+                    DepartmentVM vm = DepartmentConvertUtil.FromDto(null, d);
                     treeRoots.Add(vm);
                 }
             }
@@ -217,13 +218,12 @@ namespace Calen.IOP.Client.ViewModel
         
 
         public IDeleteDepartmentDialog DeleteDepartmentDialog { get; set; }
-
-
+        
     }
 
     public interface IDeleteDepartmentDialog
     {
-        Task<bool> ShowDialog(DepartmentViewModel vm);
+        Task<bool> ShowDialog(DepartmentVM vm);
         /// <summary>
         /// true:删除所有子级，false:不删子级
         /// </summary>

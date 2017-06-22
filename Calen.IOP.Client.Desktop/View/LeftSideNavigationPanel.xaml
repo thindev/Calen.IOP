@@ -31,7 +31,7 @@
                         <Setter Property="Text" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TreeViewItem},Path=(local:FunctionMgr.FunctionName)}"/>
                     </Style>
                 </TreeView.Resources>
-                <TreeViewItem local:FunctionMgr.FunctionName="经营管理" IsExpanded="True">
+                <TreeViewItem local:FunctionMgr.FunctionName="组织管理" IsExpanded="True">
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Path Data="{DynamicResource Geo_NavMenu_ShopManage}" Height="{DynamicResource FontSize_Title_Large}" Fill="#FF05B82E" />
@@ -39,7 +39,7 @@
                         </StackPanel>
                     </TreeViewItem.Header>
                     <TreeViewItem.Items>
-                        <TreeViewItem local:FunctionMgr.FunctionName="组织架构" local:FunctionMgr.FunctionPageUri="Pages/DepartmentManage.xaml">
+                        <TreeViewItem local:FunctionMgr.FunctionName="组织架构" local:FunctionMgr.FunctionPageUri="Pages/DepartmentManagePage.xaml">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Path Data="{DynamicResource Geo_NavMenu_OrganizationManage}"/>

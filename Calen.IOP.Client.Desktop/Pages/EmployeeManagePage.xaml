@@ -1,0 +1,27 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vm="clr-namespace:Calen.IOP.Client.ViewModel"
+    xmlns:ctrl="clr-namespace:Calen.IOP.Client.Desktop.Controls"
+      xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
+    x:Class="Calen.IOP.Client.Desktop.Pages.EmployeeManagePage"
+      mc:Ignorable="d" 
+      d:DesignHeight="450.354" d:DesignWidth="629.433"
+      Title="职员信息管理" >
+    <TabControl Style="{DynamicResource PageTabControlStyle}">
+        <TabItem Header="职员信息" Style="{DynamicResource PageTabItemStyle}">
+            <mahapps:MetroContentControl>
+                <local:DepartmentManagePanel/>
+            </mahapps:MetroContentControl>
+        </TabItem>
+        <TabItem Header="岗位设置" Style="{DynamicResource PageTabItemStyle}">
+            <mahapps:MetroContentControl>
+                <Border Background="Gray"/>
+            </mahapps:MetroContentControl>
+        </TabItem>
+    </TabControl>
+</Page>

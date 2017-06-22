@@ -117,6 +117,7 @@ namespace Calen.IOP.BLL.Converters
             jobPosition jp = new jobPosition();
             jp.description = v.Description;
             jp.id = v.Id;
+            jp.index = v.Index;
             jp.name = v.Name;
             jp.departmentId = v.Department?.Id;
             return jp;
@@ -126,6 +127,7 @@ namespace Calen.IOP.BLL.Converters
             JobPosition jobP = new JobPosition();
             jobP.Description = dto.description;
             jobP.Id = dto.id;
+            jobP.Index = dto.index;
             jobP.Name = dto.name;
             return jobP;
         }

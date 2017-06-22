@@ -4,11 +4,15 @@
                      xmlns:converter="clr-namespace:Calen.IOP.Client.Desktop.Converters"
                     xmlns:Custom="http://metro.mahapps.com/winfx/xaml/shared"
                     >
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="ButtonStyles.xaml"/>
-        <ResourceDictionary Source="PageTabControlStyle.xaml"/>
-        <ResourceDictionary Source="DataGridStyles.xaml"/>
-    </ResourceDictionary.MergedDictionaries>
+    <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDe0"/>
+    <SolidColorBrush x:Key="Button.Static.Border" Color="#FFcfCFd5"/>
+    <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFC2C2C5"/>
+    <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FFBBBBBB"/>
+    <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFAAAAAA"/>
+    <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FFAAAAAA"/>
+    <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+    <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
     <Style x:Key="ToggleButtonStyle_GeometryContent" TargetType="{x:Type ToggleButton}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{DynamicResource Foreground_NormalKey}"/>
@@ -906,5 +910,9 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ButtonStyles.xaml"/>
+        <ResourceDictionary Source="PageTabControlStyle.xaml"/>
+        <ResourceDictionary Source="DataGridStyles.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

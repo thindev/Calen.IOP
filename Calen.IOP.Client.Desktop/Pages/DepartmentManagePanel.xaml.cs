@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Calen.IOP.Client.ViewModel;
 using MahApps.Metro.Controls.Dialogs;
+using Calen.IOP.Client.Desktop.Pages.Dialogs;
 
 namespace Calen.IOP.Client.Desktop.Pages
 {
@@ -25,12 +26,12 @@ namespace Calen.IOP.Client.Desktop.Pages
         public DepartmentManagePanel()
         {
             InitializeComponent();
-            this.DataContext= _departmentManager = new DepartmentManager();
+            this.DataContext= _departmentManager = new DepartmentManagerVM();
             _departmentManager.RefreshDepartmentsCommand.Execute(null);
             _departmentManager.DeleteDepartmentDialog = this;
         }
 
-        public DepartmentManager _departmentManager;
+        public DepartmentManagerVM _departmentManager;
         IDialogCoordinator _dialogCoordinator = DialogCoordinator.Instance;
 
         bool _recursiveDelete = false;
@@ -44,10 +45,10 @@ namespace Calen.IOP.Client.Desktop.Pages
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             if (_departmentManager.IsInDesignMode) return;
-            _departmentManager.SelectedItem = e.NewValue as DepartmentViewModel;
+            _departmentManager.SelectedItem = e.NewValue as DepartmentVM;
         }
 
-        public async Task<bool> ShowDialog(DepartmentViewModel vm)
+        public async Task<bool> ShowDialog(DepartmentVM vm)
         {
             CustomDialog dialog = new CustomDialog() { Title = "确定要删除("+vm.Name+")吗？"};
             DepartmentDeleteDialog content = new DepartmentDeleteDialog();

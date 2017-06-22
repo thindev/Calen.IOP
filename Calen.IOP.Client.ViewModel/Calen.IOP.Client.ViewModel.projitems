@@ -11,13 +11,13 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AppCxt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\DepartmentConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\JobPositionConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DepartmentManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DepartmentViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)EmployeeViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)JobPositionViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MainViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\DepartmentConvertUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\JobPositionConvertUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DepartmentManagerVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DepartmentVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EmployeeVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JobPositionVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MainVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagerBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModelLocator.cs" />
   </ItemGroup>

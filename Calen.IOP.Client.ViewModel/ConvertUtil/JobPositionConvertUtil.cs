@@ -5,18 +5,19 @@ using System.Text;
 
 namespace Calen.IOP.Client.ViewModel.ConvertUtil
 {
-    public class JobPositionConverter
+    public class JobPositionConvertUtil
     {
-        public static JobPositionViewModel FromDto(jobPosition v)
+        public static JobPositionVM FromDto(jobPosition v)
         {
-            JobPositionViewModel vm = new JobPositionViewModel();
+            JobPositionVM vm = new JobPositionVM();
             vm.Description = v.description;
             vm.EmployeesCount = v.employeesCount;
             vm.Id = v.id;
+            vm.Index = v.index;
             vm.Name = v.name;
             return vm;
         }
-        public static jobPosition ToDto(JobPositionViewModel v)
+        public static jobPosition ToDto(JobPositionVM v)
         {
             if(string.IsNullOrEmpty(v.Id))
             {
@@ -25,6 +26,7 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
             jobPosition jp = new jobPosition();
             jp.description = v.Description;
             jp.id = v.Id;
+            jp.index = v.Index;
             jp.name = v.Name;
             jp.departmentId = v.Department?.Id;
             return jp;

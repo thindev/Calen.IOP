@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Calen.IOP.Client.Desktop.ConvertUtil
 {
-    public static class DepartmentConverter
+    public static class DepartmentConvertUtil
     {
-        public static DepartmentViewModel FromDto(DepartmentViewModel parent, department d)
+        public static DepartmentVM FromDto(DepartmentVM parent, department d)
         {
-            DepartmentViewModel vm = new DepartmentViewModel();
+            DepartmentVM vm = new DepartmentVM();
             vm.Id = d.id;
             vm.Code = d.code;
             vm.Description = d.description;
@@ -21,14 +21,14 @@ namespace Calen.IOP.Client.Desktop.ConvertUtil
             {
                 foreach (jobPosition jp in d.jobPositions)
                 {
-                    JobPositionViewModel jpVm = JobPositionConverter.FromDto(jp);
+                    JobPositionVM jpVm = JobPositionConvertUtil.FromDto(jp);
                     jpVm.Department = vm;
                     vm.JobPositions.Add(jpVm);
                 }
             }
             if (d.leader != null)
             {
-                vm.Leader = new EmployeeViewModel();
+                vm.Leader = new EmployeeVM();
                 // vm.Leader
             }
             vm.Name = d.name;
@@ -38,14 +38,14 @@ namespace Calen.IOP.Client.Desktop.ConvertUtil
             {
                 foreach(department subD in d.subDepartments)
                 {
-                    DepartmentViewModel subVM = FromDto(vm, subD);
+                    DepartmentVM subVM = FromDto(vm, subD);
                     vm.SubDepartments.Add(subVM);
                 }
             }
             return vm;
         }
 
-        public static department ToDto(DepartmentViewModel value,bool keepTree=false)
+        public static department ToDto(DepartmentVM value,bool keepTree=false)
         {
             department d = new department();
             d.description = value.Description;
@@ -58,7 +58,7 @@ namespace Calen.IOP.Client.Desktop.ConvertUtil
                 
                 foreach (var jp in value.JobPositions)
                 {
-                    d.jobPositions.Add(JobPositionConverter.ToDto(jp));
+                    d.jobPositions.Add(JobPositionConvertUtil.ToDto(jp));
                 }
             }
             d.parentDepartmentId = value.ParentDepartment?.Id;

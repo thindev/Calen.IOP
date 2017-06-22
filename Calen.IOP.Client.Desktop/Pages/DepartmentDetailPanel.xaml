@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages"
+             xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:widgets="clr-namespace:Calen.IOP.Client.Desktop.Pages.Widgets"
              mc:Ignorable="d" 
              d:DesignHeight="336.469" d:DesignWidth="502.315" Background="White">
@@ -63,14 +64,26 @@
             <TextBox VerticalAlignment="Center" Text="{Binding Description}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
         </DockPanel>
         <TextBlock Grid.Row="2" Text="部门岗位：" Margin="12,22,10,10" HorizontalAlignment="Left" FontSize="{DynamicResource FontSize_Title_Small}" Foreground="{DynamicResource Foreground_TitleKey}"/>
-        <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Margin="12,0,12,12" ItemsSource="{Binding JobPositions}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}" CanUserAddRows="True" CanUserDeleteRows="True" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserReorderColumns="False" CanUserResizeRows="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternatingRowBackground="{DynamicResource GrayBrush10}">
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right" Grid.Column="2" Margin="12,8" VerticalAlignment="Bottom" IsEnabled="{Binding IsEditing}">
+            <StackPanel.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle_GeometryContent_Circle}">
+                    <Setter Property="Background" Value="White"/>
+                </Style>
+            </StackPanel.Resources>
+            <Button   Content="{DynamicResource Geo_Add}" Height="20" Width="20" Padding="5"  Margin="8,0" Command="{Binding AddJobPositionCommand}" Foreground="Green" BorderBrush="Green">
+            </Button>
+            <Button   Content="{DynamicResource Geo_Remove}" Height="20" Width="20" Padding="5"  Margin="2,0" Command="{Binding RemoveJobPositionCommand}" Foreground="Red" BorderBrush="Red">
+            </Button>
+        </StackPanel>
+        <DataGrid Name="dataGrid_JobPostions" Grid.Row="3" Grid.ColumnSpan="2" Margin="12,0,12,12" ItemsSource="{Binding JobPositions}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserReorderColumns="False" CanUserResizeRows="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  AlternatingRowBackground="{DynamicResource GrayBrush10}" SelectedItem="{Binding SelectedJobPostion}">
             <DataGrid.Resources>
                 <Style x:Key="dgCell" TargetType="TextBlock">
-                    <Setter Property="TextAlignment" Value="Center" />
+                    <Setter Property="TextAlignment" Value="Left"/>
+                    <Setter Property="Margin" Value="6,0,4,0"/>
                 </Style>
-
             </DataGrid.Resources>
             <DataGrid.Columns>
+                <DataGridTextColumn Header="序号" MinWidth="60"  Binding="{Binding Index}" ElementStyle="{StaticResource dgCell}"/>
                 <DataGridTextColumn Header="岗位名称" MinWidth="140" Width="180" Binding="{Binding Name}" ElementStyle="{StaticResource dgCell}"/>
                 <DataGridTextColumn Header="职责描述" Width="2*" Binding="{Binding Description}" ElementStyle="{StaticResource dgCell}"/>
                 <DataGridTextColumn Header="在岗人数" Width="*" MinWidth="120"  Binding="{Binding EmployeesCount}" ElementStyle="{StaticResource dgCell}"/>

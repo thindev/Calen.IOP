@@ -16,7 +16,7 @@
         <Style x:Key="TreeViewItemModern1" TargetType="TreeViewItem" BasedOn="{StaticResource TreeViewItemModern}">
             <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
         </Style>
-        <HierarchicalDataTemplate x:Key="DepartmentDataTemplate" DataType="{x:Type vm:DepartmentViewModel}" ItemsSource="{Binding SubDepartments}">
+        <HierarchicalDataTemplate x:Key="DepartmentDataTemplate" DataType="{x:Type vm:DepartmentVM}" ItemsSource="{Binding SubDepartments}">
             <StackPanel Margin="4,6,0,6" Orientation="Horizontal">
                 <Path Stretch="Uniform" Height="{DynamicResource FontSize_Content_Large}" Width="{DynamicResource FontSize_Content_Large}" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TreeViewItem},Path=Foreground}" Data="{DynamicResource Geo_Department}" VerticalAlignment="Center"/>
                 <TextBlock Text="{Binding Name}" Margin="8,0,0,0"  FontSize="{DynamicResource FontSize_Title_Small}" VerticalAlignment="Center" />
@@ -70,6 +70,9 @@
                             
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+                            <Button Style="{DynamicResource ButtonStyle_GeometryContent}" Content="{DynamicResource Geo_Refresh}" Margin="6,6,8,6" Padding="4" ToolTip="刷新树"
+                                    Command="{Binding RefreshDepartmentsCommand}"
+                                    Visibility="{Binding IsEditing,Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
                             <StackPanel Orientation="Horizontal"  Margin="0,4" Visibility="{Binding IsEditing,Converter={StaticResource bool2VisibilityConverter}}">
                                 
                                 <Button Margin="4,0" Padding="12,0"  FontSize="{DynamicResource FontSize_Content_Small}" 
@@ -114,6 +117,6 @@
                 </Grid>
             </Grid>
         </Border>
-        <ctrl:BusyIndicator IsBusy="{Binding IsBusy}" Foreground="{DynamicResource HighlightBrush}" Grid.ColumnSpan="5"  Background="#11000000" />
+        <ctrl:BusyIndicator IsBusy="{Binding IsBusy}" Foreground="{DynamicResource HighlightBrush}" Grid.ColumnSpan="5"  Background="#11000000" Visibility="Collapsed"/>
     </Grid>
 </UserControl>

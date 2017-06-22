@@ -1,7 +1,5 @@
 ﻿using Calen.IOP.BLL;
-using Calen.IOP.DataAccess.Entities;
 using Calen.IOP.DTO.Common;
-using Calen.IOP.WebService.Converters;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
