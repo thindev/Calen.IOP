@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace Calen.IOP.DataAccess.Entities
 {
-    public class Employee
+    public class Employee : EntityBase
     {
-        public string Id { get; set; }
-        public string JobCode { get; set; }
         public string IdCardNum { get; set; }
-        public string Name { get; set; }
         public SexTypes Sex { get; set; }
         public string MobileNumber { get; set; }
         public string Email { get; set; }

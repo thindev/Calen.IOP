@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace Calen.IOP.DTO.Common
 {
-    public class jobPosition:entityDtoBase
+    public class hireType:entityDtoBase
     {
-        public int employeesCount { get; set; }
-
-        public string departmentId { get; set; }
     }
 }

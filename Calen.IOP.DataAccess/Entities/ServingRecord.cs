@@ -9,7 +9,7 @@ namespace Calen.IOP.DataAccess.Entities
     /// <summary>
     /// 任职记录
     /// </summary>
-    public class ServingRecord
+    public class ServingRecord 
     {
         public string Id { get; set; }
         public DateTime? BeginTime { get; set; }

@@ -13,7 +13,7 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
             vm.Description = v.description;
             vm.EmployeesCount = v.employeesCount;
             vm.Id = v.id;
-            vm.Index = v.index;
+            vm.Code = v.code;
             vm.Name = v.name;
             return vm;
         }
@@ -26,7 +26,7 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
             jobPosition jp = new jobPosition();
             jp.description = v.Description;
             jp.id = v.Id;
-            jp.index = v.Index;
+            jp.code = v.Code;
             jp.name = v.Name;
             jp.departmentId = v.Department?.Id;
             return jp;

@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace Calen.IOP.DTO.Common
 {
-    public class employee
+    public class employee:entityDtoBase
     {
-        public string id { get; set; }
-        public string jobCode { get; set; }
-        public string idCardNum { get; set; }
-        public string Name { get; set; }
         public int sex { get; set; }
         public string mobileNumber { get; set; }
         public string email { get; set; }

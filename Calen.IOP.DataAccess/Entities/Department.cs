@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace Calen.IOP.DataAccess.Entities
 {
-    public class Department
+    public class Department: EntityBase
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public string Description { get; set; }
+        
         public virtual Employee Leader { get; set; }
         public virtual Department ParentDepartment { get; set; }
         public virtual ICollection<Department> SubDepartments { get; set; }

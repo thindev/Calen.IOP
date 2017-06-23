@@ -14,12 +14,9 @@ using System.Windows.Input;
 
 namespace Calen.IOP.Client.ViewModel
 {
-    public class DepartmentVM:ViewModelBase
+    public class DepartmentVM:EntityVMBase
     {
-        string _id;
-        string _code;
-        string _name;
-        string _description;
+        
         EmployeeVM _leader;
         DepartmentVM _parentDepartment;
         ObservableCollection<DepartmentVM> _subDepartments=new ObservableCollection<DepartmentVM>();
@@ -29,14 +26,12 @@ namespace Calen.IOP.Client.ViewModel
         ICommand _addJobPositionCommand;
         ICommand _removeJobPositionCommand;
 
-        public string Id { get => _id; set => _id = value; }
-        public string Name { get => _name; set { Set(() => Name, ref _name, value); } }
-        public string Description {get => _description; set { Set(() => Description ,ref _description,value); } }
+       
         public DepartmentVM ParentDepartment { get => _parentDepartment; set { Set(() => ParentDepartment, ref _parentDepartment, value); } }
         public ObservableCollection<DepartmentVM> SubDepartments { get => _subDepartments; }
         public EmployeeVM Leader { get => _leader; set => _leader = value; }
         public ObservableCollection<JobPositionVM> JobPositions { get => _jobPositions;  }
-        public string Code { get => _code; set { Set(() => Code, ref _code, value); } }
+       
 
 
         #region For view control
@@ -69,8 +64,8 @@ namespace Calen.IOP.Client.ViewModel
 
         private void AddJobPositionExecute()
         {
-            int[] indexes = this.JobPositions.Select(p => p.Index).ToArray();
-            int index = 0;
+            string[] indexes = this.JobPositions.Select(p => p.Code).ToArray();
+            string index = string.Empty;
             if(indexes.Length>0)
             {
                index= indexes.Max() + 1;
@@ -78,7 +73,7 @@ namespace Calen.IOP.Client.ViewModel
             
             JobPositionVM vm = new JobPositionVM();
             vm.Id = Guid.NewGuid().ToString();
-            vm.Index = index;
+            vm.Code = index;
             this.JobPositions.Add(vm);
             this.SelectedJobPostion = vm;
         }

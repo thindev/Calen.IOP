@@ -8,7 +8,7 @@ namespace Calen.IOP.Client.ViewModel
 
          string _description;
          string _id;
-        int _index;
+        string _code;
          string _name;
          DepartmentVM _department;
         int _employeesCount;
@@ -20,7 +20,7 @@ namespace Calen.IOP.Client.ViewModel
 
         public int EmployeesCount { get => _employeesCount; set { Set(()=>EmployeesCount, ref _employeesCount, value); } }
 
-        public int Index { get => _index; set { Set(() => Index, ref _index, value); } }
+        public string Code { get => _code; set { Set(() => Code, ref _code, value); } }
 
         public JobPositionVM DeepClone()
         {
@@ -30,7 +30,7 @@ namespace Calen.IOP.Client.ViewModel
                 _description = this._description,
                 _employeesCount = this._employeesCount,
                 _id = this._id,
-                _index = this._index,
+                _code = this._code,
                 _name = this._name,
             };
             return j;

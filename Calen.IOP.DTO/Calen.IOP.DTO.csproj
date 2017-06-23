@@ -38,6 +38,8 @@
   <ItemGroup>
     <Compile Include="Common\department.cs" />
     <Compile Include="Common\employee.cs" />
+    <Compile Include="Common\entityDtoBase.cs" />
+    <Compile Include="Common\hireType.cs" />
     <Compile Include="Common\jobPosition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

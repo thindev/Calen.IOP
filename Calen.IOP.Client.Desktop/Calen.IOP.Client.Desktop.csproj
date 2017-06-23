@@ -109,6 +109,9 @@
     <Compile Include="Pages\EmployeeManagePage.xaml.cs">
       <DependentUpon>EmployeeManagePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\JobTypeManagePanel.xaml.cs">
+      <DependentUpon>JobTypeManagePanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Widgets\DepartmentSelector.xaml.cs">
       <DependentUpon>DepartmentSelector.xaml</DependentUpon>
     </Compile>
@@ -154,6 +157,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\EmployeeManagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\JobTypeManagePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -83,7 +83,7 @@
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="序号" MinWidth="60"  Binding="{Binding Index}" ElementStyle="{StaticResource dgCell}"/>
+                <DataGridTextColumn Header="编码" MinWidth="60"  Binding="{Binding Code}" ElementStyle="{StaticResource dgCell}"/>
                 <DataGridTextColumn Header="岗位名称" MinWidth="140" Width="180" Binding="{Binding Name}" ElementStyle="{StaticResource dgCell}"/>
                 <DataGridTextColumn Header="职责描述" Width="2*" Binding="{Binding Description}" ElementStyle="{StaticResource dgCell}"/>
                 <DataGridTextColumn Header="在岗人数" Width="*" MinWidth="120"  Binding="{Binding EmployeesCount}" ElementStyle="{StaticResource dgCell}"/>

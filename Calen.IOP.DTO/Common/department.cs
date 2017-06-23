@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace Calen.IOP.DTO.Common
 {
-    public class department
+    public class department:entityDtoBase
     {
-        public string id { get; set; }
-        public string code { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
+       
         public employee leader { get; set; }
         public string parentDepartmentId { get; set; }
         public  ICollection<department> subDepartments { get; set; }

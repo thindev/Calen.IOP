@@ -24,7 +24,7 @@ namespace Calen.IOP.BLL.Converters
             {
                 d.jobPositions = new List<jobPosition>();
                 JobPositionConverter jpConverter = new JobPositionConverter(DbContext);
-                var jps = value.JobPositions.OrderBy(j => j.Index);
+                var jps = value.JobPositions.OrderBy(j => j.Code);
                 foreach (var jp in jps)
                 {
                     d.jobPositions.Add(jpConverter.ToDto(jp));
@@ -118,7 +118,7 @@ namespace Calen.IOP.BLL.Converters
             jobPosition jp = new jobPosition();
             jp.description = v.Description;
             jp.id = v.Id;
-            jp.index = v.Index;
+            jp.code = v.Code;
             jp.name = v.Name;
             jp.departmentId = v.Department?.Id;
             return jp;
@@ -128,7 +128,7 @@ namespace Calen.IOP.BLL.Converters
             JobPosition jobP = new JobPosition();
             jobP.Description = dto.description;
             jobP.Id = dto.id;
-            jobP.Index = dto.index;
+            jobP.Code = dto.code;
             jobP.Name = dto.name;
             return jobP;
         }
