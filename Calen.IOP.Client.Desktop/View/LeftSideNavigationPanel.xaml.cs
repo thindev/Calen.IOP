@@ -70,12 +70,18 @@ namespace Calen.IOP.Client.Desktop.View
         }
         void CollapseMenuPanel()
         {
+            if (this.navTglb1 != null)
+                this.navTglb1.Visibility = Visibility.Visible;
             this.rightColumn.Width = new GridLength(0);
             if (this.container != null)
                 this.container.Visibility = Visibility.Collapsed;
-            if (this.navTglb1 != null)
-                this.navTglb1.Visibility = Visibility.Visible;
             this.RaiseEvent(new RoutedEventArgs(CollapsedEvent, this));
+        }
+        public void HideMenu()
+        {
+            
+
+
         }
         
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)

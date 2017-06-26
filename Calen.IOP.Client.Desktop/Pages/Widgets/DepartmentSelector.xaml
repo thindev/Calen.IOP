@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages.Widgets"
              xmlns:controls="clr-namespace:Calen.IOP.Client.Desktop.Controls"
              mc:Ignorable="d" 
-             d:DesignWidth="300" Name="uc">
+             d:DesignWidth="353.43" Name="uc" d:DesignHeight="46.813">
     <UserControl.Resources>
         <Style TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonStyle_GeometryContent}">
             <Setter Property="Background" Value="{DynamicResource EdgeBarColorLevel2}"/>
@@ -15,7 +15,7 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <TextBox Name="txb" Text="" Padding="0,0,24,0" IsReadOnly="True" ></TextBox>
+        <TextBox  Name="txb" Text=""  IsReadOnly="True" VerticalAlignment="Center"></TextBox>
         <ToggleButton Name="tgb" HorizontalAlignment="Right"  Height="21" Margin="2,1" Content="{DynamicResource Geo_Department}" Padding="4" HorizontalContentAlignment="Center" IsEnabled="{Binding ElementName=uc,Path=IsReadOnly,Converter={StaticResource InverseBooleanConverter}}" >
         </ToggleButton>
         <Popup Name="popup" Placement="Bottom" IsOpen="{Binding ElementName=tgb,Path=IsChecked,Mode=TwoWay}" PlacementTarget="{Binding ElementName=uc}" VerticalOffset="1" AllowsTransparency="True" Opened="Popup_Opened" PopupAnimation="Slide" Width="{Binding ElementName=uc,Path=ActualWidth}" StaysOpen="False" MinWidth="200">
@@ -50,7 +50,7 @@
                     <controls:BusyIndicator x:Name="busyCtrl" Grid.RowSpan="2"/>
                 </Grid>
             </Border>
-            
+
         </Popup>
     </Grid>
 </UserControl>

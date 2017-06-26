@@ -24,6 +24,12 @@
         <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="FontSize" Value="{DynamicResource FontSize_Content_Large}"/>
             <Setter Property="Foreground" Value="{DynamicResource Foreground_DarkKey}"/>
+            <Setter Property="Padding" Value="2"/>
+        </Style>
+        <Style TargetType="ComboBox" BasedOn="{StaticResource {x:Type ComboBox}}">
+            <Setter Property="FontSize" Value="{DynamicResource FontSize_Content_Large}"/>
+            <Setter Property="Foreground" Value="{DynamicResource Foreground_DarkKey}"/>
+            <Setter Property="Padding" Value="4"/>
         </Style>
     </UserControl.Resources>
     <Grid >
@@ -52,7 +58,7 @@
         <StackPanel Grid.Column="1" Margin="20,12,12,0"  >
             <DockPanel>
                 <TextBlock Text="部门经理：" VerticalAlignment="Center" />
-                <ComboBox VerticalAlignment="Center" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
+                <ComboBox VerticalAlignment="Center" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}" FontSize="{DynamicResource FontSize_Content_Large}" />
             </DockPanel>
             <DockPanel>
                 <TextBlock Text="上级部门：" VerticalAlignment="Center" />

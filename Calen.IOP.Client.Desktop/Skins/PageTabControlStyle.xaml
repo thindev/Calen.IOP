@@ -33,7 +33,7 @@
     <Style x:Key="PageTabItemStyle" TargetType="{x:Type TabItem}">
         <Setter Property="Foreground" Value="{DynamicResource Foreground_NormalKey}"/>
         <Setter Property="Height" Value="38"/>
-        <Setter Property="FontSize" Value="{DynamicResource FontSize_Title_Large}"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSize_Title_Middle}"/>
         <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="Background" Value="{DynamicResource EdgeBarColorLevel2}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource EdgeBarColorLevel2}"/>
