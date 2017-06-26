@@ -61,7 +61,7 @@
     <Compile Include="Entities\HireType.cs" />
     <Compile Include="Entities\JobPosition.cs" />
     <Compile Include="Entities\JobPostionLevel.cs" />
-    <Compile Include="Entities\JopType.cs" />
+    <Compile Include="Entities\JobType.cs" />
     <Compile Include="Entities\ServingRecord.cs" />
     <Compile Include="IOPContext.cs" />
     <Compile Include="Mapping\DepartmentMap.cs" />

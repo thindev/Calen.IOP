@@ -94,7 +94,7 @@
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="FontSize" Value="{DynamicResource FontSize_Title_Small}"/>
-        <Setter Property="Foreground" Value="{DynamicResource Foreground_TitleKey}" />
+        <Setter Property="Foreground" Value="{DynamicResource Foreground_NormalKey}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="MinHeight" Value="25" />

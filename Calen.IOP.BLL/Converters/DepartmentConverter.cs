@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Calen.IOP.BLL.Converters
 {
-     class DepartmentConverter:ConverterBase
+     class DepartmentConverter:ConverterBase<Department,department>
     {
         public DepartmentConverter(IOPContext ctx):base(ctx)
         {
         }
-        public department ToDto(Department value)
+        public override department ToDto(Department value)
         {
             department d = new department();
             d.description = value.Description;
@@ -39,7 +39,7 @@ namespace Calen.IOP.BLL.Converters
             return d;
         }
 
-        public Department FromDto(department d, Department target=null)
+        public override Department FromDto(department d, Department target=null)
         {
             if(target==null)
             target = new Department();
@@ -103,34 +103,11 @@ namespace Calen.IOP.BLL.Converters
             }
             return departments.Where(x => string.IsNullOrEmpty(x.parentDepartmentId)).ToList();
         }
+
+       
     }
 
 
 
-     class JobPositionConverter:ConverterBase
-    {
-        public JobPositionConverter(IOPContext ctx) : base(ctx)
-        {
-        }
-
-        public jobPosition ToDto(JobPosition v)
-        {
-            jobPosition jp = new jobPosition();
-            jp.description = v.Description;
-            jp.id = v.Id;
-            jp.code = v.Code;
-            jp.name = v.Name;
-            jp.departmentId = v.Department?.Id;
-            return jp;
-        }
-        public JobPosition FromDto(jobPosition dto)
-        {
-            JobPosition jobP = new JobPosition();
-            jobP.Description = dto.description;
-            jobP.Id = dto.id;
-            jobP.Code = dto.code;
-            jobP.Name = dto.name;
-            return jobP;
-        }
-    }
+    
 }

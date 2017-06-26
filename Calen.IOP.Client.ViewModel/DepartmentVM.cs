@@ -11,10 +11,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Calen.IOP.DTO.Common;
+using Calen.IOP.Client.Desktop.ConvertUtil;
 
 namespace Calen.IOP.Client.ViewModel
 {
-    public class DepartmentVM:EntityVMBase
+    public class DepartmentVM:EntityVMBase<DepartmentVM>
     {
         
         EmployeeVM _leader;
@@ -102,8 +104,13 @@ namespace Calen.IOP.Client.ViewModel
             this.SelectedJobPostion = null;
         }
 
-        public DepartmentVM DeepClone()
+        public override DepartmentVM DeepClone()
         {
+
+            department temp = DepartmentConvertUtil.ToDto(this,false);
+            DepartmentVM dp = DepartmentConvertUtil.FromDto(this.ParentDepartment, temp);
+            return dp;
+            /**
             DepartmentVM t = new DepartmentVM()
             {
                 _code = this._code,
@@ -124,6 +131,7 @@ namespace Calen.IOP.Client.ViewModel
                 t.JobPositions.Add(jp.DeepClone());
             }
             return t;
+    **/
         }
 
     }

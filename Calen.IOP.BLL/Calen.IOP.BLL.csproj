@@ -53,7 +53,12 @@
     <Compile Include="Converters\ConverterBase.cs" />
     <Compile Include="Converters\DepartmentConverter.cs" />
     <Compile Include="Converters\EmployeeConverter.cs" />
+    <Compile Include="Converters\HireTypeConverter.cs" />
+    <Compile Include="Converters\JobPositionConverter.cs" />
+    <Compile Include="Converters\JobPositionLevelConverter.cs" />
+    <Compile Include="Converters\JobTypeConverter.cs" />
     <Compile Include="DepartmentManager.cs" />
+    <Compile Include="JobTypeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Calen.IOP.DTO.Common
 {
-    public class hireType:entityDtoBase
+    public class jobPositionLevel:entityDtoBase
     {
-
     }
 }

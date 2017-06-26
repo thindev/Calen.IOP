@@ -40,7 +40,7 @@
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{DynamicResource Button.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource Button.Static.Border}"/>
-        <Setter Property="Foreground" Value="{DynamicResource Foreground_TitleKey}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Foreground_DarkKey}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="FontSize" Value="{DynamicResource FontSize_Content_Small}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -174,7 +174,7 @@
             <converters:ThicknessToDoubleConverter x:Key="ThicknessToDoubleConverter"/>
         </Style.Resources>
         <Setter Property="Background" Value="{DynamicResource Button.Static.Background}"/>
-        <Setter Property="Foreground" Value="{DynamicResource Foreground_TitleKey}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Foreground_DarkKey}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource Button.Static.Border}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -195,6 +195,129 @@
                         <Trigger Property="IsPressed" Value="true">
                             <Setter Property="Background" Value="{DynamicResource PrimaryMedianColorKey}"/>
                             <Setter Property="Foreground" Value="{DynamicResource AccentColorBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Fill" TargetName="path" Value="{DynamicResource Button.Disabled.Foreground}"/>
+                            <Setter Property="Fill" TargetName="border" Value="{DynamicResource Button.Disabled.Background}"/>
+                            <Setter Property="Stroke" TargetName="border" Value="{DynamicResource Button.Disabled.Border}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ButtonStyle_GeometryContent_Circle_Green" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <converters:ThicknessToDoubleConverter x:Key="ThicknessToDoubleConverter"/>
+            <SolidColorBrush x:Key="Button.Static.Background" Color="#FF0B9B59"/>
+            <SolidColorBrush x:Key="Button.Static.Border" Color="#FF058B4E"/>
+            <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF0EA962"/>
+            <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF088B4F"/>
+            <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FF07B665"/>
+            <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF069E58"/>
+        </Style.Resources>
+        <Setter Property="Background" Value="{DynamicResource Button.Static.Background}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Button.Static.Border}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Ellipse Name="border" Fill="{TemplateBinding Background}" StrokeThickness="{TemplateBinding BorderThickness,Converter={StaticResource ThicknessToDoubleConverter}}" Stroke="{TemplateBinding BorderBrush}"/>
+                        <Path Name="path" Fill="{TemplateBinding Foreground}" Stretch="Uniform"  VerticalAlignment="Center" HorizontalAlignment="Center" Data="{TemplateBinding Content}" Margin="{TemplateBinding Padding}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource Button.MouseOver.Background}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource Button.Pressed.Background}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Fill" TargetName="path" Value="{DynamicResource Button.Disabled.Foreground}"/>
+                            <Setter Property="Fill" TargetName="border" Value="{DynamicResource Button.Disabled.Background}"/>
+                            <Setter Property="Stroke" TargetName="border" Value="{DynamicResource Button.Disabled.Border}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ButtonStyle_GeometryContent_Circle_Blue" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <converters:ThicknessToDoubleConverter x:Key="ThicknessToDoubleConverter"/>
+            <SolidColorBrush x:Key="Button.Static.Background" Color="#FF0C86D4"/>
+            <SolidColorBrush x:Key="Button.Static.Border" Color="#FF0575BD"/>
+            <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF098FE7"/>
+            <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF0A86D7"/>
+            <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FF139EF9"/>
+            <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF0993EC"/>
+        </Style.Resources>
+        <Setter Property="Background" Value="{DynamicResource Button.Static.Background}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Button.Static.Border}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Ellipse Name="border" Fill="{TemplateBinding Background}" StrokeThickness="{TemplateBinding BorderThickness,Converter={StaticResource ThicknessToDoubleConverter}}" Stroke="{TemplateBinding BorderBrush}"/>
+                        <Path Name="path" Fill="{TemplateBinding Foreground}" Stretch="Uniform"  VerticalAlignment="Center" HorizontalAlignment="Center" Data="{TemplateBinding Content}" Margin="{TemplateBinding Padding}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource Button.MouseOver.Background}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource Button.Pressed.Background}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Fill" TargetName="path" Value="{DynamicResource Button.Disabled.Foreground}"/>
+                            <Setter Property="Fill" TargetName="border" Value="{DynamicResource Button.Disabled.Background}"/>
+                            <Setter Property="Stroke" TargetName="border" Value="{DynamicResource Button.Disabled.Border}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ButtonStyle_GeometryContent_Circle_Red" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <converters:ThicknessToDoubleConverter x:Key="ThicknessToDoubleConverter"/>
+            <SolidColorBrush x:Key="Button.Static.Background" Color="#FFCF0B05"/>
+            <SolidColorBrush x:Key="Button.Static.Border" Color="#FFAA0E0A"/>
+            <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFE4110B"/>
+            <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FFB70803"/>
+            <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFFF251E"/>
+            <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FFD80A04"/>
+        </Style.Resources>
+        <Setter Property="Background" Value="{DynamicResource Button.Static.Background}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Button.Static.Border}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Ellipse Name="border" Fill="{TemplateBinding Background}" StrokeThickness="{TemplateBinding BorderThickness,Converter={StaticResource ThicknessToDoubleConverter}}" Stroke="{TemplateBinding BorderBrush}"/>
+                        <Path Name="path" Fill="{TemplateBinding Foreground}" Stretch="Uniform"  VerticalAlignment="Center" HorizontalAlignment="Center" Data="{TemplateBinding Content}" Margin="{TemplateBinding Padding}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource Button.MouseOver.Background}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource Button.Pressed.Background}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Fill" TargetName="path" Value="{DynamicResource Button.Disabled.Foreground}"/>

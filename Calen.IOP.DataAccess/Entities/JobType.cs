@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Calen.IOP.DTO.Common
+namespace Calen.IOP.DataAccess.Entities
 {
-    public class hireType:entityDtoBase
+    public class JobType : EntityBase
     {
 
     }

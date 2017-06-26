@@ -8,7 +8,7 @@
               >
     <Grid Background="{DynamicResource EdgeBarColorLevel1}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="42"/>
+            <ColumnDefinition Width="38"/>
             <ColumnDefinition Name="rightColumn" Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>

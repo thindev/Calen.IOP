@@ -41,6 +41,8 @@
     <Compile Include="Common\entityDtoBase.cs" />
     <Compile Include="Common\hireType.cs" />
     <Compile Include="Common\jobPosition.cs" />
+    <Compile Include="Common\jobPositionLevel.cs" />
+    <Compile Include="Common\jobType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

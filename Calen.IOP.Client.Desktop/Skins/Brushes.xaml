@@ -8,9 +8,9 @@
     <SolidColorBrush x:Key="PrimaryColorKey" Color="#FFECECEE"/>
     <SolidColorBrush x:Key="PrimaryLightColorKey" Color="#FFF4F4F6"/>
     <SolidColorBrush x:Key="BlankColorKey" Color="White"/>
-    <SolidColorBrush x:Key="Foreground_NormalKey" Color="#FF222222"/>
-    <SolidColorBrush x:Key="Foreground_LightKey" Color="#FF7C7C7C"/>
-    <SolidColorBrush x:Key="Foreground_TitleKey" Color="Black"/>
+    <SolidColorBrush x:Key="Foreground_NormalKey" Color="#FF282828"/>
+    <SolidColorBrush x:Key="Foreground_LightKey" Color="#FF484949"/>
+    <SolidColorBrush x:Key="Foreground_DarkKey" Color="Black"/>
     <SolidColorBrush x:Key="HighlightForegroundKey" Color="Black"/>
     <SolidColorBrush x:Key="DisableColorKey" Color="Gray"/>
 
@@ -23,7 +23,7 @@
     <SolidColorBrush x:Key="ListItemMouseOverBackgroud" Color="#FFDADADE"/>
     <SolidColorBrush x:Key="ListItemMouseOverBorderBrush" Color="#FFCCCCCE"/>
     
-    <SolidColorBrush x:Key="ListItemSelectedBackgroud" Color="#FF4CA5E0"/>
+    <SolidColorBrush x:Key="ListItemSelectedBackgroud" Color="{DynamicResource HighlightColor}"/>
     <SolidColorBrush x:Key="ListItemSelectedForeground" Color="White"/>
     <SolidColorBrush x:Key="ListItemSelectedBorderBrush" Color="#FFB8DDFC"/>
 </ResourceDictionary>

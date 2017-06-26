@@ -17,7 +17,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)DepartmentVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EmployeeVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EntityVMBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HireTypeVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)JobPositionVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JobPositonLevelVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JobTypeVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagerBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModelLocator.cs" />

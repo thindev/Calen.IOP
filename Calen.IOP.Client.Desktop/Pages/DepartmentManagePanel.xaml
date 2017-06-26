@@ -28,7 +28,7 @@
             <ColumnDefinition Name="leftColumn" Width="240"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Border Grid.Column="0" Margin="0,0,6,0" BorderThickness="1" BorderBrush="{DynamicResource EdgeBarBorderColorLevel2}">
+        <Border Grid.Column="0" Margin="0,0,6,0" BorderThickness="0" BorderBrush="{DynamicResource EdgeBarBorderColorLevel2}">
             <Grid Background="White">
                 <TreeView Grid.Row="1" ItemsSource="{Binding RootDepartments}" ItemContainerStyle="{StaticResource TreeViewItemModern1}" ItemTemplate="{DynamicResource DepartmentDataTemplate}" SelectedItemChanged="TreeView_SelectedItemChanged"
                           Background="White" IsEnabled="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}">
@@ -37,21 +37,21 @@
         </Border>
         
         <GridSplitter Width="6"  Background="{DynamicResource EdgeBarColorLevel2}"/>
-        <Border Grid.Column="1" BorderBrush="{DynamicResource EdgeBarBorderColorLevel2}" BorderThickness="1">
+        <Border Grid.Column="1" BorderBrush="{DynamicResource EdgeBarBorderColorLevel2}" BorderThickness="0">
             <Grid Background="White">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="38"/>
+                    <RowDefinition Height="48"/>
                     <RowDefinition />
                 </Grid.RowDefinitions>
                
-<Border Background="{DynamicResource EdgeBarColorLevel2}" BorderThickness="0,0,0,0" BorderBrush="{DynamicResource EdgeBarBorderColorLevel2}">
+<Border Margin="10,0" BorderThickness="0,0,0,1" Padding="6" BorderBrush="{DynamicResource EdgeBarBorderColorLevel2}">
                     <Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0" >
-                            <TextBlock Name="tb_Title" FontSize="{DynamicResource FontSize_Title_Small}" Foreground="{DynamicResource Foreground_TitleKey}" Text="{Binding PresentItem.Name}" VerticalAlignment="Center"/>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0" >
+                            <TextBlock Name="tb_Title" FontSize="{DynamicResource FontSize_Title_Small}" Foreground="{DynamicResource Foreground_DarkKey}" Text="{Binding PresentItem.Name}" VerticalAlignment="Center"/>
                             <TextBlock Text="(正在编辑...)" VerticalAlignment="Center" Foreground="{DynamicResource HighlightBrush}" FontSize="{DynamicResource FontSize_Title_Small}" Visibility="{Binding IsEditing,Converter={StaticResource bool2VisibilityConverter}}" Margin="6,0,0,0"/>
                             
                         </StackPanel>
@@ -59,7 +59,7 @@
                             <Button Style="{DynamicResource ButtonStyle_GeometryContent}" Content="{DynamicResource Geo_Refresh}" Margin="6,6,8,6" Padding="4" ToolTip="刷新树"
                                     Command="{Binding RefreshDepartmentsCommand}"
                                     Visibility="{Binding IsEditing,Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
-                            <StackPanel Orientation="Horizontal"  Margin="0,3" Visibility="{Binding IsEditing,Converter={StaticResource bool2VisibilityConverter}}">
+                            <StackPanel Orientation="Horizontal"  Margin="0,4" Visibility="{Binding IsEditing,Converter={StaticResource bool2VisibilityConverter}}">
                                 
                                 <Button Margin="4,0" Padding="12,0"  FontSize="{DynamicResource FontSize_Content_Small}" 
                                         Command="{Binding SaveCommand}" Style="{DynamicResource ButtonStyle_Green}" >
@@ -68,14 +68,14 @@
                                         <TextBlock Text="保存" Margin="8,0,0,0" />
                                     </StackPanel>
                                 </Button>
-                                <Button Margin="4,0" Padding="12,0" FontSize="{DynamicResource FontSize_Content_Small}" Style="{DynamicResource ButtonStyle_Red}" Command="{Binding CancelCommand}">
+                                <Button Margin="4,0,0,0" Padding="12,0" FontSize="{DynamicResource FontSize_Content_Small}" Style="{DynamicResource ButtonStyle_Red}" Command="{Binding CancelCommand}">
                                     <StackPanel Orientation="Horizontal">
                                         <Path  Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Button},Path=Foreground}" Stretch="Uniform" Height="{DynamicResource FontSize_Title_Small}" Data="{DynamicResource Geo_Cancel}"/>
                                         <TextBlock Text="取消" Margin="8,0,0,0" />
                                     </StackPanel>
                                 </Button>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0,3" Visibility="{Binding IsEditing,Converter={StaticResource InverseBoolToVisibilityConverter}}">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0,4" Visibility="{Binding IsEditing,Converter={StaticResource InverseBoolToVisibilityConverter}}">
 
                                 <Button  Margin="4,0" Padding="12,0" Style="{DynamicResource ButtonStyle_Green}"
                                      Command="{Binding AddCommand}">
@@ -88,7 +88,7 @@
                                         <TextBlock Text="修改部门" />
                                     </StackPanel>
                                 </Button>
-                                <Button Style="{DynamicResource ButtonStyle_Red}" Margin="4,0" Padding="12,0" Command="{Binding DeleteCommand}">
+                                <Button Style="{DynamicResource ButtonStyle_Red}" Margin="4,0,0,0" Padding="12,0" Command="{Binding DeleteCommand}">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                         <TextBlock Text="删除部门" />
                                     </StackPanel>
@@ -99,7 +99,7 @@
                     </Grid>
                 </Border>
                 <Grid Grid.Row="1">
-                    <local:DepartmentDetailPanel DataContext="{Binding PresentItem}" Visibility="{Binding Converter={StaticResource NullToCollapsedConverter}}"/>
+                    <local:DepartmentDetailPanel DataContext="{Binding PresentItem}" Visibility="{Binding Converter={StaticResource NullToCollapsedConverter}}" Margin="4,0"/>
                 </Grid>
             </Grid>
         </Border>

@@ -1,12 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Key="PageTabControlStyle" TargetType="{x:Type TabControl}">
-        <Setter Property="Padding" Value="4"/>
+        <Setter Property="Padding" Value="8"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Background" Value="{DynamicResource EdgeBarColorLevel2}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource EdgeBarBorderColorLevel1}"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource EdgeBarBorderColorLevel2}"/>
+        <Setter Property="BorderThickness" Value="0,1,0,0"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -16,8 +16,8 @@
                             <RowDefinition x:Name="RowDefinition0" Height="Auto"/>
                             <RowDefinition x:Name="RowDefinition1" Height="*"/>
                         </Grid.RowDefinitions>
-                        <TabPanel x:Name="headerPanel" Background="{DynamicResource EdgeBarColorLevel1}" IsItemsHost="true" Margin="0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1"/>
-                        <Border x:Name="contentPanel" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+                        <TabPanel x:Name="headerPanel" Background="{DynamicResource EdgeBarColorLevel2}" IsItemsHost="true" Margin="0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1"/>
+                        <Border x:Name="contentPanel"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local" >
                             <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
                     </Grid>
@@ -31,24 +31,23 @@
         </Setter>
     </Style>
     <Style x:Key="PageTabItemStyle" TargetType="{x:Type TabItem}">
-        <Setter Property="Foreground" Value="{DynamicResource Foreground_TitleKey}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Foreground_NormalKey}"/>
         <Setter Property="Height" Value="38"/>
-        <Setter Property="FontSize" Value="{DynamicResource FontSize_Title_Middle}"/>
-        <Setter Property="Background" Value="{DynamicResource EdgeBarColorLevel1}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource EdgeBarBorderColorLevel1}"/>
+        <Setter Property="FontSize" Value="{DynamicResource FontSize_Title_Large}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Background" Value="{DynamicResource EdgeBarColorLevel2}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource EdgeBarColorLevel2}"/>
         <Setter Property="Margin" Value="0"/>
-        <Setter Property="Padding" Value="20,10,20,2"/>
+        <Setter Property="Padding" Value="20,0,20,0"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Stretch"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
-                    <Grid x:Name="templateRoot" VerticalAlignment="{TemplateBinding VerticalAlignment}" >
-                        <Border x:Name="mainBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Background="{TemplateBinding Background}" Margin="0,4,0,0" >
-                            <Border x:Name="innerBorder" BorderBrush="{DynamicResource EdgeBarBorderColorLevel1}" BorderThickness="0" Background="{DynamicResource EdgeBarColorLevel2}" Margin="0,0,0,-1" Opacity="0"/>
-                        </Border>
+                    <Grid x:Name="templateRoot" VerticalAlignment="{TemplateBinding VerticalAlignment}" Background="{TemplateBinding Background}">
                         <ContentPresenter x:Name="contentPresenter" ContentSource="Header" Focusable="False" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                        <Rectangle Name="underLine" Fill="{DynamicResource ListItemSelectedBackgroud}" VerticalAlignment="Bottom" Height="2" Margin="8,0,8,-1" Visibility="Collapsed" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <MultiDataTrigger>
@@ -56,7 +55,7 @@
                                 <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true"/>
                                 <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top"/>
                             </MultiDataTrigger.Conditions>
-                            <Setter Property="Background" TargetName="mainBorder" Value="{DynamicResource ListItemMouseOverBackgroud}"/>
+                            <Setter Property="Background"  Value="{DynamicResource ListItemMouseOverBackgroud}"/>
                            
                         </MultiDataTrigger>
                         <MultiDataTrigger>
@@ -65,9 +64,9 @@
                                 <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top"/>
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Panel.ZIndex" Value="1"/>
-                            <Setter Property="Opacity" TargetName="innerBorder" Value="1"/>
-                            <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,1,1,0"/>
-                            <Setter Property="Foreground" Value="#111111"/>
+                            <Setter Property="Visibility" TargetName="underLine" Value="Visible"/>
+                            <Setter Property="Foreground" Value="{DynamicResource Foreground_DarkKey}"/>
+                            <Setter Property="Background"  Value="{DynamicResource EdgeBarColorLevel2}"/>
                         </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

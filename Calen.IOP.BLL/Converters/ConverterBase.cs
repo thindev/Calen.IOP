@@ -7,12 +7,16 @@ using System.Threading.Tasks;
 
 namespace Calen.IOP.BLL.Converters
 {
-    class ConverterBase
+    abstract class ConverterBase<T,DtoT>
     {
         protected IOPContext DbContext;
         public ConverterBase(IOPContext ctx)
         {
             DbContext = ctx;
         }
+
+        public abstract DtoT ToDto(T model);
+        public abstract T FromDto(DtoT dto,T target=default(T));
+        
     }
 }
