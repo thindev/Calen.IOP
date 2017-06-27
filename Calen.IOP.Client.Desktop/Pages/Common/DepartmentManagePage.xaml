@@ -20,7 +20,7 @@
         </TabItem>
         <TabItem Header="职位类型管理" Style="{DynamicResource PageTabItemStyle}">
             <mahapps:MetroContentControl>
-                <Border Background="Gray"/>
+                <local:JobTypeManagePanel/>
             </mahapps:MetroContentControl>
         </TabItem>
         <TabItem Header="用户角色管理" Style="{DynamicResource PageTabItemStyle}">

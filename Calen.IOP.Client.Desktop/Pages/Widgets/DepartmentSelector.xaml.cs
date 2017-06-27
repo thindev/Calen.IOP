@@ -24,7 +24,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
     public partial class DepartmentSelector : UserControl
     {
         public static readonly DependencyProperty SelectedDepartmentProperty = DependencyProperty.Register("SelectedDepartment", typeof(DepartmentVM), typeof(DepartmentSelector), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, SelectedDepartmentChanged));
-        protected ObservableCollection<DepartmentVM> RootDepartments=new ObservableCollection<DepartmentVM>();
+        protected ObservableCollection<DepartmentVM> ItemList=new ObservableCollection<DepartmentVM>();
 
         private static void ExcludedDepartmentChanged(DependencyObject d,  DependencyPropertyChangedEventArgs e)
         {
@@ -102,15 +102,15 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
 
         protected async void RefreshDepartments()
         {
-            this.RootDepartments.Clear();
+            this.ItemList.Clear();
             this.busyCtrl.IsBusy = true;
             ICollection<DepartmentVM> ds = await DepartmentManagerVM.GetDepartmentTreeAsync();
             foreach(var item in ds)
             {
-                RootDepartments.Add(item);
+                ItemList.Add(item);
             }
             this.busyCtrl.IsBusy = false;
-            this.treeView.ItemsSource = RootDepartments;
+            this.treeView.ItemsSource = ItemList;
             IsDataLoaded = true;
             this.SetSelectedItem();
             this.OnRefreshFinished();

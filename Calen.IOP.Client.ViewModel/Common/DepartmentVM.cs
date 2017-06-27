@@ -37,12 +37,9 @@ namespace Calen.IOP.Client.ViewModel
 
 
         #region For view control
-        bool _isSelected;
-        bool _isEditing;
-        
-        public bool IsSelected { get => _isSelected; set { Set(()=>IsSelected,ref _isSelected,value); } }
+       
 
-        public bool IsEditing { get => _isEditing; set { Set(() => IsEditing, ref _isEditing, value); } }
+      
 
         #endregion
 
@@ -110,28 +107,6 @@ namespace Calen.IOP.Client.ViewModel
             department temp = DepartmentConvertUtil.ToDto(this,false);
             DepartmentVM dp = DepartmentConvertUtil.FromDto(this.ParentDepartment, temp);
             return dp;
-            /**
-            DepartmentVM t = new DepartmentVM()
-            {
-                _code = this._code,
-                _description = this._description,
-                _id = this._id,
-                _isEditing = this._isEditing,
-                _isSelected = this._isSelected,
-                //_jobPositions = this._jobPositions,//clone outside
-                _leader = this._leader,
-                _name = this._name,
-                _parentDepartment = this._parentDepartment,
-                // _subDepartments=_subDepartments,//don't need to clone subdepatments
-
-            };
-            //clone jobPositions
-            foreach(JobPositionVM jp in this.JobPositions)
-            {
-                t.JobPositions.Add(jp.DeepClone());
-            }
-            return t;
-    **/
         }
 
     }

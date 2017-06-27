@@ -1,7 +1,9 @@
 ﻿using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 #if(WINDOWS_WPF)
 using RelayCommand= GalaSoft.MvvmLight.CommandWpf.RelayCommand;
@@ -11,24 +13,63 @@ using RelayCommand= GalaSoft.MvvmLight.Command.RelayCommand;
 
 namespace Calen.IOP.Client.ViewModel
 {
-    public class ManagerBase<T>:ViewModelBase
+    public class ManagerBase<ItemType>:ViewModelBase where ItemType :  EntityVMBase<ItemType>
     {
+
+        bool _autoLoadDataOnInitialize;
         bool _isBusy;
-        T _selectedItem;
+        ItemType _selectedItem;
         private bool _isEditing;
-        private T _currentEditingItem;
-        private T _presentItem;
+        private ItemType _currentEditingItem;
+        private ItemType _presentItem;
         private ICommand _addCommand;
         private ICommand _deleteCommand;
         private ICommand _editCommand;
         private ICommand _saveCommand;
         private ICommand _cancelCommand;
+        private ICommand _refreshItemsCommand;
+        public ICommand RefreshItemsCommand
+        {
+            get
+            {
+                if (_refreshItemsCommand == null)
+                {
+                    _refreshItemsCommand = new RelayCommand(RefreshItemsExcute, RefreshItemsPredicate);
+                }
+                return _refreshItemsCommand;
+            }
+        }
+        ObservableCollection<ItemType> _itemList = new ObservableCollection<ItemType>();
+      
+        protected virtual bool RefreshItemsPredicate()
+        {
+            return true;
+        }
+
+        protected virtual void RefreshItemsExcute()
+        {
+           
+        }
+        public ObservableCollection<ItemType> ItemList { get => _itemList; }
+        /// <summary>
+        /// 是否在创建时就加载相关数据
+        /// </summary>
+        public bool AutoLoadDataOnInitialize { get=>_autoLoadDataOnInitialize;
+            set
+            {
+                _autoLoadDataOnInitialize = value;
+                if(value)
+                {
+                    this.RefreshItemsExcute();
+                }
+            }
+        }
 
         public bool IsBusy { get => _isBusy; set { Set(() => IsBusy, ref _isBusy, value); } }
         /// <summary>
         ///列表（树）上当前被先中的项
         /// </summary>
-        public T SelectedItem
+        public ItemType SelectedItem
         {
             get => _selectedItem;
             set
@@ -44,7 +85,7 @@ namespace Calen.IOP.Client.ViewModel
         /// <summary>
         /// 当前被编辑的项
         /// </summary>
-        public T CurrentEditingItem
+        public ItemType CurrentEditingItem
         {
             get => _currentEditingItem;
             set
@@ -60,7 +101,7 @@ namespace Calen.IOP.Client.ViewModel
         /// <summary>
         /// 当前呈现项
         /// </summary>
-        public T PresentItem { get => _presentItem; set { Set(() => PresentItem, ref _presentItem, value); } }
+        public ItemType PresentItem { get => _presentItem; set { Set(() => PresentItem, ref _presentItem, value); } }
 
         public ICommand AddCommand
         {
@@ -171,8 +212,32 @@ namespace Calen.IOP.Client.ViewModel
             ;
         }
 
-        
-       
-      
+        protected virtual void ClearEditingState()
+        {
+            this.IsEditing = false;
+            this.CurrentEditingItem.IsEditing = false;
+            this.CurrentEditingItem.IsDirty = false;
+            this.CurrentEditingItem.IsNew = false;
+            this.CurrentEditingItem = null;
+            this.PresentItem = this.SelectedItem;
+        }
+
+        public IDeleteItemDialog<ItemType> DeleteItemDialog { get; set; }
+        public IEditItemDialog<ItemType> EditItemDialog { get; set; }
+    }
+
+    public interface IDeleteItemDialog<T>
+    {
+        Task<bool> ShowDialog(T vm);
+        /// <summary>
+        /// true:删除所有子级，false:不删子级
+        /// </summary>
+        bool RecursiveDelete { get; set; }
+    }
+
+    public interface IEditItemDialog<T>
+    {
+        Task<bool> ShowDialog(T vm);
+
     }
 }

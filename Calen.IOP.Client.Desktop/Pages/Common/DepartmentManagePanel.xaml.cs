@@ -21,14 +21,14 @@ namespace Calen.IOP.Client.Desktop.Pages
     /// <summary>
     /// DepartmentManagePanel.xaml 的交互逻辑
     /// </summary>
-    public partial class DepartmentManagePanel : UserControl,ViewModel.IDeleteDepartmentDialog
+    public partial class DepartmentManagePanel : UserControl,ViewModel.IDeleteItemDialog<DepartmentVM>
     {
         public DepartmentManagePanel()
         {
             InitializeComponent();
             this.DataContext= _departmentManager = new DepartmentManagerVM();
-            _departmentManager.RefreshDepartmentsCommand.Execute(null);
-            _departmentManager.DeleteDepartmentDialog = this;
+            _departmentManager.RefreshItemsCommand.Execute(null);
+            _departmentManager.DeleteItemDialog = this;
         }
 
         public DepartmentManagerVM _departmentManager;

@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:Calen.IOP.Client.Desktop"
+    xmlns:vm="clr-namespace:Calen.IOP.Client.ViewModel"
         xmlns:View="clr-namespace:Calen.IOP.Client.Desktop.View"
+     xmlns:dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+             dialog:DialogParticipation.Register="{x:Static vm:Constants.MainDialog}"
         x:Class="Calen.IOP.Client.Desktop.MainWindow"
           BorderThickness="1" 
     TitlebarHeight="48"
@@ -16,12 +19,23 @@
     BorderBrush="{DynamicResource AccentColorBrush}"
     GlowBrush="{DynamicResource AccentColorBrush}" 
         mc:Ignorable="d"
-        Title="新 业 务 管 理 系 统" Height="600" Width="1100" WindowStartupLocation="CenterScreen">
+        Title=" " Height="600" Width="1100" WindowStartupLocation="CenterScreen">
     <mahapps:MetroWindow.TitleTemplate>
         <DataTemplate >
             <TextBlock Text="{Binding}" Margin="14,0,0,0" FontSize="16" FontWeight="Bold" Foreground="#FFdedede" VerticalAlignment="Center"/>
         </DataTemplate>
     </mahapps:MetroWindow.TitleTemplate>
+    <mahapps:MetroWindow.Flyouts>
+        <mahapps:FlyoutsControl Margin="0,48,0,32">
+            <mahapps:Flyout   HeaderTemplate="{x:Null}" 
+                             Position="Right" TitleVisibility="Collapsed" CloseButtonVisibility="Collapsed"
+                              IsPinned="False" IsOpen="{Binding Source={x:Static vm:AppCxt.Current},Path=WindowController.IsOptionsSettingVisible}" Theme="Light">
+                <Grid Background="{DynamicResource EdgeBarColorLevel1}"  Width="260" >
+
+                </Grid>
+            </mahapps:Flyout>
+        </mahapps:FlyoutsControl>
+    </mahapps:MetroWindow.Flyouts>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -35,8 +49,33 @@
         <GridSplitter Name="gridSplitter"  Background="{DynamicResource EdgeBarColorLevel1}" Width="8" />
         <View:ContentContainerPanel Grid.Column="2" x:Name="contentContainer" />
 
-        <Border Grid.Row="1" Height="30" Grid.ColumnSpan="3" Background="#FF24292E" >
-
-        </Border>
+        <Grid Grid.Row="1" Height="32" Grid.ColumnSpan="3" Background="#FF24292E" >
+            <Grid.Resources>
+                <Style TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonStyle_GeometryContent}">
+                    <Setter Property="Foreground" Value="#ddffffff"/>
+                    <Setter Property="Padding" Value="8"/>
+                    <Setter Property="Width" Value="{Binding RelativeSource={RelativeSource Self},Path=Height}"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" Value="#22ffffff"/>
+                            <Setter Property="Foreground" Value="#eeffffff"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" Value="#33ffffff"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter Property="Background" Value="#44ffffff"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Resources>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  VerticalAlignment="Center">
+                <ToggleButton  Content="{DynamicResource Geo_Setting}" IsChecked="{Binding Source={x:Static vm:AppCxt.Current},Path=WindowController.IsOptionsSettingVisible}">
+                    
+                </ToggleButton>
+            </StackPanel>
+        </Grid>
     </Grid>
 </mahapps:MetroWindow>

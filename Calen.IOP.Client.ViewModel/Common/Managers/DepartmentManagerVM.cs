@@ -17,38 +17,23 @@ namespace Calen.IOP.Client.ViewModel
 {
     public class DepartmentManagerVM:ManagerBase<DepartmentVM>
     {
-        ObservableCollection<DepartmentVM> _rootDepartments = new ObservableCollection<DepartmentVM>();
+      
         bool _isEditingNewItem;
         string _lastPresentDepartmentId;
         
         
 
-        public ObservableCollection<DepartmentVM> RootDepartments { get => _rootDepartments;  }
+      
        
-        public ICommand RefreshDepartmentsCommand
-        {
-            get
-            {
-                if (_refreshDepartmentsCommand == null)
-                {
-                    _refreshDepartmentsCommand = new RelayCommand(RefreshDepartmentsExcute);
-                }
-                return _refreshDepartmentsCommand;
-            }
-        }
+        
 
-       
-#region Commands
-        ICommand _refreshDepartmentsCommand;
-       
 
-        private void RefreshDepartmentsExcute()
+      
+        protected override void RefreshItemsExcute()
         {
             this.RefreshDepartmentsAsync();
         }
-        #endregion
 
-        
         protected override void AddExecute()
         {
             DepartmentVM vm = new DepartmentVM() { Id = Guid.NewGuid().ToString(), IsEditing = true };
@@ -64,7 +49,7 @@ namespace Calen.IOP.Client.ViewModel
 
         protected override bool DeletePredicate()
         {
-            return this.DeleteDepartmentDialog != null && this.SelectedItem != null;
+            return this.DeleteItemDialog != null && this.SelectedItem != null;
         }
         protected override void DeleteExecute()
         {
@@ -72,10 +57,10 @@ namespace Calen.IOP.Client.ViewModel
         }
         private async void TryDeleteSelectedAsync()
         {
-            if(this.DeleteDepartmentDialog!=null)
+            if(this.DeleteItemDialog!=null)
             {
-                bool shouldDelete= await this.DeleteDepartmentDialog.ShowDialog(this.SelectedItem);
-                bool recursive = this.DeleteDepartmentDialog.RecursiveDelete;
+                bool shouldDelete= await this.DeleteItemDialog.ShowDialog(this.SelectedItem);
+                bool recursive = this.DeleteItemDialog.RecursiveDelete;
                 if (shouldDelete)
                 {
                     department dto = DepartmentConvertUtil.ToDto(this.SelectedItem,recursive);
@@ -113,30 +98,26 @@ namespace Calen.IOP.Client.ViewModel
             department[] ds = new department[] { DepartmentConvertUtil.ToDto(this.CurrentEditingItem) };
             await AppCxt.Current.DataPortal.UpdateDepartments(ds);
             this.IsBusy = false;
-            this.StopEditingState();
+            this.ClearEditingState();
             this.RefreshDepartmentsAsync();
         }
 
         protected override void CancelExecute()
         {
-            this.StopEditingState();
-
+            this.ClearEditingState();
         }
 
-        private void StopEditingState()
+        protected override void ClearEditingState()
         {
-            this.IsEditing = false;
-            this._isEditingNewItem = false;
             _lastPresentDepartmentId = this.CurrentEditingItem.Id;
-            this.CurrentEditingItem.IsEditing = false;
-            this.CurrentEditingItem = null;
-            this.PresentItem = this.SelectedItem;
+            this._isEditingNewItem = false;
+            base.ClearEditingState();
         }
 
         private async void RefreshDepartmentsAsync()
         {
             if (IsInDesignMode) return;
-            _rootDepartments.Clear();
+            ItemList.Clear();
             this.IsBusy = true;
             ICollection<department> ds=await AppCxt.Current.DataPortal.GetDepartmentTreeAsync();
             this.IsBusy = false;
@@ -145,14 +126,14 @@ namespace Calen.IOP.Client.ViewModel
                 foreach (department d in ds)
                 {
                     DepartmentVM vm = DepartmentConvertUtil.FromDto(null,d);
-                    _rootDepartments.Add(vm);
+                    ItemList.Add(vm);
                 }
             }
             
 
             //刷新后，设置原来选中的项
                 bool isFound=false;
-                foreach(var root in _rootDepartments)
+                foreach(var root in ItemList)
                 {
                     isFound = this.FindSelectedItem(root);
                     if (isFound)//找上次的选中项，并将其选中
@@ -160,9 +141,9 @@ namespace Calen.IOP.Client.ViewModel
                         break;
                     }
                 }
-                if (!isFound&&this._rootDepartments.Count > 0)//没有选中项，默认选中第一项
+                if (!isFound&&this.ItemList.Count > 0)//没有选中项，默认选中第一项
                 {
-                    this._rootDepartments[0].IsSelected = true;
+                    this.ItemList[0].IsSelected = true;
                 }
            
         }
@@ -173,7 +154,7 @@ namespace Calen.IOP.Client.ViewModel
             department[] ds = new department[] { DepartmentConvertUtil.ToDto(this.CurrentEditingItem) };
              await AppCxt.Current.DataPortal.AddDepartments(ds);
             this.IsBusy = false;
-            this.StopEditingState();
+            this.ClearEditingState();
             this.RefreshDepartmentsAsync();
         }
 
@@ -217,16 +198,9 @@ namespace Calen.IOP.Client.ViewModel
 
         
 
-        public IDeleteDepartmentDialog DeleteDepartmentDialog { get; set; }
+       
         
     }
 
-    public interface IDeleteDepartmentDialog
-    {
-        Task<bool> ShowDialog(DepartmentVM vm);
-        /// <summary>
-        /// true:删除所有子级，false:不删子级
-        /// </summary>
-        bool RecursiveDelete { get; set; }
-    }
+   
 }

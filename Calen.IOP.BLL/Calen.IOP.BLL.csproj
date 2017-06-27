@@ -58,6 +58,7 @@
     <Compile Include="Converters\JobPositionLevelConverter.cs" />
     <Compile Include="Converters\JobTypeConverter.cs" />
     <Compile Include="DepartmentManager.cs" />
+    <Compile Include="HireTypeManager.cs" />
     <Compile Include="JobTypeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -21,16 +21,6 @@
             <Setter Property="Height" Value="36"/>
             <Setter Property="Margin" Value="0 8 "/>
         </Style>
-        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
-            <Setter Property="FontSize" Value="{DynamicResource FontSize_Content_Large}"/>
-            <Setter Property="Foreground" Value="{DynamicResource Foreground_DarkKey}"/>
-            <Setter Property="Padding" Value="2"/>
-        </Style>
-        <Style TargetType="ComboBox" BasedOn="{StaticResource {x:Type ComboBox}}">
-            <Setter Property="FontSize" Value="{DynamicResource FontSize_Content_Large}"/>
-            <Setter Property="Foreground" Value="{DynamicResource Foreground_DarkKey}"/>
-            <Setter Property="Padding" Value="4"/>
-        </Style>
     </UserControl.Resources>
     <Grid >
         <Grid.ColumnDefinitions>

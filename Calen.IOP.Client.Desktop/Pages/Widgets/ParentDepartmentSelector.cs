@@ -28,10 +28,10 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
         {
            if(this.ChildDepartment!=null)
             {
-                var items = this.RootDepartments.ToList();
+                var items = this.ItemList.ToList();
                 foreach(var item in items)
                 {
-                    TryRemoveChildDepartmentFromTree(RootDepartments, item);
+                    TryRemoveChildDepartmentFromTree(ItemList, item);
                 }
             }
         }

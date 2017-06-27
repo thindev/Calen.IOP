@@ -1,4 +1,5 @@
 ﻿using Calen.IOP.Client.Desktop.View;
+using Calen.IOP.Client.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,13 @@ namespace Calen.IOP.Client.Desktop
             _collapseAnimation=new DoubleAnimation() { Duration = new Duration(TimeSpan.FromMilliseconds(200)),To=this.leftPanel.CollapsedWidth ,EasingFunction=fun};
             _collapseAnimation.Completed += _collapseAnimation_Completed;
             _expandAnimation.Completed += _expandAnimation_Completed; ;
+        }
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            FrameworkElement fe = (FrameworkElement)base.GetVisualChild(0);
+            fe.LayoutTransform = AppCxt.Current.OptionsSettings.ScaleTransform;
         }
 
         private void _expandAnimation_Completed(object sender, EventArgs e)

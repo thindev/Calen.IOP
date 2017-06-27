@@ -56,5 +56,25 @@ namespace Calen.IOP.DataPortal
             string content = response.Content;
             return 0;
         }
+
+        public async Task<ICollection<hireType>> GetAllHireTypesAsync()
+        {
+            var request = new RestRequest("hiretypes", Method.GET);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            var result = JsonConvert.DeserializeObject<hireType[]>(content);
+            return result;
+        }
+
+        public async Task<int> AddHireTypes(hireType[] hts)
+        {
+            var request = new RestRequest("hiretypes", Method.POST);
+            request.AddJsonBody(hts);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 0;
+        }
     }
 }

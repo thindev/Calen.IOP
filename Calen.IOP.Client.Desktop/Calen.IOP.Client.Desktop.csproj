@@ -97,20 +97,23 @@
     <Compile Include="Pages\Dialogs\DepartmentDeleteDialog.xaml.cs">
       <DependentUpon>DepartmentDeleteDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\DepartmentDetailPanel.xaml.cs">
+    <Compile Include="Pages\Common\DepartmentDetailPanel.xaml.cs">
       <DependentUpon>DepartmentDetailPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\DepartmentManagePage.xaml.cs">
+    <Compile Include="Pages\Common\DepartmentManagePage.xaml.cs">
       <DependentUpon>DepartmentManagePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\DepartmentManagePanel.xaml.cs">
+    <Compile Include="Pages\Common\DepartmentManagePanel.xaml.cs">
       <DependentUpon>DepartmentManagePanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\EmployeeManagePage.xaml.cs">
+    <Compile Include="Pages\Common\EmployeeManagePage.xaml.cs">
       <DependentUpon>EmployeeManagePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\JobTypeManagePanel.xaml.cs">
+    <Compile Include="Pages\Common\JobTypeManagePanel.xaml.cs">
       <DependentUpon>JobTypeManagePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Dialogs\EditHireTypeDialog.xaml.cs">
+      <DependentUpon>EditHireTypeDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Widgets\DepartmentSelector.xaml.cs">
       <DependentUpon>DepartmentSelector.xaml</DependentUpon>
@@ -144,23 +147,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\DepartmentDetailPanel.xaml">
+    <Page Include="Pages\Common\DepartmentDetailPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\DepartmentManagePage.xaml">
+    <Page Include="Pages\Common\DepartmentManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\DepartmentManagePanel.xaml">
+    <Page Include="Pages\Common\DepartmentManagePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\EmployeeManagePage.xaml">
+    <Page Include="Pages\Common\EmployeeManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\JobTypeManagePanel.xaml">
+    <Page Include="Pages\Common\JobTypeManagePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Dialogs\EditHireTypeDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -13,6 +13,7 @@ namespace Calen.IOP.Client.ViewModel
         public AppCxt()
         {
             _dataPortal = new RestDataPortal(@"http://localhost:6917/api/");
+            _optionsSettings = new OptionsSettingVM();
         }
         public static AppCxt Current
         {
@@ -20,7 +21,15 @@ namespace Calen.IOP.Client.ViewModel
         }
 
         public IDataPortal DataPortal { get => _dataPortal;}
+        public OptionsSettingVM OptionsSettings { get => _optionsSettings;}
+       
 
         IDataPortal _dataPortal;
+
+        OptionsSettingVM _optionsSettings;
+#if WINDOWS_WPF
+        WindowViewControllerVM _windowController = new WindowViewControllerVM();
+        public WindowViewControllerVM WindowController { get => _windowController; }
+#endif
     }
 }

@@ -6,10 +6,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:Calen.IOP.Client.ViewModel"
     xmlns:ctrl="clr-namespace:Calen.IOP.Client.Desktop.Controls"
-             xmlns:dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
       xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
-             dialog:DialogParticipation.Register="{x:Static vm:Constants.MainDialog}"
              mc:Ignorable="d" 
              d:DesignHeight="390.304" >
     <UserControl.Resources>
@@ -30,7 +28,7 @@
         </Grid.ColumnDefinitions>
         <Border Grid.Column="0" Margin="0,0,6,0" BorderThickness="0" BorderBrush="{DynamicResource EdgeBarBorderColorLevel2}">
             <Grid Background="White">
-                <TreeView Grid.Row="1" ItemsSource="{Binding RootDepartments}" ItemContainerStyle="{StaticResource TreeViewItemModern1}" ItemTemplate="{DynamicResource DepartmentDataTemplate}" SelectedItemChanged="TreeView_SelectedItemChanged"
+                <TreeView Grid.Row="1" ItemsSource="{Binding ItemList}" ItemContainerStyle="{StaticResource TreeViewItemModern1}" ItemTemplate="{DynamicResource DepartmentDataTemplate}" SelectedItemChanged="TreeView_SelectedItemChanged"
                           Background="White" IsEnabled="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}">
                 </TreeView>
             </Grid>
@@ -56,8 +54,8 @@
                             
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
-                            <Button Style="{DynamicResource ButtonStyle_GeometryContent}" Content="{DynamicResource Geo_Refresh}" Margin="6,6,8,6" Padding="4" ToolTip="刷新树"
-                                    Command="{Binding RefreshDepartmentsCommand}"
+                            <Button Style="{DynamicResource ButtonStyle_GeometryContent_Circle_Green}" Content="{DynamicResource Geo_Refresh}" Margin="6,6,8,6" Padding="6" ToolTip="刷新树"
+                                    Command="{Binding RefreshItemsCommand}"
                                     Visibility="{Binding IsEditing,Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
                             <StackPanel Orientation="Horizontal"  Margin="0,4" Visibility="{Binding IsEditing,Converter={StaticResource bool2VisibilityConverter}}">
                                 
@@ -77,13 +75,13 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0,4" Visibility="{Binding IsEditing,Converter={StaticResource InverseBoolToVisibilityConverter}}">
 
-                                <Button  Margin="4,0" Padding="12,0" Style="{DynamicResource ButtonStyle_Green}"
+                                <Button  Margin="4,0" Padding="12,0" Style="{DynamicResource ButtonStyle_Blue}"
                                      Command="{Binding AddCommand}">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                         <TextBlock Text="添加部门" />
                                     </StackPanel>
                                 </Button>
-                                <Button Style="{DynamicResource ButtonStyle_Blue}" Margin="4,0" Padding="12,0" Command="{Binding EditCommand}">
+                                <Button Style="{DynamicResource ButtonStyle_Yellow}" Margin="4,0" Padding="12,0" Command="{Binding EditCommand}">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                         <TextBlock Text="修改部门" />
                                     </StackPanel>
