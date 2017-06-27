@@ -19,7 +19,14 @@
         <ResourceDictionary Source="ControlStyles.xaml" />
         <!--DataTemplates-->
         <ResourceDictionary Source="DataTemplates.xaml"/>
+        <ResourceDictionary Source="ButtonStyles.xaml"/>
+        <ResourceDictionary Source="PageTabControlStyle.xaml"/>
+        <ResourceDictionary Source="DataGridStyles.xaml"/>
+        <ResourceDictionary Source="TreeViewStyles.xaml"/>
+        <ResourceDictionary Source="TextBoxStyles.xaml"/>
+        <ResourceDictionary Source="CustomMetroDialogStyles.xaml"/>
     </ResourceDictionary.MergedDictionaries>
+    
     <sys:Double x:Key="FontSize_Title_Large">16.0</sys:Double>
     <sys:Double x:Key="FontSize_Title_Middle">15.0</sys:Double>
     <sys:Double x:Key="FontSize_Title_Small">14.5</sys:Double>

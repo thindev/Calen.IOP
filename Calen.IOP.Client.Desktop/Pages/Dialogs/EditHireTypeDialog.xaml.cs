@@ -34,8 +34,8 @@ namespace Calen.IOP.Client.Desktop.Pages.Dialogs
             dialog = new CustomDialog() { Title = "添加新项" };
             dialog.VerticalAlignment = VerticalAlignment.Center;
             dialog.HorizontalAlignment = HorizontalAlignment.Center;
-            dialog.Content = this;
-            await DialogCoordinator.Instance.ShowMetroDialogAsync(Constants.MAIN_DIALOG, dialog, (new MetroDialogSettings()));
+            dialog.Content = this; 
+             await DialogCoordinator.Instance.ShowMetroDialogAsync(Constants.MAIN_DIALOG, dialog, (new MetroDialogSettings()));
             await dialog.WaitUntilUnloadedAsync();
             return result;
         }

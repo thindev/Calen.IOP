@@ -101,6 +101,6 @@
                 </Grid>
             </Grid>
         </Border>
-        <ctrl:BusyIndicator IsBusy="{Binding IsBusy}" Foreground="{DynamicResource HighlightBrush}" Grid.ColumnSpan="5"  Background="#11000000" Visibility="Collapsed"/>
+        <ctrl:BusyIndicator IsBusy="{Binding IsBusy}" Foreground="{DynamicResource HighlightBrush}" Grid.ColumnSpan="5"   Visibility="Collapsed"/>
     </Grid>
 </UserControl>

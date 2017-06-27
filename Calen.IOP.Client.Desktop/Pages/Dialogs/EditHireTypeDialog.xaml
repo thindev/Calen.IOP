@@ -7,32 +7,36 @@
              mc:Ignorable="d" 
              Height="268" Width="399" Background="White">
     <UserControl.Resources>
-        <Style  TargetType="{x:Type TextBlock}">
-            <Setter Property="TextWrapping" Value="NoWrap"/>
-            <Setter Property="TextTrimming" Value="None"/>
-            <Setter Property="FontSize" Value="{DynamicResource FontSize_Title_Small}"/>
-            <Setter Property="Foreground" Value="{DynamicResource Foreground_NormalKey}"/>
-            <Setter Property="Width" Value="72"/>
-            <Setter Property="TextAlignment" Value="Right"/>
-        </Style>
-        <Style TargetType="{x:Type DockPanel}">
-            <Setter Property="Height" Value="36"/>
-            <Setter Property="Margin" Value="0 8 "/>
-        </Style>
+        <ResourceDictionary>
+            <Style  TargetType="{x:Type TextBlock}">
+                    <Setter Property="TextWrapping" Value="NoWrap"/>
+                    <Setter Property="TextTrimming" Value="None"/>
+                    <Setter Property="FontSize" Value="{DynamicResource FontSize_Title_Small}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource Foreground_NormalKey}"/>
+                    <Setter Property="Width" Value="72"/>
+                    <Setter Property="TextAlignment" Value="Right"/>
+                </Style>
+                <Style TargetType="{x:Type DockPanel}">
+                    <Setter Property="Margin" Value="0 10 "/>
+                </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Skins/TextBoxStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
     <Grid Name="rootLayout">
-        <StackPanel Margin="12,12,12,59"  >
+        <StackPanel Margin="0,0,0,59"  >
             <DockPanel>
                 <TextBlock Text="类型编码：" VerticalAlignment="Center" />
-                <TextBox VerticalAlignment="Center" Text="{Binding Code}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
+                <TextBox VerticalAlignment="Center" Text="{Binding Code}" />
             </DockPanel>
             <DockPanel>
                 <TextBlock Text="类型名称：" VerticalAlignment="Center" />
-                <TextBox VerticalAlignment="Center" Text="{Binding Name}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
+                <TextBox VerticalAlignment="Center" Text="{Binding Name}" />
             </DockPanel>
-            <DockPanel Height="82">
+            <DockPanel >
                 <TextBlock Text="    描述：" VerticalAlignment="Center" />
-                <TextBox VerticalAlignment="Center" Text="{Binding Description}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}" Height="64" MaxLines="1000"/>
+                <TextBox VerticalAlignment="Center" Text="{Binding Description}" Height="64" MaxLines="1000"/>
             </DockPanel>
         </StackPanel>
         <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal"  HorizontalAlignment="Center" Height="44" Margin="130,0,129,10">

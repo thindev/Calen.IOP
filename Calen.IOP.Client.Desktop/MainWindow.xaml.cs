@@ -27,8 +27,8 @@ namespace Calen.IOP.Client.Desktop
         {
             InitializeComponent();
             var fun = new CubicEase() { EasingMode = EasingMode.EaseInOut };
-            _expandAnimation = new DoubleAnimation() { Duration = new Duration(TimeSpan.FromMilliseconds(200)), EasingFunction = fun ,FillBehavior=FillBehavior.Stop};
-            _collapseAnimation=new DoubleAnimation() { Duration = new Duration(TimeSpan.FromMilliseconds(200)),To=this.leftPanel.CollapsedWidth ,EasingFunction=fun};
+            _expandAnimation = new DoubleAnimation() { Duration = new Duration(TimeSpan.FromMilliseconds(200)), FillBehavior=FillBehavior.Stop,AccelerationRatio=0.9};
+            _collapseAnimation=new DoubleAnimation() { Duration = new Duration(TimeSpan.FromMilliseconds(200)),To=this.leftPanel.CollapsedWidth ,AccelerationRatio=0.9};
             _collapseAnimation.Completed += _collapseAnimation_Completed;
             _expandAnimation.Completed += _expandAnimation_Completed; ;
         }

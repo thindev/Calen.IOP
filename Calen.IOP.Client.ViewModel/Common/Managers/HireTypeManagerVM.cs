@@ -12,6 +12,7 @@ namespace Calen.IOP.Client.ViewModel
        
         protected override void RefreshItemsExcute()
         {
+            if (this.IsInDesignMode) return;
             this.RefreshItemsAsync();
         }
         protected override void AddExecute()
