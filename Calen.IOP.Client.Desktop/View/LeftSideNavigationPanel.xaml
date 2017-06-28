@@ -32,7 +32,7 @@
                         <Setter Property="Text" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TreeViewItem},Path=(desktop:FunctionMgr.FunctionName)}"/>
                     </Style>
                 </TreeView.Resources>
-                <TreeViewItem desktop:FunctionMgr.FunctionName="组织管理" IsExpanded="True">
+                <TreeViewItem desktop:FunctionMgr.FunctionId="01000000" IsExpanded="True">
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Path Data="{DynamicResource Geo_NavMenu_ShopManage}" Height="{DynamicResource FontSize_Title_Large}" Fill="#FF05B82E" />
@@ -40,7 +40,7 @@
                         </StackPanel>
                     </TreeViewItem.Header>
                     <TreeViewItem.Items>
-                        <TreeViewItem desktop:FunctionMgr.FunctionName="组织配置" desktop:FunctionMgr.FunctionPageUri="Pages/Common/DepartmentManagePage.xaml">
+                        <TreeViewItem desktop:FunctionMgr.FunctionId="01010000">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Path Data="{DynamicResource Geo_NavMenu_OrganizationManage}"/>
@@ -48,7 +48,7 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem desktop:FunctionMgr.FunctionName="职员信息">
+                        <TreeViewItem desktop:FunctionMgr.FunctionId="01020000" desktop:FunctionMgr.FunctionName="职员信息">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Path Data="{DynamicResource Geo_NavMenu_EmployeesManage}"/>
@@ -56,7 +56,7 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem desktop:FunctionMgr.FunctionName="固定资产">
+                        <TreeViewItem desktop:FunctionMgr.FunctionId="01030000" desktop:FunctionMgr.FunctionName="固定资产">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Path Data="{DynamicResource Geo_NavMenu_RoomsManage}"/>
@@ -66,14 +66,14 @@
                         </TreeViewItem>
                     </TreeViewItem.Items>
                 </TreeViewItem>
-                <TreeViewItem desktop:FunctionMgr.FunctionName="经营管理" >
+                <TreeViewItem desktop:FunctionMgr.FunctionId="02000000" desktop:FunctionMgr.FunctionName="经营管理" >
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Path Data="{DynamicResource Geo_NavMenu_VipManage}" Height="{DynamicResource FontSize_Title_Large}" Fill="#FFF19918" />
                             <TextBlock Margin="8,0,0,0"/>
                         </StackPanel>
                     </TreeViewItem.Header>
-                    <TreeViewItem desktop:FunctionMgr.FunctionName="课程管理">
+                    <TreeViewItem desktop:FunctionMgr.FunctionId="020100000" desktop:FunctionMgr.FunctionName="课程管理">
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <Path Data="{DynamicResource Geo_NavMenu_CoursesManage}"/>
@@ -82,7 +82,7 @@
                         </TreeViewItem.Header>
                     </TreeViewItem>
                 </TreeViewItem>
-                <TreeViewItem desktop:FunctionMgr.FunctionName="会员管理" >
+                <TreeViewItem desktop:FunctionMgr.FunctionId="03000000" desktop:FunctionMgr.FunctionName="会员管理" >
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Path Data="{DynamicResource Geo_NavMenu_VipManage}" Height="{DynamicResource FontSize_Title_Large}" Fill="#FFF19918" />
@@ -90,7 +90,7 @@
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
-                <TreeViewItem desktop:FunctionMgr.FunctionName="客户资源开发" >
+                <TreeViewItem desktop:FunctionMgr.FunctionId="04000000" desktop:FunctionMgr.FunctionName="客户资源开发" >
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Path Data="{DynamicResource Geo_NavMenu_CustomerDevelop}" Height="{DynamicResource FontSize_Title_Large}" Fill="#FF07B970" />
@@ -98,7 +98,7 @@
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
-                <TreeViewItem desktop:FunctionMgr.FunctionName="绩效管理" >
+                <TreeViewItem desktop:FunctionMgr.FunctionId="05000000" desktop:FunctionMgr.FunctionName="绩效管理" >
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Path Data="{DynamicResource Geo_NavMenu_PerformanceManage}" Height="{DynamicResource FontSize_Title_Large}" Fill="#FF2990F7" />
@@ -106,7 +106,7 @@
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
-                <TreeViewItem desktop:FunctionMgr.FunctionName="商品管理" >
+                <TreeViewItem desktop:FunctionMgr.FunctionId="06000000" desktop:FunctionMgr.FunctionName="商品管理" >
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Path Data="{DynamicResource Geo_NavMenu_GoodsManage}" Height="{DynamicResource FontSize_Title_Large}" Fill="#ff3455" />
@@ -114,7 +114,7 @@
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
-                <TreeViewItem desktop:FunctionMgr.FunctionName="信息管理" >
+                <TreeViewItem desktop:FunctionMgr.FunctionId="07000000" desktop:FunctionMgr.FunctionName="信息管理" >
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Path Data="{DynamicResource Geo_NavMenu_InformationManage}" Height="{DynamicResource FontSize_Title_Large}" Fill="#FF04BAF0" />
@@ -122,7 +122,7 @@
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
-                <TreeViewItem desktop:FunctionMgr.FunctionName="前台服务" >
+                <TreeViewItem desktop:FunctionMgr.FunctionId="08000000" desktop:FunctionMgr.FunctionName="前台服务" >
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Path Data="{DynamicResource Geo_NavMenu_FrontDeskService}" Height="{DynamicResource FontSize_Title_Large}" Fill="#FFF58806" />

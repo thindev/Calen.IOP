@@ -25,13 +25,17 @@ namespace Calen.IOP.Client.Desktop
     {
         public MainWindow()
         {
+           
             InitializeComponent();
             var fun = new CubicEase() { EasingMode = EasingMode.EaseInOut };
             _expandAnimation = new DoubleAnimation() { Duration = new Duration(TimeSpan.FromMilliseconds(200)), FillBehavior=FillBehavior.Stop,AccelerationRatio=0.9};
             _collapseAnimation=new DoubleAnimation() { Duration = new Duration(TimeSpan.FromMilliseconds(200)),To=this.leftPanel.CollapsedWidth ,AccelerationRatio=0.9};
             _collapseAnimation.Completed += _collapseAnimation_Completed;
             _expandAnimation.Completed += _expandAnimation_Completed;
-            FunctionMgr.InitFunctionTree(@"C:\Users\Chenzq\Desktop\FunctionConfig.xml");
+
+            string file = AppDomain.CurrentDomain.BaseDirectory + @"config\FunctionConfig.xml";
+            FunctionMgr.InitFunctionTree(file);
+            FunctionMgr.EnableFunctions();
         }
 
         public override void OnApplyTemplate()
@@ -65,7 +69,8 @@ namespace Calen.IOP.Client.Desktop
             TreeViewItem tv = e.NewValue;
             if(tv!=null)
             {
-                Uri uri = FunctionMgr.GetFunctionPageUri(tv);
+                Uri uri;
+                Uri.TryCreate(FunctionMgr.GetFunctionPageUri(tv),UriKind.Absolute,out uri);
                 string name = FunctionMgr.GetFunctionName(tv);
                 this.contentContainer.GoToPage(uri,name);
             }

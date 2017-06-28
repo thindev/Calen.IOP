@@ -10,6 +10,7 @@ namespace Calen.IOP.Client.ViewModel.Common
     {
         string _id;
         string _name;
+        string _uri;
         string _description;
         bool _isChecked;
         bool _isReadOnly;
@@ -21,5 +22,6 @@ namespace Calen.IOP.Client.ViewModel.Common
         public bool IsChecked { get => _isChecked; set { Set(() => IsChecked, ref _isChecked, value); } }
         public bool IsReadOnly { get => _isReadOnly; set { Set(()=>IsReadOnly,ref _isReadOnly,value); } }
         public ObservableCollection<FunctionVM> SubFunctions { get => _subFunctions; }
+        public string Uri { get => _uri; set { Set(() => Uri, ref _uri, value); } }
     }
 }
