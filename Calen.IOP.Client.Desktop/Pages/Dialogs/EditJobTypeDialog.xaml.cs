@@ -20,9 +20,9 @@ namespace Calen.IOP.Client.Desktop.Pages.Dialogs
     /// <summary>
     /// EditHireTypeDialog.xaml 的交互逻辑
     /// </summary>
-    public partial class EditHireTypeDialog : UserControl,IEditItemDialog
+    public partial class EditJobTypeDialog : UserControl,IEditItemDialog
     {
-        public EditHireTypeDialog()
+        public EditJobTypeDialog()
         {
             InitializeComponent();
         }

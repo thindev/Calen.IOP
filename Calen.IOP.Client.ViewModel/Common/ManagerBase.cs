@@ -13,7 +13,7 @@ using RelayCommand= GalaSoft.MvvmLight.Command.RelayCommand;
 
 namespace Calen.IOP.Client.ViewModel
 {
-    public class ManagerBase<ItemType>:ViewModelBase where ItemType :  EntityVMBase<ItemType>
+    public class ManagerBase<ItemType>:ViewModelBase where ItemType : EntityVMBase
     {
 
         bool _autoLoadDataOnInitialize;
@@ -222,22 +222,22 @@ namespace Calen.IOP.Client.ViewModel
             this.PresentItem = this.SelectedItem;
         }
 
-        public IDeleteItemDialog<ItemType> DeleteItemDialog { get; set; }
-        public IEditItemDialog<ItemType> EditItemDialog { get; set; }
+        public IDeleteItemsDialog DeleteItemsDialog { get; set; }
+        public IEditItemDialog EditItemDialog { get; set; }
     }
 
-    public interface IDeleteItemDialog<T>
+    public interface IDeleteItemsDialog
     {
-        Task<bool> ShowDialog(T vm);
+        Task<bool> ShowDialog<T>(IEnumerable<T> vmList) where T:EntityVMBase;
         /// <summary>
         /// true:删除所有子级，false:不删子级
         /// </summary>
         bool RecursiveDelete { get; set; }
     }
 
-    public interface IEditItemDialog<T>
+    public interface IEditItemDialog
     {
-        Task<bool> ShowDialog(T vm);
+        Task<bool> ShowDialog<T>(T vm) where T : EntityVMBase;
 
     }
 }

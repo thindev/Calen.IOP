@@ -18,13 +18,15 @@ namespace Calen.IOP.DataPortal
             _restClient = new RestClient(baseUrl);
         }
 
+
+        #region Departments
         public async Task<ICollection<department>> GetDepartmentTreeAsync()
         {
             var request = new RestRequest("departments", Method.GET);
             // execute the request
             IRestResponse response = await _restClient.Execute(request);
             string content = response.Content;
-           var result= JsonConvert.DeserializeObject<department[]>(content);
+            var result = JsonConvert.DeserializeObject<department[]>(content);
             return result;
         }
 
@@ -56,7 +58,9 @@ namespace Calen.IOP.DataPortal
             string content = response.Content;
             return 0;
         }
+        #endregion departments
 
+#region hireTypes
         public async Task<ICollection<hireType>> GetAllHireTypesAsync()
         {
             var request = new RestRequest("hiretypes", Method.GET);
@@ -67,14 +71,120 @@ namespace Calen.IOP.DataPortal
             return result;
         }
 
-        public async Task<int> AddHireTypes(hireType[] hts)
+        public async Task<int> AddHireTypes(IEnumerable<hireType> hts)
         {
             var request = new RestRequest("hiretypes", Method.POST);
             request.AddJsonBody(hts);
             // execute the request
             IRestResponse response = await _restClient.Execute(request);
             string content = response.Content;
-            return 0;
+            return 1;
         }
+        public async Task<int> DeleteHireTypes(IEnumerable<hireType> items)
+        {
+            var request = new RestRequest("hiretypes", Method.DELETE);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
+        }
+
+        public async Task<int> UpdateHireTypes(IEnumerable<hireType> items)
+        {
+            var request = new RestRequest("hiretypes", Method.PUT);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
+        }
+        #endregion hireTypes
+
+        #region jobTypes
+        public async Task<ICollection<jobType>> GetAllJobTypesAsync()
+        {
+            var request = new RestRequest("jobtypes", Method.GET);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            var result = JsonConvert.DeserializeObject<jobType[]>(content);
+            return result;
+        }
+
+        public async Task<int> AddJobTypes(IEnumerable<jobType> items)
+        {
+            var request = new RestRequest("jobtypes", Method.POST);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
+        }
+
+        public async Task<int> DeletJobTypes(IEnumerable<jobType> items)
+        {
+            var request = new RestRequest("jobtypes", Method.DELETE);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
+        }
+
+        public async Task<int> UpdateJobTypes(IEnumerable<jobType> items)
+        {
+            var request = new RestRequest("jobtypes", Method.PUT);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
+        }
+        #endregion jobTypes
+
+        #region jobPositionlevels
+        public async Task<ICollection<jobPositionLevel>> GetAllJobPositionLevelsAsync()
+        {
+            var request = new RestRequest("jobpositionlevels", Method.GET);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            var result = JsonConvert.DeserializeObject<jobPositionLevel[]>(content);
+            return result;
+        }
+
+        public async Task<int> AddJobPositionLevels(IEnumerable<jobPositionLevel> items)
+        {
+            var request = new RestRequest("jobpositionlevels", Method.POST);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
+        }
+
+        public async Task<int> DeletJobPositionLevels(IEnumerable<jobPositionLevel> items)
+        {
+            var request = new RestRequest("jobpositionlevels", Method.DELETE);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
+        }
+
+        public async Task<int> UpdateJobPositionLevels(IEnumerable<jobPositionLevel> items)
+        {
+            var request = new RestRequest("jobpositionlevels", Method.PUT);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
+        } 
+        #endregion
+
+
     }
 }

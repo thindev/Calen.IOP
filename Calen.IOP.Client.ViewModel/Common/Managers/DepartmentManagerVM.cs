@@ -49,7 +49,7 @@ namespace Calen.IOP.Client.ViewModel
 
         protected override bool DeletePredicate()
         {
-            return this.DeleteItemDialog != null && this.SelectedItem != null;
+            return this.DeleteItemsDialog != null && this.SelectedItem != null;
         }
         protected override void DeleteExecute()
         {
@@ -57,10 +57,10 @@ namespace Calen.IOP.Client.ViewModel
         }
         private async void TryDeleteSelectedAsync()
         {
-            if(this.DeleteItemDialog!=null)
+            if(this.DeleteItemsDialog!=null)
             {
-                bool shouldDelete= await this.DeleteItemDialog.ShowDialog(this.SelectedItem);
-                bool recursive = this.DeleteItemDialog.RecursiveDelete;
+                bool shouldDelete= await this.DeleteItemsDialog.ShowDialog(new DepartmentVM[] { this.SelectedItem });
+                bool recursive = this.DeleteItemsDialog.RecursiveDelete;
                 if (shouldDelete)
                 {
                     department dto = DepartmentConvertUtil.ToDto(this.SelectedItem,recursive);

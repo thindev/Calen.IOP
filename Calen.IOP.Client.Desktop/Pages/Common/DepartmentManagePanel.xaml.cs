@@ -21,14 +21,14 @@ namespace Calen.IOP.Client.Desktop.Pages
     /// <summary>
     /// DepartmentManagePanel.xaml 的交互逻辑
     /// </summary>
-    public partial class DepartmentManagePanel : UserControl,ViewModel.IDeleteItemDialog<DepartmentVM>
+    public partial class DepartmentManagePanel : UserControl,IDeleteItemsDialog
     {
         public DepartmentManagePanel()
         {
             InitializeComponent();
             this.DataContext= _departmentManager = new DepartmentManagerVM();
             _departmentManager.RefreshItemsCommand.Execute(null);
-            _departmentManager.DeleteItemDialog = this;
+            _departmentManager.DeleteItemsDialog = this;
         }
 
         public DepartmentManagerVM _departmentManager;
@@ -48,16 +48,17 @@ namespace Calen.IOP.Client.Desktop.Pages
             _departmentManager.SelectedItem = e.NewValue as DepartmentVM;
         }
 
-        public async Task<bool> ShowDialog(DepartmentVM vm)
+        public async Task<bool> ShowDialog<T>(IEnumerable<T> vms)where T:EntityVMBase
         {
-            CustomDialog dialog = new CustomDialog() { Title = "确定要删除("+vm.Name+")吗？"};
+            if (vms.Count() == 0) return false;
+            CustomDialog dialog = new CustomDialog() { Title = "确定要删除("+vms.ElementAt(0).Name+")吗？"};
             DepartmentDeleteDialog content = new DepartmentDeleteDialog();
             dialog.Content = content;
             content.CloseHandler = () =>
               {
                   _dialogCoordinator.HideMetroDialogAsync(Constants.MAIN_DIALOG, dialog);
               };
-            await _dialogCoordinator.ShowMetroDialogAsync(Constants.MAIN_DIALOG, dialog,(new MetroDialogSettings()));
+            await _dialogCoordinator.ShowMetroDialogAsync(Constants.MAIN_DIALOG, dialog);
             await dialog.WaitUntilUnloadedAsync();
             this.RecursiveDelete = content.RecursiveDelete;
             return !content.IsCancel;

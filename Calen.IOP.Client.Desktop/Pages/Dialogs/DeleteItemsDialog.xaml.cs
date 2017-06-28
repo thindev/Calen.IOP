@@ -18,29 +18,18 @@ using System.Windows.Shapes;
 namespace Calen.IOP.Client.Desktop.Pages.Dialogs
 {
     /// <summary>
-    /// EditHireTypeDialog.xaml 的交互逻辑
+    /// DeleteItemsDialog.xaml 的交互逻辑
     /// </summary>
-    public partial class EditHireTypeDialog : UserControl,IEditItemDialog
+    public partial class DeleteItemsDialog : UserControl, IDeleteItemsDialog
     {
-        public EditHireTypeDialog()
+        public bool RecursiveDelete { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        CustomDialog dialog;
+        bool result;
+
+        public DeleteItemsDialog()
         {
             InitializeComponent();
         }
-        CustomDialog dialog;
-        bool result;
-        public async Task<bool> ShowDialog<T>(T vm) where T:EntityVMBase
-        {
-            rootLayout.DataContext = vm;
-            dialog = new CustomDialog() { Title = "添加新项" };
-            dialog.VerticalAlignment = VerticalAlignment.Center;
-            dialog.HorizontalAlignment = HorizontalAlignment.Center;
-            dialog.Content = this; 
-             await DialogCoordinator.Instance.ShowMetroDialogAsync(Constants.MAIN_DIALOG, dialog);
-            await dialog.WaitUntilUnloadedAsync();
-            return result;
-        }
-
-       
 
         private void btn_ok_Click(object sender, RoutedEventArgs e)
         {
@@ -52,6 +41,15 @@ namespace Calen.IOP.Client.Desktop.Pages.Dialogs
         {
             result = false;
             DialogCoordinator.Instance.HideMetroDialogAsync(Constants.MAIN_DIALOG, dialog);
+        }
+
+        public async Task<bool> ShowDialog<T>(IEnumerable<T> items)where T:EntityVMBase
+        {
+            dialog = new CustomDialog() { Title = "确定要删除所选的"+items.Count()+"项记录吗？" };
+            dialog.Content = this;
+            await DialogCoordinator.Instance.ShowMetroDialogAsync(Constants.MAIN_DIALOG, dialog);
+            await dialog.WaitUntilUnloadedAsync();
+            return result;
         }
     }
 }

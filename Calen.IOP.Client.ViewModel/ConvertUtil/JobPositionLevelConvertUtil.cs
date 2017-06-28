@@ -5,13 +5,13 @@ using System.Text;
 
 namespace Calen.IOP.Client.ViewModel.ConvertUtil
 {
-    public class HireTypeConvertUtil
+    public class JobPositionLevelConvertUtil
     {
-        public static HireTypeVM FromDto(hireType dto,HireTypeVM vm=null)
+        public static JobPositionLevelVM FromDto(jobPositionLevel dto, JobPositionLevelVM vm = null)
         {
-            if(vm==null)
+            if (vm == null)
             {
-                vm = new HireTypeVM();
+                vm = new JobPositionLevelVM();
             }
             vm.Code = dto.code;
             vm.Description = dto.description;
@@ -19,9 +19,9 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
             vm.Name = dto.name;
             return vm;
         }
-        public static hireType ToDto(HireTypeVM vm)
+        public static jobPositionLevel ToDto(JobPositionLevelVM vm)
         {
-            hireType dto = new hireType();
+            jobPositionLevel dto = new jobPositionLevel();
             dto.code = vm.Code;
             dto.description = vm.Description;
             dto.id = vm.Id;

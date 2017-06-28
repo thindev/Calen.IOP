@@ -10,6 +10,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AppCxt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\JobPositionLevelManagerVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\JobTypeManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\DepartmentConvertUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\HireTypeConvertUtil.cs" />
@@ -20,16 +22,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Common\EntityVMBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\HireTypeVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\JobPositionVM.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Common\JobPositonLevelVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\JobPositionLevelVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\JobTypeVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\HireTypeManagerVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\JobPositionLevelConvertUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\JobTypeConvertUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\ManagerBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OptionsSettingVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\ViewModelLocator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\WindowViewControllerVM.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Common\Managers\" />
   </ItemGroup>
 </Project>

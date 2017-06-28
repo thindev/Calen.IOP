@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Calen.IOP.Client.ViewModel
 {
-    public class HireTypeManagerVM:ManagerBase<HireTypeVM>
+    public class JobPositionLevelManagerVM : ManagerBase<JobPositionLevelVM>
     {
        
         protected override void RefreshItemsExcute()
@@ -22,7 +22,7 @@ namespace Calen.IOP.Client.ViewModel
         }
         private async void AddItem()
         {
-            HireTypeVM vm = new HireTypeVM() { Id = Guid.NewGuid().ToString() };
+            JobPositionLevelVM vm = new JobPositionLevelVM() { Id = Guid.NewGuid().ToString() };
             vm.IsDirty = true;
             vm.IsEditing = true;
             vm.IsNew = true;
@@ -31,8 +31,8 @@ namespace Calen.IOP.Client.ViewModel
             bool isSaveClick=  await this.EditItemDialog?.ShowDialog(vm);
             if(isSaveClick)
             {
-                hireType[] hts = new hireType[] { HireTypeConvertUtil.ToDto(vm) };
-                int count = await AppCxt.Current.DataPortal.AddHireTypes(hts);
+                jobPositionLevel[] items = new jobPositionLevel[] { JobPositionLevelConvertUtil.ToDto(vm) };
+                int count = await AppCxt.Current.DataPortal.AddJobPositionLevels(items);
                 this.ClearEditingState();
                 this.RefreshItemsAsync();
             }
@@ -41,11 +41,11 @@ namespace Calen.IOP.Client.ViewModel
         {
             this.ItemList.Clear();
             IsBusy = true;
-            ICollection<hireType> hireTypes= await AppCxt.Current.DataPortal.GetAllHireTypesAsync();
+            ICollection<jobPositionLevel> items= await AppCxt.Current.DataPortal.GetAllJobPositionLevelsAsync();
             IsBusy = false;
-            foreach(var item in hireTypes)
+            foreach(var item in items)
             {
-                HireTypeVM vm = HireTypeConvertUtil.FromDto(item);
+                JobPositionLevelVM vm = JobPositionLevelConvertUtil.FromDto(item);
                 this.ItemList.Add(vm);
             }
         }
@@ -70,9 +70,9 @@ namespace Calen.IOP.Client.ViewModel
                 bool isSureToDelete = await this.DeleteItemsDialog.ShowDialog(items);
                 if (isSureToDelete)
                 {
-                    List<hireType> list = items.Select(p => HireTypeConvertUtil.ToDto(p)).ToList();
+                    List<jobPositionLevel> list = items.Select(p => JobPositionLevelConvertUtil.ToDto(p)).ToList();
                     this.IsBusy = true;
-                    int result = await AppCxt.Current.DataPortal.DeleteHireTypes(list);
+                    int result = await AppCxt.Current.DataPortal.DeletJobPositionLevels(list);
                     if (result > 0)
                     {
                         this.RefreshItemsAsync();
@@ -91,7 +91,7 @@ namespace Calen.IOP.Client.ViewModel
 
         private async void EditItem()
         {
-            HireTypeVM vm = this.SelectedItem.DeepClone();
+            JobPositionLevelVM vm = this.SelectedItem.DeepClone();
             vm.IsDirty = false;
             vm.IsEditing = true;
             vm.IsNew = false;
@@ -100,8 +100,8 @@ namespace Calen.IOP.Client.ViewModel
             bool isSaveClick = await this.EditItemDialog?.ShowDialog(vm);
             if (isSaveClick)
             {
-                hireType[] hts = new hireType[] { HireTypeConvertUtil.ToDto(vm) };
-                int count = await AppCxt.Current.DataPortal.UpdateHireTypes(hts);
+                jobPositionLevel[] items = new jobPositionLevel[] { JobPositionLevelConvertUtil.ToDto(vm) };
+                int count = await AppCxt.Current.DataPortal.UpdateJobPositionLevels(items);
                 this.ClearEditingState();
                 this.RefreshItemsAsync();
             }

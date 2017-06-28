@@ -94,6 +94,9 @@
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Converters\InverseBoolToVisibilityConverter.cs" />
     <Compile Include="Helpers\TreeviewHelper.cs" />
+    <Compile Include="Pages\Dialogs\DeleteItemsDialog.xaml.cs">
+      <DependentUpon>DeleteItemsDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Dialogs\DepartmentDeleteDialog.xaml.cs">
       <DependentUpon>DepartmentDeleteDialog.xaml</DependentUpon>
     </Compile>
@@ -111,6 +114,12 @@
     </Compile>
     <Compile Include="Pages\Common\JobTypeManagePanel.xaml.cs">
       <DependentUpon>JobTypeManagePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Dialogs\EditJobPositionLevelDialog.xaml.cs">
+      <DependentUpon>EditJobPositionLevelDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Dialogs\EditJobTypeDialog.xaml.cs">
+      <DependentUpon>EditJobTypeDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Dialogs\EditHireTypeDialog.xaml.cs">
       <DependentUpon>EditHireTypeDialog.xaml</DependentUpon>
@@ -143,6 +152,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Dialogs\DeleteItemsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Dialogs\DepartmentDeleteDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -166,6 +179,14 @@
     <Page Include="Pages\Common\JobTypeManagePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Dialogs\EditJobPositionLevelDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Dialogs\EditJobTypeDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Dialogs\EditHireTypeDialog.xaml">
       <SubType>Designer</SubType>
