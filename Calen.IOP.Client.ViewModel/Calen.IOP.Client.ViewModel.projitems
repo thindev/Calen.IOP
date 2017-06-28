@@ -10,6 +10,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AppCxt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\FunctionVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\FunctionManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\JobPositionLevelManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\JobTypeManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />

@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Calen.IOP.Client.ViewModel.Common;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Xml.Serialization;
 
-namespace Calen.IOP.Client.Desktop.View
+namespace Calen.IOP.Client.Desktop
 {
     public class FunctionMgr : DependencyObject
     {
@@ -84,5 +87,34 @@ namespace Calen.IOP.Client.Desktop.View
         {
             return (Uri)obj.GetValue(FunctionPageUriProperty);
         }
+        static IReadOnlyList<FunctionVM> _functionTree;
+        public static IReadOnlyList<FunctionVM> FunctionTree
+        {
+            get { return _functionTree; }
+        }
+        public static void InitFunctionTree(string file)
+        {
+            if(File.Exists(file))
+            {
+                using (FileStream fst = new FileStream(file, FileMode.Open))
+                {
+                    XmlSerializer s = new XmlSerializer(typeof(FunctionConfig));
+                }
+            }
+           
+        }
+
+    }
+
+    public class FunctionItem
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public FunctionItem[] SubFunctions { get; set; }
+    }
+    public class FunctionConfig
+    {
+        public FunctionItem[] FunctionItems { get; set; }
     }
 }
