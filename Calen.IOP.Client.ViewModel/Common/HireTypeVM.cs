@@ -11,7 +11,10 @@ namespace Calen.IOP.Client.ViewModel
         public override HireTypeVM DeepClone()
         {
             var dto = HireTypeConvertUtil.ToDto(this);
-            return HireTypeConvertUtil.FromDto(dto);
+
+            var vm= HireTypeConvertUtil.FromDto(dto);
+            base.CopyStateValues(vm);
+            return vm;
         }
     }
 }

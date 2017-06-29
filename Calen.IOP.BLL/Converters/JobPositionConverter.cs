@@ -25,16 +25,18 @@ namespace Calen.IOP.BLL.Converters
             jp.departmentId = v.Department?.Id;
             return jp;
         }
-        public override JobPosition FromDto(jobPosition dto, JobPosition jobP = null)
+        public override JobPosition FromDto(jobPosition dto)
         {
-            if (jobP == null)
+
+            JobPosition jobP = new JobPosition()
             {
-                jobP = new JobPosition();
-            }
-            jobP.Description = dto.description;
-            jobP.Id = dto.id;
-            jobP.Code = dto.code;
-            jobP.Name = dto.name;
+                Description = dto.description,
+                Id = dto.id,
+                Code = dto.code,
+                Name = dto.name,
+            };
+
+            
             return jobP;
         }
     }

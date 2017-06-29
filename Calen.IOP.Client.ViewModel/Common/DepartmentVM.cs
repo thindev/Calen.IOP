@@ -106,6 +106,7 @@ namespace Calen.IOP.Client.ViewModel
 
             department temp = DepartmentConvertUtil.ToDto(this,false);
             DepartmentVM dp = DepartmentConvertUtil.FromDto(this.ParentDepartment, temp);
+            base.CopyStateValues(dp);
             return dp;
         }
 

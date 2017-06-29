@@ -25,11 +25,13 @@ namespace Calen.IOP.Client.ViewModel
        
 
         IDataPortal _dataPortal;
+        FunctionManagerVM _functionManager=new FunctionManagerVM();
 
         OptionsSettingVM _optionsSettings;
 #if WINDOWS_WPF
         WindowViewControllerVM _windowController = new WindowViewControllerVM();
         public WindowViewControllerVM WindowController { get => _windowController; }
+        public FunctionManagerVM FunctionManager { get => _functionManager; }
 #endif
     }
 }

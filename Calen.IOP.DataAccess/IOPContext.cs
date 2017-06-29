@@ -39,6 +39,7 @@
         public virtual DbSet<HireType> HireTypes { get; set; }
         public virtual DbSet<JobType> JobTypes { get; set; }
         public virtual DbSet<JobPostionLevel> JobPositionLevels { get; set; }
+        public virtual DbSet<UserRole> UserRoles { get; set; }
 
     }
 

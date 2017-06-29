@@ -15,16 +15,15 @@ namespace Calen.IOP.BLL.Converters
         {
         }
 
-        public override JobType FromDto(jobType dto, JobType target = null)
+        public override JobType FromDto(jobType dto)
         {
-           if(target==null)
+            JobType target = new JobType()
             {
-                target = new JobType();
-            }
-            target.Code = dto.code;
-            target.Description = dto.description;
-            target.Id = dto.id;
-            target.Name = dto.name;
+                Code = dto.code,
+                Description = dto.description,
+                Id = dto.id,
+                Name = dto.name,
+            };
             return target;
         }
 

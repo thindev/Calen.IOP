@@ -35,7 +35,8 @@ namespace Calen.IOP.Client.Desktop
 
             string file = AppDomain.CurrentDomain.BaseDirectory + @"config\FunctionConfig.xml";
             FunctionMgr.InitFunctionTree(file);
-            FunctionMgr.EnableFunctions();
+            var ids= new string[] { "01000000","01010000","01020000","02000000","02010000"};
+            FunctionMgr.EnableFunctions(ids);
         }
 
         public override void OnApplyTemplate()

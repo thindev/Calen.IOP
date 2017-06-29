@@ -11,6 +11,7 @@ namespace Calen.IOP.Client.ViewModel
         {
             var dto = JobPositionLevelConvertUtil.ToDto(this);
             var vm = JobPositionLevelConvertUtil.FromDto(dto);
+            base.CopyStateValues(vm);
             return vm;
         }
     }

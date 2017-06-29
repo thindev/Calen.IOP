@@ -18,7 +18,7 @@ namespace Calen.IOP.Client.ViewModel
 
         bool _autoLoadDataOnInitialize;
         bool _isBusy;
-        ItemType _selectedItem;
+        protected ItemType _selectedItem;
         private bool _isEditing;
         private ItemType _currentEditingItem;
         private ItemType _presentItem;
@@ -69,7 +69,7 @@ namespace Calen.IOP.Client.ViewModel
         /// <summary>
         ///列表（树）上当前被先中的项
         /// </summary>
-        public ItemType SelectedItem
+        public virtual ItemType SelectedItem
         {
             get => _selectedItem;
             set

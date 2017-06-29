@@ -1,4 +1,5 @@
-﻿using Calen.IOP.Client.ViewModel.Common;
+﻿using Calen.IOP.Client.ViewModel;
+using Calen.IOP.Client.ViewModel.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,7 +15,11 @@ namespace Calen.IOP.Client.Desktop
     public class FunctionMgr : DependencyObject
     {
         public static readonly DependencyProperty FunctionIdProperty = DependencyProperty.RegisterAttached("FunctionId", typeof(string), typeof(FunctionMgr), new PropertyMetadata(null,FunctionIdChanged));
+        public static readonly DependencyProperty FunctionNameProperty = DependencyProperty.RegisterAttached("FunctionName", typeof(string), typeof(FunctionMgr), new PropertyMetadata(null));
+        public static readonly DependencyProperty FunctionPageUriProperty = DependencyProperty.RegisterAttached("FunctionPageUri", typeof(string), typeof(FunctionMgr), new PropertyMetadata(null));
+        public static readonly DependencyProperty FunctionDescriptionProperty = DependencyProperty.RegisterAttached("FunctionDescription", typeof(string), typeof(FunctionMgr), new PropertyMetadata(null));
 
+        private static List<FrameworkElement> _functionItemElements = new List<FrameworkElement>();
         private static void FunctionIdChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             FrameworkElement fe = d as FrameworkElement;
@@ -41,14 +46,6 @@ namespace Calen.IOP.Client.Desktop
                 }
             }
         }
-
-        public static readonly DependencyProperty FunctionNameProperty = DependencyProperty.RegisterAttached("FunctionName", typeof(string), typeof(FunctionMgr), new PropertyMetadata(null));
-        public static readonly DependencyProperty FunctionPageUriProperty = DependencyProperty.RegisterAttached("FunctionPageUri", typeof(string), typeof(FunctionMgr), new PropertyMetadata(null));
-        public static readonly DependencyProperty FunctionDescriptionProperty = DependencyProperty.RegisterAttached("FunctionDescription", typeof(string), typeof(FunctionMgr), new PropertyMetadata(null));
-
-        private static List<FrameworkElement> _functionItemElements = new List<FrameworkElement>();
-       
-
         private static void Fe_Unloaded(object sender, RoutedEventArgs e)
         {
             FrameworkElement fe = sender as FrameworkElement;
@@ -63,27 +60,6 @@ namespace Calen.IOP.Client.Desktop
             }
         }
 
-        public static void EnableFunctions()
-        {
-            foreach(var fe in _functionItemElements)
-            {
-                string id = GetFunctionId(fe);
-                if (_functionDic.ContainsKey(id))
-                {
-                    FunctionVM vm = _functionDic[id];
-                    SetFunctionName(fe,vm.Name);
-                    SetFunctionPageUri(fe,vm.Uri);
-                    SetFunctionDescription(fe, vm.Description);
-                    fe.Visibility = Visibility.Visible;
-                    fe.ToolTip = string.IsNullOrEmpty(vm.Description) ? null : vm.Description;
-                }
-                else
-                {
-                    fe.Visibility = Visibility.Collapsed;
-                }
-            }
-           
-        }
         public static void SetFunctionDescription(DependencyObject obj,string value)
         {
             obj.SetValue(FunctionDescriptionProperty, value);
@@ -122,12 +98,7 @@ namespace Calen.IOP.Client.Desktop
         {
             return (string)obj.GetValue(FunctionPageUriProperty);
         }
-        static IReadOnlyList<FunctionVM> _functionTree;
-        static Dictionary<string, FunctionVM> _functionDic=new Dictionary<string, FunctionVM>();
-        public static IReadOnlyList<FunctionVM> FunctionTree
-        {
-            get { return _functionTree; }
-        }
+
         public static void InitFunctionTree(string file)
         {
             if(File.Exists(file))
@@ -138,12 +109,11 @@ namespace Calen.IOP.Client.Desktop
                     FunctionConfig fc=(FunctionConfig) xml.Deserialize(fs);
                     if(fc.FunctionItems!=null)
                     {
-                        List<FunctionVM> list = new List<FunctionVM>();
+                        List<FunctionVM> list = AppCxt.Current.FunctionManager.FunctionTree;
                         foreach (var f in fc.FunctionItems)
                         {
                             list.Add(FunctionItemToFunctionVM(f));
                         }
-                        _functionTree = list.AsReadOnly();
                     }
                 }
             }
@@ -158,13 +128,34 @@ namespace Calen.IOP.Client.Desktop
             vm.Description = item.Description;
             if(item.SubFunctions!=null&&item.SubFunctions.Length>0)
             {
-                foreach(var f in item.SubFunctions)
+                foreach(var subVM in item.SubFunctions)
                 {
-                    vm.SubFunctions.Add(FunctionItemToFunctionVM(f));
+                    vm.SubFunctions.Add(FunctionItemToFunctionVM(subVM));
                 }
             }
-            _functionDic[vm.Id] = vm;
+            AppCxt.Current.FunctionManager.FunctionDic.Add(vm.Id, vm);
             return vm;
+        }
+        public static void EnableFunctions(string[] checkedIds)
+        {
+            foreach (var fe in _functionItemElements)
+            {
+                string id = GetFunctionId(fe);
+                if (checkedIds.Contains(id))
+                {
+                    FunctionVM vm = AppCxt.Current.FunctionManager.FunctionDic[id];
+                    SetFunctionName(fe, vm.Name);
+                    SetFunctionPageUri(fe, vm.Uri);
+                    SetFunctionDescription(fe, vm.Description);
+                    fe.ToolTip = string.IsNullOrEmpty(vm.Description) ? null : vm.Description;
+                    fe.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    fe.Visibility = Visibility.Collapsed;
+                }
+            }
+
         }
 
     }

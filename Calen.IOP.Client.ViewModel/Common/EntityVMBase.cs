@@ -43,6 +43,12 @@ namespace Calen.IOP.Client.ViewModel
     {
         public abstract T DeepClone();
 
-       
+        protected void CopyStateValues(EntityVMBase target)
+        {
+            target.IsDirty = this.IsDirty;
+            target.IsEditing = this.IsEditing;
+            target.IsNew = this.IsNew;
+            target.IsSelected = this.IsSelected;
+        }
     }
 }

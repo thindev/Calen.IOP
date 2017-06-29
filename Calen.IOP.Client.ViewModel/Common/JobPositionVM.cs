@@ -17,17 +17,9 @@ namespace Calen.IOP.Client.ViewModel
         {
             jobPosition temp = JobPositionConvertUtil.ToDto(this);
             JobPositionVM vm = JobPositionConvertUtil.FromDto(temp);
+            base.CopyStateValues(vm);
             return vm;
-            //JobPositionVM j = new JobPositionVM()
-            //{
-            //    _department = this._department,
-            //    _description = this._description,
-            //    _employeesCount = this._employeesCount,
-            //    _id = this._id,
-            //    _code = this._code,
-            //    _name = this._name,
-            //};
-            //return j;
+            
         }
     }
 }

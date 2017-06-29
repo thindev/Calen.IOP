@@ -27,5 +27,12 @@ namespace Calen.IOP.DataPortal
         Task<int> DeletJobPositionLevels(IEnumerable<jobPositionLevel> items);
         Task<int> UpdateJobPositionLevels(IEnumerable<jobPositionLevel> items);
         #endregion
+
+        #region userRole
+        Task<ICollection<userRole>> GetAllUserRolesAsync();
+        Task<int> AddUserRoles(IEnumerable<userRole> items);
+        Task<int> DeleteUserRoles(IEnumerable<userRole> items);
+        Task<int> UpdateUserRoles(IEnumerable<userRole> items);
+        #endregion userRole
     }
 }

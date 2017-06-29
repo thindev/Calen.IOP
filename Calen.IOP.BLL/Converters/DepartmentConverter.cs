@@ -39,10 +39,9 @@ namespace Calen.IOP.BLL.Converters
             return d;
         }
 
-        public override Department FromDto(department d, Department target=null)
+        public override Department FromDto(department d)
         {
-            if(target==null)
-            target = new Department();
+            Department target = new Department();
             target.Code = d.code;
             target.Description = d.description;
             target.Id = d.id;
@@ -76,6 +75,55 @@ namespace Calen.IOP.BLL.Converters
                 {
                     var entity = DbContext.JobPositions.Find(item.Id);
                     if(entity==null)
+                    {
+                        DbContext.JobPositions.Add(item);
+                    }
+                    else
+                    {
+                        DbContext.Entry(entity).CurrentValues.SetValues(item);
+                    }
+                }
+            }
+            return target;
+        }
+
+        public Department FromDto(department d, Department target)
+        {
+            if (target == null)
+                target = new Department();
+            target.Code = d.code;
+            target.Description = d.description;
+            target.Id = d.id;
+            if (d.leader != null)
+            {
+                target.Leader = DbContext.Employees.Find(target.Leader.Id);
+            }
+            target.Name = d.name;
+            if (!string.IsNullOrEmpty(d.parentDepartmentId))
+            {
+                target.ParentDepartment = DbContext.Departments.Find(d.parentDepartmentId);
+            }
+            if (d.jobPositions != null)
+            {
+                if (target.JobPositions == null)
+                {
+                    target.JobPositions = new List<JobPosition>();
+                }
+                string[] jobPositonIds = d.jobPositions.Select(p => p.id).ToArray();
+                IEnumerable<JobPosition> toDeletes = target.JobPositions.Where(p => !jobPositonIds.Contains(p.Id));
+                DbContext.JobPositions.RemoveRange(toDeletes);
+                List<JobPosition> jpList = new List<JobPosition>();
+                foreach (var jp in d.jobPositions)
+                {
+                    JobPositionConverter jpCvt = new JobPositionConverter(DbContext);
+                    JobPosition jobP = jpCvt.FromDto(jp);
+                    jobP.Department = target;
+                    jpList.Add(jobP);
+                }
+                foreach (var item in jpList)
+                {
+                    var entity = DbContext.JobPositions.Find(item.Id);
+                    if (entity == null)
                     {
                         DbContext.JobPositions.Add(item);
                     }

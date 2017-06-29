@@ -182,9 +182,51 @@ namespace Calen.IOP.DataPortal
             IRestResponse response = await _restClient.Execute(request);
             string content = response.Content;
             return 1;
+        }
+
+
+        #endregion jobpositionlevels
+
+        #region UserRole
+        public async Task<ICollection<userRole>> GetAllUserRolesAsync()
+        {
+            var request = new RestRequest("userroles", Method.GET);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            var result = JsonConvert.DeserializeObject<userRole[]>(content);
+            return result;
+        }
+
+        public async Task<int> AddUserRoles(IEnumerable<userRole> items)
+        {
+            var request = new RestRequest("userroles", Method.POST);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
+        }
+
+        public async Task<int> DeleteUserRoles(IEnumerable<userRole> items)
+        {
+            var request = new RestRequest("userroles", Method.DELETE);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
+        }
+
+        public async Task<int> UpdateUserRoles(IEnumerable<userRole> items)
+        {
+            var request = new RestRequest("userroles", Method.PUT);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
         } 
-        #endregion
-
-
+        #endregion UserRole
     }
 }

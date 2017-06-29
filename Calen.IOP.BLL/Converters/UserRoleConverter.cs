@@ -1,43 +1,43 @@
-﻿using System;
+﻿using Calen.IOP.DataAccess.Entities;
+using Calen.IOP.DTO.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Calen.IOP.DataAccess;
-using Calen.IOP.DataAccess.Entities;
-using Calen.IOP.DTO.Common;
 
 namespace Calen.IOP.BLL.Converters
 {
-    class HireTypeConverter : ConverterBase<HireType,hireType>
+    class UserRoleConverter : ConverterBase<UserRole, userRole>
     {
-        public HireTypeConverter(IOPContext ctx) : base(ctx)
+        public UserRoleConverter(IOPContext ctx) : base(ctx)
         {
         }
 
-        public override HireType FromDto(hireType dto)
+        public override UserRole FromDto(userRole dto)
         {
-            HireType target = new HireType()
+            var model = new UserRole()
             {
                 Code = dto.code,
                 Description = dto.description,
+                FunctionIds = dto.functionIds,
                 Id = dto.id,
                 Name = dto.name
             };
-            
-            return target;
+            return model;
         }
 
-        public override hireType ToDto(HireType model)
+        public override userRole ToDto(UserRole model)
         {
-            hireType ht = new hireType()
+            return new userRole()
             {
                 code = model.Code,
                 description = model.Description,
+                functionIds = model.FunctionIds,
                 id = model.Id,
-                name = model.Name
+                name = model.Name,
             };
-            return ht;
         }
     }
 }

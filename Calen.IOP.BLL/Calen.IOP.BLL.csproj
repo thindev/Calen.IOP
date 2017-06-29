@@ -57,11 +57,13 @@
     <Compile Include="Converters\JobPositionConverter.cs" />
     <Compile Include="Converters\JobPositionLevelConverter.cs" />
     <Compile Include="Converters\JobTypeConverter.cs" />
+    <Compile Include="Converters\UserRoleConverter.cs" />
     <Compile Include="DepartmentManager.cs" />
     <Compile Include="HireTypeManager.cs" />
     <Compile Include="JobPositonLevelManager.cs" />
     <Compile Include="JobTypeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserRoleManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Calen.IOP.DataAccess\Calen.IOP.DataAccess.csproj">

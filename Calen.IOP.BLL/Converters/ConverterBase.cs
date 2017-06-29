@@ -16,7 +16,7 @@ namespace Calen.IOP.BLL.Converters
         }
 
         public abstract DtoT ToDto(T model);
-        public abstract T FromDto(DtoT dto,T target=default(T));
+        public abstract T FromDto(DtoT dto);
         
     }
 }
