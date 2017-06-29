@@ -8,7 +8,7 @@
              xmlns:dialogs="clr-namespace:Calen.IOP.Client.Desktop.Pages.Dialogs"
              xmlns:vm="clr-namespace:Calen.IOP.Client.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="309.449" d:DesignWidth="520.866">
+             d:DesignHeight="373.936" d:DesignWidth="1176.844" Background="White">
     <UserControl.Resources>
         <vm:UserRoleManagerVM x:Key="UserRoleManager" AutoLoadDataOnInitialize="True">
             <vm:UserRoleManagerVM.ConfirmDialog>
@@ -18,9 +18,19 @@
                 <dialogs:DeleteItemsDialog/>
             </vm:UserRoleManagerVM.DeleteItemsDialog>
         </vm:UserRoleManagerVM>
+        <HierarchicalDataTemplate x:Key="FunctionDataTemplate" DataType="{x:Type vm:FunctionVM}" ItemsSource="{Binding SubFunctions}">
+            <StackPanel Margin="4,8,0,8" Orientation="Horizontal" >
+                <CheckBox IsChecked="{Binding IsChecked}" IsEnabled="{Binding RelativeSource={RelativeSource AncestorType=TreeView},Path=DataContext.IsEditing}"></CheckBox>
+                <TextBlock Text="{Binding Name}" Margin="0"  FontSize="{DynamicResource FontSize_Title_Small}" VerticalAlignment="Center" />
+            </StackPanel>
+        </HierarchicalDataTemplate>
     </UserControl.Resources>
-    <Grid>
-        <Grid DataContext="{StaticResource UserRoleManager}">
+    <Grid DataContext="{StaticResource UserRoleManager}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="300" />
+        </Grid.ColumnDefinitions>
+        <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
@@ -111,5 +121,17 @@
             </DataGrid>
             <controls:BusyIndicator IsBusy="{Binding IsBusy}" Grid.RowSpan="2" Visibility="Collapsed"/>
         </Grid>
+        <Grid Grid.Column="1" Margin="6,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="42"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="权限列表：" VerticalAlignment="Center" Margin="8,0" FontSize="{DynamicResource FontSize_Title_Middle}" Foreground="{DynamicResource Foreground_DarkKey}"/>
+            <TreeView Grid.Row="1" Margin="8,0,12,12" ItemsSource="{Binding FunctionTree}" ItemTemplate="{StaticResource FunctionDataTemplate}" Visibility="{Binding SelectedItem,Converter={StaticResource NullToCollapsedConverter}}" ItemContainerStyle="{DynamicResource TreeViewItemModern}">
+                
+            </TreeView>
+        </Grid>
+        <GridSplitter VerticalAlignment="Stretch" Width="6" Background="{DynamicResource EdgeBarColorLevel2}"/>
     </Grid>
+
 </UserControl>

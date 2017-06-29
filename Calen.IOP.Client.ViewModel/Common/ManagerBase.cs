@@ -60,6 +60,7 @@ namespace Calen.IOP.Client.ViewModel
                 _autoLoadDataOnInitialize = value;
                 if(value)
                 {
+                    if(!IsInDesignMode)
                     this.RefreshItemsExcute();
                 }
             }

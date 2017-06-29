@@ -33,7 +33,9 @@ namespace Calen.IOP.Client.ViewModel
             {
                 foreach (var item in vm.SubFunctions)
                 {
-                    copy.SubFunctions.Add(Copy(item, checkedIds));
+                    var sub = Copy(item, checkedIds);
+                    copy.SubFunctions.Add(sub);
+                    sub.ParentFuntion = copy;
                 }
             }
             if (checkedIds != null && copy.Id != null && checkedIds.Contains(copy.Id))

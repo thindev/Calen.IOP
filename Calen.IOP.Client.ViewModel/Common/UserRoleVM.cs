@@ -8,9 +8,9 @@ namespace Calen.IOP.Client.ViewModel
 {
     public class UserRoleVM : EntityVMBase<UserRoleVM>
     {
-        ObservableCollection<string> _functionIds=new ObservableCollection<string>();
+        List<string> _functionIds=new List<string>();
 
-        public ObservableCollection<string> FunctionIds { get => _functionIds; }
+        public List<string> FunctionIds { get => _functionIds; internal set => _functionIds = value; }
 
         public override UserRoleVM DeepClone()
         {

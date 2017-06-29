@@ -130,7 +130,9 @@ namespace Calen.IOP.Client.Desktop
             {
                 foreach(var subVM in item.SubFunctions)
                 {
-                    vm.SubFunctions.Add(FunctionItemToFunctionVM(subVM));
+                    var sub = FunctionItemToFunctionVM(subVM);
+                    vm.SubFunctions.Add(sub);
+                    sub.ParentFuntion = vm;
                 }
             }
             AppCxt.Current.FunctionManager.FunctionDic.Add(vm.Id, vm);

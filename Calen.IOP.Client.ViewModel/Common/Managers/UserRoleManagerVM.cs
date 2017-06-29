@@ -4,6 +4,7 @@ using Calen.IOP.DataPortal;
 using Calen.IOP.DTO.Common;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
@@ -16,7 +17,8 @@ namespace Calen.IOP.Client.ViewModel
             return AppCxt.Current.DataPortal;
         }
         public IConfirmDialog ConfirmDialog { get; set; }
-        public List<FunctionVM> FunctionTree { get; set; }
+        ObservableCollection<FunctionVM> _functionTree = new ObservableCollection<FunctionVM>();
+        public ObservableCollection<FunctionVM> FunctionTree { get => _functionTree; }
         UserRoleVM _itemBackup;
         public override UserRoleVM SelectedItem
         {
@@ -27,15 +29,17 @@ namespace Calen.IOP.Client.ViewModel
                 {
                     _selectedItem = value;
                     PresentItem = _selectedItem;
-                    if (_selectedItem == null)
+
+
+                    if (_selectedItem != null)
                     {
-                        this.FunctionTree = null;
-                    }
-                    else
-                    {
-                        if (this.FunctionTree == null)
+                        if (this.FunctionTree.Count==0)
                         {
-                            this.FunctionTree = AppCxt.Current.FunctionManager.CloneFunctionTree(_selectedItem.FunctionIds);
+                            var list = AppCxt.Current.FunctionManager.CloneFunctionTree(_selectedItem.FunctionIds);
+                            foreach(var item in list)
+                            {
+                                this.FunctionTree.Add(item);
+                            }
                         }
                         else
                         {
@@ -53,6 +57,26 @@ namespace Calen.IOP.Client.ViewModel
         {
             this.RefreshItemsAsync();
         }
+
+        private List<string> GetSelectedFunctionIds()
+        {
+            List<string> ids = new List<string>();
+            foreach (var item in this.FunctionTree)
+            {
+                FindIds(item, ids);
+            }
+            return ids;
+        }
+        private void FindIds(FunctionVM func,List<string> ids)
+        {
+            if (func.IsChecked)
+                ids.Add(func.Id);
+            foreach(var item in func.SubFunctions)
+            {
+                FindIds(item, ids);
+            }
+        }
+
         private async void RefreshItemsAsync()
         {
             this.ItemList.Clear();
@@ -84,6 +108,7 @@ namespace Calen.IOP.Client.ViewModel
         protected async override void SaveExecute()
         {
             var item = this.ItemList.First(x => x.IsDirty);
+            item.FunctionIds = this.GetSelectedFunctionIds();
             var items = new userRole[] { UserRoleConvertUtil.ToDto(item) };
             int result = 0;
             int index = this.ItemList.IndexOf(item);
@@ -127,6 +152,7 @@ namespace Calen.IOP.Client.ViewModel
                 {
                     int index = this.ItemList.IndexOf(item);
                     this.ItemList[index] = _itemBackup;
+                    this.SelectedItem = this.ItemList[index];
                 }
             }
             this.ClearEditingState();
@@ -154,7 +180,7 @@ namespace Calen.IOP.Client.ViewModel
         protected async override void DeleteExecute()
         {
             var items = this.ItemList.Where(x => x.IsSelected).ToList();
-            if(!items.Contains(this.SelectedItem))
+            if(items.Count<1&&!items.Contains(this.SelectedItem))
             {
                 items.Add(this.SelectedItem);
             }
