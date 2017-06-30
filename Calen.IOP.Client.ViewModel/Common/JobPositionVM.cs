@@ -10,9 +10,15 @@ namespace Calen.IOP.Client.ViewModel
 
          DepartmentVM _department;
         int _employeesCount;
+        JobPositionLevelVM _jobPositionLevel;
+        JobTypeVM _jobType;
         public DepartmentVM Department { get => _department; set { Set(() => Department, ref _department, value); } }
 
         public int EmployeesCount { get => _employeesCount; set { Set(()=>EmployeesCount, ref _employeesCount, value); } }
+
+        public JobPositionLevelVM JobPositionLevel { get => _jobPositionLevel; set { Set(()=>JobPositionLevel,ref _jobPositionLevel,value); } }
+        public JobTypeVM JobType { get => _jobType; set { Set(()=>JobType,ref _jobType,value); } }
+
         public override JobPositionVM DeepClone()
         {
             jobPosition temp = JobPositionConvertUtil.ToDto(this);

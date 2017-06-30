@@ -43,6 +43,7 @@
     <Compile Include="Common\jobPosition.cs" />
     <Compile Include="Common\jobPositionLevel.cs" />
     <Compile Include="Common\jobType.cs" />
+    <Compile Include="Common\servingRecord.cs" />
     <Compile Include="Common\userRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

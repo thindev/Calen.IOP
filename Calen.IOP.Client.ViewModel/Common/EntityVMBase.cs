@@ -14,7 +14,7 @@ namespace Calen.IOP.Client.ViewModel
         string _description;
         bool _isNew;
         bool _isDirty;
-        bool _isEditing;
+        protected bool _isEditing;
         bool _isSelected;
         public bool IsSelected
         {
@@ -37,7 +37,8 @@ namespace Calen.IOP.Client.ViewModel
         /// <summary>
         /// 是否正在编辑
         /// </summary>
-        public bool IsEditing { get => _isEditing; set { Set(() => IsEditing, ref _isEditing, value); } }
+        public virtual bool IsEditing { get => _isEditing; set { Set(() => IsEditing, ref _isEditing, value); } }
+       
     }
     public abstract class EntityVMBase<T>:EntityVMBase
     {

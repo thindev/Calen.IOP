@@ -9,7 +9,7 @@ namespace Calen.IOP.DataAccess.Entities
 {
     public class Employee : EntityBase
     {
-        public string IdCardNum { get; set; }
+        public string IdCardCode { get; set; }
         public SexTypes Sex { get; set; }
         public string MobileNumber { get; set; }
         public string Email { get; set; }
@@ -17,6 +17,13 @@ namespace Calen.IOP.DataAccess.Entities
         public DateTime? BirthDay { get; set; }
         public byte[] Image { get; set; }
         public EducationLevel Education { get; set; }
+        public ServeState ServeState { get; set; }
+        public string UserId { get; set; }
+        public string Passwrod { get; set; }
+        /// <summary>
+        /// 是否虚拟的
+        /// </summary>
+        public bool IsVirtual { get; set; }
 
 
         public virtual Department Department { get; set; }
@@ -25,62 +32,68 @@ namespace Calen.IOP.DataAccess.Entities
 
     public enum SexTypes
     {
-        Unknowed=0,
+        Unknown=0,
         Male = 1,
         Female =2
     }
     public enum EducationLevel
     {
+        Unknown=0,
         /// <summary>
         /// 小学
         /// </summary>
-        PrimarySchool,
+        PrimarySchool=1,
         /// <summary>
         /// 初中
         /// </summary>
-        JuniorMiddleSchool,
+        JuniorMiddleSchool=2,
         /// <summary>
         /// 高中
         /// </summary>
-        SeniorHighSchool,
+        SeniorHighSchool=3,
         /// <summary>
         /// 大专
         /// </summary>
-        JuniorCollege,
+        JuniorCollege=4,
         /// <summary>
         /// 本科
         /// </summary>
-        Undergraduate,
+        Undergraduate=5,
         /// <summary>
         /// 硕士
         /// </summary>
-        MasterLevel,
+        MasterLevel=6,
         /// <summary>
         /// 博士
         /// </summary>
-        DoctorLevel,
+        DoctorLevel=7,
         /// <summary>
         /// 博士后
         /// </summary>
-        Postdoctor
+        Postdoctor=8
     }
 
     /// <summary>
-    /// 在职状态
+    /// 
     /// </summary>
     public enum ServeState
     {
+        Unknown=0,
         /// <summary>
-        /// 在职
+        /// 在
         /// </summary>
-        InServe=0,
+        InServe=1,
         /// <summary>
-        /// 试用期
+        /// 试
         /// </summary>
-        ProbationaryPeriod=1,
+        ProbationaryPeriod=2,
         /// <summary>
-        /// 离职
+        /// 假
         /// </summary>
-        Resignation=9
+        Onleave = 3,
+        /// <summary>
+        /// 离
+        /// </summary>
+        Resignation =9
     }
 }

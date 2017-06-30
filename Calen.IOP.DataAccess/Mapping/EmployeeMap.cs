@@ -19,7 +19,8 @@ namespace Calen.IOP.DataAccess.Mapping
             this.Property(e => e.Sex).IsRequired();
             this.Property(e => e.BirthDay).IsOptional();
             this.Property(e => e.Image).IsOptional();
-            this.HasOptional(e => e.Department).WithMany(d => d.Employees);
+            this.HasOptional(e => e.Department).WithMany(d => d.Employees).WillCascadeOnDelete(false);
+            this.HasMany(e => e.ServingRecords);
         }
     }
 }

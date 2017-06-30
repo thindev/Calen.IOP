@@ -123,13 +123,32 @@ namespace Calen.IOP.BLL.Converters
                 foreach (var item in jpList)
                 {
                     var entity = DbContext.JobPositions.Find(item.Id);
-                    if (entity == null)
+                    if (entity == null)//add jobpostion to db
                     {
-                        DbContext.JobPositions.Add(item);
+                       entity= DbContext.JobPositions.Add(item);
                     }
-                    else
+                    else //up jobpostion 
                     {
                         DbContext.Entry(entity).CurrentValues.SetValues(item);
+                    }
+
+                    //update jobpoistionlevels
+                    if(item.Level!=null)
+                    {
+                        var level = DbContext.JobPositionLevels.Find(item.Level.Id);
+                        if(level!=null)
+                        {
+                            entity.Level = level;
+                        }
+                    }
+                    //update jobType
+                    if(item.JobType!=null)
+                    {
+                        var type = DbContext.JobTypes.Find(item.JobType.Id);
+                        if(type!=null)
+                        {
+                            entity.JobType = type;
+                        }
                     }
                 }
             }

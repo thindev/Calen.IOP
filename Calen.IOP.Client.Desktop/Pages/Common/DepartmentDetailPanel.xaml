@@ -73,10 +73,89 @@
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="编码" MinWidth="60"  Binding="{Binding Code}" ElementStyle="{StaticResource dgCell}"/>
-                <DataGridTextColumn Header="岗位名称" MinWidth="140" Width="180" Binding="{Binding Name}" ElementStyle="{StaticResource dgCell}"/>
-                <DataGridTextColumn Header="职责描述" Width="2*" Binding="{Binding Description}" ElementStyle="{StaticResource dgCell}"/>
-                <DataGridTextColumn Header="在岗人数" Width="*" MinWidth="120"  Binding="{Binding EmployeesCount}" ElementStyle="{StaticResource dgCell}"/>
+                <DataGridTemplateColumn Header="编码" MinWidth="60" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <TextBlock Name="tbl" Text="{Binding Code}" Style="{StaticResource dgCell}"/>
+                                <TextBox Name="tbx" Text="{Binding Code,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Padding="0"  Visibility="Collapsed" FontSize="{DynamicResource FontSize_Content_Middle}"/>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding IsEditing}" Value="true">
+                                    <Setter TargetName="tbl" Property="Visibility" Value="Collapsed"/>
+                                    <Setter TargetName="tbx" Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="名称" MinWidth="140" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <TextBlock Name="tbl" Text="{Binding Name}" Style="{StaticResource dgCell}"/>
+                                <TextBox Name="tbx" Text="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Padding="0"  Visibility="Collapsed" FontSize="{DynamicResource FontSize_Content_Middle}"/>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding IsEditing}" Value="true">
+                                    <Setter TargetName="tbl" Property="Visibility" Value="Collapsed"/>
+                                    <Setter TargetName="tbx" Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="类型" MinWidth="140" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <TextBlock Name="tbl" Text="{Binding JobType.Name}" Style="{StaticResource dgCell}"/>
+                                <ComboBox Name="tbx" SelectedItem="{Binding JobType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Padding="0"  Visibility="Collapsed" FontSize="{DynamicResource FontSize_Content_Middle}" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=local:DepartmentManagePanel},Path=DataContext.JobTypeManager.ItemList}" DisplayMemberPath="Name" Text="{Binding JobType.Name}"/>
+
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding IsEditing}" Value="true">
+                                    <Setter TargetName="tbl" Property="Visibility" Value="Collapsed"/>
+                                    <Setter TargetName="tbx" Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="级别" MinWidth="140" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <TextBlock Name="tbl" Text="{Binding JobPositionLevel.Name}" Style="{StaticResource dgCell}"/>
+                                <ComboBox Name="tbx" SelectedItem="{Binding JobPositionLevel,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Padding="0"  Visibility="Collapsed" FontSize="{DynamicResource FontSize_Content_Middle}" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=local:DepartmentManagePanel},Path=DataContext.JobPositionLevelManager.ItemList}" DisplayMemberPath="Name" Text="{Binding JobPositionLevel.Name}"/>
+
+
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding IsEditing}" Value="true">
+                                    <Setter TargetName="tbl" Property="Visibility" Value="Collapsed"/>
+                                    <Setter TargetName="tbx" Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="描述" Width="*" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <TextBlock Name="tbl" Text="{Binding Description}" Style="{StaticResource dgCell}"/>
+                                <TextBox Name="tbx" Text="{Binding Description,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Padding="0"  Visibility="Collapsed" FontSize="{DynamicResource FontSize_Content_Middle}"/>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding IsEditing}" Value="true">
+                                    <Setter TargetName="tbl" Property="Visibility" Value="Collapsed"/>
+                                    <Setter TargetName="tbx" Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 

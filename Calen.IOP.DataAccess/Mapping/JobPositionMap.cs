@@ -24,7 +24,7 @@ namespace Calen.IOP.DataAccess.Mapping
 
             this.HasOptional(e => e.Department).WithMany(e => e.JobPositions);
             this.HasOptional(e => e.Level);
-            this.HasOptional(e => e.HireType);
+            this.HasOptional(e => e.JobType);
         }
     }
 }

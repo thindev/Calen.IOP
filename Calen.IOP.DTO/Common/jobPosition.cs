@@ -11,5 +11,7 @@ namespace Calen.IOP.DTO.Common
         public int employeesCount { get; set; }
 
         public string departmentId { get; set; }
+        public jobPositionLevel level { get; set; }
+        public jobType jobType { get; set; }
     }
 }

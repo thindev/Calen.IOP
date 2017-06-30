@@ -25,7 +25,7 @@ namespace Calen.IOP.DataAccess.Mapping
 
             //
             this.HasOptional(e => e.ParentDepartment).WithMany(e => e.SubDepartments);
-            this.HasMany(e => e.Employees).WithOptional(x => x.Department);
+            this.HasMany(e => e.Employees).WithOptional(x => x.Department).WillCascadeOnDelete(false);
             this.HasMany(e => e.JobPositions).WithOptional(x => x.Department);
             this.HasOptional(e => e.Leader);
         }

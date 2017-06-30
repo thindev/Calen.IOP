@@ -15,6 +15,14 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
             vm.Id = v.id;
             vm.Code = v.code;
             vm.Name = v.name;
+            if(v.level!=null)
+            {
+                vm.JobPositionLevel = JobPositionLevelConvertUtil.FromDto(v.level);
+            }
+            if(v.jobType!=null)
+            {
+                vm.JobType = JobTypeConvertUtil.FromDto(v.jobType);
+            }
             return vm;
         }
         public static jobPosition ToDto(JobPositionVM v)
@@ -29,6 +37,14 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
             jp.code = v.Code;
             jp.name = v.Name;
             jp.departmentId = v.Department?.Id;
+            if(v.JobType!=null)
+            {
+                jp.jobType = JobTypeConvertUtil.ToDto(v.JobType);
+            }
+            if(v.JobPositionLevel!=null)
+            {
+                jp.level = JobPositionLevelConvertUtil.ToDto(v.JobPositionLevel);
+            }
             return jp;
         }
         

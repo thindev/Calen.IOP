@@ -11,8 +11,12 @@ namespace Calen.IOP.BLL.Converters
 {
     class JobPositionConverter : ConverterBase<JobPosition, jobPosition>
     {
+        JobPositionLevelConverter _levelConverter;
+        JobTypeConverter _typeConverter;
         public JobPositionConverter(IOPContext ctx) : base(ctx)
         {
+             _levelConverter = new JobPositionLevelConverter(ctx);
+            _typeConverter = new JobTypeConverter(ctx);
         }
 
         public override jobPosition ToDto(JobPosition v)
@@ -23,6 +27,14 @@ namespace Calen.IOP.BLL.Converters
             jp.code = v.Code;
             jp.name = v.Name;
             jp.departmentId = v.Department?.Id;
+            if(v.Level!=null)
+            {
+                jp.level = _levelConverter.ToDto(v.Level);
+            }
+            if(v.JobType!=null)
+            {
+                jp.jobType = _typeConverter.ToDto(v.JobType);
+            }
             return jp;
         }
         public override JobPosition FromDto(jobPosition dto)
@@ -35,8 +47,14 @@ namespace Calen.IOP.BLL.Converters
                 Code = dto.code,
                 Name = dto.name,
             };
-
-            
+            if(dto.level!=null)
+            {
+                jobP.Level = _levelConverter.FromDto(dto.level);
+            }
+            if (dto.jobType != null)
+            {
+                jobP.JobType = _typeConverter.FromDto(dto.jobType);
+            }
             return jobP;
         }
     }

@@ -20,15 +20,12 @@ namespace Calen.IOP.Client.ViewModel
       
         bool _isEditingNewItem;
         string _lastPresentDepartmentId;
-        
-        
+        JobPositionLevelManagerVM _jobPositionLevelManager=new JobPositionLevelManagerVM();
+        JobTypeManagerVM _jobTypeManager=new JobTypeManagerVM();
 
-      
-       
-        
+        public JobPositionLevelManagerVM JobPositionLevelManager { get => _jobPositionLevelManager;  }
+        public JobTypeManagerVM JobTypeManager { get => _jobTypeManager;}
 
-
-      
         protected override void RefreshItemsExcute()
         {
             this.RefreshDepartmentsAsync();
@@ -109,7 +106,7 @@ namespace Calen.IOP.Client.ViewModel
 
         protected override void ClearEditingState()
         {
-            _lastPresentDepartmentId = this.CurrentEditingItem.Id;
+                _lastPresentDepartmentId = this.CurrentEditingItem.Id;
             this._isEditingNewItem = false;
             base.ClearEditingState();
         }
@@ -119,6 +116,8 @@ namespace Calen.IOP.Client.ViewModel
             if (IsInDesignMode) return;
             ItemList.Clear();
             this.IsBusy = true;
+            this.JobTypeManager.RefreshItemsCommand.Execute(null);
+            this.JobPositionLevelManager.RefreshItemsCommand.Execute(null);
             ICollection<department> ds=await AppCxt.Current.DataPortal.GetDepartmentTreeAsync();
             this.IsBusy = false;
             if (ds!=null)

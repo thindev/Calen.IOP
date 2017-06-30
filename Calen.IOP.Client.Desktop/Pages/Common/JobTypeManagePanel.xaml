@@ -49,7 +49,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="列表：" Margin="12,8" HorizontalAlignment="Left" FontSize="{DynamicResource FontSize_Title_Middle}" Foreground="{DynamicResource Foreground_DarkKey}" Grid.Row="0"/>
+            <TextBlock Text="雇类：" Margin="12,8" HorizontalAlignment="Left" FontSize="{DynamicResource FontSize_Title_Middle}" Foreground="{DynamicResource Foreground_DarkKey}" Grid.Row="0"/>
             <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,12,8" VerticalAlignment="Bottom" >
                 <Button  Style="{DynamicResource ButtonStyle_GeometryContent_Circle_Green}" Content="{DynamicResource Geo_Refresh}" Height="22" Width="22" Padding="6"  Margin="4,0" Command="{Binding RefreshItemsCommand}" >
                 </Button>
@@ -89,7 +89,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="列表：" Margin="12,8" HorizontalAlignment="Left" FontSize="{DynamicResource FontSize_Title_Middle}" Foreground="{DynamicResource Foreground_DarkKey}" Grid.Row="0"/>
+            <TextBlock Text="类型：" Margin="12,8" HorizontalAlignment="Left" FontSize="{DynamicResource FontSize_Title_Middle}" Foreground="{DynamicResource Foreground_DarkKey}" Grid.Row="0"/>
             <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,12,8" VerticalAlignment="Bottom" >
                 <Button  Style="{DynamicResource ButtonStyle_GeometryContent_Circle_Green}" Content="{DynamicResource Geo_Refresh}" Height="22" Width="22" Padding="6"  Margin="4,0" Command="{Binding RefreshItemsCommand}" >
                 </Button>
@@ -130,7 +130,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="列表：" Margin="12,8" HorizontalAlignment="Left" FontSize="{DynamicResource FontSize_Title_Middle}" Foreground="{DynamicResource Foreground_DarkKey}" Grid.Row="0"/>
+            <TextBlock Text="级别：" Margin="12,8" HorizontalAlignment="Left" FontSize="{DynamicResource FontSize_Title_Middle}" Foreground="{DynamicResource Foreground_DarkKey}" Grid.Row="0"/>
             <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,12,8" VerticalAlignment="Bottom" >
                 <Button  Style="{DynamicResource ButtonStyle_GeometryContent_Circle_Green}" Content="{DynamicResource Geo_Refresh}" Height="22" Width="22" Padding="6"  Margin="4,0" Command="{Binding RefreshItemsCommand}" >
                 </Button>

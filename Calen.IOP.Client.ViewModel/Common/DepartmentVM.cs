@@ -18,6 +18,7 @@ namespace Calen.IOP.Client.ViewModel
 {
     public class DepartmentVM:EntityVMBase<DepartmentVM>
     {
+
         
         EmployeeVM _leader;
         DepartmentVM _parentDepartment;
@@ -33,13 +34,28 @@ namespace Calen.IOP.Client.ViewModel
         public ObservableCollection<DepartmentVM> SubDepartments { get => _subDepartments; }
         public EmployeeVM Leader { get => _leader; set => _leader = value; }
         public ObservableCollection<JobPositionVM> JobPositions { get => _jobPositions;  }
-       
 
+        public override bool IsEditing
+        {
+            get => base.IsEditing;
+            set
+            {
+                if (_isEditing != value)
+                {
+                    _isEditing = value;
+                    foreach (var item in this.JobPositions)
+                    {
+                        item.IsEditing = value;
+                    }
+                    RaisePropertyChanged(() => IsEditing);
+                }
+            }
+        }
 
         #region For view control
-       
 
-      
+
+
 
         #endregion
 
@@ -71,6 +87,7 @@ namespace Calen.IOP.Client.ViewModel
             }
             
             JobPositionVM vm = new JobPositionVM();
+            vm.IsEditing = this.IsEditing;
             vm.Id = Guid.NewGuid().ToString();
             vm.Code = index;
             this.JobPositions.Add(vm);

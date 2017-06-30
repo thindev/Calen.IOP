@@ -13,6 +13,6 @@ namespace Calen.IOP.DataAccess.Entities
     {
         public virtual Department Department { get; set; }
         public virtual JobPostionLevel Level { get; set; }
-        public virtual HireType HireType { get; set; }
+        public virtual JobType JobType { get; set; }
     }
 }
