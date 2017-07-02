@@ -10,14 +10,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AppCxt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Criteria\EmployeeCriteriaVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\EducationLevels.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\FunctionVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\IConfirmDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\EmployeeManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\FunctionManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\JobPositionLevelManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\JobTypeManagerVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ServeStates.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ServingRecordVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\SexTypes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\DepartmentConvertUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\EmployeeConvertUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\HireTypeConvertUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\ImageConvertUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\JobPositionConvertUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\DepartmentManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\DepartmentVM.cs" />
@@ -30,6 +38,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\HireTypeManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\JobPositionLevelConvertUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\JobTypeConvertUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\ServingRecordConvertUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\UserRoleConvertUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\ManagerBase.cs" />

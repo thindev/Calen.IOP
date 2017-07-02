@@ -226,7 +226,30 @@ namespace Calen.IOP.DataPortal
             IRestResponse response = await _restClient.Execute(request);
             string content = response.Content;
             return 1;
-        } 
+        }
+
+
         #endregion UserRole
+        #region employee
+        public Task<resultForEmployees> FetchEmployees(criteriaForEmployees criteria)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> AddEmployees(IEnumerable<hireType> items)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> DeleteEmployees(IEnumerable<hireType> items)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> UpdateEmployees(IEnumerable<hireType> items)
+        {
+            throw new NotImplementedException();
+        } 
+        #endregion
     }
 }

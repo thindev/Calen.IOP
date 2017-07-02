@@ -17,7 +17,7 @@ namespace Calen.IOP.DataAccess.Entities
         public DateTime? BirthDay { get; set; }
         public byte[] Image { get; set; }
         public EducationLevel Education { get; set; }
-        public ServeState ServeState { get; set; }
+        public ServeStates ServeState { get; set; }
         public string UserId { get; set; }
         public string Passwrod { get; set; }
         /// <summary>
@@ -76,7 +76,7 @@ namespace Calen.IOP.DataAccess.Entities
     /// <summary>
     /// 
     /// </summary>
-    public enum ServeState
+    public enum ServeStates
     {
         Unknown=0,
         /// <summary>

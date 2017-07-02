@@ -94,9 +94,16 @@
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Converters\InverseBoolToVisibilityConverter.cs" />
     <Compile Include="Helpers\TreeviewHelper.cs" />
+    <Compile Include="Pages\Common\EmployeeDetailPanel.xaml.cs">
+      <DependentUpon>EmployeeDetailPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\EmployeeManagePanel.xaml.cs">
+      <DependentUpon>EmployeeManagePanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Dialogs\ConfirmDialog.xaml.cs">
       <DependentUpon>ConfirmDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Dialogs\ContentDialog.cs" />
     <Compile Include="Pages\Dialogs\DeleteItemsDialog.xaml.cs">
       <DependentUpon>DeleteItemsDialog.xaml</DependentUpon>
     </Compile>
@@ -158,6 +165,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Common\EmployeeDetailPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Common\EmployeeManagePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Dialogs\ConfirmDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -303,6 +318,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Calen.IOP.DataAccess\Calen.IOP.DataAccess.csproj">
+      <Project>{772AFCCC-93FE-4EBC-8387-51EF45021E4B}</Project>
+      <Name>Calen.IOP.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Calen.IOP.DataPortal\Calen.IOP.DataPortal.csproj">
       <Project>{C2EF32D5-069E-4EB1-8475-EB823A9491BA}</Project>
       <Name>Calen.IOP.DataPortal</Name>

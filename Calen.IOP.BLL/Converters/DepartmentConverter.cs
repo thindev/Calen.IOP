@@ -10,6 +10,7 @@ namespace Calen.IOP.BLL.Converters
 {
      class DepartmentConverter:ConverterBase<Department,department>
     {
+        
         public DepartmentConverter(IOPContext ctx):base(ctx)
         {
         }
@@ -33,18 +34,23 @@ namespace Calen.IOP.BLL.Converters
             d.parentDepartmentId = value.ParentDepartment?.Id;
             if(value.Leader!=null)
             {
-                EmployeeConverter emConverter = new EmployeeConverter();
-                d.leader = emConverter.Convert(value.Leader);
+               // EmployeeConverter emConverter = new EmployeeConverter();
+               // d.leader = emConverter.Convert(value.Leader);
             }
             return d;
         }
 
         public override Department FromDto(department d)
         {
-            Department target = new Department();
+            Department target = DbContext.Departments.Find(d.id);
+            if(target==null)
+            {
+                target = new Department();
+                target.Id = d.id;
+            }
             target.Code = d.code;
             target.Description = d.description;
-            target.Id = d.id;
+            
             if(d.leader!=null)
             {
                 target.Leader = DbContext.Employees.Find(target.Leader.Id);

@@ -65,10 +65,11 @@
     <Compile Include="JobTypeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserRoleManager.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Calen.IOP.DataAccess\Calen.IOP.DataAccess.csproj">
-      <Project>{772AFCCC-93FE-4EBC-8387-51EF45021E4B}</Project>
+      <Project>{772afccc-93fe-4ebc-8387-51ef45021e4b}</Project>
       <Name>Calen.IOP.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\Calen.IOP.DTO\Calen.IOP.DTO.csproj">

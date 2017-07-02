@@ -31,7 +31,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Dialogs
         public async Task<bool> ShowDialog<T>(T vm) where T:EntityVMBase
         {
             rootLayout.DataContext = vm;
-            dialog = new CustomDialog() { Title = "添加新项" };
+            dialog = new ContentDialog() { Title = "添加新项" };
             dialog.VerticalAlignment = VerticalAlignment.Center;
             dialog.HorizontalAlignment = HorizontalAlignment.Center;
             dialog.Content = this; 

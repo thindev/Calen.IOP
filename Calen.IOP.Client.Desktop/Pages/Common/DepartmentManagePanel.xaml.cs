@@ -51,7 +51,7 @@ namespace Calen.IOP.Client.Desktop.Pages
         public async Task<bool> ShowDialog<T>(IEnumerable<T> vms)where T:EntityVMBase
         {
             if (vms.Count() == 0) return false;
-            CustomDialog dialog = new CustomDialog() { Title = "确定要删除("+vms.ElementAt(0).Name+")吗？"};
+            CustomDialog dialog = new ContentDialog() { Title = "确定要删除("+vms.ElementAt(0).Name+")吗？"};
             DepartmentDeleteDialog content = new DepartmentDeleteDialog();
             dialog.Content = content;
             content.CloseHandler = () =>

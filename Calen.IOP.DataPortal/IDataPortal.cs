@@ -34,5 +34,11 @@ namespace Calen.IOP.DataPortal
         Task<int> DeleteUserRoles(IEnumerable<userRole> items);
         Task<int> UpdateUserRoles(IEnumerable<userRole> items);
         #endregion userRole
+        #region employee
+        Task<resultForEmployees> FetchEmployees(criteriaForEmployees criteria);
+        Task<int> AddEmployees(IEnumerable<hireType> items);
+        Task<int> DeleteEmployees(IEnumerable<hireType> items);
+        Task<int> UpdateEmployees(IEnumerable<hireType> items);
+        #endregion employee
     }
 }

@@ -13,14 +13,9 @@
       d:DesignHeight="450.354" d:DesignWidth="629.433"
       Title="职员信息管理" >
     <TabControl Style="{DynamicResource PageTabControlStyle}">
-        <TabItem Header="职员信息" Style="{DynamicResource PageTabItemStyle}">
+        <TabItem Header="职员信息管理" Style="{DynamicResource PageTabItemStyle}">
             <mahapps:MetroContentControl>
                 <local:DepartmentManagePanel/>
-            </mahapps:MetroContentControl>
-        </TabItem>
-        <TabItem Header="岗位设置" Style="{DynamicResource PageTabItemStyle}">
-            <mahapps:MetroContentControl>
-                <Border Background="Gray"/>
             </mahapps:MetroContentControl>
         </TabItem>
     </TabControl>

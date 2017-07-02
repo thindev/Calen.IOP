@@ -154,8 +154,8 @@ namespace Calen.IOP.Client.ViewModel
                     this.ItemList[index] = _itemBackup;
                     this.SelectedItem = this.ItemList[index];
                 }
-            }
-            this.ClearEditingState();
+                this.ClearEditingState();
+            } 
         }
         protected override bool EditPredicate()
         {

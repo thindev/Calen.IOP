@@ -40,13 +40,13 @@ namespace Calen.IOP.Client.Desktop.Pages.Dialogs
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
-            result = false;
+            result = false; 
             DialogCoordinator.Instance.HideMetroDialogAsync(Constants.MAIN_DIALOG, dialog);
         }
 
         public async  Task<bool> ShowDialog(string msg, string title)
         {
-            dialog = new CustomDialog() { Title = title};
+            dialog = new ContentDialog() { Title = title};
             this.tbl.Text = msg;
             dialog.Content = this;
             await DialogCoordinator.Instance.ShowMetroDialogAsync(Constants.MAIN_DIALOG, dialog);

@@ -45,7 +45,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Dialogs
 
         public async Task<bool> ShowDialog<T>(IEnumerable<T> items)where T:EntityVMBase
         {
-            dialog = new CustomDialog() { Title = "确定要删除所选的"+items.Count()+"项记录吗？" };
+            dialog = new ContentDialog() { Title = "确定要删除所选的"+items.Count()+"项记录吗？" };
             dialog.Content = this;
             await DialogCoordinator.Instance.ShowMetroDialogAsync(Constants.MAIN_DIALOG, dialog);
             await dialog.WaitUntilUnloadedAsync();
