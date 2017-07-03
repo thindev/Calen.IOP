@@ -33,13 +33,12 @@ namespace Calen.IOP.Client.Desktop.View
            if(uri!=null&&_pagesDic.ContainsKey(uri))
             {
                 page = _pagesDic[uri];
+                this.frame.Content = page;
             }
            else
             {
                 this.frame.Navigate(uri,uri);
             }
-           
-            this.frame.Content = page;
             if(this.frame.CanGoBack)
             this.frame.RemoveBackEntry();
         }

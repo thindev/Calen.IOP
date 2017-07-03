@@ -17,6 +17,7 @@ namespace Calen.IOP.Client.ViewModel.Common.Criteria
         public int PageIndex { get => _pageIndex; set { Set(() => PageIndex, ref _pageIndex, value); } }
         public int TotalCount { get => _totalCount; set { Set(() => TotalCount, ref _totalCount, value); } }
         public string EmployeeCode { get => _employeeCode; set { Set(() => EmployeeCode, ref _employeeCode, value); } }
-      
+
+        public string EmployeeName { get => _employeeName; set { Set(() => EmployeeName, ref _employeeName, value); } }
     }
 }

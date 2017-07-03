@@ -6,6 +6,7 @@
       xmlns:vm="clr-namespace:Calen.IOP.Client.ViewModel"
     xmlns:ctrl="clr-namespace:Calen.IOP.Client.Desktop.Controls"
       xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages"
+    xmlns:common="clr-namespace:Calen.IOP.Client.Desktop.Pages.Common"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
     x:Class="Calen.IOP.Client.Desktop.Pages.EmployeeManagePage"
@@ -15,7 +16,7 @@
     <TabControl Style="{DynamicResource PageTabControlStyle}">
         <TabItem Header="职员信息管理" Style="{DynamicResource PageTabItemStyle}">
             <mahapps:MetroContentControl>
-                <local:DepartmentManagePanel/>
+                <common:EmployeeManagePanel/>
             </mahapps:MetroContentControl>
         </TabItem>
     </TabControl>
