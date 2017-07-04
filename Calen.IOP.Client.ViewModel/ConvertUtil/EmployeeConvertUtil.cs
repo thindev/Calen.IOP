@@ -1,4 +1,5 @@
 ﻿using Calen.IOP.Client.ViewModel.Common;
+using Calen.IOP.DTO;
 using Calen.IOP.DTO.Common;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
                 passWord = vm.PassWord,
                 serveState = vm.ServeState.HasValue ? (int)vm.ServeState.Value : -1,
                  sex=vm.Sex.HasValue?(int)vm.Sex.Value:-1,
+                 nationality=vm.Nationality,
                   userId=vm.UserId,
                  
             };
@@ -60,6 +62,7 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
                 PassWord = dto.passWord,
                 ServeState = (ServeStates)dto.serveState,
                 Sex = (SexTypes)dto.sex,
+                Nationality=dto.nationality,
                 UserId = dto.userId,
 
             };

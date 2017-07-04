@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Calen.IOP.DataAccess;
+using Calen.IOP.DTO;
 
 namespace Calen.IOP.BLL.Converters
 {
@@ -33,7 +34,7 @@ namespace Calen.IOP.BLL.Converters
             em.BirthDay = dto.birthDay;
             em.Code = dto.code;
             em.Description = dto.description;
-            em.Education = (EducationLevel)dto.education;
+            em.Education = (EducationLevels)dto.education;
             em.Email = dto.email;
             em.Id = dto.id;
             em.IdCardCode = dto.idCardCode;
@@ -44,6 +45,7 @@ namespace Calen.IOP.BLL.Converters
             em.ServeState = (ServeStates)dto.serveState;
             em.Sex = (SexTypes)dto.sex;
             em.UserId = dto.userId;
+            em.Nationality = dto.nationality;
             em.Department = DbContext.Departments.Find(dto.departmentId);
             if (!string.IsNullOrEmpty(dto.image))
             {
@@ -90,6 +92,7 @@ namespace Calen.IOP.BLL.Converters
                 passWord = model.Passwrod,
                 serveState = (int)model.ServeState,
                 sex = (int)model.Sex,
+                nationality=model.Nationality,
                 userId = model.UserId,
             };
             if (model.ServingRecords != null)

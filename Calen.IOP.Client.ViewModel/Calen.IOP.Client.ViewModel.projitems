@@ -11,16 +11,13 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AppCxt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Criteria\EmployeeCriteriaVM.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Common\EducationLevels.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\FunctionVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\IConfirmDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\EmployeeManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\FunctionManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\JobPositionLevelManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\JobTypeManagerVM.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Common\ServeStates.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\ServingRecordVM.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Common\SexTypes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\DepartmentConvertUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\EmployeeConvertUtil.cs" />

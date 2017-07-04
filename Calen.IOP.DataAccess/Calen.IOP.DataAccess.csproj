@@ -84,5 +84,11 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Calen.IOP.DTO\Calen.IOP.DTO.csproj">
+      <Project>{15A419AD-C069-4FF1-B172-1A3E3D7759A1}</Project>
+      <Name>Calen.IOP.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

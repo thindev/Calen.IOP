@@ -89,6 +89,7 @@
       <DependentUpon>BusyIndicator.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\NullToCollapsedConverter.cs" />
+    <Compile Include="Converters\SexTypeToStringConverter.cs" />
     <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
     <Compile Include="Converters\TreeViewItemIndentConverter.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />

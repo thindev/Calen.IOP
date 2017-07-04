@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages.Common"
              xmlns:vm="clr-namespace:Calen.IOP.Client.ViewModel.Common.Managers"
              mc:Ignorable="d" 
-             d:DesignHeight="321.288" d:DesignWidth="871.175" Background="White">
+             d:DesignWidth="871.175" Background="White">
     <UserControl.Resources>
         <vm:EmployeeManager x:Key="EmployeeManager" AutoLoadDataOnInitialize="True"/>
         <Style  TargetType="{x:Type TextBlock}">
@@ -54,6 +54,10 @@
         <Rectangle Grid.Row="1" VerticalAlignment="Center" Height="1" Fill="{DynamicResource EdgeBarColorLevel2}"
                         />
         <Grid Grid.Row="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
             <DataGrid IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserReorderColumns="False" CanUserResizeRows="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2" SelectedItem="{Binding SelectedItem}" Grid.Row="1" ScrollViewer.CanContentScroll="False">
                 <DataGrid.Resources>
                     <Style x:Key="dgCell" TargetType="TextBlock">
@@ -70,11 +74,25 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTextColumn Header="编码" MinWidth="120"  Binding="{Binding Code}" ElementStyle="{StaticResource dgCell}"  />
-                    <DataGridTextColumn Header="名称" MinWidth="140" Width="180" Binding="{Binding Name}" ElementStyle="{StaticResource dgCell}" />
+                    <DataGridTextColumn Header="名称" MinWidth="100" Width="140" Binding="{Binding Name}" ElementStyle="{StaticResource dgCell}" />
                     <DataGridTextColumn Header="描述" Width="*" Binding="{Binding Description}" ElementStyle="{StaticResource dgCell}" />
                 </DataGrid.Columns>
             </DataGrid>
+            <GridSplitter VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="6" Grid.Column="1" Background="{DynamicResource EdgeBarColorLevel2}"/>
+            <Grid Grid.Column="1" Margin="6,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="38"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Margin="8,0">
+                    <Button  Style="{DynamicResource ButtonStyle_GeometryContent}" Height="28" Width="28" VerticalAlignment="Center" Content="{DynamicResource Geo_Arrow_Left}" Padding="4" Click="Button_Click"/>
+                </Grid>
+                <ScrollViewer Grid.Row="1"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
+                    <local:EmployeeDetailPanel />
+                </ScrollViewer>
+            </Grid>
+
         </Grid>
-        <controls:BusyIndicator IsBusy="{Binding IsBusy}" Visibility="Collapsed"/>
+        <controls:BusyIndicator Grid.RowSpan="4" IsBusy="{Binding IsBusy}" Visibility="Collapsed"/>
     </Grid>
 </UserControl>

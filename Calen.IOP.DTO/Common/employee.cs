@@ -10,6 +10,7 @@ namespace Calen.IOP.DTO.Common
     {
         public string idCardCode { get; set; }
         public int sex { get; set; }
+        public string nationality { get; set; }
         public string mobileNumber { get; set; }
         public string email { get; set; }
         public string address { get; set; }

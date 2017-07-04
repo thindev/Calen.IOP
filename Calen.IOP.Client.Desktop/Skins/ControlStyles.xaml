@@ -401,9 +401,16 @@
         <Setter Property="FontFamily" Value="微软雅黑"/>
         <Setter Property="Padding" Value="6"/>
     </Style>
+    <Style TargetType="DatePickerTextBox" BasedOn="{StaticResource MetroDatePickerTextBox}">
+        <Setter Property="FontSize" Value="{DynamicResource FontSize_Content_Large}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Foreground_DarkKey}"/>
+        <Setter Property="FontFamily" Value="微软雅黑"/>
+        <Setter Property="Padding" Value="4"/>
+    </Style>
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.TextBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.ComboBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.DatePicker.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -24,7 +24,7 @@ namespace Calen.IOP.Client.ViewModel.Common.Managers
 
         private async void RefreshItemsAsync()
         {
-            this.IsBusy = true;
+           // this.IsBusy = true;
            // GetDataPortal().FetchEmployees(this.EmployeeCriteria);
         }
     }

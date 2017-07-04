@@ -1,6 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    
+                    xmlns:converters="clr-namespace:Calen.IOP.Client.Desktop.Converters"
                     >
-   
+    <DataTemplate x:Key="SexTypeDataTemplate" >
+        <DataTemplate.Resources>
+            <converters:SexTypeToStringConverter x:Key="SexTypeToStringConverter"/>
+        </DataTemplate.Resources>
+        <TextBlock Text="{Binding Converter={StaticResource SexTypeToStringConverter}}"/>
+    </DataTemplate>
 </ResourceDictionary>

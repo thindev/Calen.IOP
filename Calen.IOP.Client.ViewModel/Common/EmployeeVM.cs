@@ -1,4 +1,5 @@
 ﻿using Calen.IOP.Client.ViewModel.Common;
+using Calen.IOP.DTO;
 using System;
 using System.Collections.ObjectModel;
 #if WINDOWS_WPF
@@ -20,6 +21,7 @@ namespace Calen.IOP.Client.ViewModel
         private ServeStates? _serveState;
         private string _userId;
         private string _passWord;
+        private string _nationality;
         private bool _isVirtual;
         private DepartmentVM _department;
         private ObservableCollection<ServingRecordVM> _servingRecords = new ObservableCollection<ServingRecordVM>();
@@ -38,6 +40,7 @@ namespace Calen.IOP.Client.ViewModel
         public bool IsVirtual { get => _isVirtual; set { Set(() => IsVirtual, ref _isVirtual, value); } }
         public DepartmentVM Department{ get => _department; set { Set(() => Department, ref _department, value); } }
         public ObservableCollection<ServingRecordVM> ServingRecords { get => _servingRecords;  }
+        public string Nationality { get => _nationality; set { Set(() => Nationality, ref _nationality, value); } }
 
         public override EmployeeVM DeepClone()
         {

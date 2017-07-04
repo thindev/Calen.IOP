@@ -1,9 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Calen.IOP.Client.ViewModel.Common
+namespace Calen.IOP.DTO
 {
+    public enum SexTypes
+    {
+        Unknown = 0,
+        Male = 1,
+        Female = 2
+    }
     public enum EducationLevels
     {
         Unknown = 0,
@@ -39,5 +47,29 @@ namespace Calen.IOP.Client.ViewModel.Common
         /// 博士后
         /// </summary>
         Postdoctor = 8
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum ServeStates
+    {
+        Unknown = 0,
+        /// <summary>
+        /// 在
+        /// </summary>
+        InServe = 1,
+        /// <summary>
+        /// 试
+        /// </summary>
+        ProbationaryPeriod = 2,
+        /// <summary>
+        /// 假
+        /// </summary>
+        Onleave = 3,
+        /// <summary>
+        /// 离
+        /// </summary>
+        Resignation = 9
     }
 }
