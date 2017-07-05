@@ -236,17 +236,17 @@ namespace Calen.IOP.DataPortal
             throw new NotImplementedException();
         }
 
-        public Task<int> AddEmployees(IEnumerable<hireType> items)
+        public Task<int> AddEmployees(IEnumerable<employee> items)
         {
             throw new NotImplementedException();
         }
 
-        public Task<int> DeleteEmployees(IEnumerable<hireType> items)
+        public Task<int> DeleteEmployees(IEnumerable<employee> items)
         {
             throw new NotImplementedException();
         }
 
-        public Task<int> UpdateEmployees(IEnumerable<hireType> items)
+        public Task<int> UpdateEmployees(IEnumerable<employee> items)
         {
             throw new NotImplementedException();
         } 

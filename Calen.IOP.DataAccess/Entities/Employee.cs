@@ -22,6 +22,8 @@ namespace Calen.IOP.DataAccess.Entities
         public string UserId { get; set; }
         public string Passwrod { get; set; }
         public string Nationality { get; set; }
+        public string PermissionIds { get; set; }
+        public string UserRoleIds { get; set; }
         /// <summary>
         /// 是否虚拟的
         /// </summary>

@@ -28,7 +28,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Dialogs
         }
         CustomDialog dialog;
         bool result;
-        public async Task<bool> ShowDialog<T>(T vm) where T:EntityVMBase
+        public async Task<bool> ShowDialogAsync<T>(T vm) where T:EntityVMBase
         {
             rootLayout.DataContext = vm;
             dialog = new ContentDialog() { Title = "添加新项" };

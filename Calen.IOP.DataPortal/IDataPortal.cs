@@ -36,9 +36,9 @@ namespace Calen.IOP.DataPortal
         #endregion userRole
         #region employee
         Task<resultForEmployees> FetchEmployees(criteriaForEmployees criteria);
-        Task<int> AddEmployees(IEnumerable<hireType> items);
-        Task<int> DeleteEmployees(IEnumerable<hireType> items);
-        Task<int> UpdateEmployees(IEnumerable<hireType> items);
+        Task<int> AddEmployees(IEnumerable<employee> items);
+        Task<int> DeleteEmployees(IEnumerable<employee> items);
+        Task<int> UpdateEmployees(IEnumerable<employee> items);
         #endregion employee
     }
 }

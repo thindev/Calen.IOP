@@ -18,12 +18,7 @@
                 <dialogs:DeleteItemsDialog/>
             </vm:UserRoleManagerVM.DeleteItemsDialog>
         </vm:UserRoleManagerVM>
-        <HierarchicalDataTemplate x:Key="FunctionDataTemplate" DataType="{x:Type vm:FunctionVM}" ItemsSource="{Binding SubFunctions}">
-            <StackPanel Margin="4,8,0,8" Orientation="Horizontal" >
-                <CheckBox IsChecked="{Binding IsChecked}" IsEnabled="{Binding RelativeSource={RelativeSource AncestorType=TreeView},Path=DataContext.IsEditing}"></CheckBox>
-                <TextBlock Text="{Binding Name}" Margin="0"  FontSize="{DynamicResource FontSize_Title_Small}" VerticalAlignment="Center" />
-            </StackPanel>
-        </HierarchicalDataTemplate>
+        
     </UserControl.Resources>
     <Grid DataContext="{StaticResource UserRoleManager}">
         <Grid.ColumnDefinitions>

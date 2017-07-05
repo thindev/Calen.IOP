@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="Calen.IOP.Client.Desktop.Pages.Widgets.PageNavigateBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages.Widgets"
+             mc:Ignorable="d" 
+             Name="uc">
+    <UserControl.Resources>
+        <Style  TargetType="{x:Type TextBlock}">
+                <Setter Property="TextWrapping" Value="NoWrap"/>
+                <Setter Property="TextTrimming" Value="None"/>
+                <Setter Property="FontSize" Value="{DynamicResource FontSize_Title_Small}"/>
+            <Setter Property="Foreground" Value="{DynamicResource Foreground_NormalKey}"/>
+            <Setter Property="TextAlignment" Value="Right"/>
+            </Style>
+        </UserControl.Resources>
+    <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <TextBlock Text="共" VerticalAlignment="Center"/>
+            <TextBlock Text="120" VerticalAlignment="Center"/>
+            <TextBlock Text="条记录，" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="6,0,0,0">
+            <TextBlock Text="共" VerticalAlignment="Center"/>
+            <TextBlock Text="12" VerticalAlignment="Center"/>
+            <TextBlock Text="页" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="6,0,0,0" VerticalAlignment="Center">
+            <TextBlock Text="每页" VerticalAlignment="Center"/>
+            <ComboBox Text="1" VerticalAlignment="Center" Padding="0" Margin="2,0" FontSize="{DynamicResource FontSize_Content_Middle}"/>
+            <TextBlock Text="条" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="6,0,0,0" VerticalAlignment="Center">
+            <TextBlock Text="第" VerticalAlignment="Center"/>
+            <ComboBox Text="1" VerticalAlignment="Center" Padding="0" Margin="2,0" FontSize="{DynamicResource FontSize_Content_Middle}"/>
+            <TextBlock Text="页" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="8,0,0,0" VerticalAlignment="Center">
+            <Button Name="btn_to_fist"  VerticalAlignment="Center" Style="{DynamicResource ButtonStyle_GeometryContent}" Content="{DynamicResource Geo_ToFistPage}" Height="24" Padding="5" Width="24" />
+            <Button Name="btn_to_pre" VerticalAlignment="Center" Style="{DynamicResource ButtonStyle_GeometryContent}" Content="{DynamicResource Geo_ToPrePage}" Height="24" Padding="5" Width="24" />
+            <Button Name="btn_to_next" VerticalAlignment="Center" Style="{DynamicResource ButtonStyle_GeometryContent}" Content="{DynamicResource Geo_ToNextPage}" Height="24" Padding="5" Width="24" />
+            <Button Name="btn_to_last" VerticalAlignment="Center" Style="{DynamicResource ButtonStyle_GeometryContent}" Content="{DynamicResource Geo_ToLastPage}" Height="24" Padding="5" Width="24" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

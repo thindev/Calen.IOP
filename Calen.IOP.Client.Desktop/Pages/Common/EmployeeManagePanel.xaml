@@ -6,10 +6,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages.Common"
              xmlns:vm="clr-namespace:Calen.IOP.Client.ViewModel.Common.Managers"
+             xmlns:widgets="clr-namespace:Calen.IOP.Client.Desktop.Pages.Widgets"
+             xmlns:dialog="clr-namespace:Calen.IOP.Client.Desktop.Pages.Dialogs"
              mc:Ignorable="d" 
-             d:DesignWidth="871.175" Background="White">
+              Background="White">
     <UserControl.Resources>
-        <vm:EmployeeManager x:Key="EmployeeManager" AutoLoadDataOnInitialize="True"/>
+        <vm:EmployeeManager x:Key="EmployeeManager" AutoLoadDataOnInitialize="True">
+            <vm:EmployeeManager.EditItemDialog>
+                <dialog:EditEmployeeDialog/>
+            </vm:EmployeeManager.EditItemDialog>
+        </vm:EmployeeManager>
         <Style  TargetType="{x:Type TextBlock}">
             <Setter Property="TextWrapping" Value="NoWrap"/>
             <Setter Property="TextTrimming" Value="None"/>
@@ -56,9 +62,14 @@
         <Grid Grid.Row="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Name="rightColumn" Width="400"/>
             </Grid.ColumnDefinitions>
-            <DataGrid IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserReorderColumns="False" CanUserResizeRows="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2" SelectedItem="{Binding SelectedItem}" Grid.Row="1" ScrollViewer.CanContentScroll="False">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+<DataGrid IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserReorderColumns="False" CanUserResizeRows="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2" SelectedItem="{Binding SelectedItem}" Grid.Row="0" ScrollViewer.CanContentScroll="False" MouseDoubleClick="DataGrid_MouseDoubleClick" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource EdgeBarColorLevel2}" Margin="0,0,0,2">
                 <DataGrid.Resources>
                     <Style x:Key="dgCell" TargetType="TextBlock">
                         <Setter Property="TextAlignment" Value="Left"/>
@@ -78,14 +89,16 @@
                     <DataGridTextColumn Header="描述" Width="*" Binding="{Binding Description}" ElementStyle="{StaticResource dgCell}" />
                 </DataGrid.Columns>
             </DataGrid>
+                <widgets:PageNavigateBar Grid.Row="1" HorizontalAlignment="Right"/>
+            </Grid>
             <GridSplitter VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="6" Grid.Column="1" Background="{DynamicResource EdgeBarColorLevel2}"/>
             <Grid Grid.Column="1" Margin="6,0,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="38"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Grid Margin="8,0">
-                    <Button  Style="{DynamicResource ButtonStyle_GeometryContent}" Height="28" Width="28" VerticalAlignment="Center" Content="{DynamicResource Geo_Arrow_Left}" Padding="4" Click="Button_Click"/>
+                <Grid Background="{DynamicResource EdgeBarColorLevel2}">
+                    <Button  Margin="8,0" Style="{DynamicResource ButtonStyle_GeometryContent}" Height="28" Width="28" VerticalAlignment="Center" Content="{DynamicResource Geo_Arrow_Left}" Padding="4" Click="Button_Click"/>
                 </Grid>
                 <ScrollViewer Grid.Row="1"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
                     <local:EmployeeDetailPanel />

@@ -85,6 +85,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Animations\GridLengthAnimation.cs" />
     <Compile Include="Controls\BusyIndicator.xaml.cs">
       <DependentUpon>BusyIndicator.xaml</DependentUpon>
     </Compile>
@@ -126,6 +127,9 @@
     <Compile Include="Pages\Common\JobTypeManagePanel.xaml.cs">
       <DependentUpon>JobTypeManagePanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Dialogs\EditEmployeeDialog.xaml.cs">
+      <DependentUpon>EditEmployeeDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Dialogs\EditJobPositionLevelDialog.xaml.cs">
       <DependentUpon>EditJobPositionLevelDialog.xaml</DependentUpon>
     </Compile>
@@ -140,6 +144,9 @@
     </Compile>
     <Compile Include="Pages\Widgets\DepartmentSelector.xaml.cs">
       <DependentUpon>DepartmentSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Widgets\PageNavigateBar.xaml.cs">
+      <DependentUpon>PageNavigateBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Widgets\ParentDepartmentSelector.cs" />
     <Compile Include="UtilMethods.cs" />
@@ -206,6 +213,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Dialogs\EditEmployeeDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Dialogs\EditJobPositionLevelDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -223,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Widgets\DepartmentSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Widgets\PageNavigateBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -265,6 +280,10 @@
     <Page Include="Skins\DataTemplates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Skins\ExpanderStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Skins\MainSkin.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -238,7 +238,7 @@ namespace Calen.IOP.Client.ViewModel
 
     public interface IEditItemDialog
     {
-        Task<bool> ShowDialog<T>(T vm) where T : EntityVMBase;
+        Task<bool> ShowDialogAsync<T>(T vm) where T : EntityVMBase;
 
     }
 }

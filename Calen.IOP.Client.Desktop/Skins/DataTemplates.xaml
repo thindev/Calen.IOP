@@ -1,7 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:converters="clr-namespace:Calen.IOP.Client.Desktop.Converters"
+                    xmlns:vm="clr-namespace:Calen.IOP.Client.ViewModel"
                     >
+    <HierarchicalDataTemplate x:Key="FunctionDataTemplate" DataType="{x:Type vm:FunctionVM}" ItemsSource="{Binding SubFunctions}">
+        <StackPanel Margin="4,8,0,8" Orientation="Horizontal" IsEnabled="{Binding IsReadOnly,Converter={StaticResource InverseBooleanConverter}}">
+            <CheckBox IsChecked="{Binding IsChecked}" IsEnabled="{Binding RelativeSource={RelativeSource AncestorType=TreeView},Path=DataContext.IsEditing}"></CheckBox>
+            <TextBlock Text="{Binding Name}" Margin="0"  FontSize="{DynamicResource FontSize_Title_Small}" VerticalAlignment="Center" />
+        </StackPanel>
+    </HierarchicalDataTemplate>
     <DataTemplate x:Key="SexTypeDataTemplate" >
         <DataTemplate.Resources>
             <converters:SexTypeToStringConverter x:Key="SexTypeToStringConverter"/>
