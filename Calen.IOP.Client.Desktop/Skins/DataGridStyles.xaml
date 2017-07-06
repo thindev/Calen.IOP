@@ -384,8 +384,8 @@
                     <Condition Property="Controls:DataGridRowHelper.SelectionUnit" Value="FullRow" />
                     <Condition Property="IsMouseOver" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource ListItemMouseOverBackgroud}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource ListItemMouseOverBorderBrush}" />
+                <Setter Property="Background" Value="{DynamicResource Item_MouseOver_Background}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource Item_MouseOver_Border}" />
             </MultiTrigger>
             <!--  IsSelected  -->
             <MultiTrigger>
@@ -393,8 +393,8 @@
                     <Condition Property="Controls:DataGridRowHelper.SelectionUnit" Value="FullRow" />
                     <Condition Property="IsSelected" Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource ListItemSelectedBackgroud}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource ListItemSelectedBorderBrush}" />
+                <Setter Property="Background" Value="{DynamicResource Item_SelectedActive_Background}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource Item_SelectedActive_Border}" />
                 <Setter Property="Foreground" Value="{DynamicResource ListItemSelectedForeground}" />
             </MultiTrigger>
 
@@ -405,8 +405,8 @@
                     <Condition Property="IsSelected" Value="True" />
                     <Condition Property="Selector.IsSelectionActive" Value="False" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource ListItemMouseOverBackgroud}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource ListItemMouseOverBorderBrush}" />
+                <Setter Property="Background" Value="{DynamicResource Item_MouseOver_Background}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource Item_MouseOver_Border}" />
                 <Setter Property="Foreground" Value="{DynamicResource Foreground_NormalKey}"/>
             </MultiTrigger>
 

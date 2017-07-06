@@ -19,11 +19,12 @@
     <SolidColorBrush x:Key="EdgeBarColorLevel2" Color="#FFf4f4f6"/>
     <SolidColorBrush x:Key="EdgeBarBorderColorLevel2" Color="#FFededef"/>
     <!--list Item-->
-   
-    <SolidColorBrush x:Key="ListItemMouseOverBackgroud" Color="#FFDADADE"/>
-    <SolidColorBrush x:Key="ListItemMouseOverBorderBrush" Color="#FFCCCCCE"/>
-    
-    <SolidColorBrush x:Key="ListItemSelectedBackgroud" Color="{DynamicResource HighlightColor}"/>
-    <SolidColorBrush x:Key="ListItemSelectedForeground" Color="White"/>
-    <SolidColorBrush x:Key="ListItemSelectedBorderBrush" Color="#FFB8DDFC"/>
+    <SolidColorBrush x:Key="Item_MouseOver_Background" Color="#FFDADADE"/>
+    <SolidColorBrush x:Key="Item_MouseOver_Border" Color="#FFCCCCCE"/>
+    <SolidColorBrush x:Key="Item_SelectedInactive_Background" Color="#FFededef"/>
+    <SolidColorBrush x:Key="Item_SelectedInactive_Border" Color="#FFdadadc"/>
+    <SolidColorBrush x:Key="Item_SelectedInactive_Foreground" Color="Black"/>
+    <SolidColorBrush x:Key="Item_SelectedActive_Background" Color="{DynamicResource HighlightColor}"/>
+    <SolidColorBrush x:Key="Item_SelectedActive_Border" Color="#FFB8DDFC"/>
+    <SolidColorBrush x:Key="Item_SelectedActive_Foreground" Color="White"/>
 </ResourceDictionary>

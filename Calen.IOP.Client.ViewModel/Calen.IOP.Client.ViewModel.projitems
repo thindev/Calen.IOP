@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Common\Criteria\EmployeeCriteriaVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\FunctionVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\IConfirmDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\JobPositionSelectorVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\EmployeeManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\FunctionManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\JobPositionLevelManagerVM.cs" />

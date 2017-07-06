@@ -35,6 +35,11 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
 
         ObservableCollection<DepartmentVM> _departmentTree = new ObservableCollection<DepartmentVM>();
         public static readonly DependencyProperty IsReadOnlyProperty = TextBox.IsReadOnlyProperty.AddOwner(typeof(DepartmentSelector));
+        public bool IsReadOnly
+        {
+            get { return (bool)GetValue(IsReadOnlyProperty); }
+            set { SetValue(IsReadOnlyProperty, value); }
+        }
 
         private static void SelectedDepartmentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -44,11 +49,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
             else
                 ds.txb.Text = string.Empty;
         }
-        public bool IsReadOnly
-        {
-            get { return (bool)GetValue(IsReadOnlyProperty); }
-            set { SetValue(IsReadOnlyProperty, value); }
-        }
+       
         public DepartmentVM SelectedDepartment
         {
             get { return (DepartmentVM) GetValue(SelectedDepartmentProperty); }

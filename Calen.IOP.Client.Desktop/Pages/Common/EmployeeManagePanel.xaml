@@ -101,7 +101,7 @@
                     <Button  Margin="8,0" Style="{DynamicResource ButtonStyle_GeometryContent}" Height="28" Width="28" VerticalAlignment="Center" Content="{DynamicResource Geo_Arrow_Left}" Padding="4" Click="Button_Click"/>
                 </Grid>
                 <ScrollViewer Grid.Row="1"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
-                    <local:EmployeeDetailPanel />
+                    <local:EmployeeDetailPanel IsBaseInfoExpanded="True" IsAccountInfoExpanded="True" IsAdditionalInfoExpanded="True"/>
                 </ScrollViewer>
             </Grid>
 

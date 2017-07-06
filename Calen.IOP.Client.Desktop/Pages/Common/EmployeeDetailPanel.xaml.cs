@@ -24,5 +24,26 @@ namespace Calen.IOP.Client.Desktop.Pages.Common
         {
             InitializeComponent();
         }
+        public bool IsBaseInfoExpanded
+        {
+            set
+            {
+                epd_baseInfo.IsExpanded = value;
+            }
+        }
+        public bool IsAccountInfoExpanded
+        {
+            set
+            {
+                epd_accountInfo.IsExpanded = value;
+            }
+        }
+        public bool IsAdditionalInfoExpanded
+        {
+            set
+            {
+                epd_additional.IsExpanded = value;
+            }
+        }
     }
 }

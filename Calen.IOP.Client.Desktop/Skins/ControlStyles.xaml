@@ -29,10 +29,10 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" Value="{DynamicResource ListItemMouseOverBackgroud}"/>
+                            <Setter Property="Background" Value="{DynamicResource Item_MouseOver_Background}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="BorderBrush" Value="{DynamicResource ListItemMouseOverBorderBrush}"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource Item_MouseOver_Border}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="true">
                             <Setter Property="Foreground" Value="{DynamicResource HighlightBrush}"/>
@@ -285,19 +285,78 @@
         <Setter Property="FontSize" Value="{DynamicResource FontSize_Content_Large}"/>
         <Setter Property="Foreground" Value="{DynamicResource Foreground_DarkKey}"/>
         <Setter Property="FontFamily" Value="微软雅黑"/>
-        <Setter Property="Padding" Value="4"/>
+        <Setter Property="Padding" Value="2,4"/>
     </Style>
     <Style TargetType="ComboBox" BasedOn="{StaticResource MetroComboBox}">
         <Setter Property="FontSize" Value="{DynamicResource FontSize_Content_Large}"/>
         <Setter Property="Foreground" Value="{DynamicResource Foreground_DarkKey}"/>
         <Setter Property="FontFamily" Value="微软雅黑"/>
-        <Setter Property="Padding" Value="6"/>
+        <Setter Property="Padding" Value="2,6"/>
     </Style>
     <Style TargetType="DatePickerTextBox" BasedOn="{StaticResource MetroDatePickerTextBox}">
         <Setter Property="FontSize" Value="{DynamicResource FontSize_Content_Large}"/>
         <Setter Property="Foreground" Value="{DynamicResource Foreground_DarkKey}"/>
         <Setter Property="FontFamily" Value="微软雅黑"/>
-        <Setter Property="Padding" Value="4"/>
+        <Setter Property="Padding" Value="2,5"/>
+    </Style>
+    <Style x:Key="FocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="DefaultListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Padding" Value="4,2"/>
+        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item_MouseOver_Background}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item_MouseOver_Border}"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Selector.IsSelectionActive" Value="False"/>
+                                <Condition Property="IsSelected" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item_SelectedInactive_Background}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item_SelectedInactive_Border}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource Item_SelectedInactive_Foreground}"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Selector.IsSelectionActive" Value="True"/>
+                                <Condition Property="IsSelected" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item_SelectedActive_Background}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item_SelectedActive_Border}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource Item_SelectedActive_Foreground}"/>
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <ResourceDictionary.MergedDictionaries>

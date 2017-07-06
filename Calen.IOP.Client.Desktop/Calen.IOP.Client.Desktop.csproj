@@ -90,6 +90,8 @@
       <DependentUpon>BusyIndicator.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\NullToCollapsedConverter.cs" />
+    <Compile Include="Converters\EducationLevelToStringConverter.cs" />
+    <Compile Include="Converters\ServeStateToStringConverter.cs" />
     <Compile Include="Converters\SexTypeToStringConverter.cs" />
     <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
     <Compile Include="Converters\TreeViewItemIndentConverter.cs" />
@@ -144,6 +146,9 @@
     </Compile>
     <Compile Include="Pages\Widgets\DepartmentSelector.xaml.cs">
       <DependentUpon>DepartmentSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Widgets\JobPositionSelector.xaml.cs">
+      <DependentUpon>JobPositionSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Widgets\PageNavigateBar.xaml.cs">
       <DependentUpon>PageNavigateBar.xaml</DependentUpon>
@@ -234,6 +239,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Widgets\DepartmentSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Widgets\JobPositionSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -338,10 +347,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Calen.IOP.DataAccess\Calen.IOP.DataAccess.csproj">
-      <Project>{772AFCCC-93FE-4EBC-8387-51EF45021E4B}</Project>
-      <Name>Calen.IOP.DataAccess</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Calen.IOP.DataPortal\Calen.IOP.DataPortal.csproj">
       <Project>{C2EF32D5-069E-4EB1-8475-EB823A9491BA}</Project>
       <Name>Calen.IOP.DataPortal</Name>

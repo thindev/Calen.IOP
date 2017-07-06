@@ -47,7 +47,7 @@
                 <ControlTemplate TargetType="{x:Type TabItem}">
                     <Grid x:Name="templateRoot" VerticalAlignment="{TemplateBinding VerticalAlignment}" Background="{TemplateBinding Background}">
                         <ContentPresenter x:Name="contentPresenter" ContentSource="Header" Focusable="False" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-                        <Rectangle Name="underLine" Fill="{DynamicResource ListItemSelectedBackgroud}" VerticalAlignment="Bottom" Height="2" Margin="8,0,8,-1" Visibility="Collapsed" />
+                        <Rectangle Name="underLine" Fill="{DynamicResource Item_SelectedActive_Background}" VerticalAlignment="Bottom" Height="2" Margin="8,0,8,-1" Visibility="Collapsed" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <MultiDataTrigger>
@@ -55,7 +55,7 @@
                                 <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true"/>
                                 <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top"/>
                             </MultiDataTrigger.Conditions>
-                            <Setter Property="Background"  Value="{DynamicResource ListItemMouseOverBackgroud}"/>
+                            <Setter Property="Background"  Value="{DynamicResource Item_MouseOver_Background}"/>
                            
                         </MultiDataTrigger>
                         <MultiDataTrigger>

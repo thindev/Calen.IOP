@@ -10,9 +10,18 @@
         </StackPanel>
     </HierarchicalDataTemplate>
     <DataTemplate x:Key="SexTypeDataTemplate" >
-        <DataTemplate.Resources>
-            <converters:SexTypeToStringConverter x:Key="SexTypeToStringConverter"/>
-        </DataTemplate.Resources>
-        <TextBlock Text="{Binding Converter={StaticResource SexTypeToStringConverter}}"/>
+        <TextBlock Text="{Binding Converter={StaticResource SexTypeToStringConverter}}" Margin="4,2" />
     </DataTemplate>
+    <DataTemplate x:Key="ServeStatesDataTemplate" >
+        <TextBlock Text="{Binding Converter={StaticResource ServeStateToStringConverter}}" Margin="4,2" />
+    </DataTemplate>
+    <DataTemplate x:Key="EducationLevelDataTemplate" >
+        <TextBlock Text="{Binding Converter={StaticResource EducationLevelToStringConverter}}" Margin="4,2" />
+    </DataTemplate>
+    <HierarchicalDataTemplate x:Key="DepartmentDataTemplate" DataType="{x:Type vm:DepartmentVM}" ItemsSource="{Binding SubDepartments}">
+        <StackPanel Margin="4,8,0,8" Orientation="Horizontal">
+            <Path Stretch="Uniform" Height="{DynamicResource FontSize_Content_Large}" Width="{DynamicResource FontSize_Content_Large}" Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TreeViewItem},Path=Foreground}" Data="{DynamicResource Geo_Department}" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding Name}" Margin="8,0,0,0"  FontSize="{DynamicResource FontSize_Title_Small}" VerticalAlignment="Center" />
+        </StackPanel>
+    </HierarchicalDataTemplate>
 </ResourceDictionary>
