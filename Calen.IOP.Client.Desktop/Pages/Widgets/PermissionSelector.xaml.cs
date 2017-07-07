@@ -32,8 +32,14 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
             _funcTree = AppCxt.Current.FunctionManager.CloneFunctionTree();
             this.funTree.ItemsSource = _funcTree;
             this.brd_popup.DataContext = _userRoleManager;
-            this.Loaded += PermissionSelector_Loaded;
+            this.popup.Opened += Popup_Opened;
         }
+
+        private void Popup_Opened(object sender, EventArgs e)
+        {
+            this.ResetUI(this.TargetEmployee);
+        }
+
         public static readonly DependencyProperty IsReadOnlyProperty = TextBox.IsReadOnlyProperty.AddOwner(typeof(PermissionSelector));
         public static readonly DependencyProperty TargetEmployeeProperty = DependencyProperty.Register("TargetEmployee", typeof(EmployeeVM), typeof(PermissionSelector), new PropertyMetadata(null, TargetEmployeeChanged));
         public EmployeeVM TargetEmployee
@@ -75,7 +81,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
                var ur= _userRoleManager.ItemList.FirstOrDefault(p=>p.Id==id);
                 if(ur!=null)
                 {
-                    idsInRoles.Union(ur.FunctionIds);
+                    idsInRoles= idsInRoles.Union(ur.FunctionIds).ToList();
                 }
             }
             if (idsInRoles.Contains(item.Id))
@@ -132,10 +138,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
             
         }
 
-        private void PermissionSelector_Loaded(object sender, RoutedEventArgs e)
-        {
-            this.ResetUI(this.TargetEmployee);
-        }
+       
 
         void GetId(FunctionVM item)
         {
