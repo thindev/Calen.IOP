@@ -19,9 +19,9 @@
     <SolidColorBrush x:Key="EdgeBarColorLevel2" Color="#FFf4f4f6"/>
     <SolidColorBrush x:Key="EdgeBarBorderColorLevel2" Color="#FFededef"/>
     <!--list Item-->
-    <SolidColorBrush x:Key="Item_MouseOver_Background" Color="#FFDADADE"/>
+    <SolidColorBrush x:Key="Item_MouseOver_Background" Color="#FFededef"/>
     <SolidColorBrush x:Key="Item_MouseOver_Border" Color="#FFCCCCCE"/>
-    <SolidColorBrush x:Key="Item_SelectedInactive_Background" Color="#FFededef"/>
+    <SolidColorBrush x:Key="Item_SelectedInactive_Background" Color="#FFDADADE"/>
     <SolidColorBrush x:Key="Item_SelectedInactive_Border" Color="#FFdadadc"/>
     <SolidColorBrush x:Key="Item_SelectedInactive_Foreground" Color="Black"/>
     <SolidColorBrush x:Key="Item_SelectedActive_Background" Color="{DynamicResource HighlightColor}"/>

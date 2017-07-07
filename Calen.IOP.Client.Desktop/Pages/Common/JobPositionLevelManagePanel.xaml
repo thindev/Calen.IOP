@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Calen.IOP.Client.Desktop.Pages.JobTypeManagePanel"
+﻿<UserControl x:Class="Calen.IOP.Client.Desktop.Pages.JobPositionLevelManagePanel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -13,21 +13,22 @@
         <Style TargetType="DataGridRow" BasedOn="{StaticResource MetroDataGridRow}">
             <Setter Property="IsSelected" Value="{Binding IsSelected,Mode=OneWay}"/>
         </Style>
-        <vm:JobTypeManagerVM x:Key="JobTypeManagerVM" AutoLoadDataOnInitialize="True">
-            <vm:JobTypeManagerVM.EditItemDialog>
-                <dialog:EditJobTypeDialog/>
-            </vm:JobTypeManagerVM.EditItemDialog>
-            <vm:JobTypeManagerVM.DeleteItemsDialog>
+        <vm:JobPositionLevelManagerVM x:Key="JobPositionLevelManagerVM" AutoLoadDataOnInitialize="True">
+            <vm:JobPositionLevelManagerVM.EditItemDialog>
+                <dialog:EditJobPositionLevelDialog/>
+            </vm:JobPositionLevelManagerVM.EditItemDialog>
+            <vm:JobPositionLevelManagerVM.DeleteItemsDialog>
                 <dialog:DeleteItemsDialog />
-            </vm:JobTypeManagerVM.DeleteItemsDialog>
-        </vm:JobTypeManagerVM>
+            </vm:JobPositionLevelManagerVM.DeleteItemsDialog>
+        </vm:JobPositionLevelManagerVM>
+
     </UserControl.Resources>
-    <Grid DataContext="{StaticResource JobTypeManagerVM}" Grid.Row="1" Margin="0,14">
+    <Grid DataContext="{StaticResource JobPositionLevelManagerVM}" Grid.Row="2">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="岗位类型列表：" Margin="12,8" HorizontalAlignment="Left" FontSize="{DynamicResource FontSize_Title_Middle}" Foreground="{DynamicResource Foreground_DarkKey}" Grid.Row="0"/>
+        <TextBlock Text="岗位级别列表：" Margin="12,8" HorizontalAlignment="Left" FontSize="{DynamicResource FontSize_Title_Middle}" Foreground="{DynamicResource Foreground_DarkKey}" Grid.Row="0"/>
         <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,12,8" VerticalAlignment="Bottom" >
             <Button  Style="{DynamicResource ButtonStyle_GeometryContent_Circle_Green}" Content="{DynamicResource Geo_Refresh}" Height="22" Width="22" Padding="6"  Margin="4,0" Command="{Binding RefreshItemsCommand}" >
             </Button>

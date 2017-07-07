@@ -19,5 +19,10 @@
                 <common:EmployeeManagePanel/>
             </mahapps:MetroContentControl>
         </TabItem>
+        <TabItem Header="用户角色管理" Style="{DynamicResource PageTabItemStyle}">
+            <mahapps:MetroContentControl>
+                <local:UserRoleManagePanel/>
+            </mahapps:MetroContentControl>
+        </TabItem>
     </TabControl>
 </Page>

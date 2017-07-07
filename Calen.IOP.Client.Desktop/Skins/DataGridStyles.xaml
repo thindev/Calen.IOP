@@ -266,7 +266,7 @@
         <Style.Triggers>
             <!--  IsSelected  -->
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource ListItemSelectedForeground}" />
+                <Setter Property="Foreground" Value="{DynamicResource Item_SelectedActive_Foreground}" />
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -395,7 +395,7 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Item_SelectedActive_Background}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource Item_SelectedActive_Border}" />
-                <Setter Property="Foreground" Value="{DynamicResource ListItemSelectedForeground}" />
+                <Setter Property="Foreground" Value="{DynamicResource Item_SelectedActive_Foreground}" />
             </MultiTrigger>
 
               <!--IsSelected and Selector.IsSelectionActive-->  
@@ -405,9 +405,9 @@
                     <Condition Property="IsSelected" Value="True" />
                     <Condition Property="Selector.IsSelectionActive" Value="False" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="{DynamicResource Item_MouseOver_Background}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource Item_MouseOver_Border}" />
-                <Setter Property="Foreground" Value="{DynamicResource Foreground_NormalKey}"/>
+                <Setter Property="Background" Value="{DynamicResource Item_SelectedInactive_Background}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource Item_SelectedInactive_Border}" />
+                <Setter Property="Foreground" Value="{DynamicResource Item_SelectedInactive_Foreground}"/>
             </MultiTrigger>
 
             

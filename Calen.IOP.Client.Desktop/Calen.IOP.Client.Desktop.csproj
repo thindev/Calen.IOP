@@ -104,6 +104,12 @@
     <Compile Include="Pages\Common\EmployeeManagePanel.xaml.cs">
       <DependentUpon>EmployeeManagePanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Common\JobPositionLevelManagePanel.xaml.cs">
+      <DependentUpon>JobPositionLevelManagePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\HireTypeManagePanel.xaml.cs">
+      <DependentUpon>HireTypeManagePanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Dialogs\ConfirmDialog.xaml.cs">
       <DependentUpon>ConfirmDialog.xaml</DependentUpon>
     </Compile>
@@ -191,6 +197,14 @@
     <Page Include="Pages\Common\EmployeeManagePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Common\JobPositionLevelManagePanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Common\HireTypeManagePanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Dialogs\ConfirmDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
