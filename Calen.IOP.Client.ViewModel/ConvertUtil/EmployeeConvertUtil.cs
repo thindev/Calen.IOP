@@ -30,10 +30,11 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
                 name = vm.Name,
                 passWord = vm.PassWord,
                 serveState = vm.ServeState.HasValue ? (int)vm.ServeState.Value : -1,
-                 sex=vm.Sex.HasValue?(int)vm.Sex.Value:-1,
-                 nationality=vm.Nationality,
-                  userId=vm.UserId,
-                 
+                sex = vm.Sex.HasValue ? (int)vm.Sex.Value : -1,
+                nationality = vm.Nationality,
+                userId = vm.UserId,
+                permissionIds = vm.PermissionIds.ToArray(),
+                userRoleIds = vm.UserRoleIds.ToArray()
             };
             if(vm.Image!=null)
             {
@@ -64,7 +65,6 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
                 Sex = (SexTypes)dto.sex,
                 Nationality=dto.nationality,
                 UserId = dto.userId,
-
             };
             if(dto.servingRecords!=null)
             {
@@ -73,6 +73,20 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
                     ServingRecordVM record = ServingRecordConvertUtil.FromDto(item);
                     record.Employee = vm;
                     vm.ServingRecords.Add(record);
+                }
+            }
+            if(dto.userRoleIds!=null)
+            {
+                foreach(var item in dto.userRoleIds)
+                {
+                    vm.UserRoleIds.Add(item);
+                }
+            }
+            if(dto.permissionIds!=null)
+            {
+                foreach (var item in dto.permissionIds)
+                {
+                    vm.PermissionIds.Add(item);
                 }
             }
             return vm;

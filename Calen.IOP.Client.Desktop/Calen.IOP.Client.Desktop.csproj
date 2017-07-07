@@ -147,6 +147,12 @@
     <Compile Include="Pages\Widgets\DepartmentSelector.xaml.cs">
       <DependentUpon>DepartmentSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Widgets\PermissionSelector.xaml.cs">
+      <DependentUpon>PermissionSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Widgets\UserRoleSelector.xaml.cs">
+      <DependentUpon>UserRoleSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Widgets\JobPositionSelector.xaml.cs">
       <DependentUpon>JobPositionSelector.xaml</DependentUpon>
     </Compile>
@@ -242,11 +248,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Widgets\PermissionSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Widgets\UserRoleSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\Widgets\JobPositionSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Widgets\PageNavigateBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Converters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -303,6 +321,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Skins\TextBoxStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Skins\ToggleButtonStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

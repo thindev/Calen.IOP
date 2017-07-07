@@ -46,8 +46,8 @@ namespace Calen.IOP.BLL.Converters
             em.Sex = (SexTypes)dto.sex;
             em.UserId = dto.userId;
             em.Nationality = dto.nationality;
-            em.UserRoleIds = dto.userRoleIds;
-            em.PermissionIds = dto.permissionIds;
+            em.UserRoleIds = string.Join("," ,dto.userRoleIds);
+            em.PermissionIds = string.Join(",", dto.permissionIds);
             em.Department = DbContext.Departments.Find(dto.departmentId);
             if (!string.IsNullOrEmpty(dto.image))
             {
@@ -96,8 +96,9 @@ namespace Calen.IOP.BLL.Converters
                 sex = (int)model.Sex,
                 nationality=model.Nationality,
                 userId = model.UserId,
-                userRoleIds=model.UserRoleIds,
-                 permissionIds=model.PermissionIds
+                userRoleIds= model.UserRoleIds==null?null:model.UserRoleIds.Split(','),
+                 permissionIds = model.PermissionIds == null ? null : model.PermissionIds.Split(','),
+             
             };
             if (model.ServingRecords != null)
             {

@@ -20,8 +20,8 @@ namespace Calen.IOP.DTO.Common
         public int serveState { get; set; }
         public string userId { get; set; }
         public string passWord { get; set; }
-        public string userRoleIds { get; set; }
-        public string permissionIds { get; set; }
+        public string[] userRoleIds { get; set; }
+        public string[] permissionIds { get; set; }
         public bool isVirtual { get; set; }
         public string  departmentId { get; set; }
         public string departmentName { get; set; }

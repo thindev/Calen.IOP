@@ -20,28 +20,28 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
     /// <summary>
     /// JobPositionSelector.xaml 的交互逻辑
     /// </summary>
-    public partial class JobPositionSelector : UserControl
+    public partial class UserRoleSelector : UserControl
     {
         ListCollectionView lcv;
-        public JobPositionSelector()
+        public UserRoleSelector()
         {
             InitializeComponent();
-            _viewModel = new JobPositionSelectorVM();
-            _viewModel.RefreshDataCommand.Execute(null);
-            lcv = new ListCollectionView(_viewModel.JobPositionList);
+            _viewModel = new UserRoleManagerVM();
+            _viewModel.RefreshItemsCommand.Execute(null);
+            lcv = new ListCollectionView(_viewModel.ItemList);
             lcv.IsLiveFiltering = true;
             lcv.LiveFilteringProperties.Add("IsSelected");
             lcv.Filter = (p) =>
             {
-                return (p as JobPositionVM).IsSelected;
+                return (p as UserRoleVM).IsSelected;
             };
             this.list_selected.ItemsSource = lcv;
-            treeView.ItemsSource = _viewModel.DepartmentTreeRoots;
             this.brd_popup.DataContext = _viewModel;
+            this.list_forSelect.ItemsSource = _viewModel.ItemList;
         }
-        JobPositionSelectorVM _viewModel;
-        public static readonly DependencyProperty IsReadOnlyProperty = TextBox.IsReadOnlyProperty.AddOwner(typeof(JobPositionSelector));
-        public static readonly DependencyProperty TargetEmployeeProperty = DependencyProperty.Register("TargetEmployee", typeof(EmployeeVM), typeof(JobPositionSelector), new PropertyMetadata(null, TargetEmployeeChanged));
+        UserRoleManagerVM _viewModel;
+        public static readonly DependencyProperty IsReadOnlyProperty = TextBox.IsReadOnlyProperty.AddOwner(typeof(UserRoleSelector));
+        public static readonly DependencyProperty TargetEmployeeProperty = DependencyProperty.Register("TargetEmployee", typeof(EmployeeVM), typeof(UserRoleSelector), new PropertyMetadata(null, TargetEmployeeChanged));
         public EmployeeVM TargetEmployee
         {
             get { return (EmployeeVM)GetValue( TargetEmployeeProperty); }
@@ -50,24 +50,34 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
 
         private static void TargetEmployeeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            JobPositionSelector jps = (JobPositionSelector)d;
+            UserRoleSelector jps = (UserRoleSelector)d;
             EmployeeVM value = e.NewValue as EmployeeVM;
-            jps._viewModel.SetTargetEmployee(value);
-            if(value!=null)
-            {
-                jps.SetText(value);
-            }
+            jps.ResetUI(value);
+            
         }
 
-       
+        private void ResetUI(EmployeeVM vm)
+        {
+            if (vm != null)
+            {
+                foreach (var item in _viewModel.ItemList)
+                {
+                    if (vm.UserRoleIds.Contains(item.Id))
+                        item.IsSelected = true;
+                    else
+                        item.IsSelected = false;
+                }
+                this.SetText(vm);
+            }
+        }
 
         void SetText(EmployeeVM vm)
         {
             List<string> names = new List<string>();
-            foreach (var item in vm.ServingRecords)
+            foreach (var item in _viewModel.ItemList)
             {
-                if (item.JobPosition == null) continue;
-                names.Add(item.JobPosition.Name);
+                if (vm.UserRoleIds.Contains(item.Id))
+                names.Add(item.Name);
             }
             this.txb.Text = string.Join(",", names);
         }
@@ -78,30 +88,27 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
             set { SetValue(IsReadOnlyProperty, value); }
         }
 
-        private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
-        {
-            DepartmentVM department = e.NewValue as DepartmentVM;
-            if(department==null)
-            {
-                this.list_forSelect.ItemsSource = null;
-            }
-            else
-            {
-                this.list_forSelect.ItemsSource = department.JobPositions;
-            }
-           
-        }
 
         private void btn_ok_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.ConfirmCommand.Execute(null);
+            this.TargetEmployee.UserRoleIds.Clear();
+            foreach (var item in _viewModel.ItemList)
+            {
+                if(item.IsSelected)
+                {
+                    this.TargetEmployee.UserRoleIds.Add(item.Id);
+                }
+            }
             this.SetText(this.TargetEmployee);
             this.popup.IsOpen = false;
         }
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.CancelCommand.Execute(null);
+            if(this.TargetEmployee!=null)
+            {
+                this.ResetUI(this.TargetEmployee);
+            }
             this.popup.IsOpen = false;
         }
 

@@ -39,15 +39,15 @@
             <StackPanel Margin="12" Grid.Column="1">
                 <DockPanel>
                     <TextBlock Text="编号：" VerticalAlignment="Center" Width="42" />
-                    <TextBox VerticalAlignment="Center" Text="{Binding Name}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
-                </DockPanel>
-                <DockPanel>
-                    <TextBlock Text="名称：" VerticalAlignment="Center" Width="42" />
                     <TextBox VerticalAlignment="Center" Text="{Binding Code}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
                 </DockPanel>
                 <DockPanel>
+                    <TextBlock Text="名称：" VerticalAlignment="Center" Width="42" />
+                    <TextBox VerticalAlignment="Center" Text="{Binding Name}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
+                </DockPanel>
+                <DockPanel>
                     <TextBlock Text="电话：" VerticalAlignment="Center" Width="42"/>
-                    <TextBox/>
+                    <TextBox VerticalAlignment="Center" Text="{Binding MobileNumber}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
                 </DockPanel>
             </StackPanel>
         </Grid>
@@ -74,19 +74,19 @@
                 <StackPanel Margin="10,0">
                     <DockPanel>
                         <TextBlock Text="系统帐号：" VerticalAlignment="Center" />
-                        <TextBox/>
+                        <TextBox VerticalAlignment="Center" Text="{Binding UserId}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
                     </DockPanel>
                     <DockPanel>
                         <TextBlock Text="密码：" VerticalAlignment="Center" />
-                        <TextBox/>
+                        <TextBox VerticalAlignment="Center" Text="{Binding PassWord}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
                     </DockPanel>
                     <DockPanel>
                         <TextBlock Text="用户角色：" VerticalAlignment="Center" />
-                        <TextBox/>
+                        <widgets:UserRoleSelector VerticalAlignment="Center" TargetEmployee="{Binding}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
                     </DockPanel>
                     <DockPanel>
                         <TextBlock Text="功能权限：" VerticalAlignment="Center" />
-                        <TextBox/>
+                        <widgets:PermissionSelector VerticalAlignment="Center" TargetEmployee="{Binding}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
                     </DockPanel>
                 </StackPanel>
             </Expander>
@@ -94,11 +94,11 @@
                 <StackPanel Margin="10,0">
                     <DockPanel>
                         <TextBlock Text="身分证号：" VerticalAlignment="Center" />
-                        <TextBox/>
+                        <TextBox VerticalAlignment="Center" Text="{Binding PassWord}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
                     </DockPanel>
                     <DockPanel>
                         <TextBlock Text="出生年月：" VerticalAlignment="Center" />
-                        <DatePicker VerticalAlignment="Center" Text="{Binding Name}" />
+                        <DatePicker VerticalAlignment="Center" Text="{Binding Name}" IsEnabled="{Binding IsEditing}"/>
                     </DockPanel>
                     <Grid >
                         <Grid.ColumnDefinitions>
@@ -120,11 +120,11 @@
                     </DockPanel>
                     <DockPanel>
                         <TextBlock Text="电子邮箱：" VerticalAlignment="Center" />
-                        <TextBox/>
+                        <TextBox VerticalAlignment="Center" Text="{Binding Email}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
                     </DockPanel>
                     <DockPanel>
                         <TextBlock Text="住址：" VerticalAlignment="Center" />
-                        <TextBox/>
+                        <TextBox VerticalAlignment="Center" Text="{Binding Address}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
                     </DockPanel>
                 </StackPanel>
             </Expander>

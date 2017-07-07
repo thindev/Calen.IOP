@@ -142,5 +142,11 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
         {
             this.RefreshDepartments();
         }
+
+        private void txb_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if(!this.IsReadOnly)
+            this.tgb.IsChecked = true;
+        }
     }
 }

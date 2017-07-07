@@ -7,18 +7,13 @@
              xmlns:controls="clr-namespace:Calen.IOP.Client.Desktop.Controls"
              mc:Ignorable="d" 
              d:DesignWidth="353.43" Name="uc" d:DesignHeight="46.813">
-    <UserControl.Resources>
-        <Style TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonStyle_GeometryContent}">
-            <Setter Property="Background" Value="{DynamicResource EdgeBarColorLevel2}"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource EdgeBarBorderColorLevel2}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-        </Style>
-    </UserControl.Resources>
+   
     <Grid>
-        <TextBox  Name="txb" Text=""  IsReadOnly="True" VerticalAlignment="Center"></TextBox>
-        <ToggleButton Name="tgb" HorizontalAlignment="Right" Width="24" VerticalAlignment="Stretch"  Margin="2" Content="{DynamicResource Geo_Department}" Padding="4" HorizontalContentAlignment="Center" IsEnabled="{Binding ElementName=uc,Path=IsReadOnly,Converter={StaticResource InverseBooleanConverter}}" >
+        <TextBox  Name="txb" Text=""  IsReadOnly="True" VerticalAlignment="Center" MouseDoubleClick="txb_MouseDoubleClick"></TextBox>
+        <ToggleButton Name="tgb" HorizontalAlignment="Right" Width="24" VerticalAlignment="Stretch"  Margin="2" Content="{DynamicResource Geo_Department}" Padding="4" HorizontalContentAlignment="Center" IsEnabled="{Binding ElementName=uc,Path=IsReadOnly,Converter={StaticResource InverseBooleanConverter}}"
+                      Style="{DynamicResource SelectorToggleButtonStyle}">
         </ToggleButton>
-        <Popup Name="popup" Placement="Bottom" IsOpen="{Binding ElementName=tgb,Path=IsChecked,Mode=TwoWay}" PlacementTarget="{Binding ElementName=uc}" VerticalOffset="1" AllowsTransparency="True" Opened="Popup_Opened" PopupAnimation="Slide" Width="{Binding ElementName=uc,Path=ActualWidth}" StaysOpen="False" MinWidth="200">
+        <Popup Name="popup" Placement="Bottom" IsOpen="{Binding ElementName=tgb,Path=IsChecked,Mode=TwoWay}" PlacementTarget="{Binding ElementName=uc}" VerticalOffset="2"  AllowsTransparency="True" Opened="Popup_Opened" PopupAnimation="Slide"  StaysOpen="False"  >
             <Popup.Resources>
                 <Style x:Key="TreeViewItemModern1" TargetType="TreeViewItem" BasedOn="{StaticResource TreeViewItemModern}">
                     <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
@@ -30,23 +25,23 @@
                     </StackPanel>
                 </HierarchicalDataTemplate>
             </Popup.Resources>
-            <Border Height="260" Width="{Binding ElementName=uc,Path=ActualWidth}" Background="{DynamicResource EdgeBarColorLevel2}" BorderBrush="{DynamicResource EdgeBarBorderColorLevel1}" Padding="2" BorderThickness="1" MinWidth="200">
+            <Border Height="260" Width="{Binding ElementName=uc,Path=ActualWidth}" Background="White" Padding="8" BorderThickness="0" MinWidth="160" Margin="4">
                 <Border.Effect>
-                    <DropShadowEffect ShadowDepth="0" BlurRadius="8"/>
+                    <DropShadowEffect ShadowDepth="0" BlurRadius="4"/>
                 </Border.Effect>
                 <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <TreeView ItemContainerStyle="{DynamicResource TreeViewItemModern1}" Name="treeView" BorderThickness="1" ItemTemplate="{StaticResource DepartmentDataTemplate}" BorderBrush="{DynamicResource EdgeBarBorderColorLevel2}" Margin="2">
+                    <TreeView ItemContainerStyle="{DynamicResource TreeViewItemModern1}" Name="treeView" BorderThickness="1" ItemTemplate="{StaticResource DepartmentDataTemplate}" BorderBrush="{DynamicResource EdgeBarBorderColorLevel2}" >
 
                     </TreeView>
-                    <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Margin="2">
+                    <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Margin="0,8,0,0">
                         <Button Name="btn_ok" Content="确定" Style="{DynamicResource ButtonStyle_AccentedSquare}" FontSize="{DynamicResource FontSize_Content_Small}" Padding="12,4" Margin="8,0" Click="btn_ok_Click"/>
                         <Button Name="btn_cancel" Content="取消" Style="{DynamicResource ButtonStyle_AccentedSquare}" FontSize="{DynamicResource FontSize_Content_Small}" Padding="12,4" Margin="8,0,0,0" Click="btn_cancel_Click" />
                     </StackPanel>
-                    <Button Name="btn_refresh" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource ButtonStyle_GeometryContent}" Content="{DynamicResource Geo_Refresh}" Height="20" Width="20" Padding="2" Margin="4,2" Click="btn_refresh_Click"></Button>
+                    <Button Name="btn_refresh" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource ButtonStyle_GeometryContent}" Content="{DynamicResource Geo_Refresh}" Height="20" Width="20" Padding="2" Margin="4,8,0,0" Click="btn_refresh_Click"></Button>
                     <controls:BusyIndicator x:Name="busyCtrl" Grid.RowSpan="2"/>
                 </Grid>
             </Border>

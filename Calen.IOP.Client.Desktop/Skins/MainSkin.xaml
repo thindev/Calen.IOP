@@ -20,6 +20,7 @@
         <!--DataTemplates-->
         <ResourceDictionary Source="DataTemplates.xaml"/>
         <ResourceDictionary Source="ButtonStyles.xaml"/>
+        <ResourceDictionary Source="ToggleButtonStyles.xaml"/>
         <ResourceDictionary Source="PageTabControlStyle.xaml"/>
         <ResourceDictionary Source="DataGridStyles.xaml"/>
         <ResourceDictionary Source="TreeViewStyles.xaml"/>

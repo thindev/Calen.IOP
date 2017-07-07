@@ -1,4 +1,5 @@
 ﻿using Calen.IOP.Client.ViewModel.Common;
+using Calen.IOP.Client.ViewModel.ConvertUtil;
 using Calen.IOP.DTO;
 using System;
 using System.Collections.ObjectModel;
@@ -23,6 +24,8 @@ namespace Calen.IOP.Client.ViewModel
         private string _passWord;
         private string _nationality;
         private bool _isVirtual;
+        private ObservableCollection<string> _userRoleIds = new ObservableCollection<string>();
+        private ObservableCollection<string> _permissionIds = new ObservableCollection<string>();
         private DepartmentVM _department;
         private ObservableCollection<ServingRecordVM> _servingRecords = new ObservableCollection<ServingRecordVM>();
 
@@ -42,9 +45,16 @@ namespace Calen.IOP.Client.ViewModel
         public ObservableCollection<ServingRecordVM> ServingRecords { get => _servingRecords;  }
         public string Nationality { get => _nationality; set { Set(() => Nationality, ref _nationality, value); } }
 
+        public ObservableCollection<string> UserRoleIds { get => _userRoleIds; }
+        public ObservableCollection<string> PermissionIds { get => _permissionIds; }
+
         public override EmployeeVM DeepClone()
         {
-            throw new NotImplementedException();
+            var dto = EmployeeConvertUtil.ToDto(this);
+
+            var vm = EmployeeConvertUtil.FromDto(dto);
+            base.CopyStateValues(vm);
+            return vm;
         }
     }
 }
