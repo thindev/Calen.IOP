@@ -11,11 +11,11 @@
              mc:Ignorable="d" 
               Background="White">
     <UserControl.Resources>
-        <vm:EmployeeManager x:Key="EmployeeManager" AutoLoadDataOnInitialize="True">
-            <vm:EmployeeManager.EditItemDialog>
+        <vm:EmployeeManagerVM x:Key="EmployeeManager" AutoLoadDataOnInitialize="True">
+            <vm:EmployeeManagerVM.EditItemDialog>
                 <dialog:EditEmployeeDialog/>
-            </vm:EmployeeManager.EditItemDialog>
-        </vm:EmployeeManager>
+            </vm:EmployeeManagerVM.EditItemDialog>
+        </vm:EmployeeManagerVM>
         <Style  TargetType="{x:Type TextBlock}">
             <Setter Property="TextWrapping" Value="NoWrap"/>
             <Setter Property="TextTrimming" Value="None"/>
@@ -69,7 +69,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-<DataGrid IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserReorderColumns="False" CanUserResizeRows="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2" SelectedItem="{Binding SelectedItem}" Grid.Row="0" ScrollViewer.CanContentScroll="False" MouseDoubleClick="DataGrid_MouseDoubleClick" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource EdgeBarColorLevel2}" Margin="0,0,0,2">
+<DataGrid IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserReorderColumns="False" CanUserResizeRows="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2" SelectedItem="{Binding SelectedItem}" Grid.Row="0" ScrollViewer.CanContentScroll="False" MouseDoubleClick="DataGrid_MouseDoubleClick" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource EdgeBarColorLevel2}" Margin="0,0,0,2" ItemsSource="{Binding ItemList}">
                 <DataGrid.Resources>
                     <Style x:Key="dgCell" TargetType="TextBlock">
                         <Setter Property="TextAlignment" Value="Left"/>
@@ -98,10 +98,10 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid Background="{DynamicResource EdgeBarColorLevel2}">
-                    <Button  Margin="8,0" Style="{DynamicResource ButtonStyle_GeometryContent}" Height="28" Width="28" VerticalAlignment="Center" Content="{DynamicResource Geo_Arrow_Left}" Padding="4" Click="Button_Click"/>
+                    <Button  Margin="4,0" Style="{DynamicResource ButtonStyle_GeometryContent}" Height="28" Width="28" VerticalAlignment="Center" Content="{DynamicResource Geo_Arrow_Right}" Padding="3" Click="Button_Click"/>
                 </Grid>
                 <ScrollViewer Grid.Row="1"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
-                    <local:EmployeeDetailPanel IsBaseInfoExpanded="True" IsAccountInfoExpanded="True" IsAdditionalInfoExpanded="True"/>
+                    <local:EmployeeDetailPanel IsBaseInfoExpanded="True" IsAccountInfoExpanded="True" IsAdditionalInfoExpanded="True"  DataContext="{Binding SelectedItem}"/>
                 </ScrollViewer>
             </Grid>
 

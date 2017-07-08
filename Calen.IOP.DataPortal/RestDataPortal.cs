@@ -231,14 +231,25 @@ namespace Calen.IOP.DataPortal
 
         #endregion UserRole
         #region employee
-        public Task<resultForEmployees> FetchEmployees(criteriaForEmployees criteria)
+        public async Task<resultForEmployees> FetchEmployees(criteriaForEmployees criteria)
         {
-            throw new NotImplementedException();
+            var request = new RestRequest("employeesquery", Method.POST);
+            request.AddBody(criteria);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            var result = JsonConvert.DeserializeObject<resultForEmployees>(content);
+            return result;
         }
 
-        public Task<int> AddEmployees(IEnumerable<employee> items)
+        public async Task<int> AddEmployees(IEnumerable<employee> items)
         {
-            throw new NotImplementedException();
+            var request = new RestRequest("employees", Method.POST);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
         }
 
         public Task<int> DeleteEmployees(IEnumerable<employee> items)

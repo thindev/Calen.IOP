@@ -17,13 +17,13 @@ namespace Calen.IOP.BLL.Converters
 
         public override JobType FromDto(jobType dto)
         {
-            JobType target = new JobType()
-            {
-                Code = dto.code,
-                Description = dto.description,
-                Id = dto.id,
-                Name = dto.name,
-            };
+            JobType target = DbContext.JobTypes.Find(dto.id);
+            if (target == null)
+                target = new JobType();
+            target.Code = dto.code;
+            target.Description = dto.description;
+            target.Id = dto.id;
+            target.Name = dto.name;
             return target;
         }
 

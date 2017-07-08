@@ -76,7 +76,17 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
 
         UserRoleManagerVM _viewModel;
         public static readonly DependencyProperty IsReadOnlyProperty = TextBox.IsReadOnlyProperty.AddOwner(typeof(UserRoleSelector));
-        public static readonly DependencyProperty TargetEmployeeProperty = DependencyProperty.Register("TargetEmployee", typeof(EmployeeVM), typeof(UserRoleSelector), new PropertyMetadata(null));
+        public static readonly DependencyProperty TargetEmployeeProperty = DependencyProperty.Register("TargetEmployee", typeof(EmployeeVM), typeof(UserRoleSelector), new PropertyMetadata(null, TargetEmployeeChanged));
+
+        private static void TargetEmployeeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            UserRoleSelector urs = (UserRoleSelector)d;
+            if(e.NewValue!=null)
+            {
+                urs.SetText();
+            }
+        }
+
         public EmployeeVM TargetEmployee
         {
             get { return (EmployeeVM)GetValue( TargetEmployeeProperty); }

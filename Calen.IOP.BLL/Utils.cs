@@ -22,7 +22,7 @@ namespace Calen.IOP.BLL
         /// <param name="orderbyLambda">排序条件</param>
         /// <param name="isAsc">是否升序</param>
         /// <returns>IQueryable 泛型集合</returns>
-        public static IQueryable<T> LoadPageItems<T,Tkey>(IOPContext context, int pageSize, int pageIndex, out int total, Expression<Func<T, bool>> whereLambda, Func<T, Tkey> orderbyLambda, bool isAsc) where T :EntityBase
+        public static IEnumerable<T> LoadPageItems<T,Tkey>(IOPContext context, int pageSize, int pageIndex, out int total, Expression<Func<T, bool>> whereLambda, Func<T, Tkey> orderbyLambda, bool isAsc) where T :EntityBase
         {
             total = context.Set<T>().Where(whereLambda).Count();
             if (isAsc)
@@ -31,7 +31,7 @@ namespace Calen.IOP.BLL
                              .OrderBy<T, Tkey>(orderbyLambda)
                              .Skip(pageSize * (pageIndex - 1))
                              .Take(pageSize);
-                return temp.AsQueryable();
+                return temp;
             }
             else
             {
@@ -39,7 +39,7 @@ namespace Calen.IOP.BLL
                            .OrderByDescending<T, Tkey>(orderbyLambda)
                            .Skip(pageSize * (pageIndex - 1))
                            .Take(pageSize);
-                return temp.AsQueryable();
+                return temp;
             }
         }
     }

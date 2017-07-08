@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Calen.IOP.Client.ViewModel.Common.Managers
 {
-    public class EmployeeManager:ManagerBase<EmployeeVM>
+    public class EmployeeManagerVM : ManagerBase<EmployeeVM>
     {
         EmployeeCriteriaVM _employeeCriteria = new EmployeeCriteriaVM() { PageIndex = 1, PageSize = 20 };
 
@@ -27,8 +27,19 @@ namespace Calen.IOP.Client.ViewModel.Common.Managers
 
         private async void RefreshItemsAsync()
         {
-           // this.IsBusy = true;
-           // GetDataPortal().FetchEmployees(this.EmployeeCriteria);
+            this.ItemList.Clear();
+            this.IsBusy = true;
+           resultForEmployees result=await  GetDataPortal().FetchEmployees(this.EmployeeCriteria.ToDto());
+            this.IsBusy = false;
+            this.EmployeeCriteria.TotalCount = result.totalCount;
+            if(result.employees!=null)
+            {
+                foreach(employee item in result.employees)
+                {
+                    var vm = EmployeeConvertUtil.FromDto(item);
+                    this.ItemList.Add(vm);
+                }
+            }
         }
         protected override void AddExecute()
         {

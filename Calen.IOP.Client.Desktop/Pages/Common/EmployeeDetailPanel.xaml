@@ -65,7 +65,7 @@
                     </DockPanel>
                     <DockPanel >
                         <TextBlock Text="在任状态：" VerticalAlignment="Center"   />
-                        <ComboBox VerticalAlignment="Center" Text="{Binding ServeState}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}" ItemsSource="{Binding Source={StaticResource ServeStates}}" 
+                        <ComboBox VerticalAlignment="Center" Text="{Binding ServeState}" IsEnabled="{Binding IsEditing}" ItemsSource="{Binding Source={StaticResource ServeStates}}" 
                                  ItemTemplate="{DynamicResource ServeStatesDataTemplate}" SelectedItem="{Binding ServeState}"/>
                     </DockPanel>
                 </StackPanel>
@@ -94,11 +94,11 @@
                 <StackPanel Margin="10,0">
                     <DockPanel>
                         <TextBlock Text="身分证号：" VerticalAlignment="Center" />
-                        <TextBox VerticalAlignment="Center" Text="{Binding PassWord}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
+                        <TextBox VerticalAlignment="Center" Text="{Binding IdCardCode}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
                     </DockPanel>
                     <DockPanel>
                         <TextBlock Text="出生年月：" VerticalAlignment="Center" />
-                        <DatePicker VerticalAlignment="Center" Text="{Binding Name}" IsEnabled="{Binding IsEditing}"/>
+                        <DatePicker VerticalAlignment="Center"  IsEnabled="{Binding IsEditing}" SelectedDate="{Binding BirthDay}" />
                     </DockPanel>
                     <Grid >
                         <Grid.ColumnDefinitions>
@@ -107,16 +107,16 @@
                         </Grid.ColumnDefinitions>
                         <DockPanel Margin="0,10,6,10">
                             <TextBlock Text="性别：" VerticalAlignment="Center"   />
-                            <ComboBox VerticalAlignment="Center" Text="{Binding Sex}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}" ItemsSource="{Binding Source={StaticResource SexTypes}}" SelectedItem="{Binding Sex}" ItemTemplate="{DynamicResource SexTypeDataTemplate}"/>
+                            <ComboBox VerticalAlignment="Center" Text="{Binding Sex}" IsEnabled="{Binding IsEditing}" ItemsSource="{Binding Source={StaticResource SexTypes}}" SelectedItem="{Binding Sex}" ItemTemplate="{DynamicResource SexTypeDataTemplate}"/>
                         </DockPanel>
                         <DockPanel Grid.Column="1" Margin="6,10,0,10">
                             <TextBlock Text="民族：" VerticalAlignment="Center"   />
-                            <ComboBox VerticalAlignment="Center" Text="{Binding Nationality}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}" SelectedItem="{Binding Nationality}" ItemsSource="{x:Static vm:Constants.Nationalitys}" />
+                            <ComboBox VerticalAlignment="Center" Text="{Binding Nationality}" IsEnabled="{Binding IsEditing}" SelectedItem="{Binding Nationality}" ItemsSource="{x:Static vm:Constants.Nationalitys}" />
                         </DockPanel>
                     </Grid>
                     <DockPanel Margin="0,10,6,10">
                         <TextBlock Text="文化程度：" VerticalAlignment="Center"   />
-                        <ComboBox VerticalAlignment="Center" Text="{Binding Education}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}" ItemsSource="{Binding Source={StaticResource EducationLevels}}" SelectedItem="{Binding Education}"  ItemTemplate="{DynamicResource EducationLevelDataTemplate}"/>
+                        <ComboBox VerticalAlignment="Center" Text="{Binding Education}" IsEnabled="{Binding IsEditing}" ItemsSource="{Binding Source={StaticResource EducationLevels}}" SelectedItem="{Binding Education}"  ItemTemplate="{DynamicResource EducationLevelDataTemplate}"/>
                     </DockPanel>
                     <DockPanel>
                         <TextBlock Text="电子邮箱：" VerticalAlignment="Center" />
@@ -125,6 +125,10 @@
                     <DockPanel>
                         <TextBlock Text="住址：" VerticalAlignment="Center" />
                         <TextBox VerticalAlignment="Center" Text="{Binding Address}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Text="描述：" VerticalAlignment="Center" />
+                        <TextBox VerticalAlignment="Center" Text="{Binding Description}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
                     </DockPanel>
                 </StackPanel>
             </Expander>

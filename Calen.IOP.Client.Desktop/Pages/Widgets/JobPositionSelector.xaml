@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:controls="clr-namespace:Calen.IOP.Client.Desktop.Controls"
              xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages.Widgets"
+             Name="uc"
              mc:Ignorable="d" 
              >
     <UserControl.Resources>

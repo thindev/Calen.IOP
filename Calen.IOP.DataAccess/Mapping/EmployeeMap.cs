@@ -20,7 +20,7 @@ namespace Calen.IOP.DataAccess.Mapping
             this.Property(e => e.BirthDay).IsOptional();
             this.Property(e => e.Image).IsOptional();
             this.HasOptional(e => e.Department).WithMany(d => d.Employees).WillCascadeOnDelete(false);
-            this.HasMany(e => e.ServingRecords);
+            this.HasMany(e => e.ServingRecords).WithRequired(d=>d.Employee);
         }
     }
 }

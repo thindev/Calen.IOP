@@ -50,10 +50,10 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
 
         private static void TargetEmployeeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            //PermissionSelector jps = (PermissionSelector)d;
-            //EmployeeVM value = e.NewValue as EmployeeVM;
-            //jps.ResetUI(value);
-            
+            PermissionSelector jps = (PermissionSelector)d;
+            EmployeeVM value = e.NewValue as EmployeeVM;
+            jps.ResetUI(value);
+
         }
 
         private void ResetUI(EmployeeVM vm)

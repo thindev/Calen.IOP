@@ -6,6 +6,7 @@
              xmlns:controls="clr-namespace:Calen.IOP.Client.Desktop.Controls"
              xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages.Widgets"
              mc:Ignorable="d" 
+             Name="uc"
              >
     <UserControl.Resources>
         

@@ -31,6 +31,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Common
             _collapseAnimation.Completed += _collapseAnimation_Completed;
             _expandAnimation.Completed += _expandAnimation_Completed;
             _lastWidth = rightColumn.Width;
+            this.Button_Click(null, null);
         }
 
         GridLength _lastWidth;
