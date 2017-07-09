@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace Calen.IOP.Client.ViewModel.Common.Criteria
@@ -12,6 +13,7 @@ namespace Calen.IOP.Client.ViewModel.Common.Criteria
         int _pageIndex;
         int _totalCount;
         int _pageCount;
+        int[] _pagesList;
         string _employeeCode;
         string _employeeName;
 
@@ -22,7 +24,7 @@ namespace Calen.IOP.Client.ViewModel.Common.Criteria
                 {
                     _pageSize = value;
                     if (_pageSize < 1) _pageSize = 1;
-                    this.PageCount = _totalCount / _pageSize;
+                    this.PageCount = (int)Math.Ceiling((double)_totalCount / _pageSize);
                     RaisePropertyChanged(() => PageSize);
                 }
             }
@@ -34,7 +36,7 @@ namespace Calen.IOP.Client.ViewModel.Common.Criteria
                 if(_totalCount!=value)
                 {
                     _totalCount = value;
-                    this.PageCount = _totalCount / _pageSize;
+                    this.PageCount =(int)Math.Ceiling((double)_totalCount / _pageSize);
                     RaisePropertyChanged(() => TotalCount);
                 }
             }
@@ -43,7 +45,22 @@ namespace Calen.IOP.Client.ViewModel.Common.Criteria
 
         public string EmployeeName { get => _employeeName; set { Set(() => EmployeeName, ref _employeeName, value); } }
 
-        public int PageCount { get => _pageCount; set { Set(()=>PageCount,ref _pageCount,value); } }
+        public int PageCount { get => _pageCount;
+
+            set {
+                if(value!=_pageCount)
+                {
+                    List<int> list = new List<int>();
+                    for(int i=1;i<=value;i++)
+                    {
+                        list.Add(i);
+                    }
+                    PagesList = list.ToArray();
+                    Set(() => PageCount, ref _pageCount, value);
+                }
+            } }
+
+        public int[] PagesList { get => _pagesList; set { Set(() => PagesList, ref _pagesList, value); } }
 
         public criteriaForEmployees ToDto()
         {

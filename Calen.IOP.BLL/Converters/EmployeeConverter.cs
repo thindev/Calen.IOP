@@ -28,6 +28,7 @@ namespace Calen.IOP.BLL.Converters
             }
             else
             {
+                DbContext.Set<ServingRecord>().RemoveRange(em.ServingRecords);
                 em.ServingRecords?.Clear();
             }
             em.Address = dto.address;

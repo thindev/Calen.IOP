@@ -68,6 +68,7 @@
     <Compile Include="Mapping\DepartmentMap.cs" />
     <Compile Include="Mapping\EmployeeMap.cs" />
     <Compile Include="Mapping\JobPositionMap.cs" />
+    <Compile Include="Mapping\ServingRecordMap.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

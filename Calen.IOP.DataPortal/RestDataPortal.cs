@@ -252,14 +252,24 @@ namespace Calen.IOP.DataPortal
             return 1;
         }
 
-        public Task<int> DeleteEmployees(IEnumerable<employee> items)
+        public async Task<int> DeleteEmployees(IEnumerable<employee> items)
         {
-            throw new NotImplementedException();
+            var request = new RestRequest("employees", Method.DELETE);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
         }
 
-        public Task<int> UpdateEmployees(IEnumerable<employee> items)
+        public async Task<int> UpdateEmployees(IEnumerable<employee> items)
         {
-            throw new NotImplementedException();
+            var request = new RestRequest("employees", Method.PUT);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
         } 
         #endregion
     }

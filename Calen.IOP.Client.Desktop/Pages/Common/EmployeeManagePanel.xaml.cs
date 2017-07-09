@@ -60,12 +60,27 @@ namespace Calen.IOP.Client.Desktop.Pages.Common
 
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (!_isExpanded)
+            DataGrid grid = (DataGrid)sender;
+            Point aP = e.GetPosition(grid);
+            IInputElement obj = grid.InputHitTest(aP);
+            DependencyObject target = obj as DependencyObject;
+
+
+            while (target != null)
             {
-                _expandAnimation.To = _lastWidth;
-                _expandAnimation.From = rightColumn.Width;
-                this.rightColumn.BeginAnimation(ColumnDefinition.WidthProperty, _expandAnimation);
+                if (target is DataGridRow)
+                {
+                    if (!_isExpanded)
+                    {
+                        _expandAnimation.To = _lastWidth;
+                        _expandAnimation.From = rightColumn.Width;
+                        this.rightColumn.BeginAnimation(ColumnDefinition.WidthProperty, _expandAnimation);
+                    }
+                    break;
+                }
+                target = VisualTreeHelper.GetParent(target);
             }
+            
         }
     }
 }

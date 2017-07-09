@@ -91,6 +91,7 @@
     </Compile>
     <Compile Include="Converters\NullToCollapsedConverter.cs" />
     <Compile Include="Converters\EducationLevelToStringConverter.cs" />
+    <Compile Include="Converters\ServingRecordsToStringConverter.cs" />
     <Compile Include="Converters\ServeStateToStringConverter.cs" />
     <Compile Include="Converters\SexTypeToStringConverter.cs" />
     <Compile Include="Converters\ThicknessToDoubleConverter.cs" />

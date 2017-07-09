@@ -65,6 +65,7 @@ namespace Calen.IOP.BLL
                 foreach (var item in items)
                 {
                     var model = converter.FromDto(item);
+                    model.ServingRecords.Clear();
                     db.Entry(model).State = System.Data.Entity.EntityState.Deleted;
                 }
                 return db.SaveChanges();

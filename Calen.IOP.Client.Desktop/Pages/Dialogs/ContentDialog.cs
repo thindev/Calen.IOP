@@ -14,6 +14,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Dialogs
         {
             this.Loaded += ContentDialog_Loaded;
             this.Unloaded += ContentDialog_Unloaded;
+
         }
         FrameworkElement fe;
         private void ContentDialog_Unloaded(object sender, System.Windows.RoutedEventArgs e)
@@ -21,6 +22,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Dialogs
             fe.MouseDown -= Fe_MouseDown;
             this.Loaded -= ContentDialog_Loaded;
             this.Unloaded -= ContentDialog_Unloaded;
+            fe.MouseLeftButtonDown -= Fe_MouseLeftButtonDown;
         }
 
         private void Fe_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -32,6 +34,23 @@ namespace Calen.IOP.Client.Desktop.Pages.Dialogs
         {
             fe = (this.Parent as FrameworkElement).Parent as FrameworkElement;
             fe.MouseDown += Fe_MouseDown;
+            fe.MouseLeftButtonDown += Fe_MouseLeftButtonDown;
+        }
+
+        private void Fe_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                Window win = Window.GetWindow(fe);
+                if (win.WindowState == WindowState.Normal)
+                {
+                    win.WindowState = WindowState.Maximized;
+                }
+                else
+                {
+                    win.WindowState = WindowState.Normal;
+                }
+            }
         }
     }
 }
