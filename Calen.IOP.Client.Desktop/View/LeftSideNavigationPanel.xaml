@@ -48,7 +48,7 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem desktop:FunctionMgr.FunctionId="01020000" desktop:FunctionMgr.FunctionName="职员信息">
+                        <TreeViewItem desktop:FunctionMgr.FunctionId="01020000">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Path Data="{DynamicResource Geo_NavMenu_EmployeesManage}"/>
@@ -89,6 +89,34 @@
                             <TextBlock Margin="8,0,0,0"/>
                         </StackPanel>
                     </TreeViewItem.Header>
+                    <TreeViewItem.Items>
+                        <!--会员卡配置-->
+                        <TreeViewItem desktop:FunctionMgr.FunctionId="03010000">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Path Data="{DynamicResource Geo_NavMenu_VipCardManage}"/>
+                                    <TextBlock />
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <!--会员信息-->
+                        <TreeViewItem desktop:FunctionMgr.FunctionId="03020000" >
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Path Data="{DynamicResource Geo_NavMenu_EmployeesManage}"/>
+                                    <TextBlock  />
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem desktop:FunctionMgr.FunctionId="01030000" desktop:FunctionMgr.FunctionName="固定资产">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Path Data="{DynamicResource Geo_NavMenu_RoomsManage}"/>
+                                    <TextBlock />
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                    </TreeViewItem.Items>
                 </TreeViewItem>
                 <TreeViewItem desktop:FunctionMgr.FunctionId="04000000" desktop:FunctionMgr.FunctionName="客户资源开发" >
                     <TreeViewItem.Header>

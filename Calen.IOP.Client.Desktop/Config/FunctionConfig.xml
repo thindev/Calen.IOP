@@ -13,10 +13,10 @@
         <FunctionItem  Id="02020000" Name=""  Uri="" Description=""/>
       </SubFunctions>
     </FunctionItem>
-    <FunctionItem  Id="03000000" Name=""  Uri="" Description="">
+    <FunctionItem  Id="03000000" Name="会员管理"  Uri="" Description="">
       <SubFunctions>
-        <FunctionItem  Id="03010000" Name=""  Uri="" Description=""/>
-        <FunctionItem  Id="03020000" Name=""  Uri="" Description=""/>
+        <FunctionItem  Id="03010000" Name="会员卡配置"  Uri="pack://application:,,,/Calen.IOP.Client.Desktop;component/Pages/Common/VIPCardConfigPage.xaml" Description=""/>
+        <FunctionItem  Id="03020000" Name="会员信息"  Uri="pack://application:,,,/Calen.IOP.Client.Desktop;component/Pages/Common/VIPInfoManagePage.xaml" Description=""/>
       </SubFunctions>
     </FunctionItem>
   </FunctionItems>

@@ -53,7 +53,6 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
             //PermissionSelector jps = (PermissionSelector)d;
             //EmployeeVM value = e.NewValue as EmployeeVM;
             //jps.ResetUI(value);
-            
         }
 
         private void ResetUI(EmployeeVM vm)
