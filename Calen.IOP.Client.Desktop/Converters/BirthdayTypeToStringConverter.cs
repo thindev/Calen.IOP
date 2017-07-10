@@ -5,26 +5,20 @@ using System.Windows.Data;
 
 namespace Calen.IOP.Client.Desktop.Converters
 {
-    public class ServeStateToStringConverter : IValueConverter
+    public class BirthdayTypeToStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (!(value is ServeStates)) return "";
+            if (!(value is BirthdayTypes)) return "";
             string re= "未知";
-            ServeStates type = (ServeStates)value;
+            BirthdayTypes type = (BirthdayTypes)value;
             switch(type)
             {
-                case ServeStates.InServe:
-                    re = "在";
+                case BirthdayTypes.SolarCalendar:
+                    re = "公历生日";
                     break;
-                case ServeStates.Onleave:
-                    re = "休假";
-                    break;
-                case ServeStates.ProbationaryPeriod:
-                    re = "试用";
-                    break;
-                case ServeStates.Resignation:
-                    re = "离";
+                case BirthdayTypes.LunarCalendar:
+                    re = "农历生日";
                     break;
                 default:
                     re = "未知";

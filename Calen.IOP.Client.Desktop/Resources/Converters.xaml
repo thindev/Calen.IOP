@@ -7,7 +7,10 @@
     <converters:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter"/>
     <converters:NullToCollapsedConverter x:Key="NullToCollapsedConverter"/>
     <converters:SexTypeToStringConverter x:Key="SexTypeToStringConverter"/>
+    <converters:BirthdayTypeToStringConverter x:Key="BirthdayTypeToStringConverter"/>
     <converters:ServeStateToStringConverter x:Key="ServeStateToStringConverter"/>
     <converters:EducationLevelToStringConverter x:Key="EducationLevelToStringConverter"/>
     <converters:ServingRecordsToStringConverter x:Key="ServingRecordsToStringConverter"/>
+    <converters:VipCardTypeToStringConverter x:Key="VipCardTypeToStringConverter"/>
+    <converters:VipCardStateToStringConverter x:Key="VipCardStateToStringConverter"/>
 </ResourceDictionary>

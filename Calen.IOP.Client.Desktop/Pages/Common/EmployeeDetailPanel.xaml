@@ -65,7 +65,7 @@
                     </DockPanel>
                     <DockPanel >
                         <TextBlock Text="在任状态：" VerticalAlignment="Center"   />
-                        <ComboBox VerticalAlignment="Center" Text="{Binding ServeState}" IsEnabled="{Binding IsEditing}" ItemsSource="{Binding Source={StaticResource ServeStates}}" 
+                        <ComboBox VerticalAlignment="Center" IsEnabled="{Binding IsEditing}" ItemsSource="{Binding Source={StaticResource ServeStates}}" 
                                  ItemTemplate="{DynamicResource ServeStatesDataTemplate}" SelectedItem="{Binding ServeState}"/>
                     </DockPanel>
                 </StackPanel>
@@ -96,10 +96,21 @@
                         <TextBlock Text="身分证号：" VerticalAlignment="Center" />
                         <TextBox VerticalAlignment="Center" Text="{Binding IdCardCode}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
                     </DockPanel>
-                    <DockPanel>
-                        <TextBlock Text="出生年月：" VerticalAlignment="Center" />
-                        <DatePicker VerticalAlignment="Center"  IsEnabled="{Binding IsEditing}" SelectedDate="{Binding BirthDay}" />
-                    </DockPanel>
+                    
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <DockPanel>
+                            <TextBlock Text="出生年月：" VerticalAlignment="Center" />
+                            <DatePicker VerticalAlignment="Center"  IsEnabled="{Binding IsEditing}" SelectedDate="{Binding Birthday}" />
+                        </DockPanel>
+                        <DockPanel Grid.Column="1" Margin="20,10,0,10">
+                            <TextBlock Text="生日日历：" VerticalAlignment="Center"   />
+                            <ComboBox VerticalAlignment="Center"  IsEnabled="{Binding IsEditing}" SelectedItem="{Binding BirthdayType}" ItemsSource="{Binding Source={StaticResource BirthdayTypes}}" Width="120" ItemTemplate="{DynamicResource BirthdayTypeDataTemplate}"/>
+                        </DockPanel>
+                    </Grid>
                     <Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -107,16 +118,16 @@
                         </Grid.ColumnDefinitions>
                         <DockPanel Margin="0,10,6,10">
                             <TextBlock Text="性别：" VerticalAlignment="Center"   />
-                            <ComboBox VerticalAlignment="Center" Text="{Binding Sex}" IsEnabled="{Binding IsEditing}" ItemsSource="{Binding Source={StaticResource SexTypes}}" SelectedItem="{Binding Sex}" ItemTemplate="{DynamicResource SexTypeDataTemplate}"/>
+                            <ComboBox VerticalAlignment="Center" IsEnabled="{Binding IsEditing}" ItemsSource="{Binding Source={StaticResource SexTypes}}" SelectedItem="{Binding Sex}" ItemTemplate="{DynamicResource SexTypeDataTemplate}"/>
                         </DockPanel>
                         <DockPanel Grid.Column="1" Margin="6,10,0,10">
                             <TextBlock Text="民族：" VerticalAlignment="Center"   />
-                            <ComboBox VerticalAlignment="Center" Text="{Binding Nationality}" IsEnabled="{Binding IsEditing}" SelectedItem="{Binding Nationality}" ItemsSource="{x:Static vm:Constants.Nationalitys}" />
+                            <ComboBox VerticalAlignment="Center" IsEnabled="{Binding IsEditing}" SelectedItem="{Binding Nationality}" ItemsSource="{x:Static vm:Constants.Nationalitys}" />
                         </DockPanel>
                     </Grid>
-                    <DockPanel Margin="0,10,6,10">
+                    <DockPanel>
                         <TextBlock Text="文化程度：" VerticalAlignment="Center"   />
-                        <ComboBox VerticalAlignment="Center" Text="{Binding Education}" IsEnabled="{Binding IsEditing}" ItemsSource="{Binding Source={StaticResource EducationLevels}}" SelectedItem="{Binding Education}"  ItemTemplate="{DynamicResource EducationLevelDataTemplate}"/>
+                        <ComboBox VerticalAlignment="Center" IsEnabled="{Binding IsEditing}" ItemsSource="{Binding Source={StaticResource EducationLevels}}" SelectedItem="{Binding Education}"  ItemTemplate="{DynamicResource EducationLevelDataTemplate}"/>
                     </DockPanel>
                     <DockPanel>
                         <TextBlock Text="电子邮箱：" VerticalAlignment="Center" />

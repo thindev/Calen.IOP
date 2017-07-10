@@ -32,7 +32,8 @@ namespace Calen.IOP.BLL.Converters
                 em.ServingRecords?.Clear();
             }
             em.Address = dto.address;
-            em.BirthDay = dto.birthDay;
+            em.BirthDay = dto.birthday;
+            em.BirthDayType = dto.birthdayType;
             em.Code = dto.code;
             em.Description = dto.description;
             em.Education = (EducationLevels)dto.education;
@@ -84,9 +85,9 @@ namespace Calen.IOP.BLL.Converters
             employee em = new employee()
             {
                 address = model.Address,
-                birthDay = model.BirthDay,
+                birthday = model.BirthDay,
                 code = model.Code,
-               
+               birthdayType=model.BirthDayType,
                 description = model.Description,
                 education = (int)model.Education,
                 email = model.Email,

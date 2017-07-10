@@ -30,6 +30,7 @@ namespace Calen.IOP.BLL.Converters
             model.ReleaseTime = dto.releaseTime;
             model.State = dto.state;
             model.ValidityDayCount = dto.validityDayCount;
+            model.CardType = dto.cardType;
             return model;
         }
 
@@ -45,7 +46,7 @@ namespace Calen.IOP.BLL.Converters
                 releaseTime = model.ReleaseTime,
                 state = model.State,
                 validityDayCount = model.ValidityDayCount,
-
+                cardType = model.CardType
             };
             return dto;
         }

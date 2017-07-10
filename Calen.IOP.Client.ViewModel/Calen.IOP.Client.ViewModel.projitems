@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\FunctionManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\JobPositionLevelManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\JobTypeManagerVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\VipCardManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\ServingRecordVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\VipCardVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />

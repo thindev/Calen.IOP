@@ -22,6 +22,7 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
             vm.ReleaseTime = dto.releaseTime;
             vm.State = dto.state;
             vm.ValidityDayCount = dto.validityDayCount;
+            vm.CardType = dto.cardType;
             return vm;
         }
         public static vipCard ToDto(VipCardVM vm)
@@ -36,7 +37,7 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
                 releaseTime = vm.ReleaseTime,
                 state = vm.State,
                 validityDayCount = vm.ValidityDayCount,
-
+                cardType = vm.CardType
             };
             return dto;
         }

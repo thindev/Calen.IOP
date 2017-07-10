@@ -289,24 +289,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style TargetType="TextBox" BasedOn="{StaticResource MetroTextBox}">
-        <Setter Property="FontSize" Value="{DynamicResource FontSize_Content_Large}"/>
-        <Setter Property="Foreground" Value="{DynamicResource Foreground_DarkKey}"/>
-        <Setter Property="FontFamily" Value="微软雅黑"/>
-        <Setter Property="Padding" Value="2,4"/>
-    </Style>
-    <Style TargetType="ComboBox" BasedOn="{StaticResource MetroComboBox}">
-        <Setter Property="FontSize" Value="{DynamicResource FontSize_Content_Large}"/>
-        <Setter Property="Foreground" Value="{DynamicResource Foreground_DarkKey}"/>
-        <Setter Property="FontFamily" Value="微软雅黑"/>
-        <Setter Property="Padding" Value="2,6"/>
-    </Style>
-    <Style TargetType="DatePickerTextBox" BasedOn="{StaticResource MetroDatePickerTextBox}">
-        <Setter Property="FontSize" Value="{DynamicResource FontSize_Content_Large}"/>
-        <Setter Property="Foreground" Value="{DynamicResource Foreground_DarkKey}"/>
-        <Setter Property="FontFamily" Value="微软雅黑"/>
-        <Setter Property="Padding" Value="2,5"/>
-    </Style>
+   
     <Style x:Key="FocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>
@@ -368,8 +351,6 @@
     </Style>
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.TextBox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.ComboBox.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.DatePicker.xaml" />
+       
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

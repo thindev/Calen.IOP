@@ -16,7 +16,8 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
             employee em = new employee()
             {
                 address = vm.Address,
-                birthDay = vm.BirthDay,
+                birthday = vm.Birthday,
+                birthdayType=vm.BirthdayType,
                 code = vm.Code,
                 departmentId = vm.Department?.Id,
                 departmentName = vm.Department?.Name,
@@ -48,7 +49,8 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
             EmployeeVM vm = new EmployeeVM()
             {
                 Address = dto.address,
-                BirthDay = dto.birthDay,
+                Birthday = dto.birthday,
+                BirthdayType=dto.birthdayType,
                 Code = dto.code,
                 Department = new DepartmentVM() { Id = dto.departmentId, Name = dto.departmentName },
                 Description = dto.description,

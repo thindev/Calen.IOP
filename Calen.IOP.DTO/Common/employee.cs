@@ -14,7 +14,8 @@ namespace Calen.IOP.DTO.Common
         public string mobileNumber { get; set; }
         public string email { get; set; }
         public string address { get; set; }
-        public DateTime? birthDay { get; set; }
+        public DateTime? birthday { get; set; }
+        public BirthdayTypes birthdayType { get; set; }
         public string image { get; set; }
         public int education { get; set; }
         public int serveState { get; set; }

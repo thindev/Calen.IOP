@@ -11,8 +11,17 @@
     <DataTemplate x:Key="SexTypeDataTemplate" >
         <TextBlock Text="{Binding Converter={StaticResource SexTypeToStringConverter}}" Margin="4,2" />
     </DataTemplate>
+    <DataTemplate x:Key="BirthdayTypeDataTemplate" >
+        <TextBlock Text="{Binding Converter={StaticResource BirthdayTypeToStringConverter}}" Margin="4,2" />
+    </DataTemplate>
     <DataTemplate x:Key="ServeStatesDataTemplate" >
         <TextBlock Text="{Binding Converter={StaticResource ServeStateToStringConverter}}" Margin="4,2" />
+    </DataTemplate>
+    <DataTemplate x:Key="VipCardTypeDataTemplate" >
+        <TextBlock Text="{Binding Converter={StaticResource VipCardTypeToStringConverter}}" Margin="4,2" />
+    </DataTemplate>
+    <DataTemplate x:Key="VipCardStateDataTemplate" >
+        <TextBlock Text="{Binding Converter={StaticResource VipCardStateToStringConverter}}" Margin="4,2" />
     </DataTemplate>
     <DataTemplate x:Key="EducationLevelDataTemplate" >
         <TextBlock Text="{Binding Converter={StaticResource EducationLevelToStringConverter}}" Margin="4,2" />

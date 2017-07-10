@@ -16,7 +16,8 @@ namespace Calen.IOP.Client.ViewModel
         private string _mobileNumber;
         private string _email;
         private string _address;
-        private DateTime? _birthDay;
+        private DateTime? _birthday;
+        private BirthdayTypes _birthdayType;
         private BitmapImage _image;
         private EducationLevels? _education;
         private ServeStates? _serveState;
@@ -34,7 +35,7 @@ namespace Calen.IOP.Client.ViewModel
         public string MobileNumber { get => _mobileNumber; set { Set(() => MobileNumber, ref _mobileNumber, value); } }
         public string Email { get => _email; set { Set(() => Email, ref _email, value); } }
         public string Address { get => _address; set { Set(() => Address, ref _address, value); } }
-        public DateTime? BirthDay { get => _birthDay; set { Set(() => BirthDay, ref _birthDay, value); } }
+        public DateTime? Birthday { get => _birthday; set { Set(() => Birthday, ref _birthday, value); } }
         public BitmapImage Image { get => _image; set { Set(() => Image, ref _image, value); } }
         public EducationLevels? Education { get => _education; set { Set(() => Education,ref _education, value); } }
         public ServeStates? ServeState { get => _serveState; set { Set(() => ServeState, ref _serveState, value); } }
@@ -47,6 +48,7 @@ namespace Calen.IOP.Client.ViewModel
 
         public ObservableCollection<string> UserRoleIds { get => _userRoleIds; }
         public ObservableCollection<string> PermissionIds { get => _permissionIds; }
+        public BirthdayTypes BirthdayType { get => _birthdayType; set { Set(() => BirthdayType, ref _birthdayType, value); } }
 
         public override EmployeeVM DeepClone()
         {

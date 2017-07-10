@@ -10,7 +10,8 @@ namespace Calen.IOP.DTO.Common
     {
         public int validityDayCount { get; set; }
         public double price { get; set; }
-        public double state { get; set; }
-        public DateTime releaseTime { get; set; }
+        public VipCardStates state { get; set; }
+        public VipCardTypes cardType { get; set; }
+        public DateTime? releaseTime { get; set; }
     }
 }

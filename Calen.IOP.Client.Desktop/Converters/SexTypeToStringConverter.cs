@@ -9,6 +9,7 @@ namespace Calen.IOP.Client.Desktop.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (!(value is SexTypes)) return "";
             string re= "未知";
             SexTypes type = (SexTypes)value;
             switch(type)

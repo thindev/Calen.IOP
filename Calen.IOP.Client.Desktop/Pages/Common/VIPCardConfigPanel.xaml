@@ -4,30 +4,30 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages.Common"
-             xmlns:vm="clr-namespace:Calen.IOP.Client.ViewModel"
+             xmlns:vm="clr-namespace:Calen.IOP.Client.ViewModel.Common.Managers"
              xmlns:controls="clr-namespace:Calen.IOP.Client.Desktop.Controls"
              xmlns:dialog="clr-namespace:Calen.IOP.Client.Desktop.Pages.Dialogs"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="1076.822" Background="White">
     <UserControl.Resources>
         <Style TargetType="DataGridRow" BasedOn="{StaticResource MetroDataGridRow}">
             <Setter Property="IsSelected" Value="{Binding IsSelected,Mode=OneWay}"/>
         </Style>
-        <vm:JobTypeManagerVM x:Key="JobTypeManagerVM" AutoLoadDataOnInitialize="True">
-            <vm:JobTypeManagerVM.EditItemDialog>
-                <dialog:EditJobTypeDialog/>
-            </vm:JobTypeManagerVM.EditItemDialog>
-            <vm:JobTypeManagerVM.DeleteItemsDialog>
+        <vm:VipCardManagerVM x:Key="JobTypeManagerVM" AutoLoadDataOnInitialize="True">
+            <vm:VipCardManagerVM.EditItemDialog>
+                <dialog:EditVipCardDialog/>
+            </vm:VipCardManagerVM.EditItemDialog>
+            <vm:VipCardManagerVM.DeleteItemsDialog>
                 <dialog:DeleteItemsDialog />
-            </vm:JobTypeManagerVM.DeleteItemsDialog>
-        </vm:JobTypeManagerVM>
+            </vm:VipCardManagerVM.DeleteItemsDialog>
+        </vm:VipCardManagerVM>
     </UserControl.Resources>
     <Grid DataContext="{StaticResource JobTypeManagerVM}" Grid.Row="1" Margin="0,14">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="岗位类型列表：" Margin="12,8" HorizontalAlignment="Left" FontSize="{DynamicResource FontSize_Title_Middle}" Foreground="{DynamicResource Foreground_DarkKey}" Grid.Row="0"/>
+        <TextBlock Text="会员卡列表：" Margin="12,8" HorizontalAlignment="Left" FontSize="{DynamicResource FontSize_Title_Middle}" Foreground="{DynamicResource Foreground_DarkKey}" Grid.Row="0"/>
         <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,12,8" VerticalAlignment="Bottom" >
             <Button  Style="{DynamicResource ButtonStyle_GeometryContent_Circle_Green}" Content="{DynamicResource Geo_Refresh}" Height="22" Width="22" Padding="6"  Margin="4,0" Command="{Binding RefreshItemsCommand}" >
             </Button>
@@ -47,7 +47,7 @@
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="选择" MinWidth="60" >
+                <DataGridTemplateColumn Header="选择" MinWidth="50" Width="auto" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <CheckBox IsChecked="{Binding IsSelected,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Center" />
@@ -55,7 +55,10 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="编码" MinWidth="120"  Binding="{Binding Code}" ElementStyle="{StaticResource dgCell}"  />
-                <DataGridTextColumn Header="名称" MinWidth="140" Width="180" Binding="{Binding Name}" ElementStyle="{StaticResource dgCell}" />
+                <DataGridTextColumn Header="卡名" MinWidth="140" Width="180" Binding="{Binding Name}" ElementStyle="{StaticResource dgCell}" />
+                <DataGridTextColumn Header="类型" MinWidth="100" Width="120" Binding="{Binding CardType}" ElementStyle="{StaticResource dgCell}" />
+                <DataGridTextColumn Header="有效期" MinWidth="100" Width="120" Binding="{Binding ValidityDayCount}" ElementStyle="{StaticResource dgCell}" />
+                <DataGridTextColumn Header="在售状态" MinWidth="100" Width="120" Binding="{Binding State}" ElementStyle="{StaticResource dgCell}" />
                 <DataGridTextColumn Header="描述" Width="*" Binding="{Binding Description}" ElementStyle="{StaticResource dgCell}" />
             </DataGrid.Columns>
         </DataGrid>

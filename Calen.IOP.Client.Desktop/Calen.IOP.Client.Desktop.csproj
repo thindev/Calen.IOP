@@ -93,6 +93,9 @@
     <Compile Include="Converters\EducationLevelToStringConverter.cs" />
     <Compile Include="Converters\ServingRecordsToStringConverter.cs" />
     <Compile Include="Converters\ServeStateToStringConverter.cs" />
+    <Compile Include="Converters\BirthdayTypeToStringConverter.cs" />
+    <Compile Include="Converters\VipCardStateToStringConverter.cs" />
+    <Compile Include="Converters\VipCardTypeToStringConverter.cs" />
     <Compile Include="Converters\SexTypeToStringConverter.cs" />
     <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
     <Compile Include="Converters\TreeViewItemIndentConverter.cs" />
@@ -150,6 +153,9 @@
     </Compile>
     <Compile Include="Pages\Dialogs\EditJobPositionLevelDialog.xaml.cs">
       <DependentUpon>EditJobPositionLevelDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Dialogs\EditVipCardDialog.xaml.cs">
+      <DependentUpon>EditVipCardDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Dialogs\EditJobTypeDialog.xaml.cs">
       <DependentUpon>EditJobTypeDialog.xaml</DependentUpon>
@@ -265,6 +271,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Dialogs\EditJobPositionLevelDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Dialogs\EditVipCardDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

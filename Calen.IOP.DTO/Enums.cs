@@ -12,6 +12,17 @@ namespace Calen.IOP.DTO
         Male = 1,
         Female = 2
     }
+    public enum BirthdayTypes
+    {
+        /// <summary>
+        /// 公历
+        /// </summary>
+        SolarCalendar = 0,
+        /// <summary>
+        /// 农历
+        /// </summary>
+        LunarCalendar =1
+    }
     public enum EducationLevels
     {
         Unknown = 0,
@@ -73,12 +84,12 @@ namespace Calen.IOP.DTO
         Resignation = 9
     }
 
-    public enum vipCardTypes
+    public enum VipCardTypes
     {
         ValidateByDays = 1,//时效,按天数算
         ValidateByTimes = 2,//频次，按次数算
     }
-    public enum vipCardStates
+    public enum VipCardStates
     {
         Available = 1,//在用
         Obsolete = 2,//停用

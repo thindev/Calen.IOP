@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="Calen.IOP.Client.Desktop.Pages.Dialogs.EditVipCardDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages.Dialogs"
+             mc:Ignorable="d" 
+             Height="420" Width="420" Background="White">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style  TargetType="{x:Type TextBlock}">
+                    <Setter Property="TextWrapping" Value="NoWrap"/>
+                    <Setter Property="TextTrimming" Value="None"/>
+                    <Setter Property="FontSize" Value="{DynamicResource FontSize_Title_Small}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource Foreground_NormalKey}"/>
+                    <Setter Property="Width" Value="72"/>
+                    <Setter Property="TextAlignment" Value="Right"/>
+                </Style>
+                <Style TargetType="{x:Type DockPanel}">
+                    <Setter Property="Margin" Value="0 10 "/>
+                </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Skins/TextBoxStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Name="rootLayout">
+        <StackPanel Margin="0,0,0,59"  >
+            <DockPanel>
+                <TextBlock Text="卡编码：" VerticalAlignment="Center" />
+                <TextBox VerticalAlignment="Center" Text="{Binding Code}" />
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="卡名称：" VerticalAlignment="Center" />
+                <TextBox VerticalAlignment="Center" Text="{Binding Name}" />
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="卡类型：" VerticalAlignment="Center" />
+                <ComboBox VerticalAlignment="Center" ItemsSource="{Binding Source={StaticResource VipCardTypes}}" 
+                                 ItemTemplate="{DynamicResource VipCardTypeDataTemplate}" SelectedItem="{Binding CardType}"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="有效期：" VerticalAlignment="Center" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <mahapps:NumericUpDown Grid.Column="0"  VerticalAlignment="Center" Value="{Binding ValidityDayCount}" HasDecimals="False" Minimum="1" />
+                    <TextBlock Grid.Column="1" Text="(天)" Width="auto" VerticalAlignment="Center" Margin="6,0"/>
+                </Grid>
+                
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="在售状态：" VerticalAlignment="Center" />
+                <ComboBox VerticalAlignment="Center" ItemsSource="{Binding Source={StaticResource VipCardStates}}" 
+                                 ItemTemplate="{DynamicResource VipCardStateDataTemplate}" SelectedItem="{Binding State}"/>
+            </DockPanel>
+            <DockPanel >
+                <TextBlock Text="描述：" VerticalAlignment="Center" />
+                <TextBox VerticalAlignment="Center" Text="{Binding Description}" Height="64" MaxLines="1000"/>
+            </DockPanel>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal"  HorizontalAlignment="Center" Height="44" Margin="130,0,129,10">
+            <Button Content="保存" Name="btn_ok" Click="btn_ok_Click" Margin="8" Padding="12,4" FontSize="{DynamicResource FontSize_Content_Large}"/>
+            <Button Content="取消" Name="btn_cancel" Click="btn_cancel_Click" Margin="8" Padding="12,4" FontSize="{DynamicResource FontSize_Content_Large}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -5,26 +5,23 @@ using System.Windows.Data;
 
 namespace Calen.IOP.Client.Desktop.Converters
 {
-    public class ServeStateToStringConverter : IValueConverter
+    public class VipCardStateToStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (!(value is ServeStates)) return "";
+            if (!(value is VipCardStates)) return "";
             string re= "未知";
-            ServeStates type = (ServeStates)value;
+            VipCardStates type = (VipCardStates)value;
             switch(type)
             {
-                case ServeStates.InServe:
-                    re = "在";
+                case VipCardStates.Available:
+                    re = "在售";
                     break;
-                case ServeStates.Onleave:
-                    re = "休假";
+                case VipCardStates.ComingSoon:
+                    re = "即将发售";
                     break;
-                case ServeStates.ProbationaryPeriod:
-                    re = "试用";
-                    break;
-                case ServeStates.Resignation:
-                    re = "离";
+                case VipCardStates.Obsolete:
+                    re = "停售";
                     break;
                 default:
                     re = "未知";

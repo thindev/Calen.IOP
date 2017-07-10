@@ -16,6 +16,7 @@ namespace Calen.IOP.DataAccess.Entities
         public string Email { get; set; }
         public string Address { get; set; }
         public DateTime? BirthDay { get; set; }
+        public BirthdayTypes BirthDayType { get; set; }
         public byte[] Image { get; set; }
         public EducationLevels Education { get; set; }
         public ServeStates ServeState { get; set; }
