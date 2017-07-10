@@ -270,7 +270,48 @@ namespace Calen.IOP.DataPortal
             IRestResponse response = await _restClient.Execute(request);
             string content = response.Content;
             return 1;
-        } 
+        }
+        #endregion
+        #region employee
+        public async Task<IEnumerable<vipCard>> FetchAllVipCards()
+        {
+            var request = new RestRequest("vipcards", Method.POST);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            var result = JsonConvert.DeserializeObject<vipCard[]>(content);
+            return result;
+        }
+
+        public async Task<int> AddVipCards(IEnumerable<vipCard> items)
+        {
+            var request = new RestRequest("vipcards", Method.POST);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
+        }
+
+        public async Task<int> DeleteVipCards(IEnumerable<vipCard> items)
+        {
+            var request = new RestRequest("vipcards", Method.DELETE);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
+        }
+
+        public async Task<int> UpdateVipCards(IEnumerable<vipCard> items)
+        {
+            var request = new RestRequest("vipcards", Method.PUT);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
+        }
         #endregion
     }
 }

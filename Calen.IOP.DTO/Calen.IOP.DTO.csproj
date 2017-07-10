@@ -47,6 +47,7 @@
     <Compile Include="Common\resultForEmployees.cs" />
     <Compile Include="Common\servingRecord.cs" />
     <Compile Include="Common\userRole.cs" />
+    <Compile Include="Common\vipCard.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

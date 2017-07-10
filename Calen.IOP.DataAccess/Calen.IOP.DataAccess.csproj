@@ -64,6 +64,7 @@
     <Compile Include="Entities\JobType.cs" />
     <Compile Include="Entities\ServingRecord.cs" />
     <Compile Include="Entities\UserRole.cs" />
+    <Compile Include="Entities\VipCard.cs" />
     <Compile Include="IOPContext.cs" />
     <Compile Include="Mapping\DepartmentMap.cs" />
     <Compile Include="Mapping\EmployeeMap.cs" />

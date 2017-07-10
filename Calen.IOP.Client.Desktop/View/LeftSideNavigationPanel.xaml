@@ -82,7 +82,7 @@
                         </TreeViewItem.Header>
                     </TreeViewItem>
                 </TreeViewItem>
-                <TreeViewItem desktop:FunctionMgr.FunctionId="03000000" desktop:FunctionMgr.FunctionName="会员管理" >
+                <TreeViewItem desktop:FunctionMgr.FunctionId="03000000" IsExpanded="True" >
                     <TreeViewItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Path Data="{DynamicResource Geo_NavMenu_VipManage}" Height="{DynamicResource FontSize_Title_Large}" Fill="#FFF19918" />
@@ -108,7 +108,7 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem desktop:FunctionMgr.FunctionId="01030000" desktop:FunctionMgr.FunctionName="固定资产">
+                        <TreeViewItem desktop:FunctionMgr.FunctionId="03030000" desktop:FunctionMgr.FunctionName="固定资产">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Path Data="{DynamicResource Geo_NavMenu_RoomsManage}"/>

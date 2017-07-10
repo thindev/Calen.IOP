@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="Calen.IOP.Client.Desktop.Pages.Common.VIPCardConfigPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages.Common"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style TargetType="DataGridRow" BasedOn="{StaticResource MetroDataGridRow}">
+            <Setter Property="IsSelected" Value="{Binding IsSelected,Mode=OneWay}"/>
+        </Style>
+        <vm:JobTypeManagerVM x:Key="JobTypeManagerVM" AutoLoadDataOnInitialize="True">
+            <vm:JobTypeManagerVM.EditItemDialog>
+                <dialog:EditJobTypeDialog/>
+            </vm:JobTypeManagerVM.EditItemDialog>
+            <vm:JobTypeManagerVM.DeleteItemsDialog>
+                <dialog:DeleteItemsDialog />
+            </vm:JobTypeManagerVM.DeleteItemsDialog>
+        </vm:JobTypeManagerVM>
+    </UserControl.Resources>
+    <Grid DataContext="{StaticResource JobTypeManagerVM}" Grid.Row="1" Margin="0,14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="岗位类型列表：" Margin="12,8" HorizontalAlignment="Left" FontSize="{DynamicResource FontSize_Title_Middle}" Foreground="{DynamicResource Foreground_DarkKey}" Grid.Row="0"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,12,8" VerticalAlignment="Bottom" >
+            <Button  Style="{DynamicResource ButtonStyle_GeometryContent_Circle_Green}" Content="{DynamicResource Geo_Refresh}" Height="22" Width="22" Padding="6"  Margin="4,0" Command="{Binding RefreshItemsCommand}" >
+            </Button>
+            <Button  Style="{DynamicResource ButtonStyle_GeometryContent_Circle_Blue}" Content="{DynamicResource Geo_Add}" Height="22" Width="22" Padding="6"  Margin="4,0" Command="{Binding AddCommand}" >
+            </Button>
+            <Button   Content="{DynamicResource Geo_Edit}" Height="22" Width="22" Padding="6"  Margin="4,0" Command="{Binding EditCommand}" Style="{DynamicResource ButtonStyle_GeometryContent_Circle_Yellow}">
+            </Button>
+            <Button   Content="{DynamicResource Geo_Remove}" Height="22" Width="22" Padding="6"  Margin="4,0" Command="{Binding 
+                    DeleteCommand}" Style="{DynamicResource ButtonStyle_GeometryContent_Circle_Red}">
+            </Button>
+        </StackPanel>
+        <DataGrid IsReadOnly="True" Margin="12,0,12,12" ItemsSource="{Binding ItemList}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserReorderColumns="False" CanUserResizeRows="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2" SelectedItem="{Binding SelectedItem}" Grid.Row="1" ScrollViewer.CanContentScroll="False">
+            <DataGrid.Resources>
+                <Style x:Key="dgCell" TargetType="TextBlock">
+                    <Setter Property="TextAlignment" Value="Left"/>
+                    <Setter Property="Margin" Value="6,0,4,0"/>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="选择" MinWidth="60" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding IsSelected,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="编码" MinWidth="120"  Binding="{Binding Code}" ElementStyle="{StaticResource dgCell}"  />
+                <DataGridTextColumn Header="名称" MinWidth="140" Width="180" Binding="{Binding Name}" ElementStyle="{StaticResource dgCell}" />
+                <DataGridTextColumn Header="描述" Width="*" Binding="{Binding Description}" ElementStyle="{StaticResource dgCell}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <controls:BusyIndicator IsBusy="{Binding IsBusy}" Grid.RowSpan="2" Visibility="Collapsed"/>
+    </Grid>
+</UserControl>

@@ -19,6 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\JobPositionLevelManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\JobTypeManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\ServingRecordVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\VipCardVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\DepartmentConvertUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\EmployeeConvertUtil.cs" />
@@ -38,6 +39,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\JobTypeConvertUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\ServingRecordConvertUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\UserRoleConvertUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\VipCardConvertUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\ManagerBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OptionsSettingVM.cs" />

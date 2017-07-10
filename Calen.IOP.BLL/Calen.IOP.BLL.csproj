@@ -58,6 +58,7 @@
     <Compile Include="Converters\JobPositionLevelConverter.cs" />
     <Compile Include="Converters\JobTypeConverter.cs" />
     <Compile Include="Converters\UserRoleConverter.cs" />
+    <Compile Include="Converters\VipCardConverter.cs" />
     <Compile Include="DepartmentManager.cs" />
     <Compile Include="EmployeeManager.cs" />
     <Compile Include="HireTypeManager.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserRoleManager.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="VipCardManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Calen.IOP.DataAccess\Calen.IOP.DataAccess.csproj">

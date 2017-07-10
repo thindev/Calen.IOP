@@ -145,6 +145,10 @@ namespace Calen.IOP.Client.Desktop
                 string id = GetFunctionId(fe);
                 if (checkedIds.Contains(id))
                 {
+                   if(! AppCxt.Current.FunctionManager.FunctionDic.ContainsKey(id))
+                    {
+                        continue;
+                    }
                     FunctionVM vm = AppCxt.Current.FunctionManager.FunctionDic[id];
                     SetFunctionName(fe, vm.Name);
                     SetFunctionPageUri(fe, vm.Uri);

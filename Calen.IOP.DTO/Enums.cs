@@ -72,4 +72,16 @@ namespace Calen.IOP.DTO
         /// </summary>
         Resignation = 9
     }
+
+    public enum vipCardTypes
+    {
+        ValidateByDays = 1,//时效,按天数算
+        ValidateByTimes = 2,//频次，按次数算
+    }
+    public enum vipCardStates
+    {
+        Available = 1,//在用
+        Obsolete = 2,//停用
+        ComingSoon=3,//即将推出
+    }
 }
