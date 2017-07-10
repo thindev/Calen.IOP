@@ -21,7 +21,7 @@ namespace Calen.IOP.Client.ViewModel.Common
         public override VipCardVM DeepClone()
         {
             var dto = VipCardConvertUtil.ToDto(this);
-            var vm = HireTypeConvertUtil.FromDto(dto);
+            var vm = VipCardConvertUtil.FromDto(dto);
             base.CopyStateValues(vm);
             return vm;
         }
