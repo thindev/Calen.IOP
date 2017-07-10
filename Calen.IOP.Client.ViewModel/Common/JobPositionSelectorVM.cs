@@ -130,6 +130,7 @@ namespace Calen.IOP.Client.ViewModel.Common
 
         public void SetTargetEmployee(EmployeeVM em)
         {
+            if (em == null) return;
             _targetEmployee = em;
             foreach(var item in JobPositionList)
             {

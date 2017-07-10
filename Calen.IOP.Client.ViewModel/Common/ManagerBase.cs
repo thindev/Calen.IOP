@@ -28,6 +28,12 @@ namespace Calen.IOP.Client.ViewModel
         private ICommand _saveCommand;
         private ICommand _cancelCommand;
         private ICommand _refreshItemsCommand;
+
+        private ICommand _toFirstPageCommand;
+        private ICommand _toPrePageCommand;
+        private ICommand _toNextPageCommand;
+        private ICommand _toLastPageCommand;
+
         public ICommand RefreshItemsCommand
         {
             get
@@ -225,6 +231,93 @@ namespace Calen.IOP.Client.ViewModel
 
         public IDeleteItemsDialog DeleteItemsDialog { get; set; }
         public IEditItemDialog EditItemDialog { get; set; }
+        public ICommand ToFirstPageCommand
+        {
+            get
+            {
+                if(_toFirstPageCommand==null)
+                {
+                    _toFirstPageCommand = new RelayCommand(ToFirstPageExecute, ToFirstPagePredicate);
+                }
+                return _toFirstPageCommand;
+            }
+        }
+
+        protected virtual bool ToFirstPagePredicate()
+        {
+            return true;
+        }
+
+        protected virtual void ToFirstPageExecute()
+        {
+            
+        }
+
+        public ICommand ToPrePageCommand
+        {
+           get
+            {
+                if(_toPrePageCommand==null)
+                {
+                    _toPrePageCommand = new RelayCommand(ToPrePageExecute, ToPrePagePredicate);
+                }
+                return _toPrePageCommand;
+            }
+        }
+
+        protected virtual bool ToPrePagePredicate()
+        {
+            return true;
+        }
+
+        protected virtual void ToPrePageExecute()
+        {
+            ;
+        }
+
+        public ICommand ToNextPageCommand
+        {
+            get
+            {
+                if (_toNextPageCommand == null)
+                {
+                    _toNextPageCommand = new RelayCommand(ToNextPageExecute, ToNextPagePredicate);
+                }
+                return _toNextPageCommand;
+            }
+        }
+
+        protected virtual bool ToNextPagePredicate()
+        {
+            return true;
+        }
+
+        protected virtual void ToNextPageExecute()
+        {
+            ;
+        }
+
+        public ICommand ToLastPageCommand
+        {
+            get
+            {
+                if (_toLastPageCommand == null)
+                {
+                    _toLastPageCommand = new RelayCommand(ToLastPageExecute, ToLastPagePredicate);
+                }
+                return _toLastPageCommand;
+            }
+        }
+
+        protected virtual bool ToLastPagePredicate()
+        {
+            return true;
+        }
+
+        protected virtual void ToLastPageExecute()
+        {
+            ;
+        }
     }
 
     public interface IDeleteItemsDialog

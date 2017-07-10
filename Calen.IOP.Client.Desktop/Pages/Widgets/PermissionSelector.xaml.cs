@@ -50,39 +50,40 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
 
         private static void TargetEmployeeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            //PermissionSelector jps = (PermissionSelector)d;
-            //EmployeeVM value = e.NewValue as EmployeeVM;
-            //jps.ResetUI(value);
+            PermissionSelector jps = (PermissionSelector)d;
+            EmployeeVM value = e.NewValue as EmployeeVM;
+            jps.ResetUI(value);
+
         }
 
         private void ResetUI(EmployeeVM vm)
         {
             if (vm != null)
             {
+                List<string> idsInRoles = new List<string>();
+                foreach (string id in vm.UserRoleIds)
+                {
+                    var ur = _userRoleManager.ItemList.FirstOrDefault(p => p.Id == id);
+                    if (ur != null)
+                    {
+                        idsInRoles = idsInRoles.Union(ur.FunctionIds).ToList();
+                    }
+                }
                 foreach (var item in _funcTree)
                 {
-                    this.CheckFunc(vm,item);
+                    this.CheckFunc(vm,item,idsInRoles);
                 }
                 this.SetText(vm);
             }
         }
 
-        void CheckFunc(EmployeeVM vm,FunctionVM item)
+        void CheckFunc(EmployeeVM vm,FunctionVM item,IList<string> idsInRoles)
         {
-            
             if (vm.PermissionIds.Contains(item.Id))
                 item.IsChecked = true;
             else
                 item.IsChecked = false;
-            List<string> idsInRoles = new List<string>();
-            foreach(string id in vm.UserRoleIds)
-            {
-               var ur= _userRoleManager.ItemList.FirstOrDefault(p=>p.Id==id);
-                if(ur!=null)
-                {
-                    idsInRoles= idsInRoles.Union(ur.FunctionIds).ToList();
-                }
-            }
+            
             if (idsInRoles.Contains(item.Id))
             {
                 item.IsChecked = true;
@@ -95,7 +96,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
 
             foreach (FunctionVM sub in item.SubFunctions)
             {
-                CheckFunc(vm, sub);
+                CheckFunc(vm, sub,idsInRoles);
             }
         }
 
@@ -127,10 +128,19 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
 
         private void btn_ok_Click(object sender, RoutedEventArgs e)
         {
+            List<string> idsInRoles = new List<string>();
+            foreach (string id in this.TargetEmployee.UserRoleIds)
+            {
+                var ur = _userRoleManager.ItemList.FirstOrDefault(p => p.Id == id);
+                if (ur != null)
+                {
+                    idsInRoles = idsInRoles.Union(ur.FunctionIds).ToList();
+                }
+            }
             this.TargetEmployee.PermissionIds.Clear();
             foreach (var item in _funcTree)
             {
-                GetId(item);
+                GetId(item,idsInRoles);
             }
             this.SetText(this.TargetEmployee);
             this.popup.IsOpen = false;
@@ -139,15 +149,15 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
 
        
 
-        void GetId(FunctionVM item)
+        void GetId(FunctionVM item,IList<string> idsExclude)
         {
-            if (item.IsChecked)
+            if (item.IsChecked&&!idsExclude.Contains(item.Id))
             {
                 this.TargetEmployee.PermissionIds.Add(item.Id);
             }
             foreach(var sub in item.SubFunctions)
             {
-                GetId(sub);
+                GetId(sub,idsExclude);
             }
         }
 

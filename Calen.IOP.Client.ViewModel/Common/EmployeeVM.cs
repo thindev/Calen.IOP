@@ -51,7 +51,6 @@ namespace Calen.IOP.Client.ViewModel
         public override EmployeeVM DeepClone()
         {
             var dto = EmployeeConvertUtil.ToDto(this);
-
             var vm = EmployeeConvertUtil.FromDto(dto);
             base.CopyStateValues(vm);
             return vm;

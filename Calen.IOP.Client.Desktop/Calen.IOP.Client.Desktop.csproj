@@ -91,6 +91,7 @@
     </Compile>
     <Compile Include="Converters\NullToCollapsedConverter.cs" />
     <Compile Include="Converters\EducationLevelToStringConverter.cs" />
+    <Compile Include="Converters\ServingRecordsToStringConverter.cs" />
     <Compile Include="Converters\ServeStateToStringConverter.cs" />
     <Compile Include="Converters\SexTypeToStringConverter.cs" />
     <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
@@ -103,12 +104,6 @@
     </Compile>
     <Compile Include="Pages\Common\EmployeeManagePanel.xaml.cs">
       <DependentUpon>EmployeeManagePanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Common\VIPCardConfigPage.xaml.cs">
-      <DependentUpon>VIPCardConfigPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Common\VIPInfoManagePage.xaml.cs">
-      <DependentUpon>VIPInfoManagePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Dialogs\ConfirmDialog.xaml.cs">
       <DependentUpon>ConfirmDialog.xaml</DependentUpon>
@@ -195,14 +190,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Common\EmployeeManagePanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Common\VIPCardConfigPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Common\VIPInfoManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

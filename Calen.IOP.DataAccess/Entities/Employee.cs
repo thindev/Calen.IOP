@@ -29,6 +29,6 @@ namespace Calen.IOP.DataAccess.Entities
         /// </summary>
         public bool IsVirtual { get; set; }
         public virtual Department Department { get; set; }
-        public ICollection<ServingRecord> ServingRecords { get; set; }
+        public virtual ICollection<ServingRecord> ServingRecords { get; set; }
     }
 }

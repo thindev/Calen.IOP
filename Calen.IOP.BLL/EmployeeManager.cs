@@ -18,9 +18,11 @@ namespace Calen.IOP.BLL
             {
                 int pageSize = criteria.pageSize;
                 int pageIndex = criteria.pageIndex;
-                int totalCount;
+                criteria.employeeCode = criteria.employeeCode == null ? "" : criteria.employeeCode;
+                criteria.employeeName = criteria.employeeName == null ? "" : criteria.employeeName;
+                int totalCount=0;
                 EmployeeConverter converter = new EmployeeConverter(db);
-                IList<Employee> list = Utils.LoadPageItems<Employee, string>(db, pageSize, pageIndex, out totalCount, e => e.Code.Contains(criteria.employeeCode) && e.Name.Contains(criteria.employeeName), e => e.Code, true).ToList();
+                IList<Employee> list =  Utils.LoadPageItems<Employee, string>(db, pageSize, pageIndex, out totalCount, e => e.Code.Contains(criteria.employeeCode) && e.Name.Contains(criteria.employeeName), e => e.Code, true).ToList();
                 resultForEmployees result = new resultForEmployees();
                 result.employees= list.Select(i => converter.ToDto(i)).ToArray();
                 result.totalCount = totalCount;
@@ -63,6 +65,7 @@ namespace Calen.IOP.BLL
                 foreach (var item in items)
                 {
                     var model = converter.FromDto(item);
+                    model.ServingRecords.Clear();
                     db.Entry(model).State = System.Data.Entity.EntityState.Deleted;
                 }
                 return db.SaveChanges();

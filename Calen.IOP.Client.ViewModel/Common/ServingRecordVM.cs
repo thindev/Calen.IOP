@@ -15,7 +15,7 @@ namespace Calen.IOP.Client.ViewModel.Common
         private JobPositionVM _jobPosition;
         private EmployeeVM _employee;
 
-        public string Id { get => Id; set { Set(() => Id, ref _id, value); } }
+        public string Id { get => _id; set { Set(() => Id, ref _id, value); } }
         public DateTime? BeginTime { get => _beginTime; set { Set(() => BeginTime, ref _beginTime, value); } }
         public DateTime? EndTime { get => _endTime; set { Set(() => EndTime, ref _endTime, value); } }
         public bool IsConcurrent { get => _isConcurrent; set { Set(() => IsConcurrent, ref _isConcurrent, value); } }

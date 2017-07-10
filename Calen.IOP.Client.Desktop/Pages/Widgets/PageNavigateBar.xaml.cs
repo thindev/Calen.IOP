@@ -54,25 +54,58 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
             get { return (int[])GetValue(PageIndexListProperty); }
             set { SetValue(PageIndexListProperty, value); }
         }
+
+        public static readonly DependencyProperty ToFirstPageCommandProperty = DependencyProperty.Register("ToFirstPageCommand", typeof(ICommand), typeof(PageNavigateBar),new PropertyMetadata(null, ToFirstPageCommandChanged));
+
+        private static void ToFirstPageCommandChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            PageNavigateBar bar = (PageNavigateBar)d;
+            bar.btn_to_fist.Command = e.NewValue as ICommand;
+        }
+
+        private static void ToNextPageCommandChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            PageNavigateBar bar = (PageNavigateBar)d;
+            bar.btn_to_next.Command = e.NewValue as ICommand;
+        }
+
+        public static readonly DependencyProperty ToPrePageCommandProperty = DependencyProperty.Register("ToPrePageCommand", typeof(ICommand), typeof(PageNavigateBar), new PropertyMetadata(null, ToPrePagePageCommandChanged));
+
+        private static void ToPrePagePageCommandChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            PageNavigateBar bar = (PageNavigateBar)d;
+            bar.btn_to_pre.Command = e.NewValue as ICommand;
+        }
+
+        public static readonly DependencyProperty ToNextPageCommandProperty = DependencyProperty.Register("ToNextPageCommand", typeof(ICommand), typeof(PageNavigateBar), new PropertyMetadata(null, ToNextPageCommandChanged));
+        public static readonly DependencyProperty ToLastCommandProperty = DependencyProperty.Register("ToLastCommand", typeof(ICommand), typeof(PageNavigateBar), new PropertyMetadata(null, ToLastCommandChanged));
+
+        private static void ToLastCommandChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            PageNavigateBar bar = (PageNavigateBar)d;
+            bar.btn_to_last.Command = e.NewValue as ICommand;
+        }
+
+     
         public ICommand ToFirstPageCommand
         {
-            get { return btn_to_fist.Command; }
-            set { btn_to_fist.Command = value; }
+            set { SetValue(ToFirstPageCommandProperty,value); }
+            get { return (ICommand)GetValue(ToFirstPageCommandProperty); }
         }
         public ICommand ToPrePageCommand
         {
-            get { return btn_to_pre.Command; }
-            set { btn_to_pre.Command = value; }
+            set { SetValue(ToPrePageCommandProperty, value); }
+            get { return (ICommand)GetValue(ToPrePageCommandProperty); }
         }
         public ICommand ToNextPageCommand
         {
-            get { return btn_to_next.Command; }
-            set { btn_to_next.Command = value; }
+            set { SetValue(ToNextPageCommandProperty, value); }
+            get { return (ICommand)GetValue(ToNextPageCommandProperty); }
         }
         public ICommand ToLastCommand
         {
-            get { return btn_to_last.Command; }
-            set { btn_to_last.Command = value; }
+            set { SetValue(ToLastCommandProperty, value); }
+            get { return (ICommand)GetValue(ToLastCommandProperty); }
         }
     }
 }

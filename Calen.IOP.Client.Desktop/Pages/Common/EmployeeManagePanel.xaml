@@ -11,11 +11,14 @@
              mc:Ignorable="d" 
               Background="White">
     <UserControl.Resources>
-        <vm:EmployeeManager x:Key="EmployeeManager" AutoLoadDataOnInitialize="True">
-            <vm:EmployeeManager.EditItemDialog>
+        <vm:EmployeeManagerVM x:Key="EmployeeManager" AutoLoadDataOnInitialize="True">
+            <vm:EmployeeManagerVM.EditItemDialog>
                 <dialog:EditEmployeeDialog/>
-            </vm:EmployeeManager.EditItemDialog>
-        </vm:EmployeeManager>
+            </vm:EmployeeManagerVM.EditItemDialog>
+            <vm:EmployeeManagerVM.DeleteItemsDialog>
+                <dialog:DeleteItemsDialog/>
+            </vm:EmployeeManagerVM.DeleteItemsDialog>
+        </vm:EmployeeManagerVM>
         <Style  TargetType="{x:Type TextBlock}">
             <Setter Property="TextWrapping" Value="NoWrap"/>
             <Setter Property="TextTrimming" Value="None"/>
@@ -25,7 +28,7 @@
             <Setter Property="TextAlignment" Value="Right"/>
         </Style>
     </UserControl.Resources>
-    <Grid Margin="12" DataContext="{StaticResource EmployeeManager}">
+    <Grid Margin="10,10,10,4" DataContext="{StaticResource EmployeeManager}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="20"/>
@@ -69,7 +72,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-<DataGrid IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserReorderColumns="False" CanUserResizeRows="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2" SelectedItem="{Binding SelectedItem}" Grid.Row="0" ScrollViewer.CanContentScroll="False" MouseDoubleClick="DataGrid_MouseDoubleClick" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource EdgeBarColorLevel2}" Margin="0,0,0,2">
+<DataGrid IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column" CanUserReorderColumns="False" CanUserResizeRows="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" AlternationCount="2" SelectedItem="{Binding SelectedItem}" Grid.Row="0" ScrollViewer.CanContentScroll="False" MouseDoubleClick="DataGrid_MouseDoubleClick" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource EdgeBarColorLevel2}" Margin="0,0,0,2" ItemsSource="{Binding ItemList}">
                 <DataGrid.Resources>
                     <Style x:Key="dgCell" TargetType="TextBlock">
                         <Setter Property="TextAlignment" Value="Left"/>
@@ -86,10 +89,13 @@
                     </DataGridTemplateColumn>
                     <DataGridTextColumn Header="编码" MinWidth="120"  Binding="{Binding Code}" ElementStyle="{StaticResource dgCell}"  />
                     <DataGridTextColumn Header="名称" MinWidth="100" Width="140" Binding="{Binding Name}" ElementStyle="{StaticResource dgCell}" />
-                    <DataGridTextColumn Header="描述" Width="*" Binding="{Binding Description}" ElementStyle="{StaticResource dgCell}" />
+                        <DataGridTextColumn Header="电话" MinWidth="100" Width="140" Binding="{Binding MobileNumber}" ElementStyle="{StaticResource dgCell}" />
+                        <DataGridTextColumn Header="部门" MinWidth="100" Width="140" Binding="{Binding Department.Name}" ElementStyle="{StaticResource dgCell}" />
+                        <DataGridTextColumn Header="岗位" MinWidth="100" Width="140" Binding="{Binding ServingRecords,Converter={StaticResource ServingRecordsToStringConverter}}" ElementStyle="{StaticResource dgCell}" />
+                        <DataGridTextColumn Header="描述" Width="*" Binding="{Binding Description}" ElementStyle="{StaticResource dgCell}" />
                 </DataGrid.Columns>
             </DataGrid>
-                <widgets:PageNavigateBar Grid.Row="1" HorizontalAlignment="Right"/>
+                <widgets:PageNavigateBar  Grid.Row="1" Margin="4" HorizontalAlignment="Right" TotalCount="{Binding EmployeeCriteria.TotalCount}" PageCount="{Binding EmployeeCriteria.PageCount}" PageIndexList="{Binding EmployeeCriteria.PagesList}" CountPerPage="{Binding EmployeeCriteria.PageSize,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" CurrentPage="{Binding EmployeeCriteria.PageIndex,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ToFirstPageCommand="{Binding ToFirstPageCommand}" ToLastCommand="{Binding ToLastPageCommand}" ToNextPageCommand="{Binding ToNextPageCommand}" ToPrePageCommand="{Binding ToPrePageCommand}"/>
             </Grid>
             <GridSplitter VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="6" Grid.Column="1" Background="{DynamicResource EdgeBarColorLevel2}"/>
             <Grid Grid.Column="1" Margin="6,0,0,0">
@@ -98,13 +104,12 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid Background="{DynamicResource EdgeBarColorLevel2}">
-                    <Button  Margin="8,0" Style="{DynamicResource ButtonStyle_GeometryContent}" Height="28" Width="28" VerticalAlignment="Center" Content="{DynamicResource Geo_Arrow_Left}" Padding="4" Click="Button_Click"/>
+                    <Button  Margin="4,0" Style="{DynamicResource ButtonStyle_GeometryContent}" Height="28" Width="28" VerticalAlignment="Center" Content="{DynamicResource Geo_Arrow_Right}" Padding="3" Click="Button_Click"/>
                 </Grid>
                 <ScrollViewer Grid.Row="1"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
-                    <local:EmployeeDetailPanel IsBaseInfoExpanded="True" IsAccountInfoExpanded="True" IsAdditionalInfoExpanded="True"/>
+                    <local:EmployeeDetailPanel IsBaseInfoExpanded="True" IsAccountInfoExpanded="True" IsAdditionalInfoExpanded="True"  DataContext="{Binding SelectedItem}"/>
                 </ScrollViewer>
             </Grid>
-
         </Grid>
         <controls:BusyIndicator Grid.RowSpan="4" IsBusy="{Binding IsBusy}" Visibility="Collapsed"/>
     </Grid>

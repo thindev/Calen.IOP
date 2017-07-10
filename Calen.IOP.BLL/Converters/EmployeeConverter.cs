@@ -28,7 +28,8 @@ namespace Calen.IOP.BLL.Converters
             }
             else
             {
-                em.ServingRecords.Clear();
+                DbContext.Set<ServingRecord>().RemoveRange(em.ServingRecords);
+                em.ServingRecords?.Clear();
             }
             em.Address = dto.address;
             em.BirthDay = dto.birthDay;
@@ -68,6 +69,10 @@ namespace Calen.IOP.BLL.Converters
                         IsCurrent = item.isCurrent,
                         JobPosition = DbContext.JobPositions.Find(item.jobPosition.id)
                     };
+                    if(em.ServingRecords==null)
+                    {
+                        em.ServingRecords = new List<ServingRecord>();
+                    }
                     em.ServingRecords.Add(record);
                 }
             }
@@ -81,8 +86,7 @@ namespace Calen.IOP.BLL.Converters
                 address = model.Address,
                 birthDay = model.BirthDay,
                 code = model.Code,
-                departmentId = model.Department.Id,
-                departmentName = model.Department.Name,
+               
                 description = model.Description,
                 education = (int)model.Education,
                 email = model.Email,
@@ -100,6 +104,11 @@ namespace Calen.IOP.BLL.Converters
                  permissionIds = model.PermissionIds == null ? null : model.PermissionIds.Split(','),
              
             };
+            if(model.Department!=null)
+            {
+                em.departmentId = model.Department.Id;
+                em.departmentName = model.Department.Name;
+            }
             if (model.ServingRecords != null)
             {
                 var jpC = new JobPositionConverter(DbContext);

@@ -18,14 +18,19 @@
                 <local:DepartmentManagePanel/>
             </mahapps:MetroContentControl>
         </TabItem>
-        <TabItem Header="职位类型管理" Style="{DynamicResource PageTabItemStyle}">
+        <TabItem Header="岗位类型配置" Style="{DynamicResource PageTabItemStyle}">
             <mahapps:MetroContentControl>
                 <local:JobTypeManagePanel/>
             </mahapps:MetroContentControl>
         </TabItem>
-        <TabItem Header="用户角色管理" Style="{DynamicResource PageTabItemStyle}">
+        <TabItem Header="岗位级别配置" Style="{DynamicResource PageTabItemStyle}">
             <mahapps:MetroContentControl>
-                <local:UserRoleManagePanel/>
+                <local:JobPositionLevelManagePanel/>
+            </mahapps:MetroContentControl>
+        </TabItem>
+        <TabItem Header="聘用类型配置" Style="{DynamicResource PageTabItemStyle}">
+            <mahapps:MetroContentControl>
+                <local:HireTypeManagePanel/>
             </mahapps:MetroContentControl>
         </TabItem>
     </TabControl>

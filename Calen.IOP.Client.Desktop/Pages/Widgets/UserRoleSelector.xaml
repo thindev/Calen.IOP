@@ -6,11 +6,12 @@
              xmlns:controls="clr-namespace:Calen.IOP.Client.Desktop.Controls"
              xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages.Widgets"
              mc:Ignorable="d" 
+             Name="uc"
              >
     <UserControl.Resources>
         
         <DataTemplate x:Key="UserRoleTemplateCheckBox">
-            <CheckBox Content="{Binding Name}" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding IsSelected}" Margin="2,4" FontSize="{DynamicResource FontSize_Content_Large}"></CheckBox>
+            <CheckBox Content="{Binding Name}" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding IsSelected}" Margin="2,4" FontSize="{DynamicResource FontSize_Title_Small}" FontFamily="微软雅黑"></CheckBox>
         </DataTemplate>
     </UserControl.Resources>
     <Grid>
@@ -23,9 +24,9 @@
                 <Border.Effect>
                     <DropShadowEffect ShadowDepth="0" BlurRadius="4"/>
                 </Border.Effect>
-                <Grid MinWidth="300" Height="400"  Background="White" Width="{Binding ElementName=txb,Path=ActualWidth}">
+                <Grid MinWidth="300" Height="300"  Background="White" Width="{Binding ElementName=txb,Path=ActualWidth}">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="120"/>
+                        <RowDefinition Height="80"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>

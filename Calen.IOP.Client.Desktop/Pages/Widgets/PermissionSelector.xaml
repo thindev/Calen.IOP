@@ -6,6 +6,7 @@
              xmlns:controls="clr-namespace:Calen.IOP.Client.Desktop.Controls"
              xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages.Widgets"
              mc:Ignorable="d" 
+             Name="uc"
              >
     <UserControl.Resources>
     </UserControl.Resources>
@@ -19,7 +20,7 @@
                 <Border.Effect>
                     <DropShadowEffect ShadowDepth="0" BlurRadius="4"/>
                 </Border.Effect>
-                <Grid MinWidth="300" Height="400"  Background="White" Width="{Binding ElementName=txb,Path=ActualWidth}">
+                <Grid MinWidth="200" Height="260"  Background="White" Width="{Binding ElementName=txb,Path=ActualWidth}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="auto"/>
@@ -29,8 +30,12 @@
                         <Button Name="btn_cancel" Content="取消" Style="{DynamicResource ButtonStyle_AccentedSquare}" FontSize="{DynamicResource FontSize_Content_Small}" Padding="12,4" Margin="8,0,0,0" Click="btn_cancel_Click" />
                     </StackPanel>
                     <Grid Grid.Row="0">
-                        <TreeView Name="funTree" ItemTemplate="{DynamicResource FunctionDataTemplate}"  ItemContainerStyle="{DynamicResource TreeViewItemModern}">
-
+                        <TreeView Name="funTree"  ItemContainerStyle="{DynamicResource TreeViewItemModern}">
+                            <TreeView.ItemTemplate>
+                                <HierarchicalDataTemplate  ItemsSource="{Binding SubFunctions}">
+                                    <CheckBox IsChecked="{Binding IsChecked}" Margin="4,8,0,8"  IsEnabled="{Binding IsReadOnly,Converter={StaticResource InverseBooleanConverter}}" Content="{Binding Name}"  FontSize="{DynamicResource FontSize_Title_Small}" VerticalAlignment="Center"></CheckBox>
+                                </HierarchicalDataTemplate>
+                            </TreeView.ItemTemplate>
                         </TreeView>
                     </Grid>
                     <controls:BusyIndicator x:Name="busyCtrl" IsBusy="{Binding IsBusy}" Grid.RowSpan="4" Visibility="Collapsed"/>

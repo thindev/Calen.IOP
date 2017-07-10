@@ -18,16 +18,13 @@ namespace Calen.IOP.BLL.Converters
 
         public override JobPostionLevel FromDto(jobPositionLevel dto)
         {
-
-            JobPostionLevel target = new JobPostionLevel()
-            {
-                Code = dto.code,
-                Description = dto.description,
-                Id = dto.id,
-                Name = dto.name,
-            };
-       
-           
+            JobPostionLevel target = DbContext.JobPositionLevels.Find(dto.id);
+            if (target == null)
+                target = new JobPostionLevel();
+            target.Code = dto.code;
+            target.Description = dto.description;
+            target.Id = dto.id;
+            target.Name = dto.name;
             return target;
         }
 

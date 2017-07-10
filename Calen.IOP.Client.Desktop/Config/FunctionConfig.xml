@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <FunctionConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <FunctionItems>
-    <FunctionItem Id="01000000"  Name="组织架构"  Uri="" Description="">
+    <FunctionItem Id="01000000"  Name="配置管理"  Uri="" Description="">
       <SubFunctions>
-        <FunctionItem Id="01010000"  Name="组织配置"  Uri="pack://application:,,,/Calen.IOP.Client.Desktop;component/Pages/Common/DepartmentManagePage.xaml" Description="组织管理项"/>
-        <FunctionItem Id="01020000"  Name="职员管理"  Uri="pack://application:,,,/Calen.IOP.Client.Desktop;component/Pages/Common/EmployeeManagePage.xaml" Description=""/>
+        <FunctionItem Id="01010000"  Name="组织架构配置"  Uri="pack://application:,,,/Calen.IOP.Client.Desktop;component/Pages/Common/DepartmentManagePage.xaml" Description="组织管理项"/>
+        <FunctionItem Id="01020000"  Name="员工信息管理"  Uri="pack://application:,,,/Calen.IOP.Client.Desktop;component/Pages/Common/EmployeeManagePage.xaml" Description=""/>
       </SubFunctions>
     </FunctionItem>
     <FunctionItem  Id="02000000" Name=""  Uri="" Description="">

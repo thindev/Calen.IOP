@@ -27,6 +27,7 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
         {
             InitializeComponent();
             _viewModel = new UserRoleManagerVM();
+            _viewModel.ItemList.CollectionChanged += ItemList_CollectionChanged;
             _viewModel.RefreshItemsCommand.Execute(null);
             lcv = new ListCollectionView(_viewModel.ItemList);
             lcv.IsLiveFiltering = true;
@@ -38,41 +39,67 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
             this.list_selected.ItemsSource = lcv;
             this.brd_popup.DataContext = _viewModel;
             this.list_forSelect.ItemsSource = _viewModel.ItemList;
-        }
-        UserRoleManagerVM _viewModel;
-        public static readonly DependencyProperty IsReadOnlyProperty = TextBox.IsReadOnlyProperty.AddOwner(typeof(UserRoleSelector));
-        public static readonly DependencyProperty TargetEmployeeProperty = DependencyProperty.Register("TargetEmployee", typeof(EmployeeVM), typeof(UserRoleSelector), new PropertyMetadata(null, TargetEmployeeChanged));
-        public EmployeeVM TargetEmployee
-        {
-            get { return (EmployeeVM)GetValue( TargetEmployeeProperty); }
-            set { SetValue(TargetEmployeeProperty, value); }
+            this.popup.Opened += Popup_Opened;
         }
 
-        private static void TargetEmployeeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private void Popup_Opened(object sender, EventArgs e)
         {
-            UserRoleSelector jps = (UserRoleSelector)d;
-            EmployeeVM value = e.NewValue as EmployeeVM;
-            jps.ResetUI(value);
-            
+            _viewModel.RefreshItemsCommand.Execute(null);
         }
 
-        private void ResetUI(EmployeeVM vm)
+        private void ItemList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            if (vm != null)
+            var vm = this.TargetEmployee;
+            if (vm == null) return;
+            if (e.NewItems != null)
             {
-                foreach (var item in _viewModel.ItemList)
+                foreach (UserRoleVM item in e.NewItems)
                 {
                     if (vm.UserRoleIds.Contains(item.Id))
                         item.IsSelected = true;
                     else
                         item.IsSelected = false;
                 }
-                this.SetText(vm);
+            }
+            if (e.OldItems != null)
+            {
+                foreach (UserRoleVM item in e.OldItems)
+                {
+                    if (vm.UserRoleIds.Contains(item.Id))
+                        item.IsSelected = true;
+                    else
+                        item.IsSelected = false;
+                }
+            }
+            this.SetText();
+        }
+
+        UserRoleManagerVM _viewModel;
+        public static readonly DependencyProperty IsReadOnlyProperty = TextBox.IsReadOnlyProperty.AddOwner(typeof(UserRoleSelector));
+        public static readonly DependencyProperty TargetEmployeeProperty = DependencyProperty.Register("TargetEmployee", typeof(EmployeeVM), typeof(UserRoleSelector), new PropertyMetadata(null, TargetEmployeeChanged));
+
+        private static void TargetEmployeeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            UserRoleSelector urs = (UserRoleSelector)d;
+            if(e.NewValue!=null)
+            {
+                urs.SetText();
             }
         }
 
-        void SetText(EmployeeVM vm)
+        public EmployeeVM TargetEmployee
         {
+            get { return (EmployeeVM)GetValue( TargetEmployeeProperty); }
+            set { SetValue(TargetEmployeeProperty, value); }
+        }
+
+       
+
+       
+
+        void SetText()
+        {
+            EmployeeVM vm = this.TargetEmployee;
             List<string> names = new List<string>();
             foreach (var item in _viewModel.ItemList)
             {
@@ -99,16 +126,12 @@ namespace Calen.IOP.Client.Desktop.Pages.Widgets
                     this.TargetEmployee.UserRoleIds.Add(item.Id);
                 }
             }
-            this.SetText(this.TargetEmployee);
+            this.SetText();
             this.popup.IsOpen = false;
         }
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
-            if(this.TargetEmployee!=null)
-            {
-                this.ResetUI(this.TargetEmployee);
-            }
             this.popup.IsOpen = false;
         }
 
