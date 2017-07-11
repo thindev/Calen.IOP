@@ -180,7 +180,7 @@ namespace Calen.IOP.Client.ViewModel
         protected async override void DeleteExecute()
         {
             var items = this.ItemList.Where(x => x.IsSelected).ToList();
-            if(items.Count<1&&!items.Contains(this.SelectedItem))
+            if(items.Count==0)
             {
                 items.Add(this.SelectedItem);
             }

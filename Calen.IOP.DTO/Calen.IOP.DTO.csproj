@@ -36,7 +36,9 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\criteriaForCustomer.cs" />
     <Compile Include="Common\criteriaForEmployees.cs" />
+    <Compile Include="Common\customer.cs" />
     <Compile Include="Common\department.cs" />
     <Compile Include="Common\employee.cs" />
     <Compile Include="Common\entityDtoBase.cs" />
@@ -44,6 +46,8 @@
     <Compile Include="Common\jobPosition.cs" />
     <Compile Include="Common\jobPositionLevel.cs" />
     <Compile Include="Common\jobType.cs" />
+    <Compile Include="Common\personBase.cs" />
+    <Compile Include="Common\resultForCustomers.cs" />
     <Compile Include="Common\resultForEmployees.cs" />
     <Compile Include="Common\servingRecord.cs" />
     <Compile Include="Common\userRole.cs" />

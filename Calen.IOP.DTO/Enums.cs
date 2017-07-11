@@ -95,4 +95,17 @@ namespace Calen.IOP.DTO
         Obsolete = 2,//停用
         ComingSoon=3,//即将推出
     }
+    public enum ComeFromType
+    {
+        Other=0,//其它
+        OutdoorPublicity=1,//户外推广
+        Recommend=2,//推荐
+        CustomerBehavior//客户行为（自找）
+    }
+    public enum CustomerType
+    {
+        PotentialVIP=0,//潜在会员
+        VIP=1,//会员
+        CardOwner,//持卡会员
+    }
 }

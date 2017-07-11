@@ -43,7 +43,7 @@ namespace Calen.IOP.DataPortal
         #region vipCards
         Task<IEnumerable<vipCard>> FetchAllVipCards();
         Task<int> AddVipCards(IEnumerable<vipCard> items);
-        Task<int> DeleteVipCards(IEnumerable<vipCard> items);
+        Task<int> DeleteVipCards(IEnumerable<string> ids);
         Task<int> UpdateVipCards(IEnumerable<vipCard> items);
         #endregion vipCards
     }

@@ -41,6 +41,7 @@
         public virtual DbSet<JobPostionLevel> JobPositionLevels { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
         public virtual DbSet<VipCard> VipCards { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
 
     }
 

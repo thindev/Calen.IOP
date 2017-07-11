@@ -54,12 +54,12 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="编码" MinWidth="120"  Binding="{Binding Code}" ElementStyle="{StaticResource dgCell}"  />
+                <DataGridTextColumn Header="型号" MinWidth="120"  Binding="{Binding Code}" ElementStyle="{StaticResource dgCell}"  />
                 <DataGridTextColumn Header="卡名" MinWidth="140" Width="180" Binding="{Binding Name}" ElementStyle="{StaticResource dgCell}" />
-                <DataGridTextColumn Header="类型" MinWidth="100" Width="120" Binding="{Binding CardType}" ElementStyle="{StaticResource dgCell}" />
-                <DataGridTextColumn Header="有效期" MinWidth="100" Width="120" Binding="{Binding ValidityDayCount}" ElementStyle="{StaticResource dgCell}" />
-                <DataGridTextColumn Header="在售状态" MinWidth="100" Width="120" Binding="{Binding State}" ElementStyle="{StaticResource dgCell}" />
-                <DataGridTextColumn Header="描述" Width="*" Binding="{Binding Description}" ElementStyle="{StaticResource dgCell}" />
+                <DataGridTextColumn Header="类型" MinWidth="100" Width="120" Binding="{Binding CardType,Converter={StaticResource VipCardTypeToStringConverter}}" ElementStyle="{StaticResource dgCell}" />
+                <DataGridTextColumn Header="有效期" MinWidth="100" Width="120" Binding="{Binding ValidityDayCount,StringFormat='{}{0} (天)'}" ElementStyle="{StaticResource dgCell}" />
+                <DataGridTextColumn Header="状态" MinWidth="100" Width="120" Binding="{Binding State,Converter={StaticResource VipCardStateToStringConverter}}" ElementStyle="{StaticResource dgCell}" />
+                <DataGridTextColumn Header="备注" Width="*" Binding="{Binding Description}" ElementStyle="{StaticResource dgCell}" />
             </DataGrid.Columns>
         </DataGrid>
         <controls:BusyIndicator IsBusy="{Binding IsBusy}" Grid.RowSpan="2" Visibility="Collapsed"/>

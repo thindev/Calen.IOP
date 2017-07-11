@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\ConverterBase.cs" />
+    <Compile Include="Converters\CustomerConverter.cs" />
     <Compile Include="Converters\DepartmentConverter.cs" />
     <Compile Include="Converters\EmployeeConverter.cs" />
     <Compile Include="Converters\HireTypeConverter.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Converters\JobTypeConverter.cs" />
     <Compile Include="Converters\UserRoleConverter.cs" />
     <Compile Include="Converters\VipCardConverter.cs" />
+    <Compile Include="CustomerManager.cs" />
     <Compile Include="DepartmentManager.cs" />
     <Compile Include="EmployeeManager.cs" />
     <Compile Include="HireTypeManager.cs" />

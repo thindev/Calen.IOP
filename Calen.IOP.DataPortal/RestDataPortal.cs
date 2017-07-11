@@ -275,7 +275,7 @@ namespace Calen.IOP.DataPortal
         #region employee
         public async Task<IEnumerable<vipCard>> FetchAllVipCards()
         {
-            var request = new RestRequest("vipcards", Method.POST);
+            var request = new RestRequest("vipcards", Method.GET);
             // execute the request
             IRestResponse response = await _restClient.Execute(request);
             string content = response.Content;
@@ -293,10 +293,10 @@ namespace Calen.IOP.DataPortal
             return 1;
         }
 
-        public async Task<int> DeleteVipCards(IEnumerable<vipCard> items)
+        public async Task<int> DeleteVipCards(IEnumerable<string> ids)
         {
             var request = new RestRequest("vipcards", Method.DELETE);
-            request.AddJsonBody(items);
+            request.AddJsonBody(ids);
             // execute the request
             IRestResponse response = await _restClient.Execute(request);
             string content = response.Content;

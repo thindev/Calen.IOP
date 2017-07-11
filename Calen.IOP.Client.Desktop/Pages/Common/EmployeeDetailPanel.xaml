@@ -130,6 +130,14 @@
                         <ComboBox VerticalAlignment="Center" IsEnabled="{Binding IsEditing}" ItemsSource="{Binding Source={StaticResource EducationLevels}}" SelectedItem="{Binding Education}"  ItemTemplate="{DynamicResource EducationLevelDataTemplate}"/>
                     </DockPanel>
                     <DockPanel>
+                        <TextBlock Text="微信：" VerticalAlignment="Center" />
+                        <TextBox VerticalAlignment="Center" Text="{Binding WeChat}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Text="QQ：" VerticalAlignment="Center" />
+                        <TextBox VerticalAlignment="Center" Text="{Binding QQ}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
+                    </DockPanel>
+                    <DockPanel>
                         <TextBlock Text="电子邮箱：" VerticalAlignment="Center" />
                         <TextBox VerticalAlignment="Center" Text="{Binding Email}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
                     </DockPanel>

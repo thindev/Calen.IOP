@@ -17,12 +17,12 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
             {
                 address = vm.Address,
                 birthday = vm.Birthday,
-                birthdayType=vm.BirthdayType,
+                birthdayType = vm.BirthdayType,
                 code = vm.Code,
                 departmentId = vm.Department?.Id,
                 departmentName = vm.Department?.Name,
                 description = vm.Description,
-                education = vm.Education.HasValue ? (int)vm.Education.Value : -1,
+                education = vm.Education,
                 email = vm.Email,
                 id = vm.Id,
                 idCardCode = vm.IdCardCode,
@@ -30,12 +30,15 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
                 mobileNumber = vm.MobileNumber,
                 name = vm.Name,
                 passWord = vm.PassWord,
-                serveState = vm.ServeState.HasValue ? (int)vm.ServeState.Value : -1,
-                sex = vm.Sex.HasValue ? (int)vm.Sex.Value : -1,
+                serveState = vm.ServeState,
+                sex = vm.Sex,
                 nationality = vm.Nationality,
                 userId = vm.UserId,
                 permissionIds = vm.PermissionIds.ToArray(),
-                userRoleIds = vm.UserRoleIds.ToArray()
+                userRoleIds = vm.UserRoleIds.ToArray(),
+                pictureUrl=vm.PictureUrl,
+                WeChat=vm.WeChat,
+                QQ=vm.QQ
             };
             if(vm.Image!=null)
             {
@@ -50,7 +53,7 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
             {
                 Address = dto.address,
                 Birthday = dto.birthday,
-                BirthdayType=dto.birthdayType,
+                BirthdayType = dto.birthdayType,
                 Code = dto.code,
                 Department = new DepartmentVM() { Id = dto.departmentId, Name = dto.departmentName },
                 Description = dto.description,
@@ -65,8 +68,12 @@ namespace Calen.IOP.Client.ViewModel.ConvertUtil
                 PassWord = dto.passWord,
                 ServeState = (ServeStates)dto.serveState,
                 Sex = (SexTypes)dto.sex,
-                Nationality=dto.nationality,
+                Nationality = dto.nationality,
                 UserId = dto.userId,
+                WeChat = dto.WeChat,
+                QQ = dto.QQ,
+                PictureUrl = dto.pictureUrl,
+
             };
             if(dto.servingRecords!=null)
             {

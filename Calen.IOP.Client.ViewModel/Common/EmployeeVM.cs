@@ -9,46 +9,20 @@ using System.Windows.Media.Imaging;
 
 namespace Calen.IOP.Client.ViewModel
 {
-    public class EmployeeVM : EntityVMBase<EmployeeVM>
+    public class EmployeeVM : PersonBaseVM<EmployeeVM>
     {
-        private string _idCardCode;
-        private SexTypes? _sex;
-        private string _mobileNumber;
-        private string _email;
-        private string _address;
-        private DateTime? _birthday;
-        private BirthdayTypes _birthdayType;
-        private BitmapImage _image;
-        private EducationLevels? _education;
-        private ServeStates? _serveState;
-        private string _userId;
-        private string _passWord;
-        private string _nationality;
+        
         private bool _isVirtual;
-        private ObservableCollection<string> _userRoleIds = new ObservableCollection<string>();
-        private ObservableCollection<string> _permissionIds = new ObservableCollection<string>();
+        private ServeStates? _serveState;
+        private BitmapImage _image;
         private DepartmentVM _department;
         private ObservableCollection<ServingRecordVM> _servingRecords = new ObservableCollection<ServingRecordVM>();
 
-        public string IdCardCode { get => _idCardCode; set { Set(() => IdCardCode, ref _idCardCode, value); } }
-        public SexTypes? Sex { get => _sex; set { Set(() => Sex, ref _sex, value); } }
-        public string MobileNumber { get => _mobileNumber; set { Set(() => MobileNumber, ref _mobileNumber, value); } }
-        public string Email { get => _email; set { Set(() => Email, ref _email, value); } }
-        public string Address { get => _address; set { Set(() => Address, ref _address, value); } }
-        public DateTime? Birthday { get => _birthday; set { Set(() => Birthday, ref _birthday, value); } }
-        public BitmapImage Image { get => _image; set { Set(() => Image, ref _image, value); } }
-        public EducationLevels? Education { get => _education; set { Set(() => Education,ref _education, value); } }
         public ServeStates? ServeState { get => _serveState; set { Set(() => ServeState, ref _serveState, value); } }
-        public string UserId { get => _userId; set { Set(() => UserId, ref _userId, value); } }
-        public string PassWord { get => _passWord; set { Set(() => PassWord, ref _passWord, value); } }
+        public ObservableCollection<ServingRecordVM> ServingRecords { get => _servingRecords; }
         public bool IsVirtual { get => _isVirtual; set { Set(() => IsVirtual, ref _isVirtual, value); } }
-        public DepartmentVM Department{ get => _department; set { Set(() => Department, ref _department, value); } }
-        public ObservableCollection<ServingRecordVM> ServingRecords { get => _servingRecords;  }
-        public string Nationality { get => _nationality; set { Set(() => Nationality, ref _nationality, value); } }
-
-        public ObservableCollection<string> UserRoleIds { get => _userRoleIds; }
-        public ObservableCollection<string> PermissionIds { get => _permissionIds; }
-        public BirthdayTypes BirthdayType { get => _birthdayType; set { Set(() => BirthdayType, ref _birthdayType, value); } }
+        public DepartmentVM Department { get => _department; set { Set(() => Department, ref _department, value); } }
+        public BitmapImage Image { get => _image; set { Set(() => Image, ref _image, value); } }
 
         public override EmployeeVM DeepClone()
         {

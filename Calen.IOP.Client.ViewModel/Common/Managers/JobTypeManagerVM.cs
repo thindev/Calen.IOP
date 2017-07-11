@@ -63,7 +63,7 @@ namespace Calen.IOP.Client.ViewModel
             if (this.DeleteItemsDialog != null)
             {
                 var items = this.ItemList.Where(p => p.IsSelected).ToList();
-                if(!items.Contains(this.SelectedItem))
+                if(items.Count == 0)
                 {
                     items.Add(this.SelectedItem);
                 }

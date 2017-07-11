@@ -48,6 +48,9 @@ namespace Calen.IOP.BLL.Converters
             em.Sex = (SexTypes)dto.sex;
             em.UserId = dto.userId;
             em.Nationality = dto.nationality;
+            em.WeChat = dto.WeChat;
+            em.QQ = dto.QQ;
+            em.PictureUrl = dto.pictureUrl;
             em.UserRoleIds = string.Join("," ,dto.userRoleIds);
             em.PermissionIds = string.Join(",", dto.permissionIds);
             em.Department = DbContext.Departments.Find(dto.departmentId);
@@ -87,7 +90,7 @@ namespace Calen.IOP.BLL.Converters
                 address = model.Address,
                 birthday = model.BirthDay,
                 code = model.Code,
-               birthdayType=model.BirthDayType,
+                birthdayType = model.BirthDayType,
                 description = model.Description,
                 education = (int)model.Education,
                 email = model.Email,
@@ -99,8 +102,11 @@ namespace Calen.IOP.BLL.Converters
                 passWord = model.Passwrod,
                 serveState = (int)model.ServeState,
                 sex = (int)model.Sex,
-                nationality=model.Nationality,
+                nationality = model.Nationality,
                 userId = model.UserId,
+                pictureUrl = model.PictureUrl,
+                QQ = model.QQ,
+                WeChat=model.WeChat,
                 userRoleIds= model.UserRoleIds==null?null:model.UserRoleIds.Split(','),
                  permissionIds = model.PermissionIds == null ? null : model.PermissionIds.Split(','),
              
