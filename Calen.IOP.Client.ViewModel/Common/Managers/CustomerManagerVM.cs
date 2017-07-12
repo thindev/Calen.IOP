@@ -1,6 +1,7 @@
 ﻿using Calen.IOP.Client.ViewModel.Common.Criteria;
 using Calen.IOP.Client.ViewModel.ConvertUtil;
 using Calen.IOP.DataPortal;
+using Calen.IOP.DTO;
 using Calen.IOP.DTO.Common;
 using System;
 using System.Collections.Generic;
@@ -9,13 +10,13 @@ using System.Text;
 
 namespace Calen.IOP.Client.ViewModel.Common.Managers
 {
-    public class EmployeeManagerVM : ManagerBase<EmployeeVM>
+    public class CustomerManagerVM : ManagerBase<CustomerVM>
     {
-        EmployeeCriteriaVM _employeeCriteria = new EmployeeCriteriaVM() { PageIndex = 1, PageSize = 20 };
-
-        public EmployeeManagerVM()
+        CustomerCriteriaVM _customerCriteria = new CustomerCriteriaVM() { PageIndex = 1, PageSize = 20 };
+        public CustomerType CustomerType { get; set; }
+        public CustomerManagerVM()
         {
-            _employeeCriteria.PropertyChanged += _employeeCriteria_PropertyChanged;
+            _customerCriteria.PropertyChanged += _employeeCriteria_PropertyChanged;
         }
 
         private void _employeeCriteria_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -30,7 +31,7 @@ namespace Calen.IOP.Client.ViewModel.Common.Managers
             }
         }
 
-        public EmployeeCriteriaVM EmployeeCriteria { get => _employeeCriteria; }
+        public CustomerCriteriaVM CustomerCriteria { get => _customerCriteria; }
 
         private IDataPortal GetDataPortal()
         {
@@ -47,14 +48,15 @@ namespace Calen.IOP.Client.ViewModel.Common.Managers
         {
             this.ItemList.Clear();
             this.IsBusy = true;
-           resultForEmployees result=await  GetDataPortal().FetchEmployees(this.EmployeeCriteria.ToDto());
+            this.CustomerCriteria.CustomerType = this.CustomerType;
+           resultForCustomers result=await  GetDataPortal().FetchCustomers(this.CustomerCriteria.ToDto());
             this.IsBusy = false;
-            this.EmployeeCriteria.TotalCount = result.totalCount;
-            if(result.employees!=null)
+            this.CustomerCriteria.TotalCount = result.totalCount;
+            if(result.customers!=null)
             {
-                foreach(employee item in result.employees)
+                foreach(customer item in result.customers)
                 {
-                    var vm = EmployeeConvertUtil.FromDto(item);
+                    var vm = CustomerConvertUtil.FromDto(item);
                     this.ItemList.Add(vm);
                 }
             }
@@ -65,17 +67,17 @@ namespace Calen.IOP.Client.ViewModel.Common.Managers
         }
         private async void AddItemAsyc()
         {
-            EmployeeVM vm = new EmployeeVM() { Id = Guid.NewGuid().ToString() };
+            CustomerVM vm = new CustomerVM() { Id = Guid.NewGuid().ToString() };
             vm.IsDirty = true;
             vm.IsEditing = true;
             vm.IsNew = true;
             this.IsEditing = true;
             this.CurrentEditingItem = vm;
-            bool isSaveClick = await this.EditItemDialog?.ShowDialogAsync("添加",vm);
+            bool isSaveClick = await this.EditItemDialog?.ShowDialogAsync("添加", vm);
             if (isSaveClick)
             {
-                employee[] items = new employee[] { EmployeeConvertUtil.ToDto(vm) };
-                int count = await AppCxt.Current.DataPortal.AddEmployees(items);
+                customer[] items = new customer[] { CustomerConvertUtil.ToDto(vm) };
+                int count = await AppCxt.Current.DataPortal.AddCustomers(items);
                 this.ClearEditingState();
                 this.RefreshItemsAsync();
             }
@@ -87,7 +89,7 @@ namespace Calen.IOP.Client.ViewModel.Common.Managers
         }
         protected async override void EditExecute()
         {
-            EmployeeVM vm = this.SelectedItem.DeepClone();
+            CustomerVM vm = this.SelectedItem.DeepClone();
             vm.IsDirty = true;
             vm.IsEditing = true;
             vm.IsNew = false;
@@ -96,8 +98,8 @@ namespace Calen.IOP.Client.ViewModel.Common.Managers
             bool isSaveClick = await this.EditItemDialog?.ShowDialogAsync("添加", vm);
             if (isSaveClick)
             {
-                employee[] items = new employee[] { EmployeeConvertUtil.ToDto(vm) };
-                int count = await AppCxt.Current.DataPortal.UpdateEmployees(items);
+                customer[] items = new customer[] { CustomerConvertUtil.ToDto(vm) };
+                int count = await AppCxt.Current.DataPortal.UpdateCustomers(items);
                 this.ClearEditingState();
                 this.RefreshItemsAsync();
             }
@@ -116,9 +118,9 @@ namespace Calen.IOP.Client.ViewModel.Common.Managers
             bool toDelete = await this.DeleteItemsDialog?.ShowDialog(items);
             if (toDelete)
             {
-                var list = items.Select(x => EmployeeConvertUtil.ToDto(x)).ToList();
+                var list = items.Select(x => CustomerConvertUtil.ToDto(x)).ToList();
                 this.IsBusy = true;
-                int count = await GetDataPortal().DeleteEmployees(list);
+                int count = await GetDataPortal().DeleteCustomers(list);
                 this.IsBusy = false;
                 if (count > 0)
                 {
@@ -129,35 +131,35 @@ namespace Calen.IOP.Client.ViewModel.Common.Managers
 
         protected override bool ToFirstPagePredicate()
         {
-            return this.EmployeeCriteria.PageIndex > 1;
+            return this.CustomerCriteria.PageIndex > 1;
         }
         protected override bool ToLastPagePredicate()
         {
-            return this.EmployeeCriteria.PageIndex < EmployeeCriteria.PageCount;
+            return this.CustomerCriteria.PageIndex < CustomerCriteria.PageCount;
         }
         protected override void ToFirstPageExecute()
         {
-            this.EmployeeCriteria.PageIndex = 1;
+            this.CustomerCriteria.PageIndex = 1;
         }
         protected override void ToLastPageExecute()
         {
-            this.EmployeeCriteria.PageIndex = EmployeeCriteria.PageCount;
+            this.CustomerCriteria.PageIndex = CustomerCriteria.PageCount;
         }
         protected override bool ToNextPagePredicate()
         {
-            return EmployeeCriteria.PageIndex < EmployeeCriteria.PageCount;
+            return CustomerCriteria.PageIndex < CustomerCriteria.PageCount;
         }
         protected override bool ToPrePagePredicate()
         {
-            return EmployeeCriteria.PageIndex > 1;
+            return CustomerCriteria.PageIndex > 1;
         }
         protected override void ToNextPageExecute()
         {
-            EmployeeCriteria.PageIndex += 1;
+            CustomerCriteria.PageIndex += 1;
         }
         protected override void ToPrePageExecute()
         {
-            EmployeeCriteria.PageIndex -= 1;
+            CustomerCriteria.PageIndex -= 1;
         }
 
     }

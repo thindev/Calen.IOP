@@ -20,12 +20,11 @@ namespace Calen.IOP.Client.Desktop.Pages.Dialogs
     /// <summary>
     /// EditEmployeeDialog.xaml 的交互逻辑
     /// </summary>
-    public partial class EditEmployeeDialog : UserControl, IEditItemDialog
+    public partial class EditCustomerDialog : UserControl, IEditItemDialog
     {
-        private ContentDialog _dialog;
-        private bool _result;
+        private DialogWindow _dialog;
 
-        public EditEmployeeDialog()
+        public EditCustomerDialog()
         {
             InitializeComponent();
         }
@@ -33,25 +32,24 @@ namespace Calen.IOP.Client.Desktop.Pages.Dialogs
         public async Task<bool> ShowDialogAsync<T>(string title, T vm) where T : EntityVMBase
         {
             rootLayout.DataContext = vm;
-            _dialog = new ContentDialog() { Title = title };
+            _dialog = new DialogWindow() { Title = title ,DialogResult=false};
             _dialog.VerticalAlignment = VerticalAlignment.Center;
             _dialog.HorizontalAlignment = HorizontalAlignment.Center;
             _dialog.Content = this;
-            await DialogCoordinator.Instance.ShowMetroDialogAsync(Constants.MAIN_DIALOG, _dialog);
-            await _dialog.WaitUntilUnloadedAsync();
-            return _result;
+            return _dialog.ShowDialog().Value;
         }
 
         private void btn_ok_Click(object sender, RoutedEventArgs e)
         {
-            _result = true;
-            DialogCoordinator.Instance.HideMetroDialogAsync(Constants.MAIN_DIALOG, _dialog);
+            _dialog.DialogResult = true;
+            _dialog.Close();
+            
         }
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
-            _result = false;
-            DialogCoordinator.Instance.HideMetroDialogAsync(Constants.MAIN_DIALOG, _dialog);
+            _dialog.DialogResult = false;
+            _dialog.Close();
         }
     }
 }

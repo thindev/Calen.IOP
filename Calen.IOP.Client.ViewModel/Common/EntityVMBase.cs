@@ -52,4 +52,9 @@ namespace Calen.IOP.Client.ViewModel
             target.IsSelected = this.IsSelected;
         }
     }
+    public interface IDetailView
+    {
+        void SetTitle(string title);
+        void Show(EntityVMBase vm ,bool isDialog=false);
+    }
 }

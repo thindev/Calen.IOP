@@ -272,7 +272,7 @@ namespace Calen.IOP.DataPortal
             return 1;
         }
         #endregion
-        #region employee
+        #region vipcard
         public async Task<IEnumerable<vipCard>> FetchAllVipCards()
         {
             var request = new RestRequest("vipcards", Method.GET);
@@ -306,6 +306,49 @@ namespace Calen.IOP.DataPortal
         public async Task<int> UpdateVipCards(IEnumerable<vipCard> items)
         {
             var request = new RestRequest("vipcards", Method.PUT);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
+        }
+        #endregion
+       
+        #region customer
+        public async Task<resultForCustomers> FetchCustomers(criteriaForCustomer criteria)
+        {
+            var request = new RestRequest("customersQuery", Method.POST);
+            request.AddBody(criteria);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            var result = JsonConvert.DeserializeObject<resultForCustomers>(content);
+            return result;
+        }
+
+        public async Task<int> AddCustomers(IEnumerable<customer> items)
+        {
+            var request = new RestRequest("customers", Method.POST);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
+        }
+
+        public async Task<int> DeleteCustomers(IEnumerable<customer> items)
+        {
+            var request = new RestRequest("customers", Method.DELETE);
+            request.AddJsonBody(items);
+            // execute the request
+            IRestResponse response = await _restClient.Execute(request);
+            string content = response.Content;
+            return 1;
+        }
+
+        public async Task<int> UpdateCustomers(IEnumerable<customer> items)
+        {
+            var request = new RestRequest("customers", Method.PUT);
             request.AddJsonBody(items);
             // execute the request
             IRestResponse response = await _restClient.Execute(request);

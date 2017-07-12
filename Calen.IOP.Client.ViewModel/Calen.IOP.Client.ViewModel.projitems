@@ -10,10 +10,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AppCxt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Criteria\CustomerCriteriaVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Criteria\EmployeeCriteriaVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\CustomerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\FunctionVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\IConfirmDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\JobPositionSelectorVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\CustomerManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\EmployeeManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\FunctionManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\JobPositionLevelManagerVM.cs" />
@@ -23,6 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Common\ServingRecordVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\VipCardVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\CustomerConvertUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\DepartmentConvertUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\EmployeeConvertUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\HireTypeConvertUtil.cs" />

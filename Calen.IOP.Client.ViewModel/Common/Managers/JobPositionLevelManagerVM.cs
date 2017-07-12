@@ -28,7 +28,7 @@ namespace Calen.IOP.Client.ViewModel
             vm.IsNew = true;
             this.IsEditing = true;
             this.CurrentEditingItem = vm;
-            bool isSaveClick=  await this.EditItemDialog?.ShowDialogAsync(vm);
+            bool isSaveClick=  await this.EditItemDialog?.ShowDialogAsync("添加", vm);
             if(isSaveClick)
             {
                 jobPositionLevel[] items = new jobPositionLevel[] { JobPositionLevelConvertUtil.ToDto(vm) };
@@ -97,7 +97,7 @@ namespace Calen.IOP.Client.ViewModel
             vm.IsNew = false;
             this.IsEditing = true;
             this.CurrentEditingItem = vm;
-            bool isSaveClick = await this.EditItemDialog?.ShowDialogAsync(vm);
+            bool isSaveClick = await this.EditItemDialog?.ShowDialogAsync("添加", vm);
             if (isSaveClick)
             {
                 jobPositionLevel[] items = new jobPositionLevel[] { JobPositionLevelConvertUtil.ToDto(vm) };

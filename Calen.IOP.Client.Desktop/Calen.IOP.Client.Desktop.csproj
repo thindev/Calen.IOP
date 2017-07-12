@@ -148,6 +148,12 @@
     <Compile Include="Pages\Common\JobTypeManagePanel.xaml.cs">
       <DependentUpon>JobTypeManagePanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Dialogs\DialogWindow.xaml.cs">
+      <DependentUpon>DialogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Dialogs\EditCustomerDialog.xaml.cs">
+      <DependentUpon>EditCustomerDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Dialogs\EditEmployeeDialog.xaml.cs">
       <DependentUpon>EditEmployeeDialog.xaml</DependentUpon>
     </Compile>
@@ -265,6 +271,14 @@
     <Page Include="Pages\Common\JobTypeManagePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Dialogs\DialogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Dialogs\EditCustomerDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Dialogs\EditEmployeeDialog.xaml">
       <SubType>Designer</SubType>

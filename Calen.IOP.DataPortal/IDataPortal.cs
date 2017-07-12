@@ -46,5 +46,12 @@ namespace Calen.IOP.DataPortal
         Task<int> DeleteVipCards(IEnumerable<string> ids);
         Task<int> UpdateVipCards(IEnumerable<vipCard> items);
         #endregion vipCards
+
+        #region customer
+        Task<resultForCustomers> FetchCustomers(criteriaForCustomer criteria);
+        Task<int> AddCustomers(IEnumerable<customer> items);
+        Task<int> DeleteCustomers(IEnumerable<customer> items);
+        Task<int> UpdateCustomers(IEnumerable<customer> items);
+        #endregion customer
     }
 }

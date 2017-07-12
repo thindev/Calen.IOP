@@ -21,7 +21,7 @@ namespace Calen.IOP.Client.ViewModel.Common.Managers
             vm.IsNew = true;
             this.IsEditing = true;
             this.CurrentEditingItem = vm;
-            bool isSaveClick = await this.EditItemDialog?.ShowDialogAsync(vm);
+            bool isSaveClick = await this.EditItemDialog?.ShowDialogAsync("添加", vm);
             if (isSaveClick)
             {
                 vipCard[] items = new vipCard[] { VipCardConvertUtil.ToDto(vm) };
@@ -95,7 +95,7 @@ namespace Calen.IOP.Client.ViewModel.Common.Managers
             vm.IsNew = false;
             this.IsEditing = true;
             this.CurrentEditingItem = vm;
-            bool isSaveClick = await this.EditItemDialog?.ShowDialogAsync(vm);
+            bool isSaveClick = await this.EditItemDialog?.ShowDialogAsync("添加", vm);
             if (isSaveClick)
             {
                 vipCard[] items = new vipCard[] { VipCardConvertUtil.ToDto(vm) };
