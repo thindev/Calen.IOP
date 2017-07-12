@@ -12,7 +12,7 @@ namespace Calen.IOP.BLL
 {
     public class CustomerManager
     {
-        public resultForCustomers QueryEmployees(criteriaForCustomer criteria)
+        public resultForCustomers QueryCustomers(criteriaForCustomer criteria)
         {
             using (IOPContext db = new IOPContext())
             {
@@ -31,11 +31,11 @@ namespace Calen.IOP.BLL
             }
         }
 
-        public int AddEmployees(IEnumerable<employee> items)
+        public int AddCustomers(IEnumerable<customer> items)
         {
             using (IOPContext db = new IOPContext())
             {
-                EmployeeConverter converter = new EmployeeConverter(db);
+                CustomerConverter converter = new CustomerConverter(db);
                 foreach (var item in items)
                 {
                     var model = converter.FromDto(item);
@@ -44,11 +44,11 @@ namespace Calen.IOP.BLL
                 return db.SaveChanges();
             }
         }
-        public int UpdateEmployees(IEnumerable<employee> items)
+        public int UpdateCustomers(IEnumerable<customer> items)
         {
             using (IOPContext db = new IOPContext())
             {
-                EmployeeConverter converter = new EmployeeConverter(db);
+                CustomerConverter converter = new CustomerConverter(db);
                 foreach (var item in items)
                 {
                     var model = converter.FromDto(item);
@@ -57,16 +57,17 @@ namespace Calen.IOP.BLL
                 return db.SaveChanges();
             }
         }
-        public int DeleteEmployees(IEnumerable<employee> items)
+        public int DeleteCustomers(IEnumerable<string> Ids)
         {
             using (IOPContext db = new IOPContext())
             {
-                EmployeeConverter converter = new EmployeeConverter(db);
-                foreach (var item in items)
+                foreach (var id in Ids)
                 {
-                    var model = converter.FromDto(item);
-                    model.ServingRecords.Clear();
-                    db.Entry(model).State = System.Data.Entity.EntityState.Deleted;
+                    var model = db.Customers.Find(id);
+                    if (model != null)
+                    {
+                        db.Entry(model).State = System.Data.Entity.EntityState.Deleted;
+                    }
                 }
                 return db.SaveChanges();
             }
