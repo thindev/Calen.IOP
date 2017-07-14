@@ -67,7 +67,7 @@ namespace Calen.IOP.Client.ViewModel.Common.Managers
         }
         private async void AddItemAsyc()
         {
-            CustomerVM vm = new CustomerVM() { Id = Guid.NewGuid().ToString() };
+            CustomerVM vm = new CustomerVM() { Id = Guid.NewGuid().ToString() , CustomerType = this.CustomerType };
             vm.IsDirty = true;
             vm.IsEditing = true;
             vm.IsNew = true;
@@ -118,7 +118,7 @@ namespace Calen.IOP.Client.ViewModel.Common.Managers
             bool toDelete = await this.DeleteItemsDialog?.ShowDialog(items);
             if (toDelete)
             {
-                var list = items.Select(x => CustomerConvertUtil.ToDto(x)).ToList();
+                var list = items.Select(x => x.Id).ToList();
                 this.IsBusy = true;
                 int count = await GetDataPortal().DeleteCustomers(list);
                 this.IsBusy = false;

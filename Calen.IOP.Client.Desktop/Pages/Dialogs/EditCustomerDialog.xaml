@@ -3,24 +3,126 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:Calen.IOP.Client.ViewModel"
              xmlns:common="clr-namespace:Calen.IOP.Client.Desktop.Pages.Common"
              xmlns:local="clr-namespace:Calen.IOP.Client.Desktop.Pages.Dialogs"
+             HorizontalAlignment="Center"
              mc:Ignorable="d" 
              >
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../Skins/MainSkin.xaml"/>
+                <ResourceDictionary Source="../../Skins/TextBoxStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Style  TargetType="{x:Type TextBlock}">
+                <Setter Property="TextWrapping" Value="NoWrap"/>
+                <Setter Property="TextTrimming" Value="None"/>
+                <Setter Property="FontSize" Value="{DynamicResource FontSize_Title_Small}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Foreground_NormalKey}"/>
+                <Setter Property="Width" Value="72"/>
+                <Setter Property="TextAlignment" Value="Right"/>
+            </Style>
+            <Style TargetType="{x:Type DockPanel}">
+                <Setter Property="Margin" Value="0 10 "/>
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid Name="rootLayout">
+    <Grid Name="rootLayout" Width="1000" >
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <ScrollViewer Width="480" MaxHeight="420" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" BorderThickness="1" BorderBrush="{DynamicResource EdgeBarColorLevel2}">
-            
+        <ScrollViewer  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" BorderThickness="1" BorderBrush="{DynamicResource EdgeBarColorLevel2}">
+            <StackPanel Margin="12">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="560"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="1" Margin="12,24">
+                        <Border  BorderBrush="{DynamicResource EdgeBarBorderColorLevel2}" BorderThickness="2" Width="280" Height="360" HorizontalAlignment="Center" >
+                            <Image  />
+                        </Border>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Content="选择" Margin="12,4"/>
+                            <Button Content="拍照" Margin="12,4"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Margin="12" Grid.Column="0">
+                        <DockPanel>
+                            <TextBlock Text="编号：" VerticalAlignment="Center"  />
+                            <TextBox VerticalAlignment="Center" Text="{Binding Code}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="名称：" VerticalAlignment="Center"/>
+                            <TextBox VerticalAlignment="Center" Text="{Binding Name}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
+                        </DockPanel>
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <DockPanel>
+                                <TextBlock Text="出生年月：" VerticalAlignment="Center" />
+                                <DatePicker VerticalAlignment="Center"  IsEnabled="{Binding IsEditing}" SelectedDate="{Binding Birthday}" />
+                            </DockPanel>
+                            <DockPanel Grid.Column="1" Margin="20,10,0,10">
+                                <TextBlock Text="生日日历：" VerticalAlignment="Center"   />
+                                <ComboBox VerticalAlignment="Center"  IsEnabled="{Binding IsEditing}" SelectedItem="{Binding BirthdayType}" ItemsSource="{Binding Source={StaticResource BirthdayTypes}}"  ItemTemplate="{DynamicResource BirthdayTypeDataTemplate}"/>
+                            </DockPanel>
+                        </Grid>
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <DockPanel Margin="0,10,6,10">
+                                <TextBlock Text="性别：" VerticalAlignment="Center"   />
+                                <ComboBox VerticalAlignment="Center" IsEnabled="{Binding IsEditing}" ItemsSource="{Binding Source={StaticResource SexTypes}}" SelectedItem="{Binding Sex}" ItemTemplate="{DynamicResource SexTypeDataTemplate}"/>
+                            </DockPanel>
+                            <DockPanel Grid.Column="1" Margin="6,10,0,10">
+                                <TextBlock Text="民族：" VerticalAlignment="Center"   />
+                                <ComboBox VerticalAlignment="Center" IsEnabled="{Binding IsEditing}" SelectedItem="{Binding Nationality}" ItemsSource="{x:Static vm:Constants.Nationalitys}" />
+                            </DockPanel>
+                        </Grid>
+                        <DockPanel>
+                            <TextBlock Text="身分证号：" VerticalAlignment="Center" />
+                            <TextBox VerticalAlignment="Center" Text="{Binding IdCardCode}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="文化程度：" VerticalAlignment="Center"   />
+                            <ComboBox VerticalAlignment="Center" IsEnabled="{Binding IsEditing}" ItemsSource="{Binding Source={StaticResource EducationLevels}}" SelectedItem="{Binding Education}"  ItemTemplate="{DynamicResource EducationLevelDataTemplate}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="电话：" VerticalAlignment="Center"/>
+                            <TextBox VerticalAlignment="Center" Text="{Binding MobileNumber}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="微信：" VerticalAlignment="Center" />
+                            <TextBox VerticalAlignment="Center" Text="{Binding WeChat}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="QQ：" VerticalAlignment="Center" />
+                            <TextBox VerticalAlignment="Center" Text="{Binding QQ}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock Text="电子邮箱：" VerticalAlignment="Center" />
+                            <TextBox VerticalAlignment="Center" Text="{Binding Email}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
+                        </DockPanel>
+                    </StackPanel>
+                </Grid>
+
+                <StackPanel  Margin="12,0,32,0">
+                    <DockPanel>
+                    <TextBlock Text="住址：" VerticalAlignment="Center" />
+                    <TextBox VerticalAlignment="Center" Text="{Binding Address}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
+                </DockPanel>
+                <DockPanel>
+                    <TextBlock Text="备注：" VerticalAlignment="Center" />
+                    <TextBox VerticalAlignment="Center" Text="{Binding Description}" IsReadOnly="{Binding IsEditing,Converter={StaticResource InverseBooleanConverter}}"/>
+                </DockPanel>
+                </StackPanel>
+            </StackPanel>
         </ScrollViewer>
         <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Orientation="Horizontal"  HorizontalAlignment="Center" Height="44" >
             <Button Content="保存" Name="btn_ok" Click="btn_ok_Click" Margin="8" Padding="12,4" FontSize="{DynamicResource FontSize_Content_Large}" />

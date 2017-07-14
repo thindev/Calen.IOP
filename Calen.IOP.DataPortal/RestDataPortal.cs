@@ -336,10 +336,10 @@ namespace Calen.IOP.DataPortal
             return 1;
         }
 
-        public async Task<int> DeleteCustomers(IEnumerable<customer> items)
+        public async Task<int> DeleteCustomers(IEnumerable<string> itemIds)
         {
             var request = new RestRequest("customers", Method.DELETE);
-            request.AddJsonBody(items);
+            request.AddJsonBody(itemIds);
             // execute the request
             IRestResponse response = await _restClient.Execute(request);
             string content = response.Content;

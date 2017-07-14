@@ -13,6 +13,7 @@
                      BorderThickness="0"
     GlowBrush="Black" 
         mc:Ignorable="d"
+                     WindowStartupLocation="CenterScreen"
         >
     <Grid>
         

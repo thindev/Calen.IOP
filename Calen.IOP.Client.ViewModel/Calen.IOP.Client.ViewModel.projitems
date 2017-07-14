@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\VipCardManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\PersonBaseVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\ServingRecordVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SessionManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\VipCardVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConvertUtil\CustomerConvertUtil.cs" />
@@ -53,5 +54,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Common\WindowViewControllerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Managers\UserRoleManagerVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\UserRoleVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserInfo.cs" />
   </ItemGroup>
 </Project>

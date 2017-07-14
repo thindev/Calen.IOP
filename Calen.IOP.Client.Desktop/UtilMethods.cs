@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace Calen.IOP.Client.Desktop
 {
-    public class UtilMethods
+    class UtilMethods
     {
         /// <summary>
         /// Returns the first ancester of specified type

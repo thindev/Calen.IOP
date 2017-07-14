@@ -50,7 +50,7 @@ namespace Calen.IOP.DataPortal
         #region customer
         Task<resultForCustomers> FetchCustomers(criteriaForCustomer criteria);
         Task<int> AddCustomers(IEnumerable<customer> items);
-        Task<int> DeleteCustomers(IEnumerable<customer> items);
+        Task<int> DeleteCustomers(IEnumerable<string> itemIds);
         Task<int> UpdateCustomers(IEnumerable<customer> items);
         #endregion customer
     }

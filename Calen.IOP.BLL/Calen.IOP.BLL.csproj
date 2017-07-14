@@ -67,6 +67,9 @@
     <Compile Include="JobPositonLevelManager.cs" />
     <Compile Include="JobTypeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServerContext.cs" />
+    <Compile Include="Session.cs" />
+    <Compile Include="SessionManager.cs" />
     <Compile Include="UserRoleManager.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="VipCardManager.cs" />

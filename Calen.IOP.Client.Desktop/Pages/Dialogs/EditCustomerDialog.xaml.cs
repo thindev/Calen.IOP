@@ -32,7 +32,9 @@ namespace Calen.IOP.Client.Desktop.Pages.Dialogs
         public async Task<bool> ShowDialogAsync<T>(string title, T vm) where T : EntityVMBase
         {
             rootLayout.DataContext = vm;
-            _dialog = new DialogWindow() { Title = title ,DialogResult=false};
+            _dialog = new DialogWindow() { Title = title };
+            _dialog.Width = 1000;
+            _dialog.Height = 600;
             _dialog.VerticalAlignment = VerticalAlignment.Center;
             _dialog.HorizontalAlignment = HorizontalAlignment.Center;
             _dialog.Content = this;
